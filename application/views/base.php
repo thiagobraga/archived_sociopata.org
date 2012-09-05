@@ -50,126 +50,19 @@
     </head>
 
     <body>
-        <div id='wrapper'>
-            <!-- TOP -->
-            <div id='top'>
-                <div class='float'>
-                    <a href='<?= base_url() ?>'>
-                        <img src='<?= base_url('assets/img/logo.png') ?>'
-                             alt='MB Consultoria Jurídica'
-                             width='273'
-                             height='94' />
-                    </a>
-                </div>
-
-                <!-- LOGIN -->
-                <div class='float'>
-                    <div id='login-box'>
-                        <form id='login-box-form' method='post'>
-                            <div class='row'>
-                                <span>ÁREA RESTRITA</span>
-
-                                <!-- isset session userdata -->
-                                <label for='login'>login</label>
-                                <input type='text' id='login' maxlength='20' />
-
-                                <label for='senha'>senha</label>
-                                <input type='password' id='senha' maxlength='20' />
-
-                                <input type='submit' class='btn' value='ENTRAR' />
-                                <!-- else -->
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- MENU -->
-                    <ul id='menu'>
-                        <li><a href='<?= base_url() ?>'>HOME</a></li>
-                        <li><a href='<?= base_url('sobre') ?>'>QUEM SOMOS</a></li>
-                        <li><a href='<?= base_url('atuacao') ?>'>ÁREA DE ATUAÇÃO</a></li>
-                        <li><a href='<?= base_url('links') ?>'>LINKS ÚTEIS</a></li>
-                        <li><a href='<?= base_url('contato') ?>'>CONTATO</a></li>
-                    </ul>
-
-                    <!-- BREADCRUMB -->
-                    <div id='breadcrumb'>
-                        <span>Você está em: <?= set_breadcrumb() ?></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class='clear'></div>
+        <div id='container'>
+            <!-- HEADER -->
+            <header>
+                <a href='<?= base_url() ?>' class='brand'></a>
+            </header>
 
             <!-- CONTENT -->
             <div id='content'>
                 <? if (isset($body)) $this->load->view($body) ?>
             </div>
-        </div>
 
-        <div class='clear'></div>
-
-        <!-- FOOTER -->
-        <div id='footer'>
-            <div id='container'>
-
-                <!-- SITEMAP -->
-                <div class='column-left'>
-                    <h3>MAPA DO SITE</h3>
-
-                    <ul id='sitemap'>
-                        <li><a href='<?= base_url() ?>'>HOME</a></li>
-                        <li><a href='<?= base_url('sobre') ?>'>QUEM SOMOS</a></li>
-                        <li><a href='<?= base_url('atuacao') ?>'>ÁREA DE ATUAÇÃO</a></li>
-                        <li><a href='<?= base_url('processos') ?>'>PROCESSOS</a></li>
-                        <li><a href='<?= base_url('noticias') ?>'>NOTÍCIAS</a></li>
-                        <li><a href='<?= base_url('links') ?>'>LINKS ÚTEIS</a></li>
-                        <li><a href='<?= base_url('contato') ?>'>CONTATO</a></li>
-                    </ul>
-                </div>
-
-                <!-- CONTACT -->
-                <div class='column-right'>
-                    <div class='float'>
-                        <h3>CONTATO</h3>
-                        <h4>(14) 3262-1105</h4>
-
-                        <address>
-                            Rua XV de Novembro 595 e 665 &nbsp; | &nbsp; Centro<br />
-                            CEP 17120-000 &nbsp; | &nbsp; Agudos &nbsp; | &nbsp; SP
-                        </address>
-
-                        <div id='map_canvas'></div>
-                    </div>
-
-                    <div class='float'>
-                        <form id='footer-form' method='post'>
-                            <div class='control-group'>
-                                <label for='nome'>Nome</label>
-                                <input id='nome' name='nome' type='text' />
-                            </div>
-
-                            <div class='control-group'>
-                                <label for='e-mail'>E-mail</label>
-                                <input id='e-mail' name='e-mail' type='email' />
-                            </div>
-
-                            <div class='control-group'>
-                                <label for='mensagem'>Mensagem</label>
-                                <textarea id='mensagem' name='mensagem' rows='4'></textarea>
-                            </div>
-
-                            <div class='action-group'>
-                                <input id='enviar' class='btn' type='submit' value='ENVIAR' />
-                                <img src='<?= base_url('assets/img/ajax-loader.gif') ?>'
-                                     alt='Loading...'
-                                     class='loading hide'
-                                     width='16'
-                                     height='16' />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
+            <!-- FOOTER -->
+            <footer>
                 <!-- COPYRIGHT -->
                 <div>
                     <span>
@@ -184,18 +77,7 @@
                         </a>
                     </span>
                 </div>
-            </div>
-        </div>
-
-        <!-- MODAL -->
-        <div id='footer-result' class='modal hide fade'>
-            <div class='modal-header'>
-                <button class='btn close' aria-hidden='true' data-dismiss='modal' type="button">&times;</button>
-                <h3 id='result-header'></h3>
-            </div>
-            <div class="modal-body">
-                <p id='result-body'></p>
-            </div>
+            </footer>
         </div>
 
         <!-- SCRIPTS -->
@@ -213,7 +95,7 @@
         </script>
 
         <? if (ENVIRONMENT == 'production') { ?>
-            <script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js' type='text/javascript'></script>
+            <script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js' type='text/javascript'></script>
             <script src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js' type='text/javascript'></script>
         <? } else { ?>
             <script src='<?= base_url('assets/js/libs/jquery.min.js') ?>' type='text/javascript'></script>
