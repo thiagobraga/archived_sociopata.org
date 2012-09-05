@@ -1,0 +1,788 @@
+/*
+|-------------------------------------------------------------------------------
+| main.css
+|-------------------------------------------------------------------------------
+| Project:      Misquiati & Bahia Sociedade de Advogados
+| Author:       Thiago Braga
+| E-mail:       thibraga06@gmail.com
+| Last change:  17/06/2012
+| Description:  Contém os estilos principais e fixos do site
+|
+|-------------------------------------------------------------------------------
+| Contents
+|-------------------------------------------------------------------------------
+|  1.  Reset
+|  2.  Text
+|  3.  Color
+|  4.  Layout
+|  5.  Menu
+|  6.  Login
+|  7.  Breadcrumb
+|  8.  Headings
+|  9.  Footer
+| 10.  Form
+| 11.  Classes
+|
+*/
+
+/*
+|-------------------------------------------------------------------------------
+| 1.  Reset
+|-------------------------------------------------------------------------------
+| The goal of a reset stylesheet is to reduce browser inconsistencies in things
+| like default line heights, borders, margins and font sizes of headings, and
+| so on. Reset styles quite often appear in CSS frameworks, and the original
+| "meyerweb reset" found its way into Blueprint, among others.
+|
+| http://meyerweb.com/eric/tools/css/reset/
+| v2.0 | 20110126
+| License: none (public domain)
+|
+*/
+html, body, div, span,
+h1, h2, h3, h4, h5, h6,
+p, a, address, img, strong, b, i, ul, li,
+fieldset, form, label, legend,
+table, tbody, tfoot, thead, tr, th, td
+{
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline
+}
+
+a    {text-decoration: none}
+ul   {list-style: none}
+body {line-height: 1}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 2.  Text
+|-------------------------------------------------------------------------------
+*/
+body,
+input,
+textarea
+{
+    font-family: Tahoma, Arial, sans-serif;
+    text-shadow: 0 0 1px #CDCDCD
+}
+
+h1 {font-size:  2.0em; line-height: 1.5em}
+h2 {font-size:  1.0em; line-height: 1.2em}
+h3 {font-size:  1.0em; line-height: 1.5em}
+p  {font-size: 0.76em; line-height: 1.5em; text-align: justify}
+
+#login-box span    {font-size: 0.7em; line-height: 1.5em}
+#login-box label   {font-size: 0.6em; line-height: 1.6em}
+#login-box input   {font-size: 0.6em; line-height: 1.6em}
+
+#breadcrumb span   {font-size:  0.7em; line-height: 1.5em}
+#breadcrumb a      {font-size:    1em; line-height: 1.5em}
+
+#news a            {font-size: 0.75em; line-height: 1.5em; text-align: justify}
+.more-news span    {font-size:  0.7em; line-height: 1.7em; font-weight: bold}
+
+#footer h3         {font-size:  1.1em; line-height:   1em}
+#footer h4         {font-size:  1.1em; line-height:   1em}
+#footer address    {font-size:  0.7em; line-height: 1.6em}
+#footer #sitemap a {font-size:  0.8em; line-height: 2.5em}
+#footer span       {font-size:  0.6em; line-height: 1.4em}
+#footer label      {font-size:  0.9em; line-height: 1.6em}
+
+#footer input[type="text"],
+#footer input[type="email"],
+#footer textarea   {font-size:  0.8em; line-height: 1.4em}
+
+#footer input[type="submit"]
+{
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    line-height: 1.7em;
+    text-shadow: 0 0 1px #636
+}
+
+#login-box input[type="submit"] {text-shadow: 0 0 1px #B18FB6}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 3.  Color
+|-------------------------------------------------------------------------------
+*/
+body
+{
+    background: #FFF;
+    color: #666
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active
+{
+    color: #999;
+    outline: none;
+
+    /* transition */
+    -webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear
+}
+
+::-moz-selection,
+::selection
+{
+    background: #644C68;
+    color: #FFF
+}
+
+#footer
+{
+    background: #E8E8E8;
+    color: #777
+}
+
+#footer h3 {color: #636}
+#footer input[type="submit"] {color: #633863}
+#footer input[type="submit"]:hover {color: #855A85}
+
+#footer h4,
+#footer address,
+#footer span,
+#footer label,
+#footer input,
+#footer textarea,
+.more-news:hover {color: #777}
+
+#breadcrumb a:hover,
+#login-box span,
+#news a:hover {color: #936699}
+
+#login-box input[type="submit"]   {color: #745B77}
+
+#breadcrumb span,
+#breadcrumb a,
+#login-box label,
+#login-box input[type="text"],
+#login-box input[type="password"] {color: #999}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 4.  Layout
+|-------------------------------------------------------------------------------
+*/
+html {overflow: scroll}
+body {cursor: default}
+
+p {margin: 10px}
+
+#banner img
+{
+    /* background-clip */
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding-box;
+            background-clip: padding-box;
+
+    /* border-radius */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+         -o-border-radius: 4px;
+            border-radius: 4px;
+
+    /* box-shadow */
+    -webkit-box-shadow: 1px 1px 5px #ABABAB;
+            box-shadow: 1px 1px 5px #ABABAB
+}
+
+#wrapper
+{
+    margin: 0 auto;
+    width: 980px
+}
+
+#top
+{
+    height: 130px;
+    margin: 10px
+}
+
+#top img
+{
+    margin: 10px 10px 10px 0;
+
+    /* transition */
+    -webkit-transition: opacity 0.5s linear;
+       -moz-transition: opacity 0.5s linear;
+         -o-transition: opacity 0.5s linear;
+            transition: opacity 0.5s linear
+}
+
+#top img:hover
+{
+    opacity: 0.8;
+    filter: alpha(opacity=80)
+}
+
+#content
+{
+    height: auto;
+    min-height: 500px;
+    margin: 10px
+}
+
+.column
+{
+    float: left;
+    width: 320px
+}
+
+.column-left
+{
+    background: url('../img/column-bg.png') repeat center;
+    float: left;
+    margin: 10px 10px 10px 0;
+    width: 560px
+}
+
+.column-right
+{
+    float: left;
+    margin: 10px 0 10px 10px;
+    width: 380px
+}
+
+.row-top
+{
+    background: url('../img/column-bg.png') repeat center;
+    height: 217px;
+    padding: 2px 0;
+    width: 100%
+}
+
+.row-bottom {height: auto}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 5.  Menu
+|-------------------------------------------------------------------------------
+*/
+#menu
+{
+    border: 1px solid #DFDFDF;
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 70px;
+    width: 634px;
+
+    /* gradient */
+    background: #F4F4F4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F4F4F4), color-stop(100%, #E4E4E4));
+    background: -webkit-linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    background:    -moz-linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    background:      -o-linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    background:         linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F4F4F4', endColorstr='#E4E4E4', GradientType=0);
+
+    /* border-radius */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+         -o-border-radius: 4px;
+            border-radius: 4px
+}
+
+#menu li
+{
+    border-left: 1px solid #C5C5C5;
+    border-right: 1px solid #FCFCFC;
+    display: block;
+    float: left;
+    height: 30px !important;
+    text-align: center;
+    width: 157px
+}
+
+#menu li:first-child
+{
+    border-left: 0;
+
+    /* border-radius */
+    -webkit-border-bottom-left-radius: 4px;
+        -moz-border-radius-bottomleft: 4px;
+            border-bottom-left-radius: 4px;
+
+       -webkit-border-top-left-radius: 4px;
+           -moz-border-radius-topleft: 4px;
+               border-top-left-radius: 4px
+}
+
+#menu li:last-child
+{
+    border-right: 0;
+
+    /* border-radius */
+    -webkit-border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomright: 4px;
+            border-bottom-right-radius: 4px;
+
+       -webkit-border-top-right-radius: 4px;
+           -moz-border-radius-topright: 4px;
+               border-top-right-radius: 4px
+}
+
+#menu li.active,
+#menu li:hover
+{
+    /* gradient */
+    background: #F9F9F9;
+    background: -webkit-gradient(linear,
+                                 left top,
+                                 left bottom,
+                                 color-stop(0%, #F9F9F9),
+                                 color-stop(100%, #E9E9E9));
+    background: -webkit-linear-gradient(top, #F9F9F9 0%, #E9E9E9 100%);
+    background:    -moz-linear-gradient(top, #F9F9F9 0%, #E9E9E9 100%);
+    background:      -o-linear-gradient(top, #F9F9F9 0%, #E9E9E9 100%);
+    background:         linear-gradient(top, #F9F9F9 0%, #E9E9E9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F9F9F9',
+                                                       endColorstr='#E9E9E9',
+                                                       GradientType=0)
+}
+
+#menu a
+{
+    color: #162A5C;
+    display: block;
+    font: normal 0.84em/2.2em Tahoma, Arial, sans-serif;
+    height: 30px !important;
+    letter-spacing: 0.1em;
+
+    /* text-shadow */
+    text-shadow: 0 0 1px #666787
+}
+
+#menu a:hover {color: #726484}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 6.  Login
+|-------------------------------------------------------------------------------
+*/
+#login-box
+{
+    border: 1px solid #DFDFDF;
+    border-top: 0;
+    float: right;
+    position: relative;
+    top: -10px;
+    width: 450px;
+    height: 40px;
+
+    -webkit-border-radius: 0 0 4px 4px;
+       -moz-border-radius: 0 0 4px 4px;
+         -o-border-radius: 0 0 4px 4px;
+            border-radius: 0 0 4px 4px;
+
+    -webkit-box-shadow: inset 0 -1px 1px #F0F0F0;
+            box-shadow: inset 0 -1px 1px #F0F0F0
+}
+
+#login-box span
+{
+    background: url('../img/user-icon.png') no-repeat left 0px;
+    float: left;
+    height: 20px;
+    margin-left: 8px;
+    padding-left: 20px;
+    padding-top: 2px;
+    text-shadow: -1px -1px 1px #F0F0F0;
+    width: 100px
+}
+
+#login-box label
+{
+    float: left;
+    margin: 2px 4px 2px 10px;
+    text-shadow: 0 0 1px #CDCDCD
+}
+
+#login-box input[type="text"],
+#login-box input[type="password"]
+{
+    border: 1px solid #DFDFDF;
+    display: block;
+    float: left;
+    width: 84px;
+    height: 20px;
+
+    /* gradient */
+    background: #FFFFFF;
+    background: -webkit-gradient(linear,
+                                 left top,
+                                 left bottom,
+                                 color-stop(0%, #FFFFFF),
+                                 color-stop(100%, #F1F1F1));
+    background: -webkit-linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    background:    -moz-linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    background:      -o-linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    background:         linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF',
+                                                       endColorstr='#F1F1F1',
+                                                       GradientType=0);
+
+    /* border-radius */
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+         -o-border-radius: 2px;
+            border-radius: 2px
+}
+
+#login-box .row {margin-top: 10px}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 7.  Breadcrumb
+|-------------------------------------------------------------------------------
+*/
+#breadcrumb {margin-left: 45px}
+
+#breadcrumb a
+{
+    /* transition */
+    -webkit-transition: color 0.3s linear;
+       -moz-transition: color 0.3s linear;
+         -o-transition: color 0.3s linear;
+            transition: color 0.3s linear
+}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 8.  Headings
+|-------------------------------------------------------------------------------
+*/
+h2
+{
+    background: url('../img/headings-bg.png') repeat-y left;
+    padding: 2px 0 2px 10px;
+    margin: 10px;
+    text-shadow: 0 0 1px #666;
+
+    /* transition */
+    -webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear
+}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 9.  Footer
+|-------------------------------------------------------------------------------
+*/
+#footer
+{
+    width: 100%;
+    height: 310px;
+    padding-top: 10px;
+
+    /* box-shadow */
+    -webkit-box-shadow: 1px 1px 5px #ABABAB;
+            box-shadow: 1px 1px 5px #ABABAB
+}
+
+#footer #container
+{
+    margin: 0 auto;
+    width: 960px
+}
+
+#footer .column-left
+{
+    background: none;
+    margin: 10px;
+    width: 303px;
+    height: 250px
+}
+
+#footer .column-right
+{
+    background: #F3F3F3;
+    width: 627px;
+    height: 250px;
+
+    /* border-radius */
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+         -o-border-radius: 8px;
+            border-radius: 8px;
+
+    /* box-shadow */
+    -webkit-box-shadow: inset 1px 1px 4px #D0D0D0,
+                        0 0 1px #FFF,
+                        1px 1px 1px #FFF,
+                        inset 1px 1px 4px #D0D0D0;
+            box-shadow: inset 1px 1px 4px #D0D0D0,
+                        0 0 1px #FFF,
+                        1px 1px 1px #FFF,
+                        inset 1px 1px 4px #D0D0D0
+}
+
+#footer h3,
+#footer h4 {padding: 12px}
+
+#footer h4
+{
+    margin-bottom: 6px;
+    padding-top: 6px
+}
+
+#footer .column-left h3 {padding-left: 0}
+#footer .column-right .control-group {margin-top: 28px}
+#footer address {margin-left: 12px}
+
+#footer #sitemap {width: 307px}
+#footer #sitemap li
+{
+    display: block;
+    float: none;
+    width: 307px;
+    height: 30px !important
+}
+
+#footer #sitemap a
+{
+    display: block;
+    height: 30px !important;
+
+    /* transition */
+    -webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear
+}
+
+#footer #sitemap a:hover
+{
+    color: #726484;
+    margin-left: 2px;
+
+    /* text-shadow */
+    text-shadow: 1px 1px 1px #9284A4
+}
+
+#footer input[type="text"],
+#footer input[type="email"],
+#footer label,
+#footer textarea
+{
+    cursor: default;
+    max-width: 203px;
+    max-height: 25px;
+    width: 203px;
+    height: 25px
+}
+
+#footer input[type="text"],
+#footer input[type="email"],
+#footer textarea
+{
+    border: 1px solid #CDCDCD;
+
+    /* border-radius */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+         -o-border-radius: 4px;
+            border-radius: 4px;
+
+    /* box-shadow */
+    -webkit-box-shadow: 1px 1px 4px #DDD;
+            box-shadow: 1px 1px 4px #DDD;
+
+    /* transition */
+    -webkit-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear
+}
+
+#footer textarea {height: 93px; max-height: 93px}
+
+#footer input[type="submit"]
+{
+    cursor: pointer;
+    margin-top: 10px;
+    width: 72px;
+    height: 32px
+}
+
+#footer input[type="submit"]:hover,
+#footer input[type="text"]:focus,
+#footer input[type="email"]:focus,
+#footer textarea:focus
+{
+    -webkit-box-shadow: 1px 1px 2px #CCC;
+            box-shadow: 1px 1px 2px #CCC
+}
+
+#footer label
+{
+    padding: 0 10px 5px 0;
+    width: 80px
+}
+
+#footer span
+{
+    color: #ABABAB;
+    display: block;
+    text-align: center;
+    text-shadow: 1px 1px 1px #FFF
+}
+
+#footer span img {margin-bottom: -6px}
+
+#map_canvas
+{
+    border: 1px solid #CDCDCD;
+    margin: 12px;
+    width: 281px;
+    height: 107px
+}
+
+#map_canvas .gmnoprint {display: none}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 10.  Form
+|-------------------------------------------------------------------------------
+*/
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea
+{
+    border: 1px solid #DFDFDF;
+    display: block;
+    float: left;
+
+    /* gradient */
+    background: #FFFFFF;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFFFFF), color-stop(100%, #F1F1F1));
+    background: -webkit-linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    background:    -moz-linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    background:      -o-linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    background:         linear-gradient(top, #FFFFFF 0%, #F1F1F1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#F1F1F1', GradientType=0);
+
+    /* border-radius */
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+         -o-border-radius: 2px;
+            border-radius: 2px;
+
+    /* box-sizing */
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {outline: none}
+
+input[type="password"] {margin-right: 10px}
+
+input[type="submit"]
+{
+    /* transition */
+    -webkit-transition: all 0.3s linear;
+       -moz-transition: all 0.3s linear;
+         -o-transition: all 0.3s linear;
+            transition: all 0.3s linear
+}
+
+.control-group
+{
+    clear: both;
+    display: block
+}
+
+.control-group input,
+.control-group label,
+.control-group textarea {float: left}
+
+.control-group label
+{
+    text-align: right;
+    width: 100px
+}
+
+.action-group input,
+.action-group img {float: right}
+
+.action-group img {padding: 16px}
+
+
+/*
+|-------------------------------------------------------------------------------
+| 11.  Classes
+|-------------------------------------------------------------------------------
+*/
+.btn
+{
+    border: 1px solid #DFDFDF;
+    cursor: pointer;
+    display: block;
+
+    /* gradient */
+    background: #F4F4F4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F4F4F4), color-stop(100%, #E4E4E4));
+    background: -webkit-linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    background:    -moz-linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    background:      -o-linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    background:         linear-gradient(top, #F4F4F4 0%, #E4E4E4 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F4F4F4', endColorstr='#E4E4E4', GradientType=0);
+
+    /* border-radius */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+         -o-border-radius: 4px;
+            border-radius: 4px
+}
+
+.btn:hover
+{
+    border: 1px solid #CDCDCD;
+    text-shadow: 1px 1px 1px #F0F0F0;
+
+    background: #F0F0F0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F0F0F0), color-stop(100%, #E0E0E0));
+    background: -webkit-linear-gradient(top, #F0F0F0 0%, #E0E0E0 100%);
+    background:    -moz-linear-gradient(top, #F0F0F0 0%, #E0E0E0 100%);
+    background:      -o-linear-gradient(top, #F0F0F0 0%, #E0E0E0 100%);
+    background:         linear-gradient(top, #F0F0F0 0%, #E0E0E0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#E0E0E0', GradientType=0)
+}
+
+.opacity
+{
+    opacity: 0.8;
+    filter: alpha(opacity=80)
+}
+
+.clear  {clear: both}
+.float  {float: left}
+.hide   {display: none !important}
+.hidden {visibility: hidden}
