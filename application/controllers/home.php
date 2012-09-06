@@ -9,7 +9,10 @@ class Home extends CI_Controller
     public function index()
     {
         $data = new stdClass();
+        $data->css = array('mods/home');
+        $data->js = array('mods/home');
         $data->body = 'home/home';
+
         $this->load->view('base', $data);
     }
 }

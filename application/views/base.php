@@ -77,25 +77,25 @@
             <div id='content'>
                 <? if (isset($body)) $this->load->view($body) ?>
             </div>
-
-            <!-- FOOTER -->
-            <footer>
-                <div class='container'>
-                    <!-- COPYRIGHT -->
-                    <div class='copyright'>
-                        &copy; 2012 - TODOS OS DIREITOS RESERVADOS<br />
-                        DESENVOLVIDO POR &nbsp;
-                        <a href='//www.sitesg.com.br' target='_blank'>
-                            <img src='<?= base_url('assets/img/icons/sg.png') ?>'
-                                 alt='SG: Comunicação e Design'
-                                 title='SG: Comunicação e Design<br />sitesg.com.br'
-                                 width='25'
-                                 height='16' />
-                        </a>
-                    </div>
-                </div>
-            </footer>
         </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <!-- COPYRIGHT -->
+            <div class='copyright'>
+                &copy; 2012 - TODOS OS DIREITOS RESERVADOS<br />
+                DESENVOLVIDO POR &nbsp;
+                <a href='//www.sitesg.com.br' target='_blank'>
+                    <img src='<?= base_url('assets/img/icons/sg.png') ?>'
+                         alt='SG: Comunicação e Design'
+                         title='SG: Comunicação e Design<br />sitesg.com.br'
+                         width='25'
+                         height='16' />
+                </a>
+                <br />
+                <a href='<?= base_url() ?>'>sociopata.org</a>
+            </div>
+        </footer>
 
         <!-- SCRIPTS -->
         <script type='text/javascript'>
