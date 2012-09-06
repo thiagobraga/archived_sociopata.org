@@ -50,7 +50,24 @@
     </head>
 
     <body>
-        <div id='container'>
+        <div class='container'>
+            <!-- NAVBAR -->
+            <div class='navbar navbar-inverse navbar-fixed-top'>
+                <div class='navbar-inner'>
+                    <div class='container'>
+                        <ul class='nav'>
+                            <li class='active'><a href='./index.html'>Home</a></li>
+                            <li><a href='./getting-started.html'>Get started</a></li>
+                            <li><a href='./scaffolding.html'>Scaffolding</a></li>
+                            <li><a href='./base-css.html'>Base CSS</a></li>
+                            <li><a href='./components.html'>Components</a></li>
+                            <li><a href='./javascript.html'>Javascript</a></li>
+                            <li><a href='./customize.html'>Customize</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <!-- HEADER -->
             <header>
                 <a href='<?= base_url() ?>' class='brand'></a>
@@ -63,9 +80,9 @@
 
             <!-- FOOTER -->
             <footer>
-                <!-- COPYRIGHT -->
-                <div>
-                    <span>
+                <div class='container'>
+                    <!-- COPYRIGHT -->
+                    <div class='copyright'>
                         &copy; 2012 - TODOS OS DIREITOS RESERVADOS<br />
                         DESENVOLVIDO POR &nbsp;
                         <a href='//www.sitesg.com.br' target='_blank'>
@@ -75,7 +92,7 @@
                                  width='25'
                                  height='16' />
                         </a>
-                    </span>
+                    </div>
                 </div>
             </footer>
         </div>
