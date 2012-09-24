@@ -52,7 +52,7 @@
     <body>
         <div class='container'>
             <!-- NAVBAR -->
-            <div class='navbar navbar-inverse navbar-fixed-top'>
+            <div class='navbar navbar-inverse navbar-fixed-top hide'>
                 <div class='navbar-inner'>
                     <div class='container'>
                         <ul class='nav'>
@@ -70,7 +70,12 @@
 
             <!-- HEADER -->
             <header>
-                <a href='<?= base_url() ?>' class='brand'></a>
+                <div class='brand'>
+                    <a href='<?= base_url() ?>'>
+                        <img src="<?= base_url('assets/img/logo/logo.png') ?>" />
+                        <h3 class="center">www.sociopata.org</h3>
+                    </a>
+                </div>
             </header>
 
             <!-- CONTENT -->
@@ -92,8 +97,6 @@
                          width='25'
                          height='16' />
                 </a>
-                <br />
-                <a href='<?= base_url() ?>'>sociopata.org</a>
             </div>
         </footer>
 
