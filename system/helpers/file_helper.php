@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,6 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/helpers/file_helpers.html
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -36,11 +37,12 @@
  * @param	string	path to file
  * @return	string
  */
-if ( ! function_exists('read_file'))
+if (!function_exists('read_file'))
 {
+
 	function read_file($file)
 	{
-		if ( ! file_exists($file))
+		if (!file_exists($file))
 		{
 			return FALSE;
 		}
@@ -50,7 +52,7 @@ if ( ! function_exists('read_file'))
 			return file_get_contents($file);
 		}
 
-		if ( ! $fp = @fopen($file, FOPEN_READ))
+		if (!$fp = @fopen($file, FOPEN_READ))
 		{
 			return FALSE;
 		}
@@ -60,7 +62,7 @@ if ( ! function_exists('read_file'))
 		$data = '';
 		if (filesize($file) > 0)
 		{
-			$data =& fread($fp, filesize($file));
+			$data = & fread($fp, filesize($file));
 		}
 
 		flock($fp, LOCK_UN);
@@ -68,6 +70,7 @@ if ( ! function_exists('read_file'))
 
 		return $data;
 	}
+
 }
 
 // ------------------------------------------------------------------------
@@ -83,11 +86,12 @@ if ( ! function_exists('read_file'))
  * @param	string	file data
  * @return	bool
  */
-if ( ! function_exists('write_file'))
+if (!function_exists('write_file'))
 {
+
 	function write_file($path, $data, $mode = FOPEN_WRITE_CREATE_DESTRUCTIVE)
 	{
-		if ( ! $fp = @fopen($path, $mode))
+		if (!$fp = @fopen($path, $mode))
 		{
 			return FALSE;
 		}
@@ -99,6 +103,7 @@ if ( ! function_exists('write_file'))
 
 		return TRUE;
 	}
+
 }
 
 // ------------------------------------------------------------------------
@@ -116,14 +121,15 @@ if ( ! function_exists('write_file'))
  * @param	bool	whether to delete any directories found in the path
  * @return	bool
  */
-if ( ! function_exists('delete_files'))
+if (!function_exists('delete_files'))
 {
+
 	function delete_files($path, $del_dir = FALSE, $level = 0)
 	{
 		// Trim the trailing slash
 		$path = rtrim($path, DIRECTORY_SEPARATOR);
 
-		if ( ! $current_dir = @opendir($path))
+		if (!$current_dir = @opendir($path))
 		{
 			return FALSE;
 		}
@@ -132,17 +138,17 @@ if ( ! function_exists('delete_files'))
 		{
 			if ($filename != "." and $filename != "..")
 			{
-				if (is_dir($path.DIRECTORY_SEPARATOR.$filename))
+				if (is_dir($path . DIRECTORY_SEPARATOR . $filename))
 				{
 					// Ignore empty folders
 					if (substr($filename, 0, 1) != '.')
 					{
-						delete_files($path.DIRECTORY_SEPARATOR.$filename, $del_dir, $level + 1);
+						delete_files($path . DIRECTORY_SEPARATOR . $filename, $del_dir, $level + 1);
 					}
 				}
 				else
 				{
-					unlink($path.DIRECTORY_SEPARATOR.$filename);
+					unlink($path . DIRECTORY_SEPARATOR . $filename);
 				}
 			}
 		}
@@ -155,6 +161,7 @@ if ( ! function_exists('delete_files'))
 
 		return TRUE;
 	}
+
 }
 
 // ------------------------------------------------------------------------
@@ -171,8 +178,9 @@ if ( ! function_exists('delete_files'))
  * @param	bool	internal variable to determine recursion status - do not use in calls
  * @return	array
  */
-if ( ! function_exists('get_filenames'))
+if (!function_exists('get_filenames'))
 {
+
 	function get_filenames($source_dir, $include_path = FALSE, $_recursion = FALSE)
 	{
 		static $_filedata = array();
@@ -183,18 +191,18 @@ if ( ! function_exists('get_filenames'))
 			if ($_recursion === FALSE)
 			{
 				$_filedata = array();
-				$source_dir = rtrim(realpath($source_dir), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
+				$source_dir = rtrim(realpath($source_dir), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 			}
 
 			while (FALSE !== ($file = readdir($fp)))
 			{
-				if (@is_dir($source_dir.$file) && strncmp($file, '.', 1) !== 0)
+				if (@is_dir($source_dir . $file) && strncmp($file, '.', 1) !== 0)
 				{
-					get_filenames($source_dir.$file.DIRECTORY_SEPARATOR, $include_path, TRUE);
+					get_filenames($source_dir . $file . DIRECTORY_SEPARATOR, $include_path, TRUE);
 				}
 				elseif (strncmp($file, '.', 1) !== 0)
 				{
-					$_filedata[] = ($include_path == TRUE) ? $source_dir.$file : $file;
+					$_filedata[] = ($include_path == TRUE) ? $source_dir . $file : $file;
 				}
 			}
 			return $_filedata;
@@ -204,6 +212,7 @@ if ( ! function_exists('get_filenames'))
 			return FALSE;
 		}
 	}
+
 }
 
 // --------------------------------------------------------------------
@@ -222,8 +231,9 @@ if ( ! function_exists('get_filenames'))
  * @param	bool	internal variable to determine recursion status - do not use in calls
  * @return	array
  */
-if ( ! function_exists('get_dir_file_info'))
+if (!function_exists('get_dir_file_info'))
 {
+
 	function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FALSE)
 	{
 		static $_filedata = array();
@@ -235,19 +245,19 @@ if ( ! function_exists('get_dir_file_info'))
 			if ($_recursion === FALSE)
 			{
 				$_filedata = array();
-				$source_dir = rtrim(realpath($source_dir), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
+				$source_dir = rtrim(realpath($source_dir), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 			}
 
 			// foreach (scandir($source_dir, 1) as $file) // In addition to being PHP5+, scandir() is simply not as fast
 			while (FALSE !== ($file = readdir($fp)))
 			{
-				if (@is_dir($source_dir.$file) AND strncmp($file, '.', 1) !== 0 AND $top_level_only === FALSE)
+				if (@is_dir($source_dir . $file) AND strncmp($file, '.', 1) !== 0 AND $top_level_only === FALSE)
 				{
-					get_dir_file_info($source_dir.$file.DIRECTORY_SEPARATOR, $top_level_only, TRUE);
+					get_dir_file_info($source_dir . $file . DIRECTORY_SEPARATOR, $top_level_only, TRUE);
 				}
 				elseif (strncmp($file, '.', 1) !== 0)
 				{
-					$_filedata[$file] = get_file_info($source_dir.$file);
+					$_filedata[$file] = get_file_info($source_dir . $file);
 					$_filedata[$file]['relative_path'] = $relative_path;
 				}
 			}
@@ -259,29 +269,31 @@ if ( ! function_exists('get_dir_file_info'))
 			return FALSE;
 		}
 	}
+
 }
 
 // --------------------------------------------------------------------
 
 /**
-* Get File Info
-*
-* Given a file and path, returns the name, path, size, date modified
-* Second parameter allows you to explicitly declare what information you want returned
-* Options are: name, server_path, size, date, readable, writable, executable, fileperms
-* Returns FALSE if the file cannot be found.
-*
-* @access	public
-* @param	string	path to file
-* @param	mixed	array or comma separated string of information returned
-* @return	array
-*/
-if ( ! function_exists('get_file_info'))
+ * Get File Info
+ *
+ * Given a file and path, returns the name, path, size, date modified
+ * Second parameter allows you to explicitly declare what information you want returned
+ * Options are: name, server_path, size, date, readable, writable, executable, fileperms
+ * Returns FALSE if the file cannot be found.
+ *
+ * @access	public
+ * @param	string	path to file
+ * @param	mixed	array or comma separated string of information returned
+ * @return	array
+ */
+if (!function_exists('get_file_info'))
 {
+
 	function get_file_info($file, $returned_values = array('name', 'server_path', 'size', 'date'))
 	{
 
-		if ( ! file_exists($file))
+		if (!file_exists($file))
 		{
 			return FALSE;
 		}
@@ -325,6 +337,7 @@ if ( ! function_exists('get_file_info'))
 
 		return $fileinfo;
 	}
+
 }
 
 // --------------------------------------------------------------------
@@ -342,26 +355,27 @@ if ( ! function_exists('get_file_info'))
  * @param	string	path to file
  * @return	mixed
  */
-if ( ! function_exists('get_mime_by_extension'))
+if (!function_exists('get_mime_by_extension'))
 {
+
 	function get_mime_by_extension($file)
 	{
 		$extension = strtolower(substr(strrchr($file, '.'), 1));
 
 		global $mimes;
 
-		if ( ! is_array($mimes))
+		if (!is_array($mimes))
 		{
-			if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'))
+			if (defined('ENVIRONMENT') AND is_file(APPPATH . 'config/' . ENVIRONMENT . '/mimes.php'))
 			{
-				include(APPPATH.'config/'.ENVIRONMENT.'/mimes.php');
+				include(APPPATH . 'config/' . ENVIRONMENT . '/mimes.php');
 			}
-			elseif (is_file(APPPATH.'config/mimes.php'))
+			elseif (is_file(APPPATH . 'config/mimes.php'))
 			{
-				include(APPPATH.'config/mimes.php');
+				include(APPPATH . 'config/mimes.php');
 			}
 
-			if ( ! is_array($mimes))
+			if (!is_array($mimes))
 			{
 				return FALSE;
 			}
@@ -384,6 +398,7 @@ if ( ! function_exists('get_mime_by_extension'))
 			return FALSE;
 		}
 	}
+
 }
 
 // --------------------------------------------------------------------
@@ -398,8 +413,9 @@ if ( ! function_exists('get_mime_by_extension'))
  * @param	int
  * @return	string
  */
-if ( ! function_exists('symbolic_permissions'))
+if (!function_exists('symbolic_permissions'))
 {
+
 	function symbolic_permissions($perms)
 	{
 		if (($perms & 0xC000) == 0xC000)
@@ -452,6 +468,7 @@ if ( ! function_exists('symbolic_permissions'))
 
 		return $symbolic;
 	}
+
 }
 
 // --------------------------------------------------------------------
@@ -466,12 +483,14 @@ if ( ! function_exists('symbolic_permissions'))
  * @param	int
  * @return	string
  */
-if ( ! function_exists('octal_permissions'))
+if (!function_exists('octal_permissions'))
 {
+
 	function octal_permissions($perms)
 	{
 		return substr(sprintf('%o', $perms), -3);
 	}
+
 }
 
 

@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,13 +26,14 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/helpers/
  */
-class CI_Typography {
+class CI_Typography
+{
 
 	// Block level elements that should not be wrapped inside <p> tags
 	var $block_elements = 'address|blockquote|div|dl|fieldset|form|h\d|hr|noscript|object|ol|p|pre|script|table|ul';
 
 	// Elements that should not have <p> and <br /> tags within them.
-	var $skip_elements	= 'p|pre|ol|ul|dl|object|table|h\d';
+	var $skip_elements = 'p|pre|ol|ul|dl|object|table|h\d';
 
 	// Tags we want the parser to completely ignore when splitting the string.
 	var $inline_elements = 'a|abbr|acronym|b|bdo|big|br|button|cite|code|del|dfn|em|i|img|ins|input|label|map|kbd|q|samp|select|small|span|strong|sub|sup|textarea|tt|var';
@@ -48,11 +51,11 @@ class CI_Typography {
 	 * Auto Typography
 	 *
 	 * This function converts text, making it typographically correct:
-	 *	- Converts double spaces into paragraphs.
-	 *	- Converts single line breaks into <br /> tags
-	 *	- Converts single and double quotes into correctly facing curly quote entities.
-	 *	- Converts three dots into ellipsis.
-	 *	- Converts double dashes into em-dashes.
+	 * 	- Converts double spaces into paragraphs.
+	 * 	- Converts single line breaks into <br /> tags
+	 * 	- Converts single and double quotes into correctly facing curly quote entities.
+	 * 	- Converts three dots into ellipsis.
+	 * 	- Converts double dashes into em-dashes.
 	 *  - Converts two spaces into entities
 	 *
 	 * @access	public
@@ -89,7 +92,7 @@ class CI_Typography {
 				for ($i = 0, $total = count($matches[0]); $i < $total; $i++)
 				{
 					$html_comments[] = $matches[0][$i];
-					$str = str_replace($matches[0][$i], '{@HC'.$i.'}', $str);
+					$str = str_replace($matches[0][$i], '{@HC' . $i . '}', $str);
 				}
 			}
 		}
@@ -113,7 +116,7 @@ class CI_Typography {
 		// Convert "ignore" tags to temporary marker.  The parser splits out the string at every tag
 		// it encounters.  Certain inline tags, like image tags, links, span tags, etc. will be
 		// adversely affected if they are split out so we'll convert the opening bracket < temporarily to: {@TAG}
-		$str = preg_replace("#<(/*)(".$this->inline_elements.")([ >])#i", "{@TAG}\\1\\2\\3", $str);
+		$str = preg_replace("#<(/*)(" . $this->inline_elements . ")([ >])#i", "{@TAG}\\1\\2\\3", $str);
 
 		// Split the string at every tag.  This expression creates an array with this prototype:
 		//
@@ -124,7 +127,7 @@ class CI_Typography {
 		//		[2] = <closing tag>
 		//		Etc...
 		//	}
-		$chunks = preg_split('/(<(?:[^<>]+(?:"[^"]*"|\'[^\']*\')?)+>)/', $str, -1, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY);
+		$chunks = preg_split('/(<(?:[^<>]+(?:"[^"]*"|\'[^\']*\')?)+>)/', $str, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
 		// Build our finalized string.  We cycle through the array, skipping tags, and processing the contained text
 		$str = '';
@@ -139,11 +142,11 @@ class CI_Typography {
 
 			// Are we dealing with a tag? If so, we'll skip the processing for this cycle.
 			// Well also set the "process" flag which allows us to skip <pre> tags and a few other things.
-			if (preg_match("#<(/*)(".$this->block_elements.").*?>#", $chunk, $match))
+			if (preg_match("#<(/*)(" . $this->block_elements . ").*?>#", $chunk, $match))
 			{
-				if (preg_match("#".$this->skip_elements."#", $match[2]))
+				if (preg_match("#" . $this->skip_elements . "#", $match[2]))
 				{
-					$process =  ($match[1] == '/') ? TRUE : FALSE;
+					$process = ($match[1] == '/') ? TRUE : FALSE;
 				}
 
 				if ($match[1] == '')
@@ -172,9 +175,9 @@ class CI_Typography {
 		}
 
 		// No opening block level tag?  Add it if needed.
-		if ( ! preg_match("/^\s*<(?:".$this->block_elements.")/i", $str))
+		if (!preg_match("/^\s*<(?:" . $this->block_elements . ")/i", $str))
 		{
-			$str = preg_replace("/^(.*?)<(".$this->block_elements.")/i", '<p>$1</p><$2', $str);
+			$str = preg_replace("/^(.*?)<(" . $this->block_elements . ")/i", '<p>$1</p><$2', $str);
 		}
 
 		// Convert quotes, elipsis, em-dashes, non-breaking spaces, and ampersands
@@ -186,43 +189,36 @@ class CI_Typography {
 			// remove surrounding paragraph tags, but only if there's an opening paragraph tag
 			// otherwise HTML comments at the ends of paragraphs will have the closing tag removed
 			// if '<p>{@HC1}' then replace <p>{@HC1}</p> with the comment, else replace only {@HC1} with the comment
-			$str = preg_replace('#(?(?=<p>\{@HC'.$i.'\})<p>\{@HC'.$i.'\}(\s*</p>)|\{@HC'.$i.'\})#s', $html_comments[$i], $str);
+			$str = preg_replace('#(?(?=<p>\{@HC' . $i . '\})<p>\{@HC' . $i . '\}(\s*</p>)|\{@HC' . $i . '\})#s', $html_comments[$i], $str);
 		}
 
 		// Final clean up
 		$table = array(
-
-						// If the user submitted their own paragraph tags within the text
-						// we will retain them instead of using our tags.
-						'/(<p[^>*?]>)<p>/'	=> '$1', // <?php BBEdit syntax coloring bug fix
-
-						// Reduce multiple instances of opening/closing paragraph tags to a single one
-						'#(</p>)+#'			=> '</p>',
-						'/(<p>\W*<p>)+/'	=> '<p>',
-
-						// Clean up stray paragraph tags that appear before block level elements
-						'#<p></p><('.$this->block_elements.')#'	=> '<$1',
-
-						// Clean up stray non-breaking spaces preceeding block elements
-						'#(&nbsp;\s*)+<('.$this->block_elements.')#'	=> '  <$2',
-
-						// Replace the temporary markers we added earlier
-						'/\{@TAG\}/'		=> '<',
-						'/\{@DQ\}/'			=> '"',
-						'/\{@SQ\}/'			=> "'",
-						'/\{@DD\}/'			=> '--',
-						'/\{@NBS\}/'		=> '  ',
-
-						// An unintended consequence of the _format_newlines function is that
-						// some of the newlines get truncated, resulting in <p> tags
-						// starting immediately after <block> tags on the same line.
-						// This forces a newline after such occurrences, which looks much nicer.
-						"/><p>\n/"			=> ">\n<p>",
-
-						// Similarly, there might be cases where a closing </block> will follow
-						// a closing </p> tag, so we'll correct it by adding a newline in between
-						"#</p></#"			=> "</p>\n</"
-						);
+			// If the user submitted their own paragraph tags within the text
+			// we will retain them instead of using our tags.
+			'/(<p[^>*?]>)<p>/' => '$1', // <?php BBEdit syntax coloring bug fix
+			// Reduce multiple instances of opening/closing paragraph tags to a single one
+			'#(</p>)+#' => '</p>',
+			'/(<p>\W*<p>)+/' => '<p>',
+			// Clean up stray paragraph tags that appear before block level elements
+			'#<p></p><(' . $this->block_elements . ')#' => '<$1',
+			// Clean up stray non-breaking spaces preceeding block elements
+			'#(&nbsp;\s*)+<(' . $this->block_elements . ')#' => '  <$2',
+			// Replace the temporary markers we added earlier
+			'/\{@TAG\}/' => '<',
+			'/\{@DQ\}/' => '"',
+			'/\{@SQ\}/' => "'",
+			'/\{@DD\}/' => '--',
+			'/\{@NBS\}/' => '  ',
+			// An unintended consequence of the _format_newlines function is that
+			// some of the newlines get truncated, resulting in <p> tags
+			// starting immediately after <block> tags on the same line.
+			// This forces a newline after such occurrences, which looks much nicer.
+			"/><p>\n/" => ">\n<p>",
+			// Similarly, there might be cases where a closing </block> will follow
+			// a closing </p> tag, so we'll correct it by adding a newline in between
+			"#</p></#" => "</p>\n</"
+		);
 
 		// Do we need to reduce empty lines?
 		if ($reduce_linebreaks === TRUE)
@@ -237,11 +233,9 @@ class CI_Typography {
 		}
 
 		return preg_replace(array_keys($table), $table, $str);
-
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Format Characters
 	 *
@@ -257,57 +251,50 @@ class CI_Typography {
 	{
 		static $table;
 
-		if ( ! isset($table))
+		if (!isset($table))
 		{
 			$table = array(
-							// nested smart quotes, opening and closing
-							// note that rules for grammar (English) allow only for two levels deep
-							// and that single quotes are _supposed_ to always be on the outside
-							// but we'll accommodate both
-							// Note that in all cases, whitespace is the primary determining factor
-							// on which direction to curl, with non-word characters like punctuation
-							// being a secondary factor only after whitespace is addressed.
-							'/\'"(\s|$)/'					=> '&#8217;&#8221;$1',
-							'/(^|\s|<p>)\'"/'				=> '$1&#8216;&#8220;',
-							'/\'"(\W)/'						=> '&#8217;&#8221;$1',
-							'/(\W)\'"/'						=> '$1&#8216;&#8220;',
-							'/"\'(\s|$)/'					=> '&#8221;&#8217;$1',
-							'/(^|\s|<p>)"\'/'				=> '$1&#8220;&#8216;',
-							'/"\'(\W)/'						=> '&#8221;&#8217;$1',
-							'/(\W)"\'/'						=> '$1&#8220;&#8216;',
-
-							// single quote smart quotes
-							'/\'(\s|$)/'					=> '&#8217;$1',
-							'/(^|\s|<p>)\'/'				=> '$1&#8216;',
-							'/\'(\W)/'						=> '&#8217;$1',
-							'/(\W)\'/'						=> '$1&#8216;',
-
-							// double quote smart quotes
-							'/"(\s|$)/'						=> '&#8221;$1',
-							'/(^|\s|<p>)"/'					=> '$1&#8220;',
-							'/"(\W)/'						=> '&#8221;$1',
-							'/(\W)"/'						=> '$1&#8220;',
-
-							// apostrophes
-							"/(\w)'(\w)/"					=> '$1&#8217;$2',
-
-							// Em dash and ellipses dots
-							'/\s?\-\-\s?/'					=> '&#8212;',
-							'/(\w)\.{3}/'					=> '$1&#8230;',
-
-							// double space after sentences
-							'/(\W)  /'						=> '$1&nbsp; ',
-
-							// ampersands, if not a character entity
-							'/&(?!#?[a-zA-Z0-9]{2,};)/'		=> '&amp;'
-						);
+				// nested smart quotes, opening and closing
+				// note that rules for grammar (English) allow only for two levels deep
+				// and that single quotes are _supposed_ to always be on the outside
+				// but we'll accommodate both
+				// Note that in all cases, whitespace is the primary determining factor
+				// on which direction to curl, with non-word characters like punctuation
+				// being a secondary factor only after whitespace is addressed.
+				'/\'"(\s|$)/' => '&#8217;&#8221;$1',
+				'/(^|\s|<p>)\'"/' => '$1&#8216;&#8220;',
+				'/\'"(\W)/' => '&#8217;&#8221;$1',
+				'/(\W)\'"/' => '$1&#8216;&#8220;',
+				'/"\'(\s|$)/' => '&#8221;&#8217;$1',
+				'/(^|\s|<p>)"\'/' => '$1&#8220;&#8216;',
+				'/"\'(\W)/' => '&#8221;&#8217;$1',
+				'/(\W)"\'/' => '$1&#8220;&#8216;',
+				// single quote smart quotes
+				'/\'(\s|$)/' => '&#8217;$1',
+				'/(^|\s|<p>)\'/' => '$1&#8216;',
+				'/\'(\W)/' => '&#8217;$1',
+				'/(\W)\'/' => '$1&#8216;',
+				// double quote smart quotes
+				'/"(\s|$)/' => '&#8221;$1',
+				'/(^|\s|<p>)"/' => '$1&#8220;',
+				'/"(\W)/' => '&#8221;$1',
+				'/(\W)"/' => '$1&#8220;',
+				// apostrophes
+				"/(\w)'(\w)/" => '$1&#8217;$2',
+				// Em dash and ellipses dots
+				'/\s?\-\-\s?/' => '&#8212;',
+				'/(\w)\.{3}/' => '$1&#8230;',
+				// double space after sentences
+				'/(\W)  /' => '$1&nbsp; ',
+				// ampersands, if not a character entity
+				'/&(?!#?[a-zA-Z0-9]{2,};)/' => '&amp;'
+			);
 		}
 
 		return preg_replace(array_keys($table), $table, $str);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Format Newlines
 	 *
@@ -324,7 +311,7 @@ class CI_Typography {
 			return $str;
 		}
 
-		if (strpos($str, "\n") === FALSE  && ! in_array($this->last_block_element, $this->inner_block_required))
+		if (strpos($str, "\n") === FALSE && !in_array($this->last_block_element, $this->inner_block_required))
 		{
 			return $str;
 		}
@@ -341,7 +328,7 @@ class CI_Typography {
 			// We trim off the right-side new line so that the closing </p> tag
 			// will be positioned immediately following the string, matching
 			// the behavior of the opening <p> tag
-			$str =  '<p>'.rtrim($str).'</p>';
+			$str = '<p>' . rtrim($str) . '</p>';
 		}
 
 		// Remove empty paragraphs if they are on the first line, as this
@@ -352,7 +339,6 @@ class CI_Typography {
 	}
 
 	// ------------------------------------------------------------------------
-
 	/**
 	 * Protect Characters
 	 *
@@ -367,11 +353,10 @@ class CI_Typography {
 	 */
 	function _protect_characters($match)
 	{
-		return str_replace(array("'",'"','--','  '), array('{@SQ}', '{@DQ}', '{@DD}', '{@NBS}'), $match[0]);
+		return str_replace(array("'", '"', '--', '  '), array('{@SQ}', '{@DQ}', '{@DD}', '{@NBS}'), $match[0]);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Convert newlines to HTML line breaks except within PRE tags
 	 *
@@ -381,7 +366,7 @@ class CI_Typography {
 	 */
 	function nl2br_except_pre($str)
 	{
-		$ex = explode("pre>",$str);
+		$ex = explode("pre>", $str);
 		$ct = count($ex);
 
 		$newstr = "";
@@ -404,6 +389,7 @@ class CI_Typography {
 	}
 
 }
+
 // END Typography Class
 
 /* End of file Typography.php */

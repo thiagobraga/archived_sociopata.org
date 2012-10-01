@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_postgre_result extends CI_DB_result {
+class CI_DB_postgre_result extends CI_DB_result
+{
 
 	/**
 	 * Number of rows in the result set
@@ -38,7 +41,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Number of fields in the result set
 	 *
@@ -51,7 +53,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Field Names
 	 *
@@ -72,7 +73,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data
 	 *
@@ -86,12 +86,12 @@ class CI_DB_postgre_result extends CI_DB_result {
 		$retval = array();
 		for ($i = 0; $i < $this->num_fields(); $i++)
 		{
-			$F				= new stdClass();
-			$F->name		= pg_field_name($this->result_id, $i);
-			$F->type		= pg_field_type($this->result_id, $i);
-			$F->max_length	= pg_field_size($this->result_id, $i);
+			$F = new stdClass();
+			$F->name = pg_field_name($this->result_id, $i);
+			$F->type = pg_field_type($this->result_id, $i);
+			$F->max_length = pg_field_size($this->result_id, $i);
 			$F->primary_key = 0;
-			$F->default		= '';
+			$F->default = '';
 
 			$retval[] = $F;
 		}
@@ -100,7 +100,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Free the result
 	 *
@@ -116,7 +115,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Data Seek
 	 *
@@ -133,7 +131,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - associative array
 	 *
@@ -148,7 +145,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - object
 	 *
@@ -163,7 +159,6 @@ class CI_DB_postgre_result extends CI_DB_result {
 	}
 
 }
-
 
 /* End of file postgre_result.php */
 /* Location: ./system/database/drivers/postgre/postgre_result.php */

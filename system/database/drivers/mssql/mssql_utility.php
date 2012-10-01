@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -22,7 +24,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mssql_utility extends CI_DB_utility {
+class CI_DB_mssql_utility extends CI_DB_utility
+{
 
 	/**
 	 * List databases
@@ -36,7 +39,6 @@ class CI_DB_mssql_utility extends CI_DB_utility {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Optimize table query
 	 *
@@ -52,7 +54,6 @@ class CI_DB_mssql_utility extends CI_DB_utility {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Repair table query
 	 *
@@ -68,7 +69,6 @@ class CI_DB_mssql_utility extends CI_DB_utility {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * MSSQL Export
 	 *

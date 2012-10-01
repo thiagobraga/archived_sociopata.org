@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,6 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/helpers/security_helper.html
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -35,13 +36,15 @@
  * @param	bool	whether or not the content is an image file
  * @return	string
  */
-if ( ! function_exists('xss_clean'))
+if (!function_exists('xss_clean'))
 {
+
 	function xss_clean($str, $is_image = FALSE)
 	{
-		$CI =& get_instance();
+		$CI = & get_instance();
 		return $CI->security->xss_clean($str, $is_image);
 	}
+
 }
 
 // ------------------------------------------------------------------------
@@ -53,13 +56,15 @@ if ( ! function_exists('xss_clean'))
  * @param	string
  * @return	string
  */
-if ( ! function_exists('sanitize_filename'))
+if (!function_exists('sanitize_filename'))
 {
+
 	function sanitize_filename($filename)
 	{
-		$CI =& get_instance();
+		$CI = & get_instance();
 		return $CI->security->sanitize_filename($filename);
 	}
+
 }
 
 // --------------------------------------------------------------------
@@ -71,8 +76,9 @@ if ( ! function_exists('sanitize_filename'))
  * @param	string
  * @return	string
  */
-if ( ! function_exists('do_hash'))
+if (!function_exists('do_hash'))
 {
+
 	function do_hash($str, $type = 'sha1')
 	{
 		if ($type == 'sha1')
@@ -84,6 +90,7 @@ if ( ! function_exists('do_hash'))
 			return md5($str);
 		}
 	}
+
 }
 
 // ------------------------------------------------------------------------
@@ -95,8 +102,9 @@ if ( ! function_exists('do_hash'))
  * @param	string
  * @return	string
  */
-if ( ! function_exists('strip_image_tags'))
+if (!function_exists('strip_image_tags'))
 {
+
 	function strip_image_tags($str)
 	{
 		$str = preg_replace("#<img\s+.*?src\s*=\s*[\"'](.+?)[\"'].*?\>#", "\\1", $str);
@@ -104,6 +112,7 @@ if ( ! function_exists('strip_image_tags'))
 
 		return $str;
 	}
+
 }
 
 // ------------------------------------------------------------------------
@@ -115,12 +124,14 @@ if ( ! function_exists('strip_image_tags'))
  * @param	string
  * @return	string
  */
-if ( ! function_exists('encode_php_tags'))
+if (!function_exists('encode_php_tags'))
 {
+
 	function encode_php_tags($str)
 	{
-		return str_replace(array('<?php ', '<?PHP', '<?', '?>'),  array('&lt;?php', '&lt;?PHP', '&lt;?', '?&gt;'), $str);
+		return str_replace(array('<?php', '<?PHP', '<?', '?>'), array('&lt;?php', '&lt;?PHP', '&lt;?', '?&gt;'), $str);
 	}
+
 }
 
 

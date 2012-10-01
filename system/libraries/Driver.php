@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -6,13 +9,12 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2006 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2006 - 2012, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -27,31 +29,33 @@
  * @author		EllisLab Dev Team
  * @link
  */
-class CI_Driver_Library {
+class CI_Driver_Library
+{
 
-	protected $valid_drivers	= array();
-	protected static $lib_name;
+	protected $valid_drivers = array();
+
+	protected $lib_name;
 
 	// The first time a child is used it won't exist, so we instantiate it
 	// subsequents calls will go straight to the proper child.
 	function __get($child)
 	{
-		if ( ! isset($this->lib_name))
+		if (!isset($this->lib_name))
 		{
 			$this->lib_name = get_class($this);
 		}
 
 		// The class will be prefixed with the parent lib
-		$child_class = $this->lib_name.'_'.$child;
-	
+		$child_class = $this->lib_name . '_' . $child;
+
 		// Remove the CI_ prefix and lowercase
 		$lib_name = ucfirst(strtolower(str_replace('CI_', '', $this->lib_name)));
 		$driver_name = strtolower(str_replace('CI_', '', $child_class));
-		
+
 		if (in_array($driver_name, array_map('strtolower', $this->valid_drivers)))
 		{
 			// check and see if the driver is in a separate file
-			if ( ! class_exists($child_class))
+			if (!class_exists($child_class))
 			{
 				// check application path first
 				foreach (get_instance()->load->get_package_paths(TRUE) as $path)
@@ -59,7 +63,7 @@ class CI_Driver_Library {
 					// loves me some nesting!
 					foreach (array(ucfirst($driver_name), $driver_name) as $class)
 					{
-						$filepath = $path.'libraries/'.$lib_name.'/drivers/'.$class.'.php';
+						$filepath = $path . 'libraries/' . $lib_name . '/drivers/' . $class . '.php';
 
 						if (file_exists($filepath))
 						{
@@ -70,10 +74,10 @@ class CI_Driver_Library {
 				}
 
 				// it's a valid driver, but the file simply can't be found
-				if ( ! class_exists($child_class))
+				if (!class_exists($child_class))
 				{
-					log_message('error', "Unable to load the requested driver: ".$child_class);
-					show_error("Unable to load the requested driver: ".$child_class);
+					log_message('error', "Unable to load the requested driver: " . $child_class);
+					show_error("Unable to load the requested driver: " . $child_class);
 				}
 			}
 
@@ -84,15 +88,15 @@ class CI_Driver_Library {
 		}
 
 		// The requested driver isn't valid!
-		log_message('error', "Invalid driver requested: ".$child_class);
-		show_error("Invalid driver requested: ".$child_class);
+		log_message('error', "Invalid driver requested: " . $child_class);
+		show_error("Invalid driver requested: " . $child_class);
 	}
 
 	// --------------------------------------------------------------------
 
 }
-// END CI_Driver_Library CLASS
 
+// END CI_Driver_Library CLASS
 
 /**
  * CodeIgniter Driver Class
@@ -106,10 +110,13 @@ class CI_Driver_Library {
  * @author		EllisLab Dev Team
  * @link
  */
-class CI_Driver {
+class CI_Driver
+{
+
 	protected $parent;
 
 	private $methods = array();
+
 	private $properties = array();
 
 	private static $reflections = array();
@@ -131,7 +138,7 @@ class CI_Driver {
 
 		$class_name = get_class($parent);
 
-		if ( ! isset(self::$reflections[$class_name]))
+		if (!isset(self::$reflections[$class_name]))
 		{
 			$r = new ReflectionObject($parent);
 
@@ -160,7 +167,6 @@ class CI_Driver {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * __call magic method
 	 *
@@ -184,7 +190,6 @@ class CI_Driver {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * __get magic method
 	 *
@@ -202,7 +207,6 @@ class CI_Driver {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * __set magic method
 	 *
@@ -223,6 +227,7 @@ class CI_Driver {
 	// --------------------------------------------------------------------
 
 }
+
 // END CI_Driver CLASS
 
 /* End of file Driver.php */

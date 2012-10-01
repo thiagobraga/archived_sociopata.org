@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -28,7 +30,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mssql_driver extends CI_DB {
+class CI_DB_mssql_driver extends CI_DB
+{
 
 	var $dbdriver = 'mssql';
 
@@ -37,6 +40,7 @@ class CI_DB_mssql_driver extends CI_DB {
 
 	// clause and character used for LIKE escape sequences
 	var $_like_escape_str = " ESCAPE '%s' ";
+
 	var $_like_escape_chr = '!';
 
 	/**
@@ -45,6 +49,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 * used for the count_all() and count_all_results() functions.
 	 */
 	var $_count_string = "SELECT COUNT(*) AS ";
+
 	var $_random_keyword = ' ASC'; // not currently supported
 
 	/**
@@ -53,18 +58,18 @@ class CI_DB_mssql_driver extends CI_DB {
 	 * @access	private called by the base class
 	 * @return	resource
 	 */
+
 	function db_connect()
 	{
 		if ($this->port != '')
 		{
-			$this->hostname .= ','.$this->port;
+			$this->hostname .= ',' . $this->port;
 		}
 
 		return @mssql_connect($this->hostname, $this->username, $this->password);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Persistent database connection
 	 *
@@ -75,14 +80,13 @@ class CI_DB_mssql_driver extends CI_DB {
 	{
 		if ($this->port != '')
 		{
-			$this->hostname .= ','.$this->port;
+			$this->hostname .= ',' . $this->port;
 		}
 
 		return @mssql_pconnect($this->hostname, $this->username, $this->password);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Reconnect
 	 *
@@ -98,7 +102,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Select the database
 	 *
@@ -109,11 +112,10 @@ class CI_DB_mssql_driver extends CI_DB {
 	{
 		// Note: The brackets are required in the event that the DB name
 		// contains reserved characters
-		return @mssql_select_db('['.$this->database.']', $this->conn_id);
+		return @mssql_select_db('[' . $this->database . ']', $this->conn_id);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set client character set
 	 *
@@ -129,7 +131,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Execute the query
 	 *
@@ -144,7 +145,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Prep the query
 	 *
@@ -160,7 +160,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Begin Transaction
 	 *
@@ -169,7 +168,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function trans_begin($test_mode = FALSE)
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -190,7 +189,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Commit Transaction
 	 *
@@ -199,7 +197,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function trans_commit()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -215,7 +213,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Rollback Transaction
 	 *
@@ -224,7 +221,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function trans_rollback()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -240,7 +237,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape String
 	 *
@@ -268,9 +264,7 @@ class CI_DB_mssql_driver extends CI_DB {
 		if ($like === TRUE)
 		{
 			$str = str_replace(
-				array($this->_like_escape_chr, '%', '_'),
-				array($this->_like_escape_chr.$this->_like_escape_chr, $this->_like_escape_chr.'%', $this->_like_escape_chr.'_'),
-				$str
+				array($this->_like_escape_chr, '%', '_'), array($this->_like_escape_chr . $this->_like_escape_chr, $this->_like_escape_chr . '%', $this->_like_escape_chr . '_'), $str
 			);
 		}
 
@@ -278,7 +272,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Affected Rows
 	 *
@@ -291,15 +284,14 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
-	* Insert ID
-	*
-	* Returns the last id created in the Identity column.
-	*
-	* @access public
-	* @return integer
-	*/
+	 * Insert ID
+	 *
+	 * Returns the last id created in the Identity column.
+	 *
+	 * @access public
+	 * @return integer
+	 */
 	function insert_id()
 	{
 		$ver = self::_parse_major_version($this->version());
@@ -310,17 +302,16 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
-	* Parse major version
-	*
-	* Grabs the major version number from the
-	* database server version string passed in.
-	*
-	* @access private
-	* @param string $version
-	* @return int16 major version number
-	*/
+	 * Parse major version
+	 *
+	 * Grabs the major version number from the
+	 * database server version string passed in.
+	 *
+	 * @access private
+	 * @param string $version
+	 * @return int16 major version number
+	 */
 	function _parse_major_version($version)
 	{
 		preg_match('/([0-9]+)\.([0-9]+)\.([0-9]+)/', $version, $ver_info);
@@ -328,20 +319,18 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
-	* Version number query string
-	*
-	* @access public
-	* @return string
-	*/
+	 * Version number query string
+	 *
+	 * @access public
+	 * @return string
+	 */
 	function _version()
 	{
 		return "SELECT @@VERSION AS ver";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * "Count All" query
 	 *
@@ -372,7 +361,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * List table query
 	 *
@@ -397,7 +385,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * List column query
 	 *
@@ -409,11 +396,10 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function _list_columns($table = '')
 	{
-		return "SELECT * FROM INFORMATION_SCHEMA.Columns WHERE TABLE_NAME = '".$table."'";
+		return "SELECT * FROM INFORMATION_SCHEMA.Columns WHERE TABLE_NAME = '" . $table . "'";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data query
 	 *
@@ -425,11 +411,10 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function _field_data($table)
 	{
-		return "SELECT TOP 1 * FROM ".$table;
+		return "SELECT TOP 1 * FROM " . $table;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message string
 	 *
@@ -442,7 +427,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message number
 	 *
@@ -456,7 +440,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape the SQL Identifiers
 	 *
@@ -475,30 +458,29 @@ class CI_DB_mssql_driver extends CI_DB {
 
 		foreach ($this->_reserved_identifiers as $id)
 		{
-			if (strpos($item, '.'.$id) !== FALSE)
+			if (strpos($item, '.' . $id) !== FALSE)
 			{
-				$str = $this->_escape_char. str_replace('.', $this->_escape_char.'.', $item);
+				$str = $this->_escape_char . str_replace('.', $this->_escape_char . '.', $item);
 
 				// remove duplicates if the user already included the escape
-				return preg_replace('/['.$this->_escape_char.']+/', $this->_escape_char, $str);
+				return preg_replace('/[' . $this->_escape_char . ']+/', $this->_escape_char, $str);
 			}
 		}
 
 		if (strpos($item, '.') !== FALSE)
 		{
-			$str = $this->_escape_char.str_replace('.', $this->_escape_char.'.'.$this->_escape_char, $item).$this->_escape_char;
+			$str = $this->_escape_char . str_replace('.', $this->_escape_char . '.' . $this->_escape_char, $item) . $this->_escape_char;
 		}
 		else
 		{
-			$str = $this->_escape_char.$item.$this->_escape_char;
+			$str = $this->_escape_char . $item . $this->_escape_char;
 		}
 
 		// remove duplicates if the user already included the escape
-		return preg_replace('/['.$this->_escape_char.']+/', $this->_escape_char, $str);
+		return preg_replace('/[' . $this->_escape_char . ']+/', $this->_escape_char, $str);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * From Tables
 	 *
@@ -511,7 +493,7 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function _from_tables($tables)
 	{
-		if ( ! is_array($tables))
+		if (!is_array($tables))
 		{
 			$tables = array($tables);
 		}
@@ -520,7 +502,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Insert statement
 	 *
@@ -534,11 +515,10 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function _insert($table, $keys, $values)
 	{
-		return "INSERT INTO ".$table." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
+		return "INSERT INTO " . $table . " (" . implode(', ', $keys) . ") VALUES (" . implode(', ', $values) . ")";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Update statement
 	 *
@@ -556,25 +536,23 @@ class CI_DB_mssql_driver extends CI_DB {
 	{
 		foreach ($values as $key => $val)
 		{
-			$valstr[] = $key." = ".$val;
+			$valstr[] = $key . " = " . $val;
 		}
 
-		$limit = ( ! $limit) ? '' : ' LIMIT '.$limit;
+		$limit = (!$limit) ? '' : ' LIMIT ' . $limit;
 
-		$orderby = (count($orderby) >= 1)?' ORDER BY '.implode(", ", $orderby):'';
+		$orderby = (count($orderby) >= 1) ? ' ORDER BY ' . implode(", ", $orderby) : '';
 
-		$sql = "UPDATE ".$table." SET ".implode(', ', $valstr);
+		$sql = "UPDATE " . $table . " SET " . implode(', ', $valstr);
 
-		$sql .= ($where != '' AND count($where) >=1) ? " WHERE ".implode(" ", $where) : '';
+		$sql .= ($where != '' AND count($where) >= 1) ? " WHERE " . implode(" ", $where) : '';
 
-		$sql .= $orderby.$limit;
+		$sql .= $orderby . $limit;
 
 		return $sql;
 	}
 
-
 	// --------------------------------------------------------------------
-
 	/**
 	 * Truncate statement
 	 *
@@ -588,11 +566,10 @@ class CI_DB_mssql_driver extends CI_DB {
 	 */
 	function _truncate($table)
 	{
-		return "TRUNCATE ".$table;
+		return "TRUNCATE " . $table;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Delete statement
 	 *
@@ -620,13 +597,12 @@ class CI_DB_mssql_driver extends CI_DB {
 			$conditions .= implode("\n", $like);
 		}
 
-		$limit = ( ! $limit) ? '' : ' LIMIT '.$limit;
+		$limit = (!$limit) ? '' : ' LIMIT ' . $limit;
 
-		return "DELETE FROM ".$table.$conditions.$limit;
+		return "DELETE FROM " . $table . $conditions . $limit;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Limit string
 	 *
@@ -642,11 +618,10 @@ class CI_DB_mssql_driver extends CI_DB {
 	{
 		$i = $limit + $offset;
 
-		return preg_replace('/(^\SELECT (DISTINCT)?)/i','\\1 TOP '.$i.' ', $sql);
+		return preg_replace('/(^\SELECT (DISTINCT)?)/i', '\\1 TOP ' . $i . ' ', $sql);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Close DB Connection
 	 *
@@ -660,8 +635,6 @@ class CI_DB_mssql_driver extends CI_DB {
 	}
 
 }
-
-
 
 /* End of file mssql_driver.php */
 /* Location: ./system/database/drivers/mssql/mssql_driver.php */

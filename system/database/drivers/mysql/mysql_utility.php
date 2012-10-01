@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -22,7 +24,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mysql_utility extends CI_DB_utility {
+class CI_DB_mysql_utility extends CI_DB_utility
+{
 
 	/**
 	 * List databases
@@ -36,7 +39,6 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Optimize table query
 	 *
@@ -48,11 +50,10 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 	 */
 	function _optimize_table($table)
 	{
-		return "OPTIMIZE TABLE ".$this->db->_escape_identifiers($table);
+		return "OPTIMIZE TABLE " . $this->db->_escape_identifiers($table);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Repair table query
 	 *
@@ -64,7 +65,7 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 	 */
 	function _repair_table($table)
 	{
-		return "REPAIR TABLE ".$this->db->_escape_identifiers($table);
+		return "REPAIR TABLE " . $this->db->_escape_identifiers($table);
 	}
 
 	// --------------------------------------------------------------------
@@ -87,16 +88,16 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 
 		// Build the output
 		$output = '';
-		foreach ((array)$tables as $table)
+		foreach ((array) $tables as $table)
 		{
 			// Is the table in the "ignore" list?
-			if (in_array($table, (array)$ignore, TRUE))
+			if (in_array($table, (array) $ignore, TRUE))
 			{
 				continue;
 			}
 
 			// Get the table schema
-			$query = $this->db->query("SHOW CREATE TABLE `".$this->db->database.'`.`'.$table.'`');
+			$query = $this->db->query("SHOW CREATE TABLE `" . $this->db->database . '`.`' . $table . '`');
 
 			// No result means the table name was invalid
 			if ($query === FALSE)
@@ -105,11 +106,11 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 			}
 
 			// Write out the table schema
-			$output .= '#'.$newline.'# TABLE STRUCTURE FOR: '.$table.$newline.'#'.$newline.$newline;
+			$output .= '#' . $newline . '# TABLE STRUCTURE FOR: ' . $table . $newline . '#' . $newline . $newline;
 
 			if ($add_drop == TRUE)
 			{
-				$output .= 'DROP TABLE IF EXISTS '.$table.';'.$newline.$newline;
+				$output .= 'DROP TABLE IF EXISTS ' . $table . ';' . $newline . $newline;
 			}
 
 			$i = 0;
@@ -118,7 +119,7 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 			{
 				if ($i++ % 2)
 				{
-					$output .= $val.';'.$newline.$newline;
+					$output .= $val . ';' . $newline . $newline;
 				}
 			}
 
@@ -147,18 +148,17 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 			{
 				// Most versions of MySQL store timestamp as a string
 				$is_int[$i] = (in_array(
-										strtolower(mysql_field_type($query->result_id, $i)),
-										array('tinyint', 'smallint', 'mediumint', 'int', 'bigint'), //, 'timestamp'),
-										TRUE)
-										) ? TRUE : FALSE;
+						strtolower(mysql_field_type($query->result_id, $i)), array('tinyint', 'smallint', 'mediumint', 'int', 'bigint'), //, 'timestamp'),
+																	TRUE)
+					) ? TRUE : FALSE;
 
 				// Create a string of field names
-				$field_str .= '`'.$field->name.'`, ';
+				$field_str .= '`' . $field->name . '`, ';
 				$i++;
 			}
 
 			// Trim off the end comma
-			$field_str = preg_replace( "/, $/" , "" , $field_str);
+			$field_str = preg_replace("/, $/", "", $field_str);
 
 
 			// Build the insert string
@@ -193,17 +193,18 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 				}
 
 				// Remove the comma at the end of the string
-				$val_str = preg_replace( "/, $/" , "" , $val_str);
+				$val_str = preg_replace("/, $/", "", $val_str);
 
 				// Build the INSERT string
-				$output .= 'INSERT INTO '.$table.' ('.$field_str.') VALUES ('.$val_str.');'.$newline;
+				$output .= 'INSERT INTO ' . $table . ' (' . $field_str . ') VALUES (' . $val_str . ');' . $newline;
 			}
 
-			$output .= $newline.$newline;
+			$output .= $newline . $newline;
 		}
 
 		return $output;
 	}
+
 }
 
 /* End of file mysql_utility.php */

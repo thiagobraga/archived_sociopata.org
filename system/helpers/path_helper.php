@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,6 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/helpers/xml_helper.html
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -35,8 +36,9 @@
  * @param	bool	checks to see if the path exists
  * @return	string
  */
-if ( ! function_exists('set_realpath'))
+if (!function_exists('set_realpath'))
 {
+
 	function set_realpath($path, $check_existance = FALSE)
 	{
 		// Security check to make sure the path is NOT a URL.  No remote file inclusion!
@@ -48,7 +50,7 @@ if ( ! function_exists('set_realpath'))
 		// Resolve the path
 		if (function_exists('realpath') AND @realpath($path) !== FALSE)
 		{
-			$path = realpath($path).'/';
+			$path = realpath($path) . '/';
 		}
 
 		// Add a trailing slash
@@ -57,14 +59,15 @@ if ( ! function_exists('set_realpath'))
 		// Make sure the path exists
 		if ($check_existance == TRUE)
 		{
-			if ( ! is_dir($path))
+			if (!is_dir($path))
 			{
-				show_error('Not a valid path: '.$path);
+				show_error('Not a valid path: ' . $path);
 			}
 		}
 
 		return $path;
 	}
+
 }
 
 

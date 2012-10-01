@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_sqlsrv_result extends CI_DB_result {
+class CI_DB_sqlsrv_result extends CI_DB_result
+{
 
 	/**
 	 * Number of rows in the result set
@@ -38,7 +41,6 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Number of fields in the result set
 	 *
@@ -51,7 +53,6 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Field Names
 	 *
@@ -63,16 +64,15 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	function list_fields()
 	{
 		$field_names = array();
-		foreach(sqlsrv_field_metadata($this->result_id) as $offset => $field)
+		foreach (sqlsrv_field_metadata($this->result_id) as $offset => $field)
 		{
 			$field_names[] = $field['Name'];
 		}
-		
+
 		return $field_names;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data
 	 *
@@ -84,23 +84,22 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	function field_data()
 	{
 		$retval = array();
-		foreach(sqlsrv_field_metadata($this->result_id) as $offset => $field)
+		foreach (sqlsrv_field_metadata($this->result_id) as $offset => $field)
 		{
-			$F 				= new stdClass();
-			$F->name 		= $field['Name'];
-			$F->type 		= $field['Type'];
-			$F->max_length	= $field['Size'];
+			$F = new stdClass();
+			$F->name = $field['Name'];
+			$F->type = $field['Type'];
+			$F->max_length = $field['Size'];
 			$F->primary_key = 0;
-			$F->default		= '';
-			
+			$F->default = '';
+
 			$retval[] = $F;
 		}
-		
+
 		return $retval;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Free the result
 	 *
@@ -116,7 +115,6 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Data Seek
 	 *
@@ -133,7 +131,6 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - associative array
 	 *
@@ -148,7 +145,6 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - object
 	 *
@@ -163,7 +159,6 @@ class CI_DB_sqlsrv_result extends CI_DB_result {
 	}
 
 }
-
 
 /* End of file mssql_result.php */
 /* Location: ./system/database/drivers/mssql/mssql_result.php */

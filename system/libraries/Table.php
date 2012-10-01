@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.3.1
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -26,16 +28,24 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/uri.html
  */
-class CI_Table {
+class CI_Table
+{
 
-	var $rows				= array();
-	var $heading			= array();
-	var $auto_heading		= TRUE;
-	var $caption			= NULL;
-	var $template			= NULL;
-	var $newline			= "\n";
-	var $empty_cells		= "";
-	var	$function			= FALSE;
+	var $rows = array();
+
+	var $heading = array();
+
+	var $auto_heading = TRUE;
+
+	var $caption = NULL;
+
+	var $template = NULL;
+
+	var $newline = "\n";
+
+	var $empty_cells = "";
+
+	var $function = FALSE;
 
 	public function __construct()
 	{
@@ -43,7 +53,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the template
 	 *
@@ -53,7 +62,7 @@ class CI_Table {
 	 */
 	function set_template($template)
 	{
-		if ( ! is_array($template))
+		if (!is_array($template))
 		{
 			return FALSE;
 		}
@@ -62,7 +71,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the table heading
 	 *
@@ -79,7 +87,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set columns.  Takes a one-dimensional array as input and creates
 	 * a multi-dimensional array with a depth equal to the number of
@@ -93,7 +100,7 @@ class CI_Table {
 	 */
 	function make_columns($array = array(), $col_limit = 0)
 	{
-		if ( ! is_array($array) OR count($array) == 0)
+		if (!is_array($array) OR count($array) == 0)
 		{
 			return FALSE;
 		}
@@ -127,7 +134,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set "empty" cells
 	 *
@@ -143,7 +149,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Add a table row
 	 *
@@ -160,7 +165,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Prep Args
 	 *
@@ -178,7 +182,7 @@ class CI_Table {
 		if (isset($args[0]) AND (count($args) == 1 && is_array($args[0])))
 		{
 			// args sent as indexed array
-			if ( ! isset($args[0]['data']))
+			if (!isset($args[0]['data']))
 			{
 				foreach ($args[0] as $key => $val)
 				{
@@ -197,7 +201,7 @@ class CI_Table {
 		{
 			foreach ($args as $key => $val)
 			{
-				if ( ! is_array($val))
+				if (!is_array($val))
 				{
 					$args[$key] = array('data' => $val);
 				}
@@ -208,7 +212,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Add a table caption
 	 *
@@ -222,7 +225,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Generate the table
 	 *
@@ -234,7 +236,7 @@ class CI_Table {
 	{
 		// The table data can optionally be passed to this function
 		// either as a database result object or an array
-		if ( ! is_null($table_data))
+		if (!is_null($table_data))
 		{
 			if (is_object($table_data))
 			{
@@ -312,7 +314,7 @@ class CI_Table {
 			$i = 1;
 			foreach ($this->rows as $row)
 			{
-				if ( ! is_array($row))
+				if (!is_array($row))
 				{
 					break;
 				}
@@ -320,12 +322,12 @@ class CI_Table {
 				// We use modulus to alternate the row colors
 				$name = (fmod($i++, 2)) ? '' : 'alt_';
 
-				$out .= $this->template['row_'.$name.'start'];
+				$out .= $this->template['row_' . $name . 'start'];
 				$out .= $this->newline;
 
 				foreach ($row as $cell)
 				{
-					$temp = $this->template['cell_'.$name.'start'];
+					$temp = $this->template['cell_' . $name . 'start'];
 
 					foreach ($cell as $key => $val)
 					{
@@ -354,10 +356,10 @@ class CI_Table {
 						}
 					}
 
-					$out .= $this->template['cell_'.$name.'end'];
+					$out .= $this->template['cell_' . $name . 'end'];
 				}
 
-				$out .= $this->template['row_'.$name.'end'];
+				$out .= $this->template['row_' . $name . 'end'];
 				$out .= $this->newline;
 			}
 
@@ -374,7 +376,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Clears the table arrays.  Useful if multiple tables are being generated
 	 *
@@ -383,13 +384,12 @@ class CI_Table {
 	 */
 	function clear()
 	{
-		$this->rows				= array();
-		$this->heading			= array();
-		$this->auto_heading		= TRUE;
+		$this->rows = array();
+		$this->heading = array();
+		$this->auto_heading = TRUE;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set table data from a database result object
 	 *
@@ -399,7 +399,7 @@ class CI_Table {
 	 */
 	function _set_from_object($query)
 	{
-		if ( ! is_object($query))
+		if (!is_object($query))
 		{
 			return FALSE;
 		}
@@ -407,7 +407,7 @@ class CI_Table {
 		// First generate the headings from the table column names
 		if (count($this->heading) == 0)
 		{
-			if ( ! method_exists($query, 'list_fields'))
+			if (!method_exists($query, 'list_fields'))
 			{
 				return FALSE;
 			}
@@ -427,7 +427,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set table data from an array
 	 *
@@ -437,7 +436,7 @@ class CI_Table {
 	 */
 	function _set_from_array($data, $set_heading = TRUE)
 	{
-		if ( ! is_array($data) OR count($data) == 0)
+		if (!is_array($data) OR count($data) == 0)
 		{
 			return FALSE;
 		}
@@ -460,7 +459,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Compile Template
 	 *
@@ -478,7 +476,7 @@ class CI_Table {
 		$this->temp = $this->_default_template();
 		foreach (array('table_open', 'thead_open', 'thead_close', 'heading_row_start', 'heading_row_end', 'heading_cell_start', 'heading_cell_end', 'tbody_open', 'tbody_close', 'row_start', 'row_end', 'cell_start', 'cell_end', 'row_alt_start', 'row_alt_end', 'cell_alt_start', 'cell_alt_end', 'table_close') as $val)
 		{
-			if ( ! isset($this->template[$val]))
+			if (!isset($this->template[$val]))
 			{
 				$this->template[$val] = $this->temp[$val];
 			}
@@ -486,7 +484,6 @@ class CI_Table {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Default Template
 	 *
@@ -495,37 +492,29 @@ class CI_Table {
 	 */
 	function _default_template()
 	{
-		return  array (
-						'table_open'			=> '<table border="0" cellpadding="4" cellspacing="0">',
-
-						'thead_open'			=> '<thead>',
-						'thead_close'			=> '</thead>',
-
-						'heading_row_start'		=> '<tr>',
-						'heading_row_end'		=> '</tr>',
-						'heading_cell_start'	=> '<th>',
-						'heading_cell_end'		=> '</th>',
-
-						'tbody_open'			=> '<tbody>',
-						'tbody_close'			=> '</tbody>',
-
-						'row_start'				=> '<tr>',
-						'row_end'				=> '</tr>',
-						'cell_start'			=> '<td>',
-						'cell_end'				=> '</td>',
-
-						'row_alt_start'		=> '<tr>',
-						'row_alt_end'			=> '</tr>',
-						'cell_alt_start'		=> '<td>',
-						'cell_alt_end'			=> '</td>',
-
-						'table_close'			=> '</table>'
-					);
+		return array(
+			'table_open' => '<table border="0" cellpadding="4" cellspacing="0">',
+			'thead_open' => '<thead>',
+			'thead_close' => '</thead>',
+			'heading_row_start' => '<tr>',
+			'heading_row_end' => '</tr>',
+			'heading_cell_start' => '<th>',
+			'heading_cell_end' => '</th>',
+			'tbody_open' => '<tbody>',
+			'tbody_close' => '</tbody>',
+			'row_start' => '<tr>',
+			'row_end' => '</tr>',
+			'cell_start' => '<td>',
+			'cell_end' => '</td>',
+			'row_alt_start' => '<tr>',
+			'row_alt_end' => '</tr>',
+			'cell_alt_start' => '<td>',
+			'cell_alt_end' => '</td>',
+			'table_close' => '</table>'
+		);
 	}
 
-
 }
-
 
 /* End of file Table.php */
 /* Location: ./system/libraries/Table.php */

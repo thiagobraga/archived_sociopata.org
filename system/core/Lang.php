@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,20 +26,22 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/language.html
  */
-class CI_Lang {
+class CI_Lang
+{
 
 	/**
 	 * List of translations
 	 *
 	 * @var array
 	 */
-	var $language	= array();
+	var $language = array();
+
 	/**
 	 * List of loaded language files
 	 *
 	 * @var array
 	 */
-	var $is_loaded	= array();
+	var $is_loaded = array();
 
 	/**
 	 * Constructor
@@ -50,7 +54,6 @@ class CI_Lang {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Load a language file
 	 *
@@ -68,7 +71,7 @@ class CI_Lang {
 
 		if ($add_suffix == TRUE)
 		{
-			$langfile = str_replace('_lang.', '', $langfile).'_lang';
+			$langfile = str_replace('_lang.', '', $langfile) . '_lang';
 		}
 
 		$langfile .= '.php';
@@ -78,18 +81,18 @@ class CI_Lang {
 			return;
 		}
 
-		$config =& get_config();
+		$config = & get_config();
 
 		if ($idiom == '')
 		{
-			$deft_lang = ( ! isset($config['language'])) ? 'english' : $config['language'];
+			$deft_lang = (!isset($config['language'])) ? 'english' : $config['language'];
 			$idiom = ($deft_lang == '') ? 'english' : $deft_lang;
 		}
 
 		// Determine where the language file is and load it
-		if ($alt_path != '' && file_exists($alt_path.'language/'.$idiom.'/'.$langfile))
+		if ($alt_path != '' && file_exists($alt_path . 'language/' . $idiom . '/' . $langfile))
 		{
-			include($alt_path.'language/'.$idiom.'/'.$langfile);
+			include($alt_path . 'language/' . $idiom . '/' . $langfile);
 		}
 		else
 		{
@@ -97,9 +100,9 @@ class CI_Lang {
 
 			foreach (get_instance()->load->get_package_paths(TRUE) as $package_path)
 			{
-				if (file_exists($package_path.'language/'.$idiom.'/'.$langfile))
+				if (file_exists($package_path . 'language/' . $idiom . '/' . $langfile))
 				{
-					include($package_path.'language/'.$idiom.'/'.$langfile);
+					include($package_path . 'language/' . $idiom . '/' . $langfile);
 					$found = TRUE;
 					break;
 				}
@@ -107,14 +110,14 @@ class CI_Lang {
 
 			if ($found !== TRUE)
 			{
-				show_error('Unable to load the requested language file: language/'.$idiom.'/'.$langfile);
+				show_error('Unable to load the requested language file: language/' . $idiom . '/' . $langfile);
 			}
 		}
 
 
-		if ( ! isset($lang))
+		if (!isset($lang))
 		{
-			log_message('error', 'Language file contains no data: language/'.$idiom.'/'.$langfile);
+			log_message('error', 'Language file contains no data: language/' . $idiom . '/' . $langfile);
 			return;
 		}
 
@@ -127,12 +130,11 @@ class CI_Lang {
 		$this->language = array_merge($this->language, $lang);
 		unset($lang);
 
-		log_message('debug', 'Language file loaded: language/'.$idiom.'/'.$langfile);
+		log_message('debug', 'Language file loaded: language/' . $idiom . '/' . $langfile);
 		return TRUE;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch a single line of text from the language array
 	 *
@@ -142,18 +144,19 @@ class CI_Lang {
 	 */
 	function line($line = '')
 	{
-		$value = ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
+		$value = ($line == '' OR !isset($this->language[$line])) ? FALSE : $this->language[$line];
 
 		// Because killer robots like unicorns!
 		if ($value === FALSE)
 		{
-			log_message('error', 'Could not find the language line "'.$line.'"');
+			log_message('error', 'Could not find the language line "' . $line . '"');
 		}
 
 		return $value;
 	}
 
 }
+
 // END Language Class
 
 /* End of file Lang.php */

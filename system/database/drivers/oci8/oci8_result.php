@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,10 +26,13 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_oci8_result extends CI_DB_result {
+class CI_DB_oci8_result extends CI_DB_result
+{
 
 	var $stmt_id;
+
 	var $curs_id;
+
 	var $limit_used;
 
 	/**
@@ -57,7 +62,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Number of fields in the result set
 	 *
@@ -78,7 +82,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Field Names
 	 *
@@ -90,7 +93,7 @@ class CI_DB_oci8_result extends CI_DB_result {
 	public function list_fields()
 	{
 		$field_names = array();
-		for ($c = 1, $fieldCount = $this->num_fields(); $c <?php $fieldCount; $c++)
+		for ($c = 1, $fieldCount = $this->num_fields(); $c <= $fieldCount; $c++)
 		{
 			$field_names[] = oci_field_name($this->stmt_id, $c);
 		}
@@ -98,7 +101,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data
 	 *
@@ -110,12 +112,12 @@ class CI_DB_oci8_result extends CI_DB_result {
 	public function field_data()
 	{
 		$retval = array();
-		for ($c = 1, $fieldCount = $this->num_fields(); $c <?php $fieldCount; $c++)
+		for ($c = 1, $fieldCount = $this->num_fields(); $c <= $fieldCount; $c++)
 		{
-			$F			= new stdClass();
-			$F->name		= oci_field_name($this->stmt_id, $c);
-			$F->type		= oci_field_type($this->stmt_id, $c);
-			$F->max_length		= oci_field_size($this->stmt_id, $c);
+			$F = new stdClass();
+			$F->name = oci_field_name($this->stmt_id, $c);
+			$F->type = oci_field_type($this->stmt_id, $c);
+			$F->max_length = oci_field_size($this->stmt_id, $c);
 
 			$retval[] = $F;
 		}
@@ -124,7 +126,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Free the result
 	 *
@@ -140,7 +141,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - associative array
 	 *
@@ -156,7 +156,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - object
 	 *
@@ -172,7 +171,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Query result.  "array" version.
 	 *
@@ -196,7 +194,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Data Seek
 	 *
@@ -213,7 +210,6 @@ class CI_DB_oci8_result extends CI_DB_result {
 	}
 
 }
-
 
 /* End of file oci8_result.php */
 /* Location: ./system/database/drivers/oci8/oci8_result.php */

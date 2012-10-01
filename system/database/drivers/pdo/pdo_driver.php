@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -9,10 +12,9 @@
  * @license		http://codeigniter.com/user_guide/license.html
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com
- * @since		Version 2.1.0
+ * @since		Version 2.1.2
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -28,15 +30,17 @@
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_pdo_driver extends CI_DB {
+class CI_DB_pdo_driver extends CI_DB
+{
 
 	var $dbdriver = 'pdo';
 
 	// the character used to excape - not necessary for PDO
 	var $_escape_char = '';
+
 	var $_like_escape_str;
+
 	var $_like_escape_chr;
-	
 
 	/**
 	 * The syntax to count rows is slightly different across different
@@ -44,30 +48,31 @@ class CI_DB_pdo_driver extends CI_DB {
 	 * used for the count_all() and count_all_results() functions.
 	 */
 	var $_count_string = "SELECT COUNT(*) AS ";
+
 	var $_random_keyword;
-	
+
 	var $options = array();
 
 	function __construct($params)
 	{
 		parent::__construct($params);
-		
+
 		// clause and character used for LIKE escape sequences
 		if (strpos($this->hostname, 'mysql') !== FALSE)
 		{
 			$this->_like_escape_str = '';
 			$this->_like_escape_chr = '';
-			
+
 			//Prior to this version, the charset can't be set in the dsn
-			if(is_php('5.3.6'))
+			if (is_php('5.3.6'))
 			{
 				$this->hostname .= ";charset={$this->char_set}";
 			}
-			
+
 			//Set the charset with the connection options
 			$this->options['PDO::MYSQL_ATTR_INIT_COMMAND'] = "SET NAMES {$this->char_set}";
 		}
-		else if (strpos($this->hostname, 'odbc') !== FALSE)
+		elseif (strpos($this->hostname, 'odbc') !== FALSE)
 		{
 			$this->_like_escape_str = " {escape '%s'} ";
 			$this->_like_escape_chr = '!';
@@ -77,12 +82,12 @@ class CI_DB_pdo_driver extends CI_DB {
 			$this->_like_escape_str = " ESCAPE '%s' ";
 			$this->_like_escape_chr = '!';
 		}
-		
-		$this->hostname .= ";dbname=".$this->database;
-		
+
+		empty($this->database) OR $this->hostname .= ';dbname=' . $this->database;
+
 		$this->trans_enabled = FALSE;
 
-		$this->_random_keyword = ' RND('.time().')'; // database specific random keyword
+		$this->_random_keyword = ' RND(' . time() . ')'; // database specific random keyword
 	}
 
 	/**
@@ -94,12 +99,11 @@ class CI_DB_pdo_driver extends CI_DB {
 	function db_connect()
 	{
 		$this->options['PDO::ATTR_ERRMODE'] = PDO::ERRMODE_SILENT;
-		
+
 		return new PDO($this->hostname, $this->username, $this->password, $this->options);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Persistent database connection
 	 *
@@ -110,12 +114,11 @@ class CI_DB_pdo_driver extends CI_DB {
 	{
 		$this->options['PDO::ATTR_ERRMODE'] = PDO::ERRMODE_SILENT;
 		$this->options['PDO::ATTR_PERSISTENT'] = TRUE;
-	
+
 		return new PDO($this->hostname, $this->username, $this->password, $this->options);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Reconnect
 	 *
@@ -135,7 +138,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Select the database
 	 *
@@ -149,7 +151,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set client character set
 	 *
@@ -165,7 +166,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Version number query string
 	 *
@@ -178,7 +178,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Execute the query
 	 *
@@ -189,22 +188,30 @@ class CI_DB_pdo_driver extends CI_DB {
 	function _execute($sql)
 	{
 		$sql = $this->_prep_query($sql);
-		$result_id = $this->conn_id->query($sql);
-		
+		$result_id = $this->conn_id->prepare($sql);
+		$result_id->execute();
+
 		if (is_object($result_id))
 		{
-			$this->affect_rows = $result_id->rowCount();
+			if (is_numeric(stripos($sql, 'SELECT')))
+			{
+				$this->affect_rows = count($result_id->fetchAll());
+				$result_id->execute();
+			}
+			else
+			{
+				$this->affect_rows = $result_id->rowCount();
+			}
 		}
 		else
 		{
 			$this->affect_rows = 0;
 		}
-		
+
 		return $result_id;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Prep the query
 	 *
@@ -220,7 +227,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Begin Transaction
 	 *
@@ -229,7 +235,7 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function trans_begin($test_mode = FALSE)
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -249,7 +255,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Commit Transaction
 	 *
@@ -258,7 +263,7 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function trans_commit()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -274,7 +279,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Rollback Transaction
 	 *
@@ -283,7 +287,7 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function trans_rollback()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -299,7 +303,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape String
 	 *
@@ -319,29 +322,26 @@ class CI_DB_pdo_driver extends CI_DB {
 
 			return $str;
 		}
-		
+
 		//Escape the string
 		$str = $this->conn_id->quote($str);
-		
+
 		//If there are duplicated quotes, trim them away
 		if (strpos($str, "'") === 0)
 		{
 			$str = substr($str, 1, -1);
 		}
-		
+
 		// escape LIKE condition wildcards
 		if ($like === TRUE)
 		{
-			$str = str_replace(	array('%', '_', $this->_like_escape_chr),
-								array($this->_like_escape_chr.'%', $this->_like_escape_chr.'_', $this->_like_escape_chr.$this->_like_escape_chr),
-								$str);
+			$str = str_replace(array('%', '_', $this->_like_escape_chr), array($this->_like_escape_chr . '%', $this->_like_escape_chr . '_', $this->_like_escape_chr . $this->_like_escape_chr), $str);
 		}
 
 		return $str;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Affected Rows
 	 *
@@ -354,25 +354,24 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Insert ID
-	 * 
+	 *
 	 * @access	public
 	 * @return	integer
 	 */
-	function insert_id($name=NULL)
+	function insert_id($name = NULL)
 	{
 		//Convenience method for postgres insertid
 		if (strpos($this->hostname, 'pgsql') !== FALSE)
 		{
 			$v = $this->_version();
 
-			$table	= func_num_args() > 0 ? func_get_arg(0) : NULL;
+			$table = func_num_args() > 0 ? func_get_arg(0) : NULL;
 
 			if ($table == NULL && $v >= '8.1')
 			{
-				$sql='SELECT LASTVAL() as ins_id';
+				$sql = 'SELECT LASTVAL() as ins_id';
 			}
 			$query = $this->query($sql);
 			$row = $query->row();
@@ -385,7 +384,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * "Count All" query
 	 *
@@ -416,7 +414,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Show table query
 	 *
@@ -428,7 +425,7 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function _list_tables($prefix_limit = FALSE)
 	{
-		$sql = "SHOW TABLES FROM `".$this->database."`";
+		$sql = "SHOW TABLES FROM `" . $this->database . "`";
 
 		if ($prefix_limit !== FALSE AND $this->dbprefix != '')
 		{
@@ -440,7 +437,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Show column query
 	 *
@@ -452,11 +448,10 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function _list_columns($table = '')
 	{
-		return "SHOW COLUMNS FROM ".$table;
+		return "SHOW COLUMNS FROM " . $table;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data query
 	 *
@@ -468,11 +463,10 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function _field_data($table)
 	{
-		return "SELECT TOP 1 FROM ".$table;
+		return "SELECT TOP 1 FROM " . $table;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message string
 	 *
@@ -486,7 +480,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message number
 	 *
@@ -499,7 +492,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape the SQL Identifiers
 	 *
@@ -518,31 +510,29 @@ class CI_DB_pdo_driver extends CI_DB {
 
 		foreach ($this->_reserved_identifiers as $id)
 		{
-			if (strpos($item, '.'.$id) !== FALSE)
+			if (strpos($item, '.' . $id) !== FALSE)
 			{
-				$str = $this->_escape_char. str_replace('.', $this->_escape_char.'.', $item);
+				$str = $this->_escape_char . str_replace('.', $this->_escape_char . '.', $item);
 
 				// remove duplicates if the user already included the escape
-				return preg_replace('/['.$this->_escape_char.']+/', $this->_escape_char, $str);
+				return preg_replace('/[' . $this->_escape_char . ']+/', $this->_escape_char, $str);
 			}
 		}
 
 		if (strpos($item, '.') !== FALSE)
 		{
-			$str = $this->_escape_char.str_replace('.', $this->_escape_char.'.'.$this->_escape_char, $item).$this->_escape_char;
-			
+			$str = $this->_escape_char . str_replace('.', $this->_escape_char . '.' . $this->_escape_char, $item) . $this->_escape_char;
 		}
 		else
 		{
-			$str = $this->_escape_char.$item.$this->_escape_char;
+			$str = $this->_escape_char . $item . $this->_escape_char;
 		}
 
 		// remove duplicates if the user already included the escape
-		return preg_replace('/['.$this->_escape_char.']+/', $this->_escape_char, $str);
+		return preg_replace('/[' . $this->_escape_char . ']+/', $this->_escape_char, $str);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * From Tables
 	 *
@@ -555,16 +545,15 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function _from_tables($tables)
 	{
-		if ( ! is_array($tables))
+		if (!is_array($tables))
 		{
 			$tables = array($tables);
 		}
 
-		return (count($tables) == 1) ? $tables[0] : '('.implode(', ', $tables).')';
+		return (count($tables) == 1) ? $tables[0] : '(' . implode(', ', $tables) . ')';
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Insert statement
 	 *
@@ -578,11 +567,10 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function _insert($table, $keys, $values)
 	{
-		return "INSERT INTO ".$table." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
+		return "INSERT INTO " . $table . " (" . implode(', ', $keys) . ") VALUES (" . implode(', ', $values) . ")";
 	}
-	
-	// --------------------------------------------------------------------
 
+	// --------------------------------------------------------------------
 	/**
 	 * Insert_batch statement
 	 *
@@ -596,11 +584,10 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	function _insert_batch($table, $keys, $values)
 	{
-		return "INSERT INTO ".$table." (".implode(', ', $keys).") VALUES ".implode(', ', $values);
+		return "INSERT INTO " . $table . " (" . implode(', ', $keys) . ") VALUES " . implode(', ', $values);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Update statement
 	 *
@@ -618,24 +605,23 @@ class CI_DB_pdo_driver extends CI_DB {
 	{
 		foreach ($values as $key => $val)
 		{
-			$valstr[] = $key." = ".$val;
+			$valstr[] = $key . " = " . $val;
 		}
 
-		$limit = ( ! $limit) ? '' : ' LIMIT '.$limit;
+		$limit = (!$limit) ? '' : ' LIMIT ' . $limit;
 
-		$orderby = (count($orderby) >= 1)?' ORDER BY '.implode(", ", $orderby):'';
+		$orderby = (count($orderby) >= 1) ? ' ORDER BY ' . implode(", ", $orderby) : '';
 
-		$sql = "UPDATE ".$table." SET ".implode(', ', $valstr);
+		$sql = "UPDATE " . $table . " SET " . implode(', ', $valstr);
 
-		$sql .= ($where != '' AND count($where) >=1) ? " WHERE ".implode(" ", $where) : '';
+		$sql .= ($where != '' AND count($where) >= 1) ? " WHERE " . implode(" ", $where) : '';
 
-		$sql .= $orderby.$limit;
+		$sql .= $orderby . $limit;
 
 		return $sql;
 	}
-	
-	// --------------------------------------------------------------------
 
+	// --------------------------------------------------------------------
 	/**
 	 * Update_Batch statement
 	 *
@@ -650,7 +636,7 @@ class CI_DB_pdo_driver extends CI_DB {
 	function _update_batch($table, $values, $index, $where = NULL)
 	{
 		$ids = array();
-		$where = ($where != '' AND count($where) >=1) ? implode(" ", $where).' AND ' : '';
+		$where = ($where != '' AND count($where) >= 1) ? implode(" ", $where) . ' AND ' : '';
 
 		foreach ($values as $key => $val)
 		{
@@ -660,35 +646,33 @@ class CI_DB_pdo_driver extends CI_DB {
 			{
 				if ($field != $index)
 				{
-					$final[$field][] =  'WHEN '.$index.' = '.$val[$index].' THEN '.$val[$field];
+					$final[$field][] = 'WHEN ' . $index . ' = ' . $val[$index] . ' THEN ' . $val[$field];
 				}
 			}
 		}
 
-		$sql = "UPDATE ".$table." SET ";
+		$sql = "UPDATE " . $table . " SET ";
 		$cases = '';
 
 		foreach ($final as $k => $v)
 		{
-			$cases .= $k.' = CASE '."\n";
+			$cases .= $k . ' = CASE ' . "\n";
 			foreach ($v as $row)
 			{
-				$cases .= $row."\n";
+				$cases .= $row . "\n";
 			}
 
-			$cases .= 'ELSE '.$k.' END, ';
+			$cases .= 'ELSE ' . $k . ' END, ';
 		}
 
 		$sql .= substr($cases, 0, -2);
 
-		$sql .= ' WHERE '.$where.$index.' IN ('.implode(',', $ids).')';
+		$sql .= ' WHERE ' . $where . $index . ' IN (' . implode(',', $ids) . ')';
 
 		return $sql;
 	}
 
-
 	// --------------------------------------------------------------------
-
 	/**
 	 * Truncate statement
 	 *
@@ -706,7 +690,6 @@ class CI_DB_pdo_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Delete statement
 	 *
@@ -734,13 +717,12 @@ class CI_DB_pdo_driver extends CI_DB {
 			$conditions .= implode("\n", $like);
 		}
 
-		$limit = ( ! $limit) ? '' : ' LIMIT '.$limit;
+		$limit = (!$limit) ? '' : ' LIMIT ' . $limit;
 
-		return "DELETE FROM ".$table.$conditions.$limit;
+		return "DELETE FROM " . $table . $conditions . $limit;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Limit string
 	 *
@@ -765,23 +747,22 @@ class CI_DB_pdo_driver extends CI_DB {
 				$offset .= ", ";
 			}
 
-			return $sql."LIMIT ".$offset.$limit;
+			return $sql . "LIMIT " . $offset . $limit;
 		}
 		else
 		{
-			$sql .= "LIMIT ".$limit;
+			$sql .= "LIMIT " . $limit;
 
 			if ($offset > 0)
 			{
-				$sql .= " OFFSET ".$offset;
+				$sql .= " OFFSET " . $offset;
 			}
-			
+
 			return $sql;
 		}
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Close DB Connection
 	 *
@@ -794,10 +775,7 @@ class CI_DB_pdo_driver extends CI_DB {
 		$this->conn_id = null;
 	}
 
-
 }
-
-
 
 /* End of file pdo_driver.php */
 /* Location: ./system/database/drivers/pdo/pdo_driver.php */

@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mysqli_result extends CI_DB_result {
+class CI_DB_mysqli_result extends CI_DB_result
+{
 
 	/**
 	 * Number of rows in the result set
@@ -38,7 +41,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Number of fields in the result set
 	 *
@@ -51,7 +53,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Field Names
 	 *
@@ -72,7 +73,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data
 	 *
@@ -91,11 +91,11 @@ class CI_DB_mysqli_result extends CI_DB_result {
 			$type = (array_key_exists(1, $matches)) ? $matches[1] : NULL;
 			$length = (array_key_exists(2, $matches)) ? preg_replace('/[^\d]/', '', $matches[2]) : NULL;
 
-			$F				= new stdClass();
-			$F->name		= $field->Field;
-			$F->type		= $type;
-			$F->default		= $field->Default;
-			$F->max_length	= $length;
+			$F = new stdClass();
+			$F->name = $field->Field;
+			$F->type = $type;
+			$F->default = $field->Default;
+			$F->max_length = $length;
 			$F->primary_key = ( $field->Key == 'PRI' ? 1 : 0 );
 
 			$retval[] = $F;
@@ -103,9 +103,8 @@ class CI_DB_mysqli_result extends CI_DB_result {
 
 		return $retval;
 	}
-	
-	// --------------------------------------------------------------------
 
+	// --------------------------------------------------------------------
 	/**
 	 * Free the result
 	 *
@@ -121,7 +120,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Data Seek
 	 *
@@ -138,7 +136,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - associative array
 	 *
@@ -153,7 +150,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - object
 	 *
@@ -168,7 +164,6 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	}
 
 }
-
 
 /* End of file mysqli_result.php */
 /* Location: ./system/database/drivers/mysqli/mysqli_result.php */

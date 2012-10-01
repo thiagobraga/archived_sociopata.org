@@ -1,4 +1,7 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -6,13 +9,12 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2006 - 2011, EllisLab, Inc.
+ * @copyright	Copyright (c) 2006 - 2012, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -27,10 +29,13 @@
  * @author		Reactor Engineers
  * @link
  */
-class CI_Migration {
+class CI_Migration
+{
 
 	protected $_migration_enabled = FALSE;
+
 	protected $_migration_path = NULL;
+
 	protected $_migration_version = 0;
 
 	protected $_error_string = '';
@@ -60,7 +65,7 @@ class CI_Migration {
 		$this->_migration_path == '' OR $this->_migration_path = APPPATH . 'migrations/';
 
 		// Add trailing slash if not set
-		$this->_migration_path = rtrim($this->_migration_path, '/').'/';
+		$this->_migration_path = rtrim($this->_migration_path, '/') . '/';
 
 		// Load migration language
 		$this->lang->load('migration');
@@ -69,7 +74,7 @@ class CI_Migration {
 		$this->load->dbforge();
 
 		// If the migrations table is missing, make it
-		if ( ! $this->db->table_exists('migrations'))
+		if (!$this->db->table_exists('migrations'))
 		{
 			$this->dbforge->add_field(array(
 				'version' => array('type' => 'INT', 'constraint' => 3),
@@ -82,7 +87,6 @@ class CI_Migration {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Migrate to a schema version
 	 *
@@ -105,13 +109,12 @@ class CI_Migration {
 			++$stop;
 			$step = 1;
 		}
-
 		else
 		{
 			// Moving Down
 			$step = -1;
 		}
-		
+
 		$method = $step === 1 ? 'up' : 'down';
 		$migrations = array();
 
@@ -162,15 +165,15 @@ class CI_Migration {
 				include $f[0];
 				$class = 'Migration_' . ucfirst($match[1]);
 
-				if ( ! class_exists($class))
+				if (!class_exists($class))
 				{
 					$this->_error_string = sprintf($this->lang->line('migration_class_doesnt_exist'), $class);
 					return FALSE;
 				}
 
-				if ( ! is_callable(array($class, $method)))
+				if (!is_callable(array($class, $method)))
 				{
-					$this->_error_string = sprintf($this->lang->line('migration_missing_'.$method.'_method'), $class);
+					$this->_error_string = sprintf($this->lang->line('migration_missing_' . $method . '_method'), $class);
 					return FALSE;
 				}
 
@@ -206,13 +209,12 @@ class CI_Migration {
 			$this->_update_version($current_version);
 		}
 
-		log_message('debug', 'Finished migrating to '.$current_version);
+		log_message('debug', 'Finished migrating to ' . $current_version);
 
 		return $current_version;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set's the schema to the latest migration
 	 *
@@ -221,21 +223,20 @@ class CI_Migration {
 	 */
 	public function latest()
 	{
-		if ( ! $migrations = $this->find_migrations())
+		if (!$migrations = $this->find_migrations())
 		{
 			$this->_error_string = $this->line->lang('migration_none_found');
 			return false;
 		}
 
 		$last_migration = basename(end($migrations));
-		
+
 		// Calculate the last migration step from existing migration
 		// filenames and procceed to the standard version migration
 		return $this->version((int) substr($last_migration, 0, 3));
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set's the schema to the migration version set in config
 	 *
@@ -248,7 +249,6 @@ class CI_Migration {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Error string
 	 *
@@ -261,7 +261,6 @@ class CI_Migration {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set's the schema to the latest migration
 	 *
@@ -273,24 +272,23 @@ class CI_Migration {
 		// Load all *_*.php files in the migrations path
 		$files = glob($this->_migration_path . '*_*.php');
 		$file_count = count($files);
-		
+
 		for ($i = 0; $i < $file_count; $i++)
 		{
 			// Mark wrongly formatted files as false for later filtering
 			$name = basename($files[$i], '.php');
-			if ( ! preg_match('/^\d{3}_(\w+)$/', $name))
+			if (!preg_match('/^\d{3}_(\w+)$/', $name))
 			{
 				$files[$i] = FALSE;
 			}
 		}
-		
+
 		sort($files);
 
 		return $files;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Retrieves current schema version
 	 *
@@ -304,7 +302,6 @@ class CI_Migration {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Stores the current schema version
 	 *
@@ -315,12 +312,11 @@ class CI_Migration {
 	protected function _update_version($migrations)
 	{
 		return $this->db->update('migrations', array(
-			'version' => $migrations
-		));
+				'version' => $migrations
+			));
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Enable the use of CI super-global
 	 *
@@ -332,6 +328,7 @@ class CI_Migration {
 	{
 		return get_instance()->$var;
 	}
+
 }
 
 /* End of file Migration.php */

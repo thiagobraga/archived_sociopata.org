@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -26,7 +28,8 @@
  * @category	Libraries
  * @link		http://codeigniter.com/user_guide/general/routing.html
  */
-class CI_Router {
+class CI_Router
+{
 
 	/**
 	 * Config class
@@ -35,41 +38,47 @@ class CI_Router {
 	 * @access public
 	 */
 	var $config;
+
 	/**
 	 * List of routes
 	 *
 	 * @var array
 	 * @access public
 	 */
-	var $routes			= array();
+	var $routes = array();
+
 	/**
 	 * List of error routes
 	 *
 	 * @var array
 	 * @access public
 	 */
-	var $error_routes	= array();
+	var $error_routes = array();
+
 	/**
 	 * Current class name
 	 *
 	 * @var string
 	 * @access public
 	 */
-	var $class			= '';
+	var $class = '';
+
 	/**
 	 * Current method name
 	 *
 	 * @var string
 	 * @access public
 	 */
-	var $method			= 'index';
+	var $method = 'index';
+
 	/**
 	 * Sub-directory that contains the requested controller class
 	 *
 	 * @var string
 	 * @access public
 	 */
-	var $directory		= '';
+	var $directory = '';
+
 	/**
 	 * Default controller (and method if specific)
 	 *
@@ -85,13 +94,12 @@ class CI_Router {
 	 */
 	function __construct()
 	{
-		$this->config =& load_class('Config', 'core');
-		$this->uri =& load_class('URI', 'core');
+		$this->config = & load_class('Config', 'core');
+		$this->uri = & load_class('URI', 'core');
 		log_message('debug', "Router Class Initialized");
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the route mapping
 	 *
@@ -129,21 +137,21 @@ class CI_Router {
 		}
 
 		// Load the routes.php file.
-		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/routes.php'))
+		if (defined('ENVIRONMENT') AND is_file(APPPATH . 'config/' . ENVIRONMENT . '/routes.php'))
 		{
-			include(APPPATH.'config/'.ENVIRONMENT.'/routes.php');
+			include(APPPATH . 'config/' . ENVIRONMENT . '/routes.php');
 		}
-		elseif (is_file(APPPATH.'config/routes.php'))
+		elseif (is_file(APPPATH . 'config/routes.php'))
 		{
-			include(APPPATH.'config/routes.php');
+			include(APPPATH . 'config/routes.php');
 		}
 
-		$this->routes = ( ! isset($route) OR ! is_array($route)) ? array() : $route;
+		$this->routes = (!isset($route) OR !is_array($route)) ? array() : $route;
 		unset($route);
 
 		// Set the default controller so we can display it in the event
 		// the URI doesn't correlated to a valid controller.
-		$this->default_controller = ( ! isset($this->routes['default_controller']) OR $this->routes['default_controller'] == '') ? FALSE : strtolower($this->routes['default_controller']);
+		$this->default_controller = (!isset($this->routes['default_controller']) OR $this->routes['default_controller'] == '') ? FALSE : strtolower($this->routes['default_controller']);
 
 		// Were there any query string segments?  If so, we'll validate them and bail out since we're done.
 		if (count($segments) > 0)
@@ -174,7 +182,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the default controller
 	 *
@@ -210,7 +217,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the Route
 	 *
@@ -252,7 +258,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Validates the supplied segments.  Attempts to determine the path to
 	 * the controller.
@@ -269,13 +274,13 @@ class CI_Router {
 		}
 
 		// Does the requested controller exist in the root folder?
-		if (file_exists(APPPATH.'controllers/'.$segments[0].'.php'))
+		if (file_exists(APPPATH . 'controllers/' . $segments[0] . '.php'))
 		{
 			return $segments;
 		}
 
 		// Is the controller in a sub-folder?
-		if (is_dir(APPPATH.'controllers/'.$segments[0]))
+		if (is_dir(APPPATH . 'controllers/' . $segments[0]))
 		{
 			// Set the directory and remove it from the segment array
 			$this->set_directory($segments[0]);
@@ -284,9 +289,9 @@ class CI_Router {
 			if (count($segments) > 0)
 			{
 				// Does the requested controller exist in the sub-folder?
-				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].'.php'))
+				if (!file_exists(APPPATH . 'controllers/' . $this->fetch_directory() . $segments[0] . '.php'))
 				{
-					if ( ! empty($this->routes['404_override']))
+					if (!empty($this->routes['404_override']))
 					{
 						$x = explode('/', $this->routes['404_override']);
 
@@ -298,7 +303,7 @@ class CI_Router {
 					}
 					else
 					{
-						show_404($this->fetch_directory().$segments[0]);
+						show_404($this->fetch_directory() . $segments[0]);
 					}
 				}
 			}
@@ -319,12 +324,11 @@ class CI_Router {
 				}
 
 				// Does the default controller exist in the sub-folder?
-				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller.'.php'))
+				if (!file_exists(APPPATH . 'controllers/' . $this->fetch_directory() . $this->default_controller . '.php'))
 				{
 					$this->directory = '';
 					return array();
 				}
-
 			}
 
 			return $segments;
@@ -333,7 +337,7 @@ class CI_Router {
 
 		// If we've gotten this far it means that the URI does not correlate to a valid
 		// controller class.  We will now see if there is an override
-		if ( ! empty($this->routes['404_override']))
+		if (!empty($this->routes['404_override']))
 		{
 			$x = explode('/', $this->routes['404_override']);
 
@@ -349,7 +353,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Parse Routes
 	 *
@@ -378,12 +381,12 @@ class CI_Router {
 			$key = str_replace(':any', '.+', str_replace(':num', '[0-9]+', $key));
 
 			// Does the RegEx match?
-			if (preg_match('#^'.$key.'$#', $uri))
+			if (preg_match('#^' . $key . '$#', $uri))
 			{
 				// Do we have a back-reference?
 				if (strpos($val, '$') !== FALSE AND strpos($key, '(') !== FALSE)
 				{
-					$val = preg_replace('#^'.$key.'$#', $val, $uri);
+					$val = preg_replace('#^' . $key . '$#', $val, $uri);
 				}
 
 				return $this->_set_request(explode('/', $val));
@@ -396,7 +399,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the class name
 	 *
@@ -410,7 +412,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch the current class
 	 *
@@ -423,7 +424,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Set the method name
 	 *
@@ -437,7 +437,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Fetch the current method
 	 *
@@ -455,7 +454,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Set the directory name
 	 *
@@ -465,11 +463,10 @@ class CI_Router {
 	 */
 	function set_directory($dir)
 	{
-		$this->directory = str_replace(array('/', '.'), '', $dir).'/';
+		$this->directory = str_replace(array('/', '.'), '', $dir) . '/';
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Fetch the sub-directory (if any) that contains the requested controller class
 	 *
@@ -482,7 +479,6 @@ class CI_Router {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Set the controller overrides
 	 *
@@ -492,7 +488,7 @@ class CI_Router {
 	 */
 	function _set_overrides($routing)
 	{
-		if ( ! is_array($routing))
+		if (!is_array($routing))
 		{
 			return;
 		}
@@ -514,8 +510,8 @@ class CI_Router {
 		}
 	}
 
-
 }
+
 // END Router Class
 
 /* End of file Router.php */

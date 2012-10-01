@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -28,7 +30,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_postgre_driver extends CI_DB {
+class CI_DB_postgre_driver extends CI_DB
+{
 
 	var $dbdriver = 'postgre';
 
@@ -36,6 +39,7 @@ class CI_DB_postgre_driver extends CI_DB {
 
 	// clause and character used for LIKE escape sequences
 	var $_like_escape_str = " ESCAPE '%s' ";
+
 	var $_like_escape_chr = '!';
 
 	/**
@@ -44,6 +48,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 * used for the count_all() and count_all_results() functions.
 	 */
 	var $_count_string = "SELECT COUNT(*) AS ";
+
 	var $_random_keyword = ' RANDOM()'; // database specific random keyword
 
 	/**
@@ -52,29 +57,29 @@ class CI_DB_postgre_driver extends CI_DB {
 	 * @access	private
 	 * @return	string
 	 */
+
 	function _connect_string()
 	{
 		$components = array(
-								'hostname'	=> 'host',
-								'port'		=> 'port',
-								'database'	=> 'dbname',
-								'username'	=> 'user',
-								'password'	=> 'password'
-							);
+			'hostname' => 'host',
+			'port' => 'port',
+			'database' => 'dbname',
+			'username' => 'user',
+			'password' => 'password'
+		);
 
 		$connect_string = "";
 		foreach ($components as $key => $val)
 		{
 			if (isset($this->$key) && $this->$key != '')
 			{
-				$connect_string .= " $val=".$this->$key;
+				$connect_string .= " $val=" . $this->$key;
 			}
 		}
 		return trim($connect_string);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Non-persistent database connection
 	 *
@@ -87,7 +92,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Persistent database connection
 	 *
@@ -100,7 +104,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Reconnect
 	 *
@@ -119,7 +122,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Select the database
 	 *
@@ -133,7 +135,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set client character set
 	 *
@@ -149,7 +150,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Version number query string
 	 *
@@ -162,7 +162,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Execute the query
 	 *
@@ -177,7 +176,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Prep the query
 	 *
@@ -193,7 +191,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Begin Transaction
 	 *
@@ -202,7 +199,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function trans_begin($test_mode = FALSE)
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -222,7 +219,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Commit Transaction
 	 *
@@ -231,7 +227,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function trans_commit()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -246,7 +242,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Rollback Transaction
 	 *
@@ -255,7 +250,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function trans_rollback()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -270,7 +265,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape String
 	 *
@@ -296,16 +290,13 @@ class CI_DB_postgre_driver extends CI_DB {
 		// escape LIKE condition wildcards
 		if ($like === TRUE)
 		{
-			$str = str_replace(	array('%', '_', $this->_like_escape_chr),
-								array($this->_like_escape_chr.'%', $this->_like_escape_chr.'_', $this->_like_escape_chr.$this->_like_escape_chr),
-								$str);
+			$str = str_replace(array('%', '_', $this->_like_escape_chr), array($this->_like_escape_chr . '%', $this->_like_escape_chr . '_', $this->_like_escape_chr . $this->_like_escape_chr), $str);
 		}
 
 		return $str;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Affected Rows
 	 *
@@ -318,7 +309,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Insert ID
 	 *
@@ -330,12 +320,12 @@ class CI_DB_postgre_driver extends CI_DB {
 		$v = $this->_version();
 		$v = $v['server'];
 
-		$table	= func_num_args() > 0 ? func_get_arg(0) : NULL;
-		$column	= func_num_args() > 1 ? func_get_arg(1) : NULL;
+		$table = func_num_args() > 0 ? func_get_arg(0) : NULL;
+		$column = func_num_args() > 1 ? func_get_arg(1) : NULL;
 
 		if ($table == NULL && $v >= '8.1')
 		{
-			$sql='SELECT LASTVAL() as ins_id';
+			$sql = 'SELECT LASTVAL() as ins_id';
 		}
 		elseif ($table != NULL && $column != NULL && $v >= '8.0')
 		{
@@ -359,7 +349,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * "Count All" query
 	 *
@@ -390,7 +379,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Show table query
 	 *
@@ -406,14 +394,13 @@ class CI_DB_postgre_driver extends CI_DB {
 
 		if ($prefix_limit !== FALSE AND $this->dbprefix != '')
 		{
-			$sql .= " AND table_name LIKE '".$this->escape_like_str($this->dbprefix)."%' ".sprintf($this->_like_escape_str, $this->_like_escape_chr);
+			$sql .= " AND table_name LIKE '" . $this->escape_like_str($this->dbprefix) . "%' " . sprintf($this->_like_escape_str, $this->_like_escape_chr);
 		}
 
 		return $sql;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Show column query
 	 *
@@ -425,11 +412,10 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function _list_columns($table = '')
 	{
-		return "SELECT column_name FROM information_schema.columns WHERE table_name ='".$table."'";
+		return "SELECT column_name FROM information_schema.columns WHERE table_name ='" . $table . "'";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data query
 	 *
@@ -441,11 +427,10 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function _field_data($table)
 	{
-		return "SELECT * FROM ".$table." LIMIT 1";
+		return "SELECT * FROM " . $table . " LIMIT 1";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message string
 	 *
@@ -458,7 +443,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message number
 	 *
@@ -471,7 +455,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape the SQL Identifiers
 	 *
@@ -490,30 +473,29 @@ class CI_DB_postgre_driver extends CI_DB {
 
 		foreach ($this->_reserved_identifiers as $id)
 		{
-			if (strpos($item, '.'.$id) !== FALSE)
+			if (strpos($item, '.' . $id) !== FALSE)
 			{
-				$str = $this->_escape_char. str_replace('.', $this->_escape_char.'.', $item);
+				$str = $this->_escape_char . str_replace('.', $this->_escape_char . '.', $item);
 
 				// remove duplicates if the user already included the escape
-				return preg_replace('/['.$this->_escape_char.']+/', $this->_escape_char, $str);
+				return preg_replace('/[' . $this->_escape_char . ']+/', $this->_escape_char, $str);
 			}
 		}
 
 		if (strpos($item, '.') !== FALSE)
 		{
-			$str = $this->_escape_char.str_replace('.', $this->_escape_char.'.'.$this->_escape_char, $item).$this->_escape_char;
+			$str = $this->_escape_char . str_replace('.', $this->_escape_char . '.' . $this->_escape_char, $item) . $this->_escape_char;
 		}
 		else
 		{
-			$str = $this->_escape_char.$item.$this->_escape_char;
+			$str = $this->_escape_char . $item . $this->_escape_char;
 		}
 
 		// remove duplicates if the user already included the escape
-		return preg_replace('/['.$this->_escape_char.']+/', $this->_escape_char, $str);
+		return preg_replace('/[' . $this->_escape_char . ']+/', $this->_escape_char, $str);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * From Tables
 	 *
@@ -526,7 +508,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function _from_tables($tables)
 	{
-		if ( ! is_array($tables))
+		if (!is_array($tables))
 		{
 			$tables = array($tables);
 		}
@@ -535,7 +517,6 @@ class CI_DB_postgre_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Insert statement
 	 *
@@ -549,11 +530,10 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function _insert($table, $keys, $values)
 	{
-		return "INSERT INTO ".$table." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
+		return "INSERT INTO " . $table . " (" . implode(', ', $keys) . ") VALUES (" . implode(', ', $values) . ")";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Insert_batch statement
 	 *
@@ -567,11 +547,10 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function _insert_batch($table, $keys, $values)
 	{
-		return "INSERT INTO ".$table." (".implode(', ', $keys).") VALUES ".implode(', ', $values);
+		return "INSERT INTO " . $table . " (" . implode(', ', $keys) . ") VALUES " . implode(', ', $values);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Update statement
 	 *
@@ -589,24 +568,23 @@ class CI_DB_postgre_driver extends CI_DB {
 	{
 		foreach ($values as $key => $val)
 		{
-			$valstr[] = $key." = ".$val;
+			$valstr[] = $key . " = " . $val;
 		}
 
-		$limit = ( ! $limit) ? '' : ' LIMIT '.$limit;
+		$limit = (!$limit) ? '' : ' LIMIT ' . $limit;
 
-		$orderby = (count($orderby) >= 1)?' ORDER BY '.implode(", ", $orderby):'';
+		$orderby = (count($orderby) >= 1) ? ' ORDER BY ' . implode(", ", $orderby) : '';
 
-		$sql = "UPDATE ".$table." SET ".implode(', ', $valstr);
+		$sql = "UPDATE " . $table . " SET " . implode(', ', $valstr);
 
-		$sql .= ($where != '' AND count($where) >=1) ? " WHERE ".implode(" ", $where) : '';
+		$sql .= ($where != '' AND count($where) >= 1) ? " WHERE " . implode(" ", $where) : '';
 
-		$sql .= $orderby.$limit;
+		$sql .= $orderby . $limit;
 
 		return $sql;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Truncate statement
 	 *
@@ -620,11 +598,10 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function _truncate($table)
 	{
-		return "TRUNCATE ".$table;
+		return "TRUNCATE " . $table;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Delete statement
 	 *
@@ -652,9 +629,9 @@ class CI_DB_postgre_driver extends CI_DB {
 			$conditions .= implode("\n", $like);
 		}
 
-		$limit = ( ! $limit) ? '' : ' LIMIT '.$limit;
+		$limit = (!$limit) ? '' : ' LIMIT ' . $limit;
 
-		return "DELETE FROM ".$table.$conditions.$limit;
+		return "DELETE FROM " . $table . $conditions . $limit;
 	}
 
 	// --------------------------------------------------------------------
@@ -671,18 +648,17 @@ class CI_DB_postgre_driver extends CI_DB {
 	 */
 	function _limit($sql, $limit, $offset)
 	{
-		$sql .= "LIMIT ".$limit;
+		$sql .= "LIMIT " . $limit;
 
 		if ($offset > 0)
 		{
-			$sql .= " OFFSET ".$offset;
+			$sql .= " OFFSET " . $offset;
 		}
 
 		return $sql;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Close DB Connection
 	 *
@@ -695,9 +671,7 @@ class CI_DB_postgre_driver extends CI_DB {
 		@pg_close($conn_id);
 	}
 
-
 }
-
 
 /* End of file postgre_driver.php */
 /* Location: ./system/database/drivers/postgre/postgre_driver.php */

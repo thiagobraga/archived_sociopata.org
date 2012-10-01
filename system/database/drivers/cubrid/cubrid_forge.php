@@ -1,4 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -22,7 +24,8 @@
  * @author		Esen Sagynov
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_cubrid_forge extends CI_DB_forge {
+class CI_DB_cubrid_forge extends CI_DB_forge
+{
 
 	/**
 	 * Create database
@@ -39,7 +42,6 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Drop database
 	 *
@@ -55,7 +57,6 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Process Fields
 	 *
@@ -68,7 +69,7 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 		$current_field_count = 0;
 		$sql = '';
 
-		foreach ($fields as $field=>$attributes)
+		foreach ($fields as $field => $attributes)
 		{
 			// Numeric field names aren't allowed in databases, so if the key is
 			// numeric, we know it was assigned by PHP and the developer manually
@@ -85,12 +86,12 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 
 				if (array_key_exists('NAME', $attributes))
 				{
-					$sql .= ' '.$this->db->_protect_identifiers($attributes['NAME']).' ';
+					$sql .= ' ' . $this->db->_protect_identifiers($attributes['NAME']) . ' ';
 				}
 
 				if (array_key_exists('TYPE', $attributes))
 				{
-					$sql .= ' '.$attributes['TYPE'];
+					$sql .= ' ' . $attributes['TYPE'];
 
 					if (array_key_exists('CONSTRAINT', $attributes))
 					{
@@ -99,16 +100,16 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 							case 'decimal':
 							case 'float':
 							case 'numeric':
-								$sql .= '('.implode(',', $attributes['CONSTRAINT']).')';
+								$sql .= '(' . implode(',', $attributes['CONSTRAINT']) . ')';
 								break;
-							case 'enum': 	// As of version 8.4.0 CUBRID does not support
-											// enum data type.
-											break;
+							case 'enum': // As of version 8.4.0 CUBRID does not support
+								// enum data type.
+								break;
 							case 'set':
-								$sql .= '("'.implode('","', $attributes['CONSTRAINT']).'")';
+								$sql .= '("' . implode('","', $attributes['CONSTRAINT']) . '")';
 								break;
 							default:
-								$sql .= '('.$attributes['CONSTRAINT'].')';
+								$sql .= '(' . $attributes['CONSTRAINT'] . ')';
 						}
 					}
 				}
@@ -122,7 +123,7 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 
 				if (array_key_exists('DEFAULT', $attributes))
 				{
-					$sql .= ' DEFAULT \''.$attributes['DEFAULT'].'\'';
+					$sql .= ' DEFAULT \'' . $attributes['DEFAULT'] . '\'';
 				}
 
 				if (array_key_exists('NULL', $attributes) && $attributes['NULL'] === TRUE)
@@ -156,7 +157,6 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Create Table
 	 *
@@ -178,7 +178,7 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 			// As of version 8.4.0 CUBRID does not support this SQL syntax.
 		}
 
-		$sql .= $this->db->_escape_identifiers($table)." (";
+		$sql .= $this->db->_escape_identifiers($table) . " (";
 
 		$sql .= $this->_process_fields($fields);
 
@@ -187,7 +187,7 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 		{
 			$key_name = "pk_" . $table . "_" .
 				$this->db->_protect_identifiers(implode('_', $primary_keys));
-			
+
 			$primary_keys = $this->db->_protect_identifiers($primary_keys);
 			$sql .= ",\n\tCONSTRAINT " . $key_name . " PRIMARY KEY(" . implode(', ', $primary_keys) . ")";
 		}
@@ -206,7 +206,7 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 					$key_name = $this->db->_protect_identifiers($key);
 					$key = array($key_name);
 				}
-				
+
 				$sql .= ",\n\tKEY \"{$key_name}\" (" . implode(', ', $key) . ")";
 			}
 		}
@@ -217,7 +217,6 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Drop Table
 	 *
@@ -226,11 +225,10 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	 */
 	function _drop_table($table)
 	{
-		return "DROP TABLE IF EXISTS ".$this->db->_escape_identifiers($table);
+		return "DROP TABLE IF EXISTS " . $this->db->_escape_identifiers($table);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Alter table query
 	 *
@@ -246,12 +244,12 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	 */
 	function _alter_table($alter_type, $table, $fields, $after_field = '')
 	{
-		$sql = 'ALTER TABLE '.$this->db->_protect_identifiers($table)." $alter_type ";
+		$sql = 'ALTER TABLE ' . $this->db->_protect_identifiers($table) . " $alter_type ";
 
 		// DROP has everything it needs now.
 		if ($alter_type == 'DROP')
 		{
-			return $sql.$this->db->_protect_identifiers($fields);
+			return $sql . $this->db->_protect_identifiers($fields);
 		}
 
 		$sql .= $this->_process_fields($fields);
@@ -265,7 +263,6 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Rename a table
 	 *
@@ -278,7 +275,7 @@ class CI_DB_cubrid_forge extends CI_DB_forge {
 	 */
 	function _rename_table($table_name, $new_table_name)
 	{
-		$sql = 'RENAME TABLE '.$this->db->_protect_identifiers($table_name)." AS ".$this->db->_protect_identifiers($new_table_name);
+		$sql = 'RENAME TABLE ' . $this->db->_protect_identifiers($table_name) . " AS " . $this->db->_protect_identifiers($new_table_name);
 		return $sql;
 	}
 

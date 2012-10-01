@@ -1,4 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 2.0.2
  * @filesource
  */
-
 // --------------------------------------------------------------------
 
 /**
@@ -24,7 +26,8 @@
  * @author		Esen Sagynov
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_cubrid_result extends CI_DB_result {
+class CI_DB_cubrid_result extends CI_DB_result
+{
 
 	/**
 	 * Number of rows in the result set
@@ -38,7 +41,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Number of fields in the result set
 	 *
@@ -51,7 +53,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Field Names
 	 *
@@ -66,7 +67,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data
 	 *
@@ -83,17 +83,16 @@ class CI_DB_cubrid_result extends CI_DB_result {
 
 		while ($field = cubrid_fetch_field($this->result_id))
 		{
-			$F				= new stdClass();
-			$F->name		= $field->name;
-			$F->type		= $field->type;
-			$F->default		= $field->def;
-			$F->max_length	= $field->max_length;
+			$F = new stdClass();
+			$F->name = $field->name;
+			$F->type = $field->type;
+			$F->default = $field->def;
+			$F->max_length = $field->max_length;
 
 			// At this moment primary_key property is not returned when
 			// cubrid_fetch_field is called. The following code will
 			// provide a patch for it. primary_key property will be added
 			// in the next release.
-
 			// TODO: later version of CUBRID will provide primary_key
 			// property.
 			// When PK is defined in CUBRID, an index is automatically
@@ -102,8 +101,7 @@ class CI_DB_cubrid_result extends CI_DB_result {
 			// columns are there which satisfy this format.
 			// The query will search for exact single columns, thus
 			// compound PK is not supported.
-			$res = cubrid_query($this->conn_id,
-				"SELECT COUNT(*) FROM db_index WHERE class_name = '" . $field->table .
+			$res = cubrid_query($this->conn_id, "SELECT COUNT(*) FROM db_index WHERE class_name = '" . $field->table .
 				"' AND is_primary_key = 'YES' AND index_name = 'pk_" .
 				$field->table . "_" . $field->name . "'"
 			);
@@ -131,7 +129,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Free the result
 	 *
@@ -139,7 +136,7 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	 */
 	function free_result()
 	{
-		if(is_resource($this->result_id) ||
+		if (is_resource($this->result_id) ||
 			get_resource_type($this->result_id) == "Unknown" &&
 			preg_match('/Resource id #/', strval($this->result_id)))
 		{
@@ -149,7 +146,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Data Seek
 	 *
@@ -166,7 +162,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - associative array
 	 *
@@ -181,7 +176,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - object
 	 *
@@ -196,7 +190,6 @@ class CI_DB_cubrid_result extends CI_DB_result {
 	}
 
 }
-
 
 /* End of file cubrid_result.php */
 /* Location: ./system/database/drivers/cubrid/cubrid_result.php */

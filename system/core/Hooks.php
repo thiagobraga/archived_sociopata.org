@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -26,26 +28,29 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/encryption.html
  */
-class CI_Hooks {
+class CI_Hooks
+{
 
 	/**
 	 * Determines wether hooks are enabled
 	 *
 	 * @var bool
 	 */
-	var $enabled		= FALSE;
+	var $enabled = FALSE;
+
 	/**
 	 * List of all hooks set in config/hooks.php
 	 *
 	 * @var array
 	 */
-	var $hooks			= array();
+	var $hooks = array();
+
 	/**
 	 * Determines wether hook is in progress, used to prevent infinte loops
 	 *
 	 * @var bool
 	 */
-	var $in_progress	= FALSE;
+	var $in_progress = FALSE;
 
 	/**
 	 * Constructor
@@ -58,7 +63,6 @@ class CI_Hooks {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Initialize the Hooks Preferences
 	 *
@@ -67,7 +71,7 @@ class CI_Hooks {
 	 */
 	function _initialize()
 	{
-		$CFG =& load_class('Config', 'core');
+		$CFG = & load_class('Config', 'core');
 
 		// If hooks are not enabled in the config file
 		// there is nothing else to do
@@ -80,27 +84,26 @@ class CI_Hooks {
 		// Grab the "hooks" definition file.
 		// If there are no hooks, we're done.
 
-		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/hooks.php'))
+		if (defined('ENVIRONMENT') AND is_file(APPPATH . 'config/' . ENVIRONMENT . '/hooks.php'))
 		{
-		    include(APPPATH.'config/'.ENVIRONMENT.'/hooks.php');
+			include(APPPATH . 'config/' . ENVIRONMENT . '/hooks.php');
 		}
-		elseif (is_file(APPPATH.'config/hooks.php'))
+		elseif (is_file(APPPATH . 'config/hooks.php'))
 		{
-			include(APPPATH.'config/hooks.php');
+			include(APPPATH . 'config/hooks.php');
 		}
 
 
-		if ( ! isset($hook) OR ! is_array($hook))
+		if (!isset($hook) OR !is_array($hook))
 		{
 			return;
 		}
 
-		$this->hooks =& $hook;
+		$this->hooks = & $hook;
 		$this->enabled = TRUE;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Call Hook
 	 *
@@ -112,7 +115,7 @@ class CI_Hooks {
 	 */
 	function _call_hook($which = '')
 	{
-		if ( ! $this->enabled OR ! isset($this->hooks[$which]))
+		if (!$this->enabled OR !isset($this->hooks[$which]))
 		{
 			return FALSE;
 		}
@@ -133,7 +136,6 @@ class CI_Hooks {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Run Hook
 	 *
@@ -145,7 +147,7 @@ class CI_Hooks {
 	 */
 	function _run_hook($data)
 	{
-		if ( ! is_array($data))
+		if (!is_array($data))
 		{
 			return FALSE;
 		}
@@ -153,7 +155,6 @@ class CI_Hooks {
 		// -----------------------------------
 		// Safety - Prevents run-away loops
 		// -----------------------------------
-
 		// If the script being called happens to have the same
 		// hook call within it a loop can happen
 
@@ -166,14 +167,14 @@ class CI_Hooks {
 		// Set file path
 		// -----------------------------------
 
-		if ( ! isset($data['filepath']) OR ! isset($data['filename']))
+		if (!isset($data['filepath']) OR !isset($data['filename']))
 		{
 			return FALSE;
 		}
 
-		$filepath = APPPATH.$data['filepath'].'/'.$data['filename'];
+		$filepath = APPPATH . $data['filepath'] . '/' . $data['filename'];
 
-		if ( ! file_exists($filepath))
+		if (!file_exists($filepath))
 		{
 			return FALSE;
 		}
@@ -182,9 +183,9 @@ class CI_Hooks {
 		// Set class/function name
 		// -----------------------------------
 
-		$class		= FALSE;
-		$function	= FALSE;
-		$params		= '';
+		$class = FALSE;
+		$function = FALSE;
+		$params = '';
 
 		if (isset($data['class']) AND $data['class'] != '')
 		{
@@ -218,7 +219,7 @@ class CI_Hooks {
 
 		if ($class !== FALSE)
 		{
-			if ( ! class_exists($class))
+			if (!class_exists($class))
 			{
 				require($filepath);
 			}
@@ -228,7 +229,7 @@ class CI_Hooks {
 		}
 		else
 		{
-			if ( ! function_exists($function))
+			if (!function_exists($function))
 			{
 				require($filepath);
 			}

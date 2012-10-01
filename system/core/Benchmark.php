@@ -1,18 +1,20 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
  * An open source application development framework for PHP 5.1.6 or newer
  *
- * @package		CodeIgniter
- * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
- * @license		http://codeigniter.com/user_guide/license.html
- * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @package			CodeIgniter
+ * @author			ExpressionEngine Dev Team
+ * @copyright		Copyright (c) 2008 - 2011, EllisLab, Inc.
+ * @license			http://codeigniter.com/user_guide/license.html
+ * @link				http://codeigniter.com
+ * @since				Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -21,13 +23,14 @@
  * This class enables you to mark points and calculate the time difference
  * between them.  Memory consumption can also be displayed.
  *
- * @package		CodeIgniter
+ * @package			CodeIgniter
  * @subpackage	Libraries
- * @category	Libraries
- * @author		ExpressionEngine Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/benchmark.html
+ * @category		Libraries
+ * @author			ExpressionEngine Dev Team
+ * @link				http://codeigniter.com/user_guide/libraries/benchmark.html
  */
-class CI_Benchmark {
+class CI_Benchmark
+{
 
 	/**
 	 * List of all benchmark markers and when they were added
@@ -54,7 +57,6 @@ class CI_Benchmark {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Calculates the time difference between two marked points.
 	 *
@@ -76,12 +78,12 @@ class CI_Benchmark {
 			return '{elapsed_time}';
 		}
 
-		if ( ! isset($this->marker[$point1]))
+		if (!isset($this->marker[$point1]))
 		{
 			return '';
 		}
 
-		if ( ! isset($this->marker[$point2]))
+		if (!isset($this->marker[$point2]))
 		{
 			$this->marker[$point2] = microtime();
 		}
@@ -93,7 +95,6 @@ class CI_Benchmark {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Memory Usage
 	 *

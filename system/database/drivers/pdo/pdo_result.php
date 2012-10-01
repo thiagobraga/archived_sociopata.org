@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -9,10 +12,9 @@
  * @license		http://codeigniter.com/user_guide/license.html
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com
- * @since		Version 2.1.0
+ * @since		Version 2.1.2
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,8 @@
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_pdo_result extends CI_DB_result {
+class CI_DB_pdo_result extends CI_DB_result
+{
 
 	/**
 	 * Number of rows in the result set
@@ -34,11 +37,21 @@ class CI_DB_pdo_result extends CI_DB_result {
 	 */
 	function num_rows()
 	{
-		return $this->result_id->rowCount();
+		if (is_numeric(stripos($this->result_id->queryString, 'SELECT')))
+		{
+			$dbh = $this->conn_id;
+			$query = $dbh->query($this->result_id->queryString);
+			$result = $query->fetchAll();
+			unset($dbh, $query);
+			return count($result);
+		}
+		else
+		{
+			return $this->result_id->rowCount();
+		}
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Number of fields in the result set
 	 *
@@ -51,7 +64,6 @@ class CI_DB_pdo_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Field Names
 	 *
@@ -70,7 +82,6 @@ class CI_DB_pdo_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data
 	 *
@@ -82,14 +93,14 @@ class CI_DB_pdo_result extends CI_DB_result {
 	function field_data()
 	{
 		$data = array();
-	
+
 		try
 		{
-			for($i = 0; $i < $this->num_fields(); $i++)
+			for ($i = 0; $i < $this->num_fields(); $i++)
 			{
 				$data[] = $this->result_id->getColumnMeta($i);
 			}
-			
+
 			return $data;
 		}
 		catch (Exception $e)
@@ -103,7 +114,6 @@ class CI_DB_pdo_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Free the result
 	 *
@@ -118,7 +128,6 @@ class CI_DB_pdo_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Data Seek
 	 *
@@ -135,7 +144,6 @@ class CI_DB_pdo_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - associative array
 	 *
@@ -150,7 +158,6 @@ class CI_DB_pdo_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - object
 	 *
@@ -160,12 +167,11 @@ class CI_DB_pdo_result extends CI_DB_result {
 	 * @return	object
 	 */
 	function _fetch_object()
-	{	
+	{
 		return $this->result_id->fetchObject();
 	}
 
 }
-
 
 /* End of file pdo_result.php */
 /* Location: ./system/database/drivers/pdo/pdo_result.php */

@@ -1,4 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -6,13 +9,12 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2006 - 2011 EllisLab, Inc.
+ * @copyright	Copyright (c) 2006 - 2012 EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 2.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,8 +26,8 @@
  * @author		ExpressionEngine Dev Team
  * @link
  */
-
-class CI_Cache_dummy extends CI_Driver {
+class CI_Cache_dummy extends CI_Driver
+{
 
 	/**
 	 * Get
@@ -41,7 +43,6 @@ class CI_Cache_dummy extends CI_Driver {
 	}
 
 	// ------------------------------------------------------------------------
-
 	/**
 	 * Cache Save
 	 *
@@ -57,7 +58,6 @@ class CI_Cache_dummy extends CI_Driver {
 	}
 
 	// ------------------------------------------------------------------------
-
 	/**
 	 * Delete from Cache
 	 *
@@ -70,7 +70,6 @@ class CI_Cache_dummy extends CI_Driver {
 	}
 
 	// ------------------------------------------------------------------------
-
 	/**
 	 * Clean the cache
 	 *
@@ -82,20 +81,18 @@ class CI_Cache_dummy extends CI_Driver {
 	}
 
 	// ------------------------------------------------------------------------
-
 	/**
 	 * Cache Info
 	 *
 	 * @param 	string		user/filehits
 	 * @return 	boolean		FALSE
 	 */
-	 public function cache_info($type = NULL)
-	 {
-		 return FALSE;
-	 }
+	public function cache_info($type = NULL)
+	{
+		return FALSE;
+	}
 
 	// ------------------------------------------------------------------------
-
 	/**
 	 * Get Cache Metadata
 	 *
@@ -108,7 +105,6 @@ class CI_Cache_dummy extends CI_Driver {
 	}
 
 	// ------------------------------------------------------------------------
-
 	/**
 	 * Is this caching driver supported on the system?
 	 * Of course this one is.
@@ -123,6 +119,7 @@ class CI_Cache_dummy extends CI_Driver {
 	// ------------------------------------------------------------------------
 
 }
+
 // End Class
 
 /* End of file Cache_dummy.php */

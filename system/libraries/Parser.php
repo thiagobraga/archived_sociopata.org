@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,10 +26,13 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/parser.html
  */
-class CI_Parser {
+class CI_Parser
+{
 
 	var $l_delim = '{';
+
 	var $r_delim = '}';
+
 	var $object;
 
 	/**
@@ -44,14 +49,13 @@ class CI_Parser {
 	 */
 	public function parse($template, $data, $return = FALSE)
 	{
-		$CI =& get_instance();
+		$CI = & get_instance();
 		$template = $CI->load->view($template, $data, TRUE);
 
 		return $this->_parse($template, $data, $return);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Parse a String
 	 *
@@ -70,7 +74,6 @@ class CI_Parser {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Parse a template
 	 *
@@ -98,13 +101,13 @@ class CI_Parser {
 			}
 			else
 			{
-				$template = $this->_parse_single($key, (string)$val, $template);
+				$template = $this->_parse_single($key, (string) $val, $template);
 			}
 		}
 
 		if ($return == FALSE)
 		{
-			$CI =& get_instance();
+			$CI = & get_instance();
 			$CI->output->append_output($template);
 		}
 
@@ -112,7 +115,6 @@ class CI_Parser {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Set the left/right variable delimiters
 	 *
@@ -128,7 +130,6 @@ class CI_Parser {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Parse a single key/value
 	 *
@@ -140,11 +141,10 @@ class CI_Parser {
 	 */
 	function _parse_single($key, $val, $string)
 	{
-		return str_replace($this->l_delim.$key.$this->r_delim, $val, $string);
+		return str_replace($this->l_delim . $key . $this->r_delim, $val, $string);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Parse a tag pair
 	 *
@@ -169,7 +169,7 @@ class CI_Parser {
 			$temp = $match['1'];
 			foreach ($row as $key => $val)
 			{
-				if ( ! is_array($val))
+				if (!is_array($val))
 				{
 					$temp = $this->_parse_single($key, $val, $temp);
 				}
@@ -186,7 +186,6 @@ class CI_Parser {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Matches a variable pair
 	 *
@@ -197,7 +196,7 @@ class CI_Parser {
 	 */
 	function _match_pair($string, $variable)
 	{
-		if ( ! preg_match("|" . preg_quote($this->l_delim) . $variable . preg_quote($this->r_delim) . "(.+?)". preg_quote($this->l_delim) . '/' . $variable . preg_quote($this->r_delim) . "|s", $string, $match))
+		if (!preg_match("|" . preg_quote($this->l_delim) . $variable . preg_quote($this->r_delim) . "(.+?)" . preg_quote($this->l_delim) . '/' . $variable . preg_quote($this->r_delim) . "|s", $string, $match))
 		{
 			return FALSE;
 		}
@@ -206,6 +205,7 @@ class CI_Parser {
 	}
 
 }
+
 // END Parser Class
 
 /* End of file Parser.php */

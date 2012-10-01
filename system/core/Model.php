@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/config.html
  */
-class CI_Model {
+class CI_Model
+{
 
 	/**
 	 * Constructor
@@ -47,10 +50,12 @@ class CI_Model {
 	 */
 	function __get($key)
 	{
-		$CI =& get_instance();
+		$CI = & get_instance();
 		return $CI->$key;
 	}
+
 }
+
 // END Model Class
 
 /* End of file Model.php */

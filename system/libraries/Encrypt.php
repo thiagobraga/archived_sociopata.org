@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -26,13 +28,19 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/encryption.html
  */
-class CI_Encrypt {
+class CI_Encrypt
+{
 
 	var $CI;
-	var $encryption_key	= '';
-	var $_hash_type	= 'sha1';
+
+	var $encryption_key = '';
+
+	var $_hash_type = 'sha1';
+
 	var $_mcrypt_exists = FALSE;
+
 	var $_mcrypt_cipher;
+
 	var $_mcrypt_mode;
 
 	/**
@@ -43,13 +51,12 @@ class CI_Encrypt {
 	 */
 	public function __construct()
 	{
-		$this->CI =& get_instance();
-		$this->_mcrypt_exists = ( ! function_exists('mcrypt_encrypt')) ? FALSE : TRUE;
+		$this->CI = & get_instance();
+		$this->_mcrypt_exists = (!function_exists('mcrypt_encrypt')) ? FALSE : TRUE;
 		log_message('debug', "Encrypt Class Initialized");
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch the encryption key
 	 *
@@ -69,7 +76,7 @@ class CI_Encrypt {
 				return $this->encryption_key;
 			}
 
-			$CI =& get_instance();
+			$CI = & get_instance();
 			$key = $CI->config->item('encryption_key');
 
 			if ($key == FALSE)
@@ -82,7 +89,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the encryption key
 	 *
@@ -96,7 +102,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Encode
 	 *
@@ -130,7 +135,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Decode
 	 *
@@ -168,7 +172,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Encode from Legacy
 	 *
@@ -223,7 +226,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * XOR Encode
 	 *
@@ -248,14 +250,13 @@ class CI_Encrypt {
 		$enc = '';
 		for ($i = 0; $i < strlen($string); $i++)
 		{
-			$enc .= substr($rand, ($i % strlen($rand)), 1).(substr($rand, ($i % strlen($rand)), 1) ^ substr($string, $i, 1));
+			$enc .= substr($rand, ($i % strlen($rand)), 1) . (substr($rand, ($i % strlen($rand)), 1) ^ substr($string, $i, 1));
 		}
 
 		return $this->_xor_merge($enc, $key);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * XOR Decode
 	 *
@@ -281,7 +282,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * XOR key + string Combiner
 	 *
@@ -305,7 +305,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Encrypt using Mcrypt
 	 *
@@ -318,11 +317,10 @@ class CI_Encrypt {
 	{
 		$init_size = mcrypt_get_iv_size($this->_get_cipher(), $this->_get_mode());
 		$init_vect = mcrypt_create_iv($init_size, MCRYPT_RAND);
-		return $this->_add_cipher_noise($init_vect.mcrypt_encrypt($this->_get_cipher(), $key, $data, $this->_get_mode(), $init_vect), $key);
+		return $this->_add_cipher_noise($init_vect . mcrypt_encrypt($this->_get_cipher(), $key, $data, $this->_get_mode(), $init_vect), $key);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Decrypt using Mcrypt
 	 *
@@ -347,7 +345,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Adds permuted noise to the IV + encrypted data to protect
 	 * against Man-in-the-middle attacks on CBC mode ciphers
@@ -380,7 +377,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Removes permuted noise from the IV + encrypted data, reversing
 	 * _add_cipher_noise()
@@ -418,7 +414,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the Mcrypt Cipher
 	 *
@@ -432,7 +427,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the Mcrypt Mode
 	 *
@@ -446,7 +440,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Get Mcrypt cipher Value
 	 *
@@ -464,7 +457,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Get Mcrypt Mode Value
 	 *
@@ -482,7 +474,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set the Hash type
 	 *
@@ -496,7 +487,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Hash encode a string
 	 *
@@ -510,7 +500,6 @@ class CI_Encrypt {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Generate an SHA1 Hash
 	 *
@@ -520,11 +509,11 @@ class CI_Encrypt {
 	 */
 	function sha1($str)
 	{
-		if ( ! function_exists('sha1'))
+		if (!function_exists('sha1'))
 		{
-			if ( ! function_exists('mhash'))
+			if (!function_exists('mhash'))
 			{
-				require_once(BASEPATH.'libraries/Sha1.php');
+				require_once(BASEPATH . 'libraries/Sha1.php');
 				$SH = new CI_SHA;
 				return $SH->generate($str);
 			}

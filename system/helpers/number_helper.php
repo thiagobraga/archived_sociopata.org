@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,6 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/helpers/number_helper.html
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -34,11 +35,12 @@
  * @param	mixed	// will be cast as int
  * @return	string
  */
-if ( ! function_exists('byte_format'))
+if (!function_exists('byte_format'))
 {
+
 	function byte_format($num, $precision = 1)
 	{
-		$CI =& get_instance();
+		$CI = & get_instance();
 		$CI->lang->load('number');
 
 		if ($num >= 1000000000000)
@@ -64,11 +66,12 @@ if ( ! function_exists('byte_format'))
 		else
 		{
 			$unit = $CI->lang->line('bytes');
-			return number_format($num).' '.$unit;
+			return number_format($num) . ' ' . $unit;
 		}
 
-		return number_format($num, $precision).' '.$unit;
+		return number_format($num, $precision) . ' ' . $unit;
 	}
+
 }
 
 

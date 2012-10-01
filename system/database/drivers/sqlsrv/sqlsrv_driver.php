@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -28,7 +30,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_sqlsrv_driver extends CI_DB {
+class CI_DB_sqlsrv_driver extends CI_DB
+{
 
 	var $dbdriver = 'sqlsrv';
 
@@ -37,6 +40,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 
 	// clause and character used for LIKE escape sequences
 	var $_like_escape_str = " ESCAPE '%s' ";
+
 	var $_like_escape_chr = '!';
 
 	/**
@@ -45,6 +49,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 * used for the count_all() and count_all_results() functions.
 	 */
 	var $_count_string = "SELECT COUNT(*) AS ";
+
 	var $_random_keyword = ' ASC'; // not currently supported
 
 	/**
@@ -53,23 +58,25 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 * @access	private called by the base class
 	 * @return	resource
 	 */
+
 	function db_connect($pooling = false)
 	{
 		// Check for a UTF-8 charset being passed as CI's default 'utf8'.
 		$character_set = (0 === strcasecmp('utf8', $this->char_set)) ? 'UTF-8' : $this->char_set;
 
 		$connection = array(
-			'UID'				=> empty($this->username) ? '' : $this->username,
-			'PWD'				=> empty($this->password) ? '' : $this->password,
-			'Database'			=> $this->database,
+			'UID' => empty($this->username) ? '' : $this->username,
+			'PWD' => empty($this->password) ? '' : $this->password,
+			'Database' => $this->database,
 			'ConnectionPooling' => $pooling ? 1 : 0,
-			'CharacterSet'		=> $character_set,
+			'CharacterSet' => $character_set,
 			'ReturnDatesAsStrings' => 1
 		);
-		
-		// If the username and password are both empty, assume this is a 
+
+		// If the username and password are both empty, assume this is a
 		// 'Windows Authentication Mode' connection.
-		if(empty($connection['UID']) && empty($connection['PWD'])) {
+		if (empty($connection['UID']) && empty($connection['PWD']))
+		{
 			unset($connection['UID'], $connection['PWD']);
 		}
 
@@ -77,7 +84,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Persistent database connection
 	 *
@@ -90,7 +96,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Reconnect
 	 *
@@ -106,7 +111,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Select the database
 	 *
@@ -119,7 +123,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Set client character set
 	 *
@@ -135,7 +138,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Execute the query
 	 *
@@ -147,13 +149,12 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	{
 		$sql = $this->_prep_query($sql);
 		return sqlsrv_query($this->conn_id, $sql, null, array(
-			'Scrollable'				=> SQLSRV_CURSOR_STATIC,
-			'SendStreamParamsAtExec'	=> true
-		));
+				'Scrollable' => SQLSRV_CURSOR_STATIC,
+				'SendStreamParamsAtExec' => true
+			));
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Prep the query
 	 *
@@ -169,7 +170,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Begin Transaction
 	 *
@@ -178,7 +178,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function trans_begin($test_mode = FALSE)
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -198,7 +198,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Commit Transaction
 	 *
@@ -207,7 +206,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function trans_commit()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -222,7 +221,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Rollback Transaction
 	 *
@@ -231,7 +229,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function trans_rollback()
 	{
-		if ( ! $this->trans_enabled)
+		if (!$this->trans_enabled)
 		{
 			return TRUE;
 		}
@@ -246,7 +244,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape String
 	 *
@@ -262,7 +259,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Affected Rows
 	 *
@@ -275,32 +271,30 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
-	* Insert ID
-	*
-	* Returns the last id created in the Identity column.
-	*
-	* @access public
-	* @return integer
-	*/
+	 * Insert ID
+	 *
+	 * Returns the last id created in the Identity column.
+	 *
+	 * @access public
+	 * @return integer
+	 */
 	function insert_id()
 	{
 		return $this->query('select @@IDENTITY as insert_id')->row('insert_id');
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
-	* Parse major version
-	*
-	* Grabs the major version number from the
-	* database server version string passed in.
-	*
-	* @access private
-	* @param string $version
-	* @return int16 major version number
-	*/
+	 * Parse major version
+	 *
+	 * Grabs the major version number from the
+	 * database server version string passed in.
+	 *
+	 * @access private
+	 * @param string $version
+	 * @return int16 major version number
+	 */
 	function _parse_major_version($version)
 	{
 		preg_match('/([0-9]+)\.([0-9]+)\.([0-9]+)/', $version, $ver_info);
@@ -308,13 +302,12 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
-	* Version number query string
-	*
-	* @access public
-	* @return string
-	*/
+	 * Version number query string
+	 *
+	 * @access public
+	 * @return string
+	 */
 	function _version()
 	{
 		$info = sqlsrv_server_info($this->conn_id);
@@ -322,7 +315,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * "Count All" query
 	 *
@@ -337,9 +329,9 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	{
 		if ($table == '')
 			return '0';
-	
+
 		$query = $this->query("SELECT COUNT(*) AS numrows FROM " . $this->dbprefix . $table);
-		
+
 		if ($query->num_rows() == 0)
 			return '0';
 
@@ -349,7 +341,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * List table query
 	 *
@@ -365,7 +356,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * List column query
 	 *
@@ -377,11 +367,10 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function _list_columns($table = '')
 	{
-		return "SELECT * FROM INFORMATION_SCHEMA.Columns WHERE TABLE_NAME = '".$this->_escape_table($table)."'";
+		return "SELECT * FROM INFORMATION_SCHEMA.Columns WHERE TABLE_NAME = '" . $this->_escape_table($table) . "'";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data query
 	 *
@@ -393,11 +382,10 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function _field_data($table)
 	{
-		return "SELECT TOP 1 * FROM " . $this->_escape_table($table);	
+		return "SELECT TOP 1 * FROM " . $this->_escape_table($table);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message string
 	 *
@@ -411,7 +399,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * The error message number
 	 *
@@ -425,7 +412,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Escape Table Name
 	 *
@@ -439,8 +425,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	function _escape_table($table)
 	{
 		return $table;
-	}	
-
+	}
 
 	/**
 	 * Escape the SQL Identifiers
@@ -457,7 +442,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * From Tables
 	 *
@@ -470,7 +454,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function _from_tables($tables)
 	{
-		if ( ! is_array($tables))
+		if (!is_array($tables))
 		{
 			$tables = array($tables);
 		}
@@ -479,7 +463,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Insert statement
 	 *
@@ -492,12 +475,11 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 * @return	string
 	 */
 	function _insert($table, $keys, $values)
-	{	
-		return "INSERT INTO ".$this->_escape_table($table)." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
+	{
+		return "INSERT INTO " . $this->_escape_table($table) . " (" . implode(', ', $keys) . ") VALUES (" . implode(', ', $values) . ")";
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Update statement
 	 *
@@ -513,16 +495,15 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function _update($table, $values, $where)
 	{
-		foreach($values as $key => $val)
+		foreach ($values as $key => $val)
 		{
-			$valstr[] = $key." = ".$val;
+			$valstr[] = $key . " = " . $val;
 		}
-	
-		return "UPDATE ".$this->_escape_table($table)." SET ".implode(', ', $valstr)." WHERE ".implode(" ", $where);
-	}
-	
-	// --------------------------------------------------------------------
 
+		return "UPDATE " . $this->_escape_table($table) . " SET " . implode(', ', $valstr) . " WHERE " . implode(" ", $where);
+	}
+
+	// --------------------------------------------------------------------
 	/**
 	 * Truncate statement
 	 *
@@ -536,11 +517,10 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function _truncate($table)
 	{
-		return "TRUNCATE ".$table;
+		return "TRUNCATE " . $table;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Delete statement
 	 *
@@ -554,11 +534,10 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function _delete($table, $where)
 	{
-		return "DELETE FROM ".$this->_escape_table($table)." WHERE ".implode(" ", $where);
+		return "DELETE FROM " . $this->_escape_table($table) . " WHERE " . implode(" ", $where);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Limit string
 	 *
@@ -573,12 +552,11 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	function _limit($sql, $limit, $offset)
 	{
 		$i = $limit + $offset;
-	
-		return preg_replace('/(^\SELECT (DISTINCT)?)/i','\\1 TOP '.$i.' ', $sql);		
+
+		return preg_replace('/(^\SELECT (DISTINCT)?)/i', '\\1 TOP ' . $i . ' ', $sql);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Close DB Connection
 	 *
@@ -592,8 +570,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 }
-
-
 
 /* End of file mssql_driver.php */
 /* Location: ./system/database/drivers/mssql/mssql_driver.php */

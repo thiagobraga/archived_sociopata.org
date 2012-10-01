@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -42,7 +44,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/general/encryption.html
  */
-class CI_SHA1 {
+class CI_SHA1
+{
 
 	public function __construct()
 	{
@@ -74,10 +77,10 @@ class CI_SHA1 {
 
 		$x[$n * 16 - 1] = strlen($str) * 8;
 
-		$a =  1732584193;
+		$a = 1732584193;
 		$b = -271733879;
 		$c = -1732584194;
-		$d =  271733878;
+		$d = 271733878;
 		$e = -1009589776;
 
 		for ($i = 0; $i < count($x); $i += 16)
@@ -115,11 +118,10 @@ class CI_SHA1 {
 			$e = $this->_safe_add($e, $olde);
 		}
 
-		return $this->_hex($a).$this->_hex($b).$this->_hex($c).$this->_hex($d).$this->_hex($e);
+		return $this->_hex($a) . $this->_hex($b) . $this->_hex($c) . $this->_hex($d) . $this->_hex($e);
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Convert a decimal to hex
 	 *
@@ -133,14 +135,13 @@ class CI_SHA1 {
 
 		if (strlen($str) == 7)
 		{
-			$str = '0'.$str;
+			$str = '0' . $str;
 		}
 
 		return $str;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 *  Return result based on iteration
 	 *
@@ -160,7 +161,6 @@ class CI_SHA1 {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Determine the additive constant
 	 *
@@ -188,7 +188,6 @@ class CI_SHA1 {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Add integers, wrapping at 2^32
 	 *
@@ -204,7 +203,6 @@ class CI_SHA1 {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Bitwise rotate a 32-bit number
 	 *
@@ -217,7 +215,6 @@ class CI_SHA1 {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Pad string with zero
 	 *
@@ -237,14 +234,16 @@ class CI_SHA1 {
 			$bin = substr($bin, 0, strlen($bin) - $b);
 		}
 
-		for ($i=0; $i < $b; $i++)
+		for ($i = 0; $i < $b; $i++)
 		{
-			$bin = "0".$bin;
+			$bin = "0" . $bin;
 		}
 
 		return bindec($bin);
 	}
+
 }
+
 // END CI_SHA
 
 /* End of file Sha1.php */

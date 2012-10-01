@@ -1,4 +1,7 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * CodeIgniter
  *
@@ -12,7 +15,6 @@
  * @since		Version 1.0
  * @filesource
  */
-
 // ------------------------------------------------------------------------
 
 /**
@@ -24,7 +26,8 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_odbc_result extends CI_DB_result {
+class CI_DB_odbc_result extends CI_DB_result
+{
 
 	/**
 	 * Number of rows in the result set
@@ -38,7 +41,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Number of fields in the result set
 	 *
@@ -51,7 +53,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Field Names
 	 *
@@ -65,14 +66,13 @@ class CI_DB_odbc_result extends CI_DB_result {
 		$field_names = array();
 		for ($i = 0; $i < $this->num_fields(); $i++)
 		{
-			$field_names[]	= odbc_field_name($this->result_id, $i);
+			$field_names[] = odbc_field_name($this->result_id, $i);
 		}
 
 		return $field_names;
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Field data
 	 *
@@ -86,12 +86,12 @@ class CI_DB_odbc_result extends CI_DB_result {
 		$retval = array();
 		for ($i = 0; $i < $this->num_fields(); $i++)
 		{
-			$F				= new stdClass();
-			$F->name		= odbc_field_name($this->result_id, $i);
-			$F->type		= odbc_field_type($this->result_id, $i);
-			$F->max_length	= odbc_field_len($this->result_id, $i);
+			$F = new stdClass();
+			$F->name = odbc_field_name($this->result_id, $i);
+			$F->type = odbc_field_type($this->result_id, $i);
+			$F->max_length = odbc_field_len($this->result_id, $i);
 			$F->primary_key = 0;
-			$F->default		= '';
+			$F->default = '';
 
 			$retval[] = $F;
 		}
@@ -100,7 +100,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Free the result
 	 *
@@ -116,7 +115,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Data Seek
 	 *
@@ -133,7 +131,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - associative array
 	 *
@@ -155,7 +152,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * Result - object
 	 *
@@ -176,7 +172,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 		}
 	}
 
-
 	/**
 	 * Result - object
 	 *
@@ -186,18 +181,20 @@ class CI_DB_odbc_result extends CI_DB_result {
 	 * @access	private
 	 * @return	object
 	 */
-	function _odbc_fetch_object(& $odbc_result) {
+	function _odbc_fetch_object(& $odbc_result)
+	{
 		$rs = array();
 		$rs_obj = FALSE;
-		if (odbc_fetch_into($odbc_result, $rs)) {
-			foreach ($rs as $k=>$v) {
-				$field_name= odbc_field_name($odbc_result, $k+1);
+		if (odbc_fetch_into($odbc_result, $rs))
+		{
+			foreach ($rs as $k => $v)
+			{
+				$field_name = odbc_field_name($odbc_result, $k + 1);
 				$rs_obj->$field_name = $v;
 			}
 		}
 		return $rs_obj;
 	}
-
 
 	/**
 	 * Result - array
@@ -208,13 +205,16 @@ class CI_DB_odbc_result extends CI_DB_result {
 	 * @access	private
 	 * @return	array
 	 */
-	function _odbc_fetch_array(& $odbc_result) {
+	function _odbc_fetch_array(& $odbc_result)
+	{
 		$rs = array();
 		$rs_assoc = FALSE;
-		if (odbc_fetch_into($odbc_result, $rs)) {
-			$rs_assoc=array();
-			foreach ($rs as $k=>$v) {
-				$field_name= odbc_field_name($odbc_result, $k+1);
+		if (odbc_fetch_into($odbc_result, $rs))
+		{
+			$rs_assoc = array();
+			foreach ($rs as $k => $v)
+			{
+				$field_name = odbc_field_name($odbc_result, $k + 1);
 				$rs_assoc[$field_name] = $v;
 			}
 		}
@@ -222,7 +222,6 @@ class CI_DB_odbc_result extends CI_DB_result {
 	}
 
 }
-
 
 /* End of file odbc_result.php */
 /* Location: ./system/database/drivers/odbc/odbc_result.php */
