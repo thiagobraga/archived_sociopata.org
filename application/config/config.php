@@ -21,7 +21,7 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
-			$config['base_url'] = 'http://localhost:8080/sociopata';
+			$config['base_url'] = 'http://localhost/sociopata';
 			break;
 
 		case 'testing':
