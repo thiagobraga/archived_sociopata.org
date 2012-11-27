@@ -6,15 +6,15 @@ class Home extends CI_Controller
 {
 
 	/**
-	 * index()
 	 * Carrega a página inicial do site
+     * @since 1.0
 	 */
 	public function index()
 	{
 		$data = new stdClass();
 		$data->css = array('mods/home');
 		$data->js = array('mods/home');
-		$data->body = 'home/home';
+		$data->body = 'home';
 
 		$this->load->view('base', $data);
 	}
