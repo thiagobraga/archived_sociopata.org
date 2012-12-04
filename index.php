@@ -35,6 +35,7 @@ switch ($_SERVER['HTTP_HOST'])
     break;
 
   case 'www.' . PROJECT . '.org':
+  case PROJECT . '.org':
     define('ENVIRONMENT', 'production');
     break;
 

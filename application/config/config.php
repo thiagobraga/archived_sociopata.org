@@ -29,7 +29,7 @@ if (defined('ENVIRONMENT'))
       break;
 
     case 'production':
-      $config['base_url'] = 'http://www.' . PROJECT . '.com.br';
+      $config['base_url'] = 'http://www.' . PROJECT . '.org';
       break;
 
     default:
@@ -45,7 +45,7 @@ if (defined('ENVIRONMENT'))
  *  Typically this will be your index.php file, unless you've renamed it to
  *  something else. If you are using mod_rewrite to remove the page set this
  *  variable so that it is blank.
- * 
+ *
  */
 $config['index_page'] = '';
 

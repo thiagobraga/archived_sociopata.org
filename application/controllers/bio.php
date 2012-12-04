@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends MY_Controller
+class Bio extends MY_Controller
 {
 
 	/**
@@ -12,14 +12,14 @@ class Home extends MY_Controller
 	public function index()
 	{
 		$data = new stdClass();
-		$data->css = array('mods/home');
-		$data->js = array('plugins/stratus/stratus', 'mods/home');
-		$data->content = 'home';
+		$data->css = array('mods/bio');
+		$data->js = array('plugins/stratus/stratus', 'mods/bio');
+		$data->content = 'bio';
 
 		$this->load->view('base', $data);
 	}
 
 }
 
-/* End of file home.php */
-/* Location: ./application/controllers/home.php */
+/* End of file bio.php */
+/* Location: ./application/controllers/bio.php */
