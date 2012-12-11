@@ -30,12 +30,8 @@ define('PROJECT', 'sociopata');
  */
 switch ($_SERVER['HTTP_HOST'])
 {
-  case 'www.thiagobraga.org/' . PROJECT:
-    define('ENVIRONMENT', 'testing');
-    break;
-
-  case 'www.' . PROJECT . '.org':
-  case PROJECT . '.org':
+  case 'sociopata.org':
+  case 'www.sociopata.org':
     define('ENVIRONMENT', 'production');
     break;
 
