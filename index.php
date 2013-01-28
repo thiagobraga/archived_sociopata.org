@@ -35,6 +35,10 @@ switch ($_SERVER['HTTP_HOST'])
     define('ENVIRONMENT', 'production');
     break;
 
+  case 'blog.sitesg.com.br':
+    define('ENVIRONMENT', 'testing');
+    break;
+
   default:
     define('ENVIRONMENT', 'development');
 }

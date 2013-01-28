@@ -2,22 +2,28 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Bio
+ * @author Thiago Braga <thiago@sociopata.org>
+ * @access public
+ * @version 1.0
+ */
 class Bio extends MY_Controller
 {
 
-	/**
-	 * Carrega a página inicial do site
-     * @since 1.0
-	 */
-	public function index()
-	{
-		$data = new stdClass();
-		$data->css = array('mods/bio');
-		$data->js = array('plugins/stratus/stratus', 'mods/bio');
-		$data->content = 'bio';
+  /**
+   * Carrega a página inicial do site
+   * @since 1.0
+   */
+  public function index()
+  {
+    $this->data->content = 'bio/bio';
+    $this->data->css = array('mods/bio');
+    $this->data->js = array('mods/bio');
 
-		$this->load->view('base', $data);
-	}
+    $this->lang->load('bio');
+    $this->parser->parse('base', $this->data);
+  }
 
 }
 

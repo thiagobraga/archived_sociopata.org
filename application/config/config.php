@@ -23,6 +23,10 @@ if (defined('ENVIRONMENT'))
       $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT;
       break;
 
+    case 'testing':
+      $config['base_url'] = 'http://blog.sitesg.com.br';
+      break;
+
     case 'production':
       $config['base_url'] = 'http://www.' . PROJECT . '.org';
       break;

@@ -2,22 +2,28 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Social
+ * @author Thiago Braga <thiago@sociopata.org>
+ * @access public
+ * @version 1.0
+ */
 class Social extends MY_Controller
 {
 
-	/**
-	 * Carrega a página inicial do site
-     * @since 1.0
-	 */
-	public function index()
-	{
-		$data = new stdClass();
-		$data->css = array('mods/social');
-		$data->js = array('plugins/stratus/stratus', 'mods/social');
-		$data->content = 'social';
+  /**
+   * Carrega a página inicial do site
+   * @since 1.0
+   */
+  public function index()
+  {
+    $this->data->content = 'social/social';
+    $this->data->css = array('mods/social');
+    $this->data->js = array('mods/social');
 
-		$this->load->view('base', $data);
-	}
+    $this->lang->load('social');
+    $this->parser->parse('base', $this->data);
+  }
 
 }
 

@@ -1,21 +1,11 @@
 /*!
  * home.js
- * @project       Sociopata
- * @lastmodified  28/11/2012
- * @developed     Thiago Braga <thibraga06@gmail.com>
-*/
-$(function() {
-  var slider = $('#slider');
+ * @project   Sociopata
+ * @developer Thiago Braga <thiago@sociopata.org>
+ * @modified  21/01/2013
+ * @url       www.sociopata.org
+ */
 
-  /*
-  $.stratus({
-    align: 'bottom',
-    download: false,
-    links: 'http://soundcloud.com/sociopata',
-    random: true,
-    theme: 'http://stratus.sc/themes/dark.css'
-  });
-  */
+(function($) {
 
-  slider.carousel();
-});
+})(jQuery);

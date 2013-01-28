@@ -2,34 +2,36 @@
 <html lang="pt-br" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
 
   <!-- HEAD -->
-  <?php $this->load->view("base/head") ?>
+  <? $this->load->view('_base/head') ?>
 
   <body>
-    <!-- HEADER -->
-    <?php $this->load->view("base/header") ?>
+    <div class="wrap">
+      <!-- NAVBAR -->
+      <? $this->load->view('_base/navbar') ?>
 
-    <div class="container">
-      <!--[if lt IE 7]>
-      <p class="chromeframe">
-      Você está usando um navegador desatualizado.
-      <a href="//browsehappy.com/" target="_blank">Atualize seu browser</a> ou
-      <a href="//www.google.com/chromeframe/?redirect=true" target="_blank">
-      instale o Google Chrome Frame
-      </a>
-      para uma melhor experiência com esse site.
-      </p>
-      <![endif]-->
+      <!-- HEADER -->
+      <? $this->load->view('_base/header') ?>
 
-      <!-- CONTENT -->
-      <div class="content">
-        <?php $this->load->view($content) ?>
+
+      <div class="container">
+
+        <!-- CONTENT -->
+        <div class="content">
+          <section class="row-fluid">
+            <div class="page-header">
+              <h1><?= lang('page') ?></h1>
+            </div>
+          </section>
+
+          <? $this->load->view($content) ?>
+        </div>
       </div>
     </div>
 
     <!-- FOOTER -->
-    <?php $this->load->view("base/footer") ?>
+    <? $this->load->view('_base/footer') ?>
   </body>
 
   <!-- SCRIPTS -->
-  <?php $this->load->view("base/scripts") ?>
+  <? $this->load->view('_base/scripts') ?>
 </html>

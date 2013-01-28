@@ -2,22 +2,28 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Lyrics
+ * @author Thiago Braga <thiago@sociopata.org>
+ * @access public
+ * @version 1.0
+ */
 class Lyrics extends MY_Controller
 {
 
-	/**
-	 * Carrega a página inicial do site
-     * @since 1.0
-	 */
-	public function index()
-	{
-		$data = new stdClass();
-		$data->css = array('mods/lyrics');
-		$data->js = array('plugins/stratus/stratus', 'mods/lyrics');
-		$data->content = 'lyrics';
+  /**
+   * Carrega a página inicial do site
+   * @since 1.0
+   */
+  public function index()
+  {
+    $this->data->content = 'lyrics/lyrics';
+    $this->data->css = array('mods/lyrics');
+    $this->data->js = array('mods/lyrics');
 
-		$this->load->view('base', $data);
-	}
+    $this->lang->load('lyrics');
+    $this->parser->parse('base', $this->data);
+  }
 
 }
 
