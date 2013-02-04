@@ -19,16 +19,12 @@ if (defined('ENVIRONMENT'))
 {
   switch (ENVIRONMENT)
   {
+    case 'production':
+      $config['base_url'] = 'http://' . PROJECT . '.org';
+      break;
+
     case 'development':
       $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT;
-      break;
-
-    case 'testing':
-      $config['base_url'] = 'http://blog.sitesg.com.br';
-      break;
-
-    case 'production':
-      $config['base_url'] = 'http://www.' . PROJECT . '.org';
       break;
 
     default:
@@ -244,7 +240,7 @@ $config['cache_path'] = '';
  *  MUST set an encryption key.  See the user guide for info.
  *
  */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'br4g4.encr1pt3d';
 
 /*
  * --------------------------------------------------------------------------

@@ -2,30 +2,68 @@
  * main.js
  * @project   Sociopata
  * @developer Thiago Braga <thiago@sociopata.org>
- * @modified  21/01/2013
+ * @modified  29/01/2013
  * @url       www.sociopata.org
  */
 
-(function($) {
+/**
+ * @name          loag_GoogleAnalytics
+ * @description   Load the Google Analytics API asynchronous
+ * @version       1.0
+ */
+var load_GoogleAnalytics = function () {
+  var s = document.createElement('script');
+  s.src = ('https:' == document.location.protocol ? 'https://ssl' : '//www') + '.google-analytics.com/ga.js';
+  s.type = 'text/javascript';
+  s.async = true;
+  document.body.appendChild(s);
+},
 
-  /* Navbar highlight */
+
+/**
+ * @name          _gaq
+ * @description   Set the Google Analytics account
+ * @version       1.0
+ */
+_gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36613651-1']);
+_gaq.push(['_trackPageview']);
+
+
+$(function() {
+
+  /*
+   * Target _blank for all external links
+   */
+  var external = $('a[href^="//"]');
+  external.attr('target', '_blank');
+
+  /*
+   * Navbar highlight
+   */
   var menu = $('#menu a');
   for (var i = 0; i < menu.length; i++) {
     if (menu.eq(i).attr('href') == window.location.href)
       menu.eq(i).parent().addClass('active');
   }
 
-  /* Slider */
+  /*
+   * Slider
+   */
   var slider = $('#slider');
-  slider.carousel();
-
-  /* Stratus */
-  $.stratus({
-    align: 'bottom',
-    download: false,
-    links: 'http://soundcloud.com/sociopata',
-    random: true,
-    theme: 'http://stratus.sc/themes/dark.css'
+  slider.carousel({
+    interval: 6000
   });
 
-})(jQuery);
+  /*
+   * Tooltip
+   */
+  var tip = $('[title]');
+  tip.tooltip();
+
+  /*
+   * Google Analytics
+   */
+  load_GoogleAnalytics();
+
+});
