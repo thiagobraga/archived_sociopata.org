@@ -22,7 +22,7 @@ class Contact extends MY_Controller
     $this->data->js = array('mods/contact');
 
     $this->lang->load('contact');
-    $this->parser->parse('base', $this->data);
+    $this->load->view('base', $this->data);
   }
 
 }

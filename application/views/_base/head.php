@@ -37,11 +37,12 @@
 
   <!-- CSS -->
   <? if (ENVIRONMENT == 'production') : ?>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" />
   <? else : ?>
     <link href="<?= base_url("assets/bootstrap/css/bootstrap.css") ?>" rel="stylesheet" />
     <link href="<?= base_url("assets/bootstrap/css/bootstrap-responsive.css") ?>" rel="stylesheet" />
   <? endif; ?>
+
   <link href="<?= base_url("assets/css/main.css") ?>" rel="stylesheet" />
   <? if (!empty($css)) : ?>
     <? foreach ($css as $file) : ?>

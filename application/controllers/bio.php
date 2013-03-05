@@ -22,7 +22,7 @@ class Bio extends MY_Controller
     $this->data->js = array('mods/bio');
 
     $this->lang->load('bio');
-    $this->parser->parse('base', $this->data);
+    $this->load->view('base', $this->data);
   }
 
 }

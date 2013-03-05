@@ -2,13 +2,16 @@
 
 /**
  * -----------------------------------------------------------------------------
- * PROJECT NAME
+ * PROJECT
  * -----------------------------------------------------------------------------
  *
  * Define the project name to use in configuration files
+ * and the base_url used for different environments
  *
  */
 define('PROJECT', 'sociopata');
+define('PRODUCTION', 'sociopata.org');
+define('TESTING', 'test.sociopata.org');
 
 /**
  * -----------------------------------------------------------------------------
@@ -30,14 +33,18 @@ define('PROJECT', 'sociopata');
  */
 switch ($_SERVER['HTTP_HOST'])
 {
-  case 'sociopata.org':
-  case 'www.sociopata.org':
+  case TESTING:
+    define('ENVIRONMENT', 'testing');
+    break;
+
+  case PRODUCTION:
     define('ENVIRONMENT', 'production');
     break;
 
   default:
     define('ENVIRONMENT', 'development');
 }
+
 
 /**
  * -----------------------------------------------------------------------------
@@ -55,8 +62,9 @@ if (defined('ENVIRONMENT'))
       error_reporting(E_ALL);
       break;
 
+    case 'testing':
     case 'production':
-      error_reporting(E_ALL);
+      error_reporting(0);
       break;
 
     default:
@@ -64,10 +72,10 @@ if (defined('ENVIRONMENT'))
   }
 }
 
-/**
- * -----------------------------------------------------------------------------
+/*
+ * ---------------------------------------------------------------
  * SYSTEM FOLDER NAME
- * -----------------------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  * This variable must contain the name of your "system" folder.
  * Include the path if the folder is not in the same  directory
@@ -76,10 +84,10 @@ if (defined('ENVIRONMENT'))
  */
 $system_path = 'system';
 
-/**
- * -----------------------------------------------------------------------------
+/*
+ * ---------------------------------------------------------------
  * APPLICATION FOLDER NAME
- * -----------------------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  * If you want this front controller to use a different "application"
  * folder then the default one you can set its name here. The folder
@@ -92,10 +100,10 @@ $system_path = 'system';
  */
 $application_folder = 'application';
 
-/**
- * -----------------------------------------------------------------------------
+/*
+ * --------------------------------------------------------------------
  * DEFAULT CONTROLLER
- * -----------------------------------------------------------------------------
+ * --------------------------------------------------------------------
  *
  * Normally you will set your default controller in the routes.php file.
  * You can, however, force a custom routing by hard-coding a
@@ -120,10 +128,11 @@ $application_folder = 'application';
 // The controller function you wish to be called.
 // $routing['function']	= '';
 
-/**
- * -----------------------------------------------------------------------------
- * CUSTOM CONFIG VALUES
- * -----------------------------------------------------------------------------
+
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
  *
  * The $assign_to_config array below will be passed dynamically to the
  * config class when initialized. This allows you to set custom config
@@ -140,41 +149,53 @@ $application_folder = 'application';
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
 // --------------------------------------------------------------------
 
-/**
- * -----------------------------------------------------------------------------
- * Resolve the system path for increased reliability
- * -----------------------------------------------------------------------------
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
  */
+
 // Set the current directory correctly for CLI requests
 if (defined('STDIN'))
+{
   chdir(dirname(__FILE__));
+}
 
 if (realpath($system_path) !== FALSE)
+{
   $system_path = realpath($system_path) . '/';
+}
 
 // ensure there's a trailing slash
 $system_path = rtrim($system_path, '/') . '/';
 
 // Is the system path correct?
 if (!is_dir($system_path))
+{
   exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: " . pathinfo(__FILE__, PATHINFO_BASENAME));
+}
 
-/**
- * -----------------------------------------------------------------------------
- * Now that we know the path, set the main path constants
- *
- * SELF       The name of THIS file
- * EXT        The PHP file extension (this global constant is deprecated)
- * BASEPATH   Path to the system folder
- * FCPATH     Path to the front controller (this file)
- * SYSDIR     Name of the "system folder"
- * -----------------------------------------------------------------------------
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
  */
+// The name of THIS file
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+// The PHP file extension
+// this global constant is deprecated.
 define('EXT', '.php');
+
+// Path to the system folder
 define('BASEPATH', str_replace("\\", "/", $system_path));
+
+// Path to the front controller (this file)
 define('FCPATH', str_replace(SELF, '', __FILE__));
+
+// Name of the "system folder"
 define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
+
 
 // The path to the "application" folder
 if (is_dir($application_folder))
@@ -191,16 +212,15 @@ else
   define('APPPATH', BASEPATH . $application_folder . '/');
 }
 
-/**
- * -----------------------------------------------------------------------------
+/*
+ * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
- * -----------------------------------------------------------------------------
+ * --------------------------------------------------------------------
  *
  * And away we go...
  *
  */
 require_once BASEPATH . 'core/CodeIgniter.php';
 
-
-/** End of file index.php */
-/** Location: ./index.php */
+/* End of file index.php */
+/* Location: ./index.php */

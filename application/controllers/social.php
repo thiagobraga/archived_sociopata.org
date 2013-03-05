@@ -22,7 +22,7 @@ class Social extends MY_Controller
     $this->data->js = array('mods/social');
 
     $this->lang->load('social');
-    $this->parser->parse('base', $this->data);
+    $this->load->view('base', $this->data);
   }
 
 }

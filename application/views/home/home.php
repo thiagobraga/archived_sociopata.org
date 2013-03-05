@@ -3,8 +3,68 @@
   <!-- FEATURED -->
   <div class="span8 featured">
 
-    <!-- First Post -->
     <section class="row-fluid first">
+      <div class="span5">
+        <img src="<?= base_url('assets/img/events/affliction-rock-fest-11.jpg') ?>" class="img-rounded" />
+        <p class="info">
+          <b>Data</b> 10/03/2013<br />
+          <b>Valor</b> GRÁTIS<br />
+          <b>Local</b> Jack Music Pub<br />
+          <b></b> Av. Duque de Caxias, 8-56<br />
+          <b></b> Bauru-SP<br />
+          <b>Mapa</b> <a href="//goo.gl/maps/XHN6i">goo.gl/maps/XHN6i</a><br />
+          <b>Evento</b> <a href="//fb.com/events/491617427563924">fb.com/events/491617427563924</a><br />
+        </p>
+      </div>
+
+      <div class="span7">
+        <section>
+          <h2>Affliction Rock Fest 11</h2>
+
+          <article>
+            Décima primeira edição do Affliction Rock Fest que volta com tudo
+            para fortalecer o cenário local. O evento será gratuito e começará
+            as 16:00 do domingo, dia 10/03/2013.
+          </article>
+        </section>
+
+        <section>
+          <h3>Bandas</h3>
+
+          <p class="band">
+            METAL GEAR
+          </p>
+
+          <p class="band">
+            HORROR SHOW
+          </p>
+
+          <p class="band">
+            <a href="//sociopata.org">SOCIOPATA</a>
+            <a href="//sociopata.org" title="sociopata.org"><i class="icon-site"></i></a>
+            <a href="//fb.com/sociopatabr" title="fb.com/sociopatabr"><i class="icon-facebook"></i></a>
+            <a href="//twitter.com/sociopatabr" title="twitter.com/sociopatabr"><i class="icon-twitter"></i></a>
+            <a href="//myspace.com/sociopata" title="myspace.com/sociopata"><i class="icon-myspace"></i></a>
+            <a href="//soundcloud.com/sociopata" title="soundcloud.com/sociopata"><i class="icon-soundcloud"></i></a>
+          </p>
+
+          <p class="band">
+            <a href="//fb.com/plagueremains">PLAGUE REMAINS</a>
+            <a href="//fb.com/plagueremains" title="fb.com/plagueremains"><i class="icon-facebook"></i></a>
+            <a href="//myspace.com/plagueremains" title="myspace.com/plagueremains"><i class="icon-myspace"></i></a>
+          </p>
+
+          <p class="band">
+            <a href="//fb.com/bandafomedocao">FOME DO CÃO</a>
+            <a href="//fb.com/bandafomedocao" title="fb.com/bandafomedocao"><i class="icon-facebook"></i></a>
+          </p>
+        </section>
+      </div>
+    </section>
+
+    <hr class="soften" />
+
+    <section class="row-fluid">
       <div class="span5">
         <img src="<?= base_url('assets/img/events/dias-de-um-futuro-passado.jpg') ?>" class="img-rounded" />
         <p class="info">
@@ -34,7 +94,7 @@
           <h3>Bandas</h3>
 
           <p class="band">
-            <a href="//artigodz9.com" class="featured">ARTIGO DZ9?</a>
+            <a href="//artigodz9.com">ARTIGO DZ9?</a>
             <a href="//artigodz9.com" title="artigodz9.com"><i class="icon-site"></i></a>
             <a href="//fb.com/artigo.dz9.hc" title="fb.com/artigo.dz9.hc"><i class="icon-facebook"></i></a>
             <a href="//twitter.com/artigo_dz9" title="twitter.com/artigo_dz9"><i class="icon-twitter"></i></a>
@@ -44,7 +104,7 @@
           </p>
 
           <p class="band">
-            <a href="//autoboneco.org" class="featured">AUTOBONECO</a>
+            <a href="//autoboneco.org">AUTOBONECO</a>
             <a href="//autoboneco.org" title="autoboneco.org"><i class="icon-site"></i></a>
             <a href="//fb.com/autoboneco" title="fb.com/autoboneco"><i class="icon-facebook"></i></a>
             <a href="//myspace.com/bonequinho" title="myspace.com/bonequinho"><i class="icon-myspace"></i></a>
@@ -54,7 +114,7 @@
           </p>
 
           <p class="band">
-            <a href="//sociopata.org" class="featured">SOCIOPATA</a>
+            <a href="//sociopata.org">SOCIOPATA</a>
             <a href="//sociopata.org" title="sociopata.org"><i class="icon-site"></i></a>
             <a href="//fb.com/sociopatabr" title="fb.com/sociopatabr"><i class="icon-facebook"></i></a>
             <a href="//twitter.com/sociopatabr" title="twitter.com/sociopatabr"><i class="icon-twitter"></i></a>
@@ -67,14 +127,13 @@
 
         <section>
           <h3>Apoio</h3>
-          <a href="//fb.com/subvertadistro" class="featured">SUBVERTA! DISTRÖ</a>
+          <a href="//fb.com/subvertadistro">SUBVERTA! DISTRÖ</a>
         </section>
       </div>
     </section>
 
     <hr class="soften" />
 
-    <!-- Second Post -->
     <section class="row-fluid">
       <div class="span5">
         <img src="<?= base_url('assets/img/events/atualizacao-layout-myspace.jpg') ?>" class="img-rounded" />
@@ -102,7 +161,6 @@
 
     <hr class="soften" />
 
-    <!-- Third Post -->
     <section class="row-fluid">
       <div class="span12">
         <section>
@@ -177,9 +235,7 @@
       </a>
     </div>
 
-    <hr class="soften" />
-
-    <div class="row-fluid">
+    <div class="row-fluid hide">
       <article class="center"><a href="#">More news</a></article>
     </div>
   </div>
@@ -213,27 +269,6 @@
   <span>sg</span>
   <span>comunicacao</span>
   <span>design</span>
-  <!--
-  <span>meshuggah</span>
-  <span>napalm death</span>
-  <span>faith no more</span>
-  <span>baroness</span>
-  <span>slayer</span>
-  <span>sepultura</span>
-  <span>pantera</span>
-  <span>ratos de porão</span>
-  <span>fantômas</span>
-  <span>melvins</span>
-  <span>the fantômas melvins big band</span>
-  <span>devin townsend</span>
-  <span>strapping young lad</span>
-  <span>tomahawk</span>
-  <span>queens of the stone age</span>
-  <span>pink floyd</span>
-  <span>king crimson</span>
-  <span>gentle giant</span>
-  <span>yes</span>
-  -->
   <span>irmã talitha</span>
   <span>autoboneco</span>
   <span>bonequinho</span>
@@ -245,4 +280,5 @@
   <span>necrofobia</span>
   <span>mordeth</span>
   <span>artigo dz9</span>
+  <span>plague remains</span>
 </div>

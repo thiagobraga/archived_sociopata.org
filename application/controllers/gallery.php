@@ -22,7 +22,7 @@ class Gallery extends MY_Controller
     $this->data->js = array('mods/gallery');
 
     $this->lang->load('gallery');
-    $this->parser->parse('base', $this->data);
+    $this->load->view('base', $this->data);
   }
 
 }
