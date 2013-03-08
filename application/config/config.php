@@ -28,7 +28,7 @@ if (defined('ENVIRONMENT'))
       break;
 
     case 'production':
-      $config['base_url'] = PRODUCTION;
+      $config['base_url'] = 'http://' . PRODUCTION;
       break;
 
     default:
