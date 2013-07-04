@@ -1,7 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -15,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @since		Version 1.0
  * @filesource
  */
+
 // ------------------------------------------------------------------------
 
 /**
@@ -24,67 +22,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_oci8_utility extends CI_DB_utility
-{
+class CI_DB_oci8_utility extends CI_DB_utility {
 
-  /**
-   * List databases
-   *
-   * @access	private
-   * @return	bool
-   */
-  function _list_databases()
-  {
-    return FALSE;
-  }
+	/**
+	 * List databases
+	 *
+	 * @access	private
+	 * @return	bool
+	 */
+	function _list_databases()
+	{
+		return FALSE;
+	}
 
-  // --------------------------------------------------------------------
+	// --------------------------------------------------------------------
 
-  /**
-   * Optimize table query
-   *
-   * Generates a platform-specific query so that a table can be optimized
-   *
-   * @access	private
-   * @param	string	the table name
-   * @return	object
-   */
-  function _optimize_table($table)
-  {
-    return FALSE; // Is this supported in Oracle?
-  }
+	/**
+	 * Optimize table query
+	 *
+	 * Generates a platform-specific query so that a table can be optimized
+	 *
+	 * @access	private
+	 * @param	string	the table name
+	 * @return	object
+	 */
+	function _optimize_table($table)
+	{
+		return FALSE; // Is this supported in Oracle?
+	}
 
-  // --------------------------------------------------------------------
+	// --------------------------------------------------------------------
 
-  /**
-   * Repair table query
-   *
-   * Generates a platform-specific query so that a table can be repaired
-   *
-   * @access	private
-   * @param	string	the table name
-   * @return	object
-   */
-  function _repair_table($table)
-  {
-    return FALSE; // Is this supported in Oracle?
-  }
+	/**
+	 * Repair table query
+	 *
+	 * Generates a platform-specific query so that a table can be repaired
+	 *
+	 * @access	private
+	 * @param	string	the table name
+	 * @return	object
+	 */
+	function _repair_table($table)
+	{
+		return FALSE; // Is this supported in Oracle?
+	}
 
-  // --------------------------------------------------------------------
+	// --------------------------------------------------------------------
 
-  /**
-   * Oracle Export
-   *
-   * @access	private
-   * @param	array	Preferences
-   * @return	mixed
-   */
-  function _backup($params = array())
-  {
-    // Currently unsupported
-    return $this->db->display_error('db_unsuported_feature');
-  }
-
+	/**
+	 * Oracle Export
+	 *
+	 * @access	private
+	 * @param	array	Preferences
+	 * @return	mixed
+	 */
+	function _backup($params = array())
+	{
+		// Currently unsupported
+		return $this->db->display_error('db_unsuported_feature');
+	}
 }
 
 /* End of file oci8_utility.php */

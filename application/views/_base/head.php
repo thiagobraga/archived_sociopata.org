@@ -1,6 +1,6 @@
 <head>
   <!-- SEO -->
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta name="author" content="Thiago Braga" />
   <meta name="reply-to" content="thibraga06@gmail.com" />
   <meta name="robots" content="index, follow" />
@@ -8,8 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <!-- SITE DESCRIPTION -->
-  <title><?= lang('title') ?></title>
-  <meta name="description" content="<?= lang('description') ?>" />
+  <title><?= $title ?></title>
+  <meta name="description" content="<?= $description ?>" />
   <meta name="keywords" content="<?= $keywords ?>" />
 
   <!-- ICONS -->
@@ -21,11 +21,10 @@
   <link href="<?= base_url("assets/img/icons/apple-144x144.png") ?>" rel="apple-touch-icon" sizes="144x144" type="image/png" />
 
   <!-- FACEBOOK -->
-  <link href="<?= base_url('pt') ?>" rel="canonical" />
   <meta property="og:title" content="<?= $title ?>" />
   <meta property="og:site_name" content="<?= $title ?>" />
   <meta property="og:description" content="<?= $description ?>" />
-  <meta property="og:url" content="<?= base_url('pt') ?>" />
+  <meta property="og:url" content="<?= base_url() ?>" />
   <meta property="og:image" content="<?= base_url("assets/img/icons/facebook.png") ?>" />
   <meta property="og:type" content="website" />
   <meta property="fb:admins" content="100001599541810" />
@@ -36,16 +35,10 @@
   <![endif]-->
 
   <!-- CSS -->
-  <? if (ENVIRONMENT == 'production') : ?>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" />
-  <? else : ?>
-    <link href="<?= base_url("assets/bootstrap/css/bootstrap.css") ?>" rel="stylesheet" />
-    <link href="<?= base_url("assets/bootstrap/css/bootstrap-responsive.css") ?>" rel="stylesheet" />
-  <? endif; ?>
-
-  <link href="<?= base_url("assets/css/main.css") ?>" rel="stylesheet" />
-  <? if (!empty($css)) : ?>
-    <? foreach ($css as $file) : ?>
+  <link href="<?= base_url('assets/css/bootstrap.css') ?>" rel="stylesheet" />
+  <link href="<?= base_url('assets/css/main.css') ?>" rel="stylesheet" />
+  <? if (!empty($css)): ?>
+    <? foreach ($css as $file): ?>
       <link href="<?= base_url("assets/css/$file.css") ?>" rel="stylesheet" />
     <? endforeach ?>
   <? endif ?>

@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Media
@@ -8,20 +6,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access public
  * @version 1.0
  */
-class Media extends MY_Controller
-{
+class Media extends MY_Controller {
 
   /**
    * Carrega a página Media
    * @since 1.0
    */
-  public function index()
-  {
+  public function index() {
     $this->data->content = 'media/media';
     $this->data->css = array('mods/media');
     $this->data->js = array('mods/media');
-
-    $this->lang->load('media');
     $this->load->view('base', $this->data);
   }
 

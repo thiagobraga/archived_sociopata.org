@@ -1,30 +1,22 @@
-<header>
-  <div class="container row-fluid">
-    <div class="span12">
-      <a class="logo" href="<?= base_url($this->lang->lang()) ?>" alt="Sociopata"></a>
-      <nav id="menu">
-        <?= anchor(base_url($this->lang->lang() . '/media'), lang('media')) ?> |
-        <?= anchor(base_url($this->lang->lang() . '/bio'), lang('bio')) ?>
-        <?= anchor(base_url($this->lang->lang() . '/gallery'), lang('gallery'), array('class' => 'hide')) ?>
-        <?= anchor(base_url($this->lang->lang() . '/social'), lang('social'), array('class' => 'hide')) ?>
-        <?= anchor(base_url($this->lang->lang() . '/contact'), lang('contact'), array('class' => 'hide')) ?>
-      </nav>
+<div id="navbar-top" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="<?= base_url() ?>" class="brand gray"></a>
+      <ul id="menu" class="nav">
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#midia">Mídia</a></li>
+        <li><a href="#bio">Bio</a></li>
+        <li><a href="#fotos">Fotos</a></li>
+        <li><a href="#social">Social</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
     </div>
   </div>
+</div>
+
+<header>
+  <a href="<?= base_url() ?>" alt="Sociopata" class="logo"></a>
 </header>
 
 <div class="hero-back"></div>
-
-<div id="slider" class="hero carousel carousel-fade slide">
-  <div class="carousel-inner">
-    <div class="item item-01 active"></div>
-    <div class="item item-02"></div>
-    <div class="item item-03"></div>
-    <div class="item item-04"></div>
-    <div class="item item-05"></div>
-    <div class="item item-06"></div>
-    <div class="item item-07"></div>
-    <div class="item item-08"></div>
-    <div class="item item-09"></div>
-  </div>
-</div>

@@ -31,8 +31,7 @@ define('TESTING', 'test.sociopata.org');
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-switch ($_SERVER['HTTP_HOST'])
-{
+switch ($_SERVER['HTTP_HOST']) {
   case TESTING:
     define('ENVIRONMENT', 'testing');
     break;
@@ -45,7 +44,6 @@ switch ($_SERVER['HTTP_HOST'])
     define('ENVIRONMENT', 'development');
 }
 
-
 /**
  * -----------------------------------------------------------------------------
  * ERROR REPORTING
@@ -54,17 +52,15 @@ switch ($_SERVER['HTTP_HOST'])
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-if (defined('ENVIRONMENT'))
-{
-  switch (ENVIRONMENT)
-  {
+if (defined('ENVIRONMENT')) {
+  switch (ENVIRONMENT) {
     case 'development':
       error_reporting(E_ALL);
       break;
 
     case 'testing':
     case 'production':
-      error_reporting(0);
+      error_reporting(E_ALL);
       break;
 
     default:
@@ -156,13 +152,11 @@ $application_folder = 'application';
  */
 
 // Set the current directory correctly for CLI requests
-if (defined('STDIN'))
-{
+if (defined('STDIN')) {
   chdir(dirname(__FILE__));
 }
 
-if (realpath($system_path) !== FALSE)
-{
+if (realpath($system_path) !== FALSE) {
   $system_path = realpath($system_path) . '/';
 }
 
@@ -170,8 +164,7 @@ if (realpath($system_path) !== FALSE)
 $system_path = rtrim($system_path, '/') . '/';
 
 // Is the system path correct?
-if (!is_dir($system_path))
-{
+if (!is_dir($system_path)) {
   exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: " . pathinfo(__FILE__, PATHINFO_BASENAME));
 }
 
@@ -198,14 +191,10 @@ define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 
 
 // The path to the "application" folder
-if (is_dir($application_folder))
-{
+if (is_dir($application_folder)) {
   define('APPPATH', $application_folder . '/');
-}
-else
-{
-  if (!is_dir(BASEPATH . $application_folder . '/'))
-  {
+} else {
+  if (!is_dir(BASEPATH . $application_folder . '/')) {
     exit("Your application folder path does not appear to be set correctly. Please open the following file and correct this: " . SELF);
   }
 

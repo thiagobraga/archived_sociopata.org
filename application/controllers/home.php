@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Home
@@ -8,20 +6,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access public
  * @version 1.0
  */
-class Home extends MY_Controller
-{
+class Home extends MY_Controller {
 
   /**
    * Carrega a página inicial do site
    * @since 1.0
    */
-  public function index()
-  {
-    $this->data->content = 'home/home';
+  public function index() {
+    $this->load->model('home_model', 'Home');
     $this->data->css = array('mods/home');
     $this->data->js = array('mods/home');
-
-    $this->lang->load('home');
+    $this->data->evento = $this->Home->select_eventos();
     $this->load->view('base', $this->data);
   }
 

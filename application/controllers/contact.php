@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Contact
@@ -8,20 +6,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access public
  * @version 1.0
  */
-class Contact extends MY_Controller
-{
+class Contact extends MY_Controller {
 
   /**
    * Carrega a página inicial do site
    * @since 1.0
    */
-  public function index()
-  {
+  public function index() {
     $this->data->content = 'contact/contact';
     $this->data->css = array('mods/contact');
     $this->data->js = array('mods/contact');
-
-    $this->lang->load('contact');
     $this->load->view('base', $this->data);
   }
 

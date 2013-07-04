@@ -1,7 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -15,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @since		Version 1.0
  * @filesource
  */
+
 // ------------------------------------------------------------------------
 
 /**
@@ -28,221 +26,219 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/encryption.html
  */
-class CI_Hooks
-{
+class CI_Hooks {
 
-  /**
-   * Determines wether hooks are enabled
-   *
-   * @var bool
-   */
-  var $enabled = FALSE;
+	/**
+	 * Determines wether hooks are enabled
+	 *
+	 * @var bool
+	 */
+	var $enabled		= FALSE;
+	/**
+	 * List of all hooks set in config/hooks.php
+	 *
+	 * @var array
+	 */
+	var $hooks			= array();
+	/**
+	 * Determines wether hook is in progress, used to prevent infinte loops
+	 *
+	 * @var bool
+	 */
+	var $in_progress	= FALSE;
 
-  /**
-   * List of all hooks set in config/hooks.php
-   *
-   * @var array
-   */
-  var $hooks = array();
+	/**
+	 * Constructor
+	 *
+	 */
+	function __construct()
+	{
+		$this->_initialize();
+		log_message('debug', "Hooks Class Initialized");
+	}
 
-  /**
-   * Determines wether hook is in progress, used to prevent infinte loops
-   *
-   * @var bool
-   */
-  var $in_progress = FALSE;
+	// --------------------------------------------------------------------
 
-  /**
-   * Constructor
-   *
-   */
-  function __construct()
-  {
-    $this->_initialize();
-    log_message('debug', "Hooks Class Initialized");
-  }
+	/**
+	 * Initialize the Hooks Preferences
+	 *
+	 * @access	private
+	 * @return	void
+	 */
+	function _initialize()
+	{
+		$CFG =& load_class('Config', 'core');
 
-  // --------------------------------------------------------------------
+		// If hooks are not enabled in the config file
+		// there is nothing else to do
 
-  /**
-   * Initialize the Hooks Preferences
-   *
-   * @access	private
-   * @return	void
-   */
-  function _initialize()
-  {
-    $CFG = & load_class('Config', 'core');
+		if ($CFG->item('enable_hooks') == FALSE)
+		{
+			return;
+		}
 
-    // If hooks are not enabled in the config file
-    // there is nothing else to do
+		// Grab the "hooks" definition file.
+		// If there are no hooks, we're done.
 
-    if ($CFG->item('enable_hooks') == FALSE)
-    {
-      return;
-    }
-
-    // Grab the "hooks" definition file.
-    // If there are no hooks, we're done.
-
-    if (defined('ENVIRONMENT') AND is_file(APPPATH . 'config/' . ENVIRONMENT . '/hooks.php'))
-    {
-      include(APPPATH . 'config/' . ENVIRONMENT . '/hooks.php');
-    }
-    elseif (is_file(APPPATH . 'config/hooks.php'))
-    {
-      include(APPPATH . 'config/hooks.php');
-    }
+		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/hooks.php'))
+		{
+		    include(APPPATH.'config/'.ENVIRONMENT.'/hooks.php');
+		}
+		elseif (is_file(APPPATH.'config/hooks.php'))
+		{
+			include(APPPATH.'config/hooks.php');
+		}
 
 
-    if (!isset($hook) OR !is_array($hook))
-    {
-      return;
-    }
+		if ( ! isset($hook) OR ! is_array($hook))
+		{
+			return;
+		}
 
-    $this->hooks = & $hook;
-    $this->enabled = TRUE;
-  }
+		$this->hooks =& $hook;
+		$this->enabled = TRUE;
+	}
 
-  // --------------------------------------------------------------------
+	// --------------------------------------------------------------------
 
-  /**
-   * Call Hook
-   *
-   * Calls a particular hook
-   *
-   * @access	private
-   * @param	string	the hook name
-   * @return	mixed
-   */
-  function _call_hook($which = '')
-  {
-    if (!$this->enabled OR !isset($this->hooks[$which]))
-    {
-      return FALSE;
-    }
+	/**
+	 * Call Hook
+	 *
+	 * Calls a particular hook
+	 *
+	 * @access	private
+	 * @param	string	the hook name
+	 * @return	mixed
+	 */
+	function _call_hook($which = '')
+	{
+		if ( ! $this->enabled OR ! isset($this->hooks[$which]))
+		{
+			return FALSE;
+		}
 
-    if (isset($this->hooks[$which][0]) AND is_array($this->hooks[$which][0]))
-    {
-      foreach ($this->hooks[$which] as $val)
-      {
-        $this->_run_hook($val);
-      }
-    }
-    else
-    {
-      $this->_run_hook($this->hooks[$which]);
-    }
+		if (isset($this->hooks[$which][0]) AND is_array($this->hooks[$which][0]))
+		{
+			foreach ($this->hooks[$which] as $val)
+			{
+				$this->_run_hook($val);
+			}
+		}
+		else
+		{
+			$this->_run_hook($this->hooks[$which]);
+		}
 
-    return TRUE;
-  }
+		return TRUE;
+	}
 
-  // --------------------------------------------------------------------
+	// --------------------------------------------------------------------
 
-  /**
-   * Run Hook
-   *
-   * Runs a particular hook
-   *
-   * @access	private
-   * @param	array	the hook details
-   * @return	bool
-   */
-  function _run_hook($data)
-  {
-    if (!is_array($data))
-    {
-      return FALSE;
-    }
+	/**
+	 * Run Hook
+	 *
+	 * Runs a particular hook
+	 *
+	 * @access	private
+	 * @param	array	the hook details
+	 * @return	bool
+	 */
+	function _run_hook($data)
+	{
+		if ( ! is_array($data))
+		{
+			return FALSE;
+		}
 
-    // -----------------------------------
-    // Safety - Prevents run-away loops
-    // -----------------------------------
-    // If the script being called happens to have the same
-    // hook call within it a loop can happen
+		// -----------------------------------
+		// Safety - Prevents run-away loops
+		// -----------------------------------
 
-    if ($this->in_progress == TRUE)
-    {
-      return;
-    }
+		// If the script being called happens to have the same
+		// hook call within it a loop can happen
 
-    // -----------------------------------
-    // Set file path
-    // -----------------------------------
+		if ($this->in_progress == TRUE)
+		{
+			return;
+		}
 
-    if (!isset($data['filepath']) OR !isset($data['filename']))
-    {
-      return FALSE;
-    }
+		// -----------------------------------
+		// Set file path
+		// -----------------------------------
 
-    $filepath = APPPATH . $data['filepath'] . '/' . $data['filename'];
+		if ( ! isset($data['filepath']) OR ! isset($data['filename']))
+		{
+			return FALSE;
+		}
 
-    if (!file_exists($filepath))
-    {
-      return FALSE;
-    }
+		$filepath = APPPATH.$data['filepath'].'/'.$data['filename'];
 
-    // -----------------------------------
-    // Set class/function name
-    // -----------------------------------
+		if ( ! file_exists($filepath))
+		{
+			return FALSE;
+		}
 
-    $class = FALSE;
-    $function = FALSE;
-    $params = '';
+		// -----------------------------------
+		// Set class/function name
+		// -----------------------------------
 
-    if (isset($data['class']) AND $data['class'] != '')
-    {
-      $class = $data['class'];
-    }
+		$class		= FALSE;
+		$function	= FALSE;
+		$params		= '';
 
-    if (isset($data['function']))
-    {
-      $function = $data['function'];
-    }
+		if (isset($data['class']) AND $data['class'] != '')
+		{
+			$class = $data['class'];
+		}
 
-    if (isset($data['params']))
-    {
-      $params = $data['params'];
-    }
+		if (isset($data['function']))
+		{
+			$function = $data['function'];
+		}
 
-    if ($class === FALSE AND $function === FALSE)
-    {
-      return FALSE;
-    }
+		if (isset($data['params']))
+		{
+			$params = $data['params'];
+		}
 
-    // -----------------------------------
-    // Set the in_progress flag
-    // -----------------------------------
+		if ($class === FALSE AND $function === FALSE)
+		{
+			return FALSE;
+		}
 
-    $this->in_progress = TRUE;
+		// -----------------------------------
+		// Set the in_progress flag
+		// -----------------------------------
 
-    // -----------------------------------
-    // Call the requested class and/or function
-    // -----------------------------------
+		$this->in_progress = TRUE;
 
-    if ($class !== FALSE)
-    {
-      if (!class_exists($class))
-      {
-        require($filepath);
-      }
+		// -----------------------------------
+		// Call the requested class and/or function
+		// -----------------------------------
 
-      $HOOK = new $class;
-      $HOOK->$function($params);
-    }
-    else
-    {
-      if (!function_exists($function))
-      {
-        require($filepath);
-      }
+		if ($class !== FALSE)
+		{
+			if ( ! class_exists($class))
+			{
+				require($filepath);
+			}
 
-      $function($params);
-    }
+			$HOOK = new $class;
+			$HOOK->$function($params);
+		}
+		else
+		{
+			if ( ! function_exists($function))
+			{
+				require($filepath);
+			}
 
-    $this->in_progress = FALSE;
-    return TRUE;
-  }
+			$function($params);
+		}
+
+		$this->in_progress = FALSE;
+		return TRUE;
+	}
 
 }
 

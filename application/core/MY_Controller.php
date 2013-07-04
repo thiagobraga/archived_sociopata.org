@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Persistent
@@ -8,8 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access protected
  * @version 1.0
  */
-class MY_Controller extends CI_Controller
-{
+class MY_Controller extends CI_Controller {
 
   /**
    * @var string Data passed to views
@@ -22,20 +19,16 @@ class MY_Controller extends CI_Controller
    * default languages, layout views, etc.
    * @since 1.0
    */
-  function __construct()
-  {
+  function __construct() {
     parent::__construct();
 
     /* Initializes the $data variable */
     $this->data = new stdClass();
 
     /* Meta */
-    $this->data->title = 'Sociopata :: Thrash Metal / Hardcore autoral de São Paulo.';
-    $this->data->description = 'A Sociopata é uma banda de Thrash Metal/Hardcore formada no interior de São Paulo e iniciada em 2008, atualmente composta por Kleber (Voz), Braga (guitarra), Birão (Baixo), Leo (guitarra) e Gustavo (bateria).';
+    $this->data->title = 'Sociopata :: Site Oficial';
+    $this->data->description = 'A Sociopata é uma banda de metal formada no interior de São Paulo e iniciada em 2008, atualmente composta por Kleber Cabrera (Voz), Thiago Braga (guitarra), Birão Spoldari (Baixo), Leo Sanches (guitarra) e Gustavo Panurge (bateria).';
     $this->data->keywords = 'sociopata, thrash metal, hardcore, bauru, agudos, sao paulo, brasil';
-
-    /* Language Files */
-    $this->lang->load('default');
   }
 
 }

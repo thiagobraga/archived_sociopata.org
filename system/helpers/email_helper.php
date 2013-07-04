@@ -1,7 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -15,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @since		Version 1.0
  * @filesource
  */
+
 // ------------------------------------------------------------------------
 
 /**
@@ -26,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/helpers/email_helper.html
  */
+
 // ------------------------------------------------------------------------
 
 /**
@@ -34,14 +33,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access	public
  * @return	bool
  */
-if (!function_exists('valid_email'))
+if ( ! function_exists('valid_email'))
 {
-
-  function valid_email($address)
-  {
-    return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $address)) ? FALSE : TRUE;
-  }
-
+	function valid_email($address)
+	{
+		return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $address)) ? FALSE : TRUE;
+	}
 }
 
 // ------------------------------------------------------------------------
@@ -52,14 +49,12 @@ if (!function_exists('valid_email'))
  * @access	public
  * @return	bool
  */
-if (!function_exists('send_email'))
+if ( ! function_exists('send_email'))
 {
-
-  function send_email($recipient, $subject = 'Test email', $message = 'Hello World')
-  {
-    return mail($recipient, $subject, $message);
-  }
-
+	function send_email($recipient, $subject = 'Test email', $message = 'Hello World')
+	{
+		return mail($recipient, $subject, $message);
+	}
 }
 
 

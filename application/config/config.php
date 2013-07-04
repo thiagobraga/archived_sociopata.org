@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * -----------------------------------------------------------------------------
@@ -15,10 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * If this is not set then CodeIgniter will guess the protocol, domain and
  * path to your installation.
  */
-if (defined('ENVIRONMENT'))
-{
-  switch (ENVIRONMENT)
-  {
+if (defined('ENVIRONMENT')) {
+  switch (ENVIRONMENT) {
     case 'development':
       $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT;
       break;
@@ -106,7 +102,7 @@ $config['charset'] = 'UTF-8';
  * If you would like to use the 'hooks' feature you must enable it by
  * setting this variable to TRUE (boolean).  See the user guide for details.
  */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 /**
  * -----------------------------------------------------------------------------

@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * -----------------------------------------------------------------------------
@@ -40,11 +38,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * in the URL cannot be matched to a valid route.
  *
  */
-$route['default_controller'] = "home";
 $route['404_override'] = '';
-$route['^(en|pt|es)$'] = $route['default_controller'];
-$route['^(en|pt|es)/(.+)$'] = "$2";
-
+$route['default_controller'] = 'home';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
