@@ -5,7 +5,7 @@
  * @url www.sociopata.org
  */
 
-var menu = $('#menu');
+var menu = $('#menu a');
 
 /**
  * @function external
@@ -14,7 +14,7 @@ var menu = $('#menu');
 var external = (function () {
   var a = $('a[href^="//"]');
   a.attr('target', '_blank');
-}());
+})();
 
 
 /**
@@ -25,7 +25,7 @@ var layout = (function () {
   var page = $('.page');
   for (var i = 0; i < page.length; i++)
     (i % 2) ? null : page.eq(i).addClass('elevated');
-}());
+})();
 
 
 /**
@@ -50,7 +50,7 @@ var loadJs = (function (url, callback) {
       callback ? callback() : null;
     };
   document.body.appendChild(s);
-}('http://www.google-analytics.com/ga.js');
+})('http://www.google-analytics.com/ga.js');
 
 
 /**
@@ -59,12 +59,14 @@ var loadJs = (function (url, callback) {
  * @param {jQuery} [menu] The jQuery object of navbar
  * @example navbarHighlight($('#menu a'))
  */
+/*
 var navbarHighlight = (function (menu) {
   for (var i = 0; i < menu.length; i++) {
     if (menu.eq(i).attr('href') === window.location.hash)
       menu.eq(i).parent().addClass('active');
   }
-}(menu),
+})(menu);
+*/
 
 
 /**
@@ -76,7 +78,7 @@ var setGoogleAnalytics = (function (ua) {
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', ua]);
   _gaq.push(['_trackPageview']);
-}('UA-36613651-1'),
+})('UA-36613651-1');
 
 
 /**
@@ -84,13 +86,15 @@ var setGoogleAnalytics = (function (ua) {
  * @description Set the Google Analytics account
  * @param {String} [$ua] The Google Analytics user account
  */
+/*
 var backgroundScroll = (function () {
   var body = document.body,
-    header = document.getElementsByTagName('header')[0];
+    logo = document.querySelectorAll('.logo');
   window.onscroll = function() {
-    header.style.margin = -(Math.max(header.scrollTop, body.scrollTop) / 2) + "px 0px";
+    logo.style.margin = -(Math.max(logo.scrollTop, body.scrollTop) / 2) + "px 0px";
   };
-}());
+})();
+*/
 
 
 /**
@@ -119,7 +123,7 @@ var scrollToTop = (function () {
     event.preventDefault();
     root.stop().animate({ scrollTop: 0 });
   });
-}());
+})();
 
 
 /**
@@ -152,7 +156,7 @@ var login = (function () {
       entrar.removeAttr('disabled');
     }
   }, 'json');
-},
+});
 
 
 /**
@@ -177,7 +181,7 @@ var renderMap = (function (id) {
       position: new google.maps.LatLng(markerLat, markerLng),
       title: title
     });
-},
+});
 
 
 /**
@@ -192,4 +196,4 @@ var sendMail = (function (form) {
     noty({ text: response.message, type: response.type });
     loading.hide();
   }, 'json');
-};
+});

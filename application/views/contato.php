@@ -1,5 +1,8 @@
 <section id="contato" class="page">
   <div class="container">
+    <div class="page-header">
+      <h2 class="featured">Contato</h2>
+    </div>
 
     <form id="contact" class="form-horizontal">
       <!-- Nome -->

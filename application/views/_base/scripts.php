@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
   var base_url = function(b){var c="<?= base_url() ?>";if(b){return c+b}else{return c}};
 </script>
 <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
