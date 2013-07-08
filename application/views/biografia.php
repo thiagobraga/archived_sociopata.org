@@ -49,8 +49,7 @@
       </div>
 
       <p>
-        Faith No More, Pantera, Slayer, Meshuggah, Napalm Death, Pink Floyd,
-        Tomahawk, Strapping Young Lad, Devin Townsend, Porcupine Tree, Baroness.
+
       </p>
     </article>
   </div>

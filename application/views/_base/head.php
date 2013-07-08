@@ -36,7 +36,6 @@
 
   <!-- CSS -->
   <link href="<?= base_url('assets/css/bootstrap.css') ?>" rel="stylesheet" />
-  <link href="<?= base_url('assets/css/bootstrap-responsive.css') ?>" rel="stylesheet" />
   <link href="<?= base_url('assets/css/main.css') ?>" rel="stylesheet" />
   <? if (!empty($css)): ?>
     <? foreach ($css as $file): ?>

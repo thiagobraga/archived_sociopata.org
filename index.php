@@ -11,7 +11,7 @@
  */
 define('PROJECT', 'sociopata');
 define('PRODUCTION', 'sociopata.org');
-define('TESTING', 'test.sociopata.org');
+define('TESTING', 'sociopata.org/test');
 
 /**
  * -----------------------------------------------------------------------------
