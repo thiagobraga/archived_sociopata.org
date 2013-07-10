@@ -12,12 +12,16 @@ class Home_model extends CI_Model {
    * @return object
    */
   public function select_eventos() {
-    return $this->db
-      ->select('nome, imagem, local, info, data, valor')
-      ->order_by('data', 'desc')
-      ->limit(1)
-      ->get('eventos')
-      ->row();
+    return $this->db->query("
+      SELECT
+        nome,
+        imagem,
+        local,
+        info,
+        data,
+        valor
+      FROM eventos
+      LIMIT 1;")->row();
   }
 
 }

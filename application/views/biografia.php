@@ -5,7 +5,7 @@
     </div>
 
     <!-- Release -->
-    <article>
+    <article id="release">
       <div class="page-header">
         <h2>Release</h2>
       </div>
@@ -32,25 +32,96 @@
     </article>
 
     <!-- Integrantes -->
-    <article>
+    <article id="integrantes">
       <div class="page-header">
         <h2>Integrantes</h2>
       </div>
 
       <div class="row-fluid">
-
+        <img src="<?= base_url('assets/img/integrantes/birao.jpg') ?>" />
+        <img src="<?= base_url('assets/img/integrantes/braga.jpg') ?>" />
+        <img src="<?= base_url('assets/img/integrantes/gustavo.jpg') ?>" />
+        <img src="<?= base_url('assets/img/integrantes/kleber.jpg') ?>" />
+        <img src="<?= base_url('assets/img/integrantes/leo.jpg') ?>" />
       </div>
     </article>
 
     <!-- Influências -->
-    <article>
+    <article id="influencias">
       <div class="page-header">
         <h2>Influências</h2>
       </div>
 
-      <p>
+      <div class="row-fluid">
+        <div class="span3 text-left">
+          <img src="<?= base_url('assets/img/influencias/pantera.png') ?>" />
+        </div>
+        <div class="span3 text-center">
+          <img src="<?= base_url('assets/img/influencias/meshuggah.png') ?>" />
+        </div>
+        <div class="span3 text-center">
+          <img src="<?= base_url('assets/img/influencias/strapping-young-lad.png') ?>" />
+        </div>
+        <div class="span3 text-right">
+          <img src="<?= base_url('assets/img/influencias/slayer.png') ?>" />
+        </div>
+      </div>
 
-      </p>
+      <div class="row-fluid">
+        <div class="span3 text-left">
+          <img src="<?= base_url('assets/img/influencias/napalm-death.png') ?>" />
+        </div>
+        <div class="span3 text-center">
+          <img src="<?= base_url('assets/img/influencias/sepultura.png') ?>" />
+        </div>
+        <div class="span3 text-center">
+          <img src="<?= base_url('assets/img/influencias/brujeria.png') ?>" />
+        </div>
+        <div class="span3 text-right">
+          <img src="<?= base_url('assets/img/influencias/porcupine-tree.png') ?>" />
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span3 text-left">
+          <img src="<?= base_url('assets/img/influencias/pink-floyd.png') ?>" />
+        </div>
+        <div class="span3 text-center">
+          <img src="<?= base_url('assets/img/influencias/cripple-bastards.png') ?>" />
+        </div>
+        <div class="span3 text-center">
+          <img src="<?= base_url('assets/img/influencias/queens-of-the-stone-age.png') ?>" />
+        </div>
+        <div class="span3 text-right">
+          <img src="<?= base_url('assets/img/influencias/cannibal-corpse.png') ?>" />
+        </div>
+      </div>
+
+      <p>
+        <span class="featured featured-small">Faith No More</span>
+        <span class="featured featured-small">Deftones</span>
+        <span class="featured featured-small">Devin Townsend Project</span>
+        <span class="featured featured-small">Spiritual Beggars</span>
+        <span class="featured featured-small">Man or Astroman</span>
+        <span class="featured featured-small">Tomahawk</span>
+        <span class="featured featured-small">Down</span>
+        <span class="featured featured-small">Baroness</span>
+        <span class="featured featured-small">Textures</span>
+        <span class="featured featured-small">Cavalera Conspiracy</span>
+        <span class="featured featured-small">Tesseract</span>
+        <span class="featured featured-small">Mastodon</span>
+        <span class="featured featured-small">Fantômas</span>
+        <span class="featured featured-small">Ratos de Porão</span>
+        <span class="featured featured-small">Yes</span>
+        <span class="featured featured-small">Rush</span>
+        <span class="featured featured-small">Melvins</span>
+        <span class="featured featured-small">King Crimson</span>
+        <span class="featured featured-small">Dream Theater</span>
+        <span class="featured featured-small">Metallica</span>
+        <span class="featured featured-small">Fredrik Thordendal Special Defects</span>
+        <span class="featured featured-small">The Fantômas Melvins Big Band</span>
+        <span class="featured featured-small">Eminence</span>
+        <span class="featured featured-small">Extreme Noise Terror</span>
     </article>
   </div>
 </section>

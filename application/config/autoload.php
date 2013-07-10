@@ -50,7 +50,7 @@ $autoload['packages'] = array();
  *
  * 	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
  */
-$autoload['libraries'] = array('database', 'kint', 'session');
+$autoload['libraries'] = array('database', 'session');
 
 /*
  * --------------------------------------------------------------------

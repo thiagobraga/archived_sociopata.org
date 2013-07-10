@@ -11,7 +11,7 @@
  */
 define('PROJECT', 'sociopata');
 define('PRODUCTION', 'sociopata.org');
-define('TESTING', 'sociopata.org/test');
+define('TESTING', 'test.sociopata.org');
 
 /**
  * -----------------------------------------------------------------------------
@@ -32,16 +32,9 @@ define('TESTING', 'sociopata.org/test');
  *
  */
 switch ($_SERVER['HTTP_HOST']) {
-  case TESTING:
-    define('ENVIRONMENT', 'testing');
-    break;
-
-  case PRODUCTION:
-    define('ENVIRONMENT', 'production');
-    break;
-
-  default:
-    define('ENVIRONMENT', 'development');
+  case TESTING: define('ENVIRONMENT', 'testing'); break;
+  case PRODUCTION: define('ENVIRONMENT', 'production'); break;
+  default: define('ENVIRONMENT', 'development');
 }
 
 /**
@@ -54,17 +47,10 @@ switch ($_SERVER['HTTP_HOST']) {
  */
 if (defined('ENVIRONMENT')) {
   switch (ENVIRONMENT) {
-    case 'development':
-      error_reporting(E_ALL);
-      break;
-
-    case 'testing':
-    case 'production':
-      error_reporting(E_ALL);
-      break;
-
-    default:
-      exit('The application environment is not set correctly.');
+    case 'development': error_reporting(E_ALL); break;
+    case 'testing': error_reporting(E_ALL); break;
+    case 'production': error_reporting(E_ALL); break;
+    default: exit('The application environment is not set correctly.');
   }
 }
 

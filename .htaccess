@@ -360,6 +360,18 @@ FileETag None
 
 
 # ------------------------------------------------------------------------------
+# TRANSPARENT REDIRECT test.domain TO domain/test
+# ------------------------------------------------------------------------------
+#
+<IfModule mod_rewrite.c>
+  RewriteCond $1 !^(index\.php|assets)
+  RewriteCond %{HTTP_HOST} ^test\.(.+)$ [NC]
+  RewriteCond %{REQUEST_URI} !^/test/ [NC]
+  RewriteRule ^(.*)$ /test/$1
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
 # SUPPRESS OR FORCE THE "WWW." AT THE BEGINNING OF URLS
 # ------------------------------------------------------------------------------
 # The same content should never be available under two different URLs -

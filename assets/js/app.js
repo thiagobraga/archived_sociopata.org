@@ -7,6 +7,17 @@
 
 var menu = $('#menu a');
 
+
+/**
+ * @function _tooltip
+ * @description Instantiates the Bootstrap Tooltip plugin.
+ */
+var _tooltip = (function () {
+  var rel = $('[rel="tooltip"]');
+  rel.tooltip({ animation: false, html: true });
+})();
+
+
 /**
  * @function external
  * @description Target _blank for all external links

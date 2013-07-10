@@ -3,7 +3,7 @@
   <!-- HEAD -->
   <? $this->load->view('_base/head') ?>
 
-  <body data-spy="scroll" data-target="#navbar-top" data-offset="64">
+  <body data-spy="scroll" data-target="#navbar-top" data-offset="-30">
     <!-- HEADER -->
     <? $this->load->view('_base/header') ?>
 

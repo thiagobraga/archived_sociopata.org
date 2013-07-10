@@ -5,6 +5,7 @@
  * @url www.sociopata.org
  */
 
+
 /*
  * TYPOGRAPHY
  * =============================================================================
@@ -22,7 +23,15 @@ textarea {
 
 p {
   margin: 0 0 20px;
-  text-align: justify
+}
+
+p.info {
+  margin-bottom: 40px;
+}
+
+p.lead {
+  font-size: 18px;
+  line-height: 26px;
 }
 
 article {
@@ -45,6 +54,11 @@ h6 {
   text-transform: uppercase
 }
 
+h1 {
+  font-size: 62px;
+  line-height: 50px;
+}
+
 h2 {
   font-size: 48px;
   line-height: 40px;
@@ -55,46 +69,51 @@ h3 {
   line-height: 30px;
 }
 
+h4 {
+  font-size: 28px;
+  line-height: 24px;
+}
+
+h5 {
+  font-family: 'Droid Sans';
+  font-size: 14px;
+  line-height: 28px;
+  margin-bottom: 40px;
+}
+
 .page-header {
   margin: 20px 0 20px;
   border-bottom: 0;
 }
 
-.dl-horizontal dt {
-  width: 50px;
-}
-
-.dl-horizontal dd {
-  margin-left: 70px;
-  margin-bottom: 5px;
-}
 
 /*
  * -----------------------------------------------------------------------------
  * LAYOUT
  * -----------------------------------------------------------------------------
-*/
+ */
 html,
 body {
   height: 100%;
 }
 
 body {
+  min-width: 400px;
   background: #000;
 }
 
 .wrap {
   position: relative;
   margin: 0 auto 0;
-  z-index: 20;
   height: auto !important;
   height: 100%;
   min-height: 100%;
+  z-index: 20;
 }
 
 .page {
   background: #0B0B0B;
-  min-height: 973px;
+  min-height: 900px;
   bottom: 0;
   -webkit-box-shadow: inset 0 10px 15px rgba(0,0,0,.9);
   -moz-box-shadow: inset 0 10px 15px rgba(0,0,0,.9);
@@ -139,12 +158,11 @@ a:hover {
   text-decoration: none
 }
 
-a.logo {
-  background: url('../img/logo/logo.png') no-repeat center center;
+.logo {
   display: block;
   width: 960px;
-  height: 430px;
-  margin: 0 auto;
+  height: 250px;
+  margin: 90px auto 70px;
 }
 
 header nav {
@@ -174,7 +192,6 @@ header nav a:hover {
   margin-top: 0;
   text-align: center;
   -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
   border-radius: 8px;
   -moz-box-shadow: 10px 10px 25px rgba(0,0,0,.9);
   -o-box-shadow: 10px 10px 25px rgba(0,0,0,.9);
@@ -190,8 +207,10 @@ header nav a:hover {
   box-shadow: inset 1px 1px 4px rgba(0,0,0,.4), 1px 1px 3px rgba(50,50,50,.3);
 }
 
-.featured-small {
-  padding: 0;
+.page.elevated .featured-small {
+  padding: 0 4px;
+  display: inline-block;
+  margin-bottom: 2px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -227,7 +246,7 @@ header nav a:hover {
  * -----------------------------------------------------------------------------
  * FORMS
  * -----------------------------------------------------------------------------
-*/
+ */
 .control-label {
   color: #999;
   text-shadow: 1px 1px 4px #000;
@@ -255,19 +274,12 @@ textarea {
   min-height: 300px;
 }
 
+
 /*
  * -----------------------------------------------------------------------------
  * NAVBAR
  * -----------------------------------------------------------------------------
-*/
-/*
-.navbar {
-  -webkit-box-shadow: 0 10px 15px rgba(0,0,0,.9);
-  -moz-box-shadow: 0 10px 15px rgba(0,0,0,.9);
-  box-shadow: 0 10px 15px rgba(0,0,0,.9);
-}
-*/
-
+ */
 .navbar .nav > li > .brand {
   width: 172px;
 }
@@ -277,7 +289,7 @@ textarea {
   background: url('../img/logo/logo-navbar.png');
   display: block;
   height: 32px;
-  margin: 0 10px 0;
+  margin: 0 20px 0 0;
 }
 
 .navbar .nav > li > a {
@@ -332,13 +344,11 @@ textarea {
 }
 
 
-
 /*
  * -----------------------------------------------------------------------------
  * LIGHTBOX
  * -----------------------------------------------------------------------------
 */
-
 @-webkit-keyframes supersize {
   0% { -webkit-transform:scale(.9); }
   100% { -webkit-transform:scale(1); }
@@ -411,6 +421,48 @@ li[id]:target a {
 
 /*
  * -----------------------------------------------------------------------------
+ * SECTIONS
+ * -----------------------------------------------------------------------------
+*/
+#eventos h1 {
+  margin-top: 0;
+}
+
+#integrantes img {
+  max-width: 210px;
+  margin-right: 20px;
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px 2px rgba(0,0,0,.4);
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  -webkit-transition: all ease 1s;
+  -moz-transition: all ease 1s;
+  -o-transition: all ease 1s;
+  transition: all ease 1s;
+}
+
+#integrantes img:last-child {
+  margin-right: 0;
+}
+
+#integrantes img:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+#influencias .page-header {
+  margin-bottom: 40px;
+}
+
+#influencias img {
+  display: block;
+  margin: 0 auto 60px;
+}
+
+/*
+ * -----------------------------------------------------------------------------
  * FOOTER
  * -----------------------------------------------------------------------------
 */
@@ -470,42 +522,112 @@ footer h2 {
  * -----------------------------------------------------------------------------
 */
 @media (max-width: 1199px) {
-  a.logo {
-    width: 800px;
-    height: 400px;
+  .logo {
+    width: auto;
+    height: auto;
+    margin: 90px auto 70px;
+  }
+
+  .navbar .nav > li > a {
+    padding: 10px 6px 10px;
   }
 
   .featured-video {
-    width: 930px;
-    height: 300px;
+    width: auto;
+    height: auto;
+  }
+  
+  #influencias img {
+    display: block;
+    margin: 0 auto 50px;
   }
 }
 
 @media (max-width: 979px) {
-  a.logo {
-    width: 700px;
-    height: 350px;
+  .container {
+    width: auto;
+    margin: 0 20px 20px;
   }
 
-  .featured-video {
-    width: 930px;
-    height: 500px;
-  }
-}
-
-@media (max-width: 767px) {
-  a.logo {
-    width: 623px;
-    height: 300px;
+  .navbar .container {
+    margin-bottom: 0;
   }
 
-  .featured-video {
-    width: 300px;
-    height: 300px;
+  .navbar .nav > li > a {
+    font-size: 24px;
+    width: 75px;
+    padding: 8px 2px 8px;
   }
 
   .navbar-fixed-top,
   .navbar-fixed-bottom {
-    position: static;
+    position: fixed;
+  }
+
+  .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {
+    padding: 0;
+  }
+
+  .logo {
+    width: auto;
+    height: auto;
+    margin: 70px auto 50px;
+  }
+
+  .featured-video {
+    width: 734px;
+    height: 445px;
+  }
+  
+  #influencias img {
+    display: block;
+    margin: 0 auto 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .container {
+    width: auto;
+    margin: 0 20px 20px;
+  }
+
+  .navbar .container {
+    margin-bottom: 0;
+  }
+
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: fixed;
+  }
+
+  .navbar .nav > li > a {
+    padding: 10px 6px 10px;
+  }
+
+  .logo {
+    width: auto;
+    height: auto;
+    margin: 60px auto 40px;
+  }
+
+  .featured-video {
+    width: auto;
+    height: auto;
+  }
+
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: fixed;
+  }
+
+  #influencias img {
+    display: block;
+    margin: 0 auto 20px;
   }
 }

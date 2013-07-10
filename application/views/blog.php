@@ -1,5 +1,5 @@
 <section id="blog" class="page">
   <div class="container">
-    <h1>Loja</h1>
+    <h1>Blog</h1>
   </div>
 </section>
