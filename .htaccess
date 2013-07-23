@@ -364,7 +364,6 @@ FileETag None
 # ------------------------------------------------------------------------------
 #
 <IfModule mod_rewrite.c>
-  RewriteCond $1 !^(index\.php|assets)
   RewriteCond %{HTTP_HOST} ^test\.(.+)$ [NC]
   RewriteCond %{REQUEST_URI} !^/test/ [NC]
   RewriteRule ^(.*)$ /test/$1

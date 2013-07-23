@@ -5,7 +5,9 @@
     </div>
 
     <article>
-      <iframe class="featured-video" src="http://www.youtube.com/embed/xUJfO0IFVkE?html5=1&amp;hd=1&amp;rel=0&amp;showinfo=0&amp;theme=dark&amp;color=white" frameborder="0" allowfullscreen></iframe>
+      <div class="js-video widescreen">
+        <iframe class="featured-video" src="http://www.youtube.com/embed/xUJfO0IFVkE?html5=1&amp;hd=1&amp;rel=0&amp;showinfo=0&amp;theme=dark&amp;color=white" frameborder="0" allowfullscreen></iframe>
+      </div>
     </article>
   </div>
 </section>

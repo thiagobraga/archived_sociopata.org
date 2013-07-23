@@ -34,7 +34,7 @@
     <!-- Integrantes -->
     <article id="integrantes">
       <div class="page-header">
-        <h2>Integrantes</h2>
+        <h2>Integrantes <small>passe o mouse sobre as fotos para obter mais informações</small></h2>
       </div>
 
       <div class="row-fluid">

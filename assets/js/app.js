@@ -5,8 +5,6 @@
  * @url www.sociopata.org
  */
 
-var menu = $('#menu a');
-
 
 /**
  * @function _tooltip
@@ -35,7 +33,7 @@ var external = (function () {
 var layout = (function () {
   var page = $('.page');
   for (var i = 0; i < page.length; i++)
-    (i % 2) ? null : page.eq(i).addClass('elevated');
+    i % 2 || page.eq(i).addClass('elevated');
 })();
 
 
@@ -132,7 +130,7 @@ var scrollToTop = (function () {
     root = $('html, body');
   home.on('click', function(event) {
     event.preventDefault();
-    root.stop().animate({ scrollTop: 0 });
+    root.stop().animate({ scrollTop: 0 }, 500, 'swing');
   });
 })();
 

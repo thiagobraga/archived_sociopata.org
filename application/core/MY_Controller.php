@@ -29,6 +29,15 @@ class MY_Controller extends CI_Controller {
     $this->data->title = 'Sociopata :: Site Oficial';
     $this->data->description = 'A Sociopata é uma banda de metal formada no interior de São Paulo e iniciada em 2008, atualmente composta por Kleber Cabrera (Voz), Thiago Braga (guitarra), Birão Spoldari (Baixo), Leo Sanches (guitarra) e Gustavo Panurge (bateria).';
     $this->data->keywords = 'sociopata, thrash metal, hardcore, bauru, agudos, sao paulo, brasil';
+
+    /* Facebook */
+    $fb_config = array(
+      'appId' => '475565802516661',
+      'secret' => '2be989c5d49926716ab46181e047e034'
+    );
+    $this->load->library('facebook', $fb_config);
+    echo("<br/><br/><br/><br/><br/>");
+    var_dump($this->facebook);
   }
 
 }
