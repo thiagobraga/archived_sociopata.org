@@ -1,4 +1,6 @@
 <?php
+
+/*
 $config['app_type'] = "iframe"; // options are "iframe" or "fbml"
 $config['api_key']  = "";
 $config['secret'] = "";
@@ -12,6 +14,7 @@ $config['fb_require_login_controllers'] = array(
  * in a controller
  * "controller" => array("*")
  *
- */
+ *//*
   "welcome" => array("index")
 );
+*/

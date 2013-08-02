@@ -31,13 +31,13 @@ class MY_Controller extends CI_Controller {
     $this->data->keywords = 'sociopata, thrash metal, hardcore, bauru, agudos, sao paulo, brasil';
 
     /* Facebook */
-    $fb_config = array(
-      'appId' => '475565802516661',
-      'secret' => '2be989c5d49926716ab46181e047e034'
-    );
-    $this->load->library('facebook', $fb_config);
-    echo("<br/><br/><br/><br/><br/>");
-    var_dump($this->facebook);
+    // $fb_config = array(
+    //   'appId' => '475565802516661',
+    //   'secret' => '2be989c5d49926716ab46181e047e034'
+    // );
+    // $this->load->library('facebook', $fb_config);
+    // echo("<br/><br/><br/><br/><br/>");
+    // var_dump($this->facebook);
   }
 
 }
