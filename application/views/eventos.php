@@ -8,7 +8,7 @@
     <article>
       <div class="row-fluid">
         <div class="span5">
-          <img src="<?= base_url('assets/img/eventos/sunday-grind-madness.jpg') ?>" class="img-rounded" />
+          <img src="<?php echo base_url('assets/img/eventos/sunday-grind-madness.jpg') ?>" class="img-rounded" />
         </div>
         <div class="span7">
           <h1>Sunday Grind Madness</h1>

@@ -38,11 +38,11 @@
       </div>
 
       <div class="row-fluid">
-        <img src="<?= base_url('assets/img/integrantes/birao.jpg') ?>" />
-        <img src="<?= base_url('assets/img/integrantes/braga.jpg') ?>" />
-        <img src="<?= base_url('assets/img/integrantes/gustavo.jpg') ?>" />
-        <img src="<?= base_url('assets/img/integrantes/kleber.jpg') ?>" />
-        <img src="<?= base_url('assets/img/integrantes/leo.jpg') ?>" />
+        <img src="<?php echo base_url('assets/img/integrantes/birao.jpg') ?>" />
+        <img src="<?php echo base_url('assets/img/integrantes/braga.jpg') ?>" />
+        <img src="<?php echo base_url('assets/img/integrantes/gustavo.jpg') ?>" />
+        <img src="<?php echo base_url('assets/img/integrantes/kleber.jpg') ?>" />
+        <img src="<?php echo base_url('assets/img/integrantes/leo.jpg') ?>" />
       </div>
     </article>
 
@@ -54,46 +54,46 @@
 
       <div class="row-fluid">
         <div class="span3 text-left">
-          <img src="<?= base_url('assets/img/influencias/pantera.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/pantera.png') ?>" />
         </div>
         <div class="span3 text-center">
-          <img src="<?= base_url('assets/img/influencias/meshuggah.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/meshuggah.png') ?>" />
         </div>
         <div class="span3 text-center">
-          <img src="<?= base_url('assets/img/influencias/strapping-young-lad.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/strapping-young-lad.png') ?>" />
         </div>
         <div class="span3 text-right">
-          <img src="<?= base_url('assets/img/influencias/slayer.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/slayer.png') ?>" />
         </div>
       </div>
 
       <div class="row-fluid">
         <div class="span3 text-left">
-          <img src="<?= base_url('assets/img/influencias/napalm-death.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/napalm-death.png') ?>" />
         </div>
         <div class="span3 text-center">
-          <img src="<?= base_url('assets/img/influencias/sepultura.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/sepultura.png') ?>" />
         </div>
         <div class="span3 text-center">
-          <img src="<?= base_url('assets/img/influencias/brujeria.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/brujeria.png') ?>" />
         </div>
         <div class="span3 text-right">
-          <img src="<?= base_url('assets/img/influencias/porcupine-tree.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/porcupine-tree.png') ?>" />
         </div>
       </div>
 
       <div class="row-fluid">
         <div class="span3 text-left">
-          <img src="<?= base_url('assets/img/influencias/pink-floyd.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/pink-floyd.png') ?>" />
         </div>
         <div class="span3 text-center">
-          <img src="<?= base_url('assets/img/influencias/cripple-bastards.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/cripple-bastards.png') ?>" />
         </div>
         <div class="span3 text-center">
-          <img src="<?= base_url('assets/img/influencias/queens-of-the-stone-age.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/queens-of-the-stone-age.png') ?>" />
         </div>
         <div class="span3 text-right">
-          <img src="<?= base_url('assets/img/influencias/cannibal-corpse.png') ?>" />
+          <img src="<?php echo base_url('assets/img/influencias/cannibal-corpse.png') ?>" />
         </div>
       </div>
 
