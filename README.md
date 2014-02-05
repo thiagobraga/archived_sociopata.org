@@ -5,17 +5,7 @@ Site em português da banda Sociopata, desenvolvido com CodeIgniter, jQuery e Bo
 
 ####Screenshots
 
-![](assets/images/readme/home_480.jpg?raw=true =x400)
-![](assets/images/readme/home_480.jpg?raw=true =x400)
-![](assets/images/readme/home_480.jpg?raw=true =x400)
-![](assets/images/readme/home_480.jpg?raw=true =x400)
-
-<img src="assets/images/readme/home_480.jpg?raw=true" style="height: 400px; margin-right: 5px;" /> 
-<img src="assets/images/readme/home_720.jpg?raw=true" style="height: 400px; margin-right: 5px;" /> 
-<img src="assets/images/readme/home_940.jpg?raw=true" style="height: 400px; margin-right: 5px;" /> 
-<img src="assets/images/readme/home_1140.jpg?raw=true" style="height: 400px; margin-right: 5px;" /> 
-<img src="assets/images/readme/home_1920.jpg?raw=true" style="height: 400px; margin-right: 5px;" /> 
-
+<img src="assets/images/readme/home_480.jpg?raw=true" alt="Screenshot" style="height: 400px;"/> <img src="assets/images/readme/home_720.jpg?raw=true" alt="Screenshot" style="height: 400px;"/> <img src="assets/images/readme/home_940.jpg?raw=true" alt="Screenshot" style="height: 400px;"/> <img src="assets/images/readme/home_1140.jpg?raw=true" alt="Screenshot" style="height: 400px;"/> <img src="assets/images/readme/home_1920.jpg?raw=true" alt="Screenshot" style="height: 400px;"/>
 
 ####Biografia
 
