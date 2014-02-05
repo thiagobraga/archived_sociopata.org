@@ -38,6 +38,7 @@ Icon
 
 ### CodeIgniter ###
 */config/database.php
+*/config/email.php
 */logs/log-*.php
 !*/logs/.htaccess
 !*/logs/index.html
