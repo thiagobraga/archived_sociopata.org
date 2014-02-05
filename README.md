@@ -3,16 +3,14 @@ sociopata.org
 
 Site em português da banda Sociopata, desenvolvido com CodeIgniter, jQuery e Bootstrap. [sociopata.org](http://sociopata.org)
 
----
-
 ####Screenshots
 
-![](assets/images/readme/home_480.jpg?raw=true)
-![](assets/images/readme/home_480.jpg?raw=true)
-![](assets/images/readme/home_480.jpg?raw=true)
-![](assets/images/readme/home_480.jpg?raw=true)
+<img src="assets/images/readme/home_480.jpg?raw=true" style="height: 400px; margin-right: 5px;" />
+<img src="assets/images/readme/home_720.jpg?raw=true" style="height: 400px; margin-right: 5px;" />
+<img src="assets/images/readme/home_940.jpg?raw=true" style="height: 400px; margin-right: 5px;" />
+<img src="assets/images/readme/home_1140.jpg?raw=true" style="height: 400px; margin-right: 5px;" />
+<img src="assets/images/readme/home_1920.jpg?raw=true" style="height: 400px; margin-right: 5px;" />
 
----
 
 ####Biografia
 
