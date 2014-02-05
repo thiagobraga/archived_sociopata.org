@@ -1,7 +1,3 @@
-<section id="loja" class="page">
-  <div class="container">
-    <div class="page-header">
-      <h2 class="featured">Loja</h2>
-    </div>
-  </div>
+<section class="<?php echo $page ?>">
+    <h3 class="page-header"><?php echo $page ?></h3>
 </section>

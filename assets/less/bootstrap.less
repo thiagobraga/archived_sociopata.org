@@ -1,93 +1,53 @@
-/*!
- * Bootstrap v2.3.2
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
- */
-
-/**
- * Core
- *
- * - variables
- * - mixins
- * - CSS reset
- * - grid system
- * - page structure
- * - base CSS
- */
+// Core variables and mixins
 @import "variables.less";
+@import "mixins.less";
 
-@import "core/mixins.less";
-@import "core/reset.less";
-@import "core/scaffolding.less";
-@import "core/grid.less";
-@import "core/layouts.less";
-@import "core/type.less";
-@import "core/code.less";
-@import "core/forms.less";
-@import "core/tables.less";
+// Reset
+@import "normalize.less";
+@import "print.less";
 
-/**
- * Components
- *
- * - font-awesome
- * - common
- * - buttons
- * - nav
- * - popovers
- * - misc
- */
+// Core CSS
+@import "scaffolding.less";
+@import "type.less";
+@import "code.less";
+@import "grid.less";
+@import "tables.less";
+@import "forms.less";
+@import "buttons.less";
 
+// Components
 @import "font-awesome/font-awesome.less";
+@import "component-animations.less";
+@import "glyphicons.less";
+@import "dropdowns.less";
+@import "button-groups.less";
+@import "navs.less";
+@import "navbar.less";
+@import "breadcrumbs.less";
+@import "pagination.less";
+@import "pager.less";
+@import "labels.less";
+@import "badges.less";
+@import "jumbotron.less";
+@import "thumbnails.less";
+@import "alerts.less";
+@import "progress-bars.less";
+@import "media.less";
+@import "list-group.less";
+@import "panels.less";
+@import "wells.less";
+@import "close.less";
 
-@import "common/sprites.less";
-@import "common/dropdowns.less";
-@import "common/wells.less";
-@import "common/component-animations.less";
-@import "common/close.less";
+// Components w/ JavaScript
+@import "modals.less";
+@import "tooltip.less";
+@import "popovers.less";
+@import "carousel.less";
 
-@import "buttons/buttons.less";
-@import "buttons/button-groups.less";
-@import "buttons/alerts.less";
+// Utility classes
+@import "utilities.less";
+@import "responsive-utilities.less";
+@import "theme.less";
 
-@import "nav/navs.less";
-@import "nav/navbar.less";
-@import "nav/breadcrumbs.less";
-@import "nav/pagination.less";
-@import "nav/pager.less";
-
-@import "popovers/modals.less";
-@import "popovers/tooltip.less";
-@import "popovers/popovers.less";
-
-@import "misc/thumbnails.less";
-@import "misc/media.less";
-@import "misc/labels-badges.less";
-@import "misc/progress-bars.less";
-@import "misc/accordion.less";
-@import "misc/carousel.less";
-@import "misc/hero-unit.less";
-
-/**
- * Utilities
- */
-@import "utilities/utilities.less";
-
-/**
- * Responsive
- *
- * - Utilities
- * - Large desktops (min-width: 979px and max-width: 1200px)
- * - Tablets to regular desktops (min-width: 768px and max-width: 979px)
- * - Phones to portrait tablets and narrow desktops (max-width: 767px)
- * - Navbar
- */
-
-@import "responsive/responsive-utilities.less";
-@import "responsive-1200px-min.less";
-@import "responsive-768px-979px.less";
-@import "responsive-767px-max.less";
-@import "responsive-navbar.less";
+// Project
+@import "project.less";

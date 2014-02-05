@@ -1,49 +1,46 @@
-<section id="contato" class="page">
-  <div class="container">
-    <div class="page-header">
-      <h2 class="featured">Contato</h2>
+<h3 class="page-header"><?php echo $page ?></h3>
+
+<p class="lead">Envie-nos um e-mail pelo formulário abaixo ou pelo e-mail <a href="mailto:contato@sociopata.org">contato@sociopata.org</a>.<br/>
+<br/>
+</p>
+
+<form id="contact" class="form-horizontal" role="form">
+    <!-- Nome -->
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="nome">Nome</label>
+        <div class="col-sm-10">
+            <input id="nome" name="nome" maxlength="80" class="form-control" type="text" required />
+        </div>
     </div>
 
-    <form id="contact" class="form-horizontal">
-      <!-- Nome -->
-      <div class="control-group">
-        <label class="control-label" for="nome">Nome</label>
-        <div class="controls">
-          <input id="nome" name="nome" maxlength="80" class="input-block-level" type="text" required />
+    <!-- E-mail -->
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="nome">E-mail</label>
+        <div class="col-sm-10">
+            <input id="email" name="email" maxlength="80" class="form-control" type="email" required />
         </div>
-      </div>
+    </div>
 
-      <!-- E-mail -->
-      <div class="control-group">
-        <label class="control-label" for="email">E-mail</label>
-        <div class="controls">
-          <input id="email" name="email" maxlength="50" class="input-block-level" type="email" required />
+    <!-- Assunto -->
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="nome">Assunto</label>
+        <div class="col-sm-10">
+            <input id="assunto" name="assunto" maxlength="80" class="form-control" type="text" required />
         </div>
-      </div>
+    </div>
 
-      <!-- Assunto -->
-      <div class="control-group">
-        <label class="control-label" for="assunto">Assunto</label>
-        <div class="controls">
-          <input id="assunto" name="assunto" maxlength="100" class="input-block-level" type="text" />
+    <!-- Mensagem -->
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="mensagem">Mensagem</label>
+        <div class="col-sm-10">
+            <textarea id="mensagem" name="mensagem" maxlength="300" rows="3" class="form-control" required></textarea>
         </div>
-      </div>
+    </div>
 
-      <!-- Mensagem -->
-      <div class="control-group">
-        <label class="control-label" for="mensagem">Mensagem</label>
-        <div class="controls">
-          <textarea id="mensagem" name="mensagem" maxlength="300" rows="3" class="input-block-level" required></textarea>
+    <!-- Form actions -->
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Enviar</button>
         </div>
-      </div>
-
-      <!-- Form actions -->
-      <div class="control-group">
-        <label class="control-label"></label>
-        <div class="controls">
-          <button type="submit" class="btn btn-large btn-inverse pull-right">Enviar</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</section>
+    </div>
+</form>

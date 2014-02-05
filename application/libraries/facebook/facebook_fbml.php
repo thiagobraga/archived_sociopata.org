@@ -5,7 +5,7 @@ require_once("facebook.php");
  *  apps in CodeIgniter. The only method that needs to be overwritten so far is validate_fb_params().
  */
 class FacebookFbml extends Facebook {
-	
+
   public function __construct($api_key,$secret,$generate_session_secret = false) {
     parent::__construct($api_key, $secret, $generate_session_secret=false);
   }
@@ -91,4 +91,4 @@ class FacebookFbml extends Facebook {
 
     return !empty($this->fb_params);
   }
-} 
+}

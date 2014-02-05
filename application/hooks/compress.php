@@ -1,26 +1,27 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Compress the HTML output.
+ * Compress HTML output
  *
- * Compress HTML output replacing end of line
- * by a space, stripping whitespaces after and
- * before tags, except space and shorten multiple
- * whitespace sequences.
+ * Compress the HTML output, with this rules:
+ * - Remove end of line;
+ * - Removing all tabs;
+ * - Strip whitespaces after tags, except space;
+ * - Strip whitespaces before tags, except space;
+ * - Shorten multiple whitespace sequences;
+ * - Removing all HTML comments except IE conditional comments.
  *
- * @return [type] [description]
+ * @version 1.1
  */
 function compress() {
-  $CI =& get_instance();
-  $buffer = $CI->output->get_output();
-
-  $search = array('/\n/', '/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
-  $replace = array(' ', '>', '<', '\\1');
-  $buffer = preg_replace($search, $replace, $buffer);
-
-  $CI->output->set_output($buffer);
-  $CI->output->_display();
+    $CI =& get_instance();
+    $buffer = $CI->output->get_output();
+    $search = array('/\n/', '/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s', '/<!--(?!\[if).*?-->/');
+    $replace = array('', '>', '<', '\\1', '');
+    $buffer = preg_replace($search, $replace, $buffer);
+    $CI->output->set_output($buffer);
+    $CI->output->_display();
 }
 
 /* End of file compress.php */
-/* Location: ./system/application/hooks/compress.php */
+/* Location: ./application/hooks/compress.php */

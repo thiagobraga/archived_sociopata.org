@@ -48,7 +48,7 @@ $autoload['packages'] = array();
  *
  *  Prototype:
  *
- * 	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
+ *  $autoload['libraries'] = array('database', 'session', 'xmlrpc');
  */
 $autoload['libraries'] = array('database', 'session');
 
@@ -58,7 +58,7 @@ $autoload['libraries'] = array('database', 'session');
  * --------------------------------------------------------------------
  *  Prototype:
  *
- * 	$autoload['helper'] = array('url', 'file');
+ *  $autoload['helper'] = array('url', 'file');
  */
 $autoload['helper'] = array('string', 'text', 'url');
 
@@ -68,7 +68,7 @@ $autoload['helper'] = array('string', 'text', 'url');
  * --------------------------------------------------------------------
  *  Prototype:
  *
- * 	$autoload['config'] = array('config1', 'config2');
+ *  $autoload['config'] = array('config1', 'config2');
  *
  *  NOTE: This item is intended for use ONLY if you have created custom
  *  config files.  Otherwise, leave it blank.
@@ -82,7 +82,7 @@ $autoload['config'] = array();
  * --------------------------------------------------------------------
  *  Prototype:
  *
- * 	$autoload['language'] = array('lang1', 'lang2');
+ *  $autoload['language'] = array('lang1', 'lang2');
  *
  *  NOTE: Do not include the "_lang" part of your file.  For example
  *  "codeigniter_lang.php" would be referenced as array('codeigniter');
@@ -96,7 +96,7 @@ $autoload['language'] = array();
  *  -------------------------------------------------------------------
  *  Prototype:
  *
- * 	$autoload['model'] = array('model1', 'model2');
+ *  $autoload['model'] = array('model1', 'model2');
  *
  */
 $autoload['model'] = array();

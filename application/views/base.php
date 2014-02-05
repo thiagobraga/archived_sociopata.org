@@ -1,21 +1,27 @@
 <!doctype html>
-<html lang="pt-br" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
-  <!-- HEAD -->
-  <?php $this->load->view('_base/head') ?>
+<html lang="pt-br" prefix="fb: http://www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns#">
+    <!-- HEAD -->
+    <?php $this->load->view('_base/head') ?>
 
-  <body data-spy="scroll" data-target="#navbar-top" data-offset="-30">
-    <!-- HEADER -->
-    <?php $this->load->view('_base/header') ?>
+    <body>
+        <!-- HEADER -->
+        <?php $this->load->view('_base/header') ?>
 
-    <div class="wrap">
-      <!-- CONTENT -->
-      <?php $this->load->view('page') ?>
-    </div>
+        <!-- CONTENT -->
+        <div class="wrap">
+            <div class="container">
+                <div class="content">
+                    <section class="<?php echo $class ?>">
+                        <?php $this->load->view($content) ?>
+                    </section>
+                </div>
+            </div>
+        </div>
 
-    <!-- FOOTER -->
-    <?php $this->load->view('_base/footer') ?>
+        <!-- FOOTER -->
+        <?php $this->load->view('_base/footer') ?>
 
-    <!-- SCRIPTS -->
-    <?php $this->load->view('_base/scripts') ?>
-  </body>
+        <!-- SCRIPTS -->
+        <?php $this->load->view('_base/scripts') ?>
+    </body>
 </html>

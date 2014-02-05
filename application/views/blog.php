@@ -1,5 +1,1 @@
-<section id="blog" class="page">
-  <div class="container">
-    <h1>Blog</h1>
-  </div>
-</section>
+<h3 class="page-header"><?php echo $page ?></h3>

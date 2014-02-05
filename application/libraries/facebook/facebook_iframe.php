@@ -6,7 +6,7 @@ require_once("facebook.php");
  *  This extension assumes that the app is using $_SESSION to maintain the fb_sig params.
  */
 class FacebookIframe extends Facebook {
-	
+
   public function __construct($api_key,$secret,$generate_session_secret = false) {
     parent::__construct($api_key, $secret, $generate_session_secret=false);
   }
@@ -18,17 +18,17 @@ class FacebookIframe extends Facebook {
     // addition to GET, so use a different prefix to differentiate them
     if (!$this->fb_params) {
       // Change $_GET to $_REQUEST, since CI strips all vars from $_GET unless
-      // query strings are enabled.    	
+      // query strings are enabled.
       #$fb_params = $this->get_valid_fb_params($_GET, 48 * 3600, 'fb_sig');
       $fb_params = $this->get_valid_fb_params($_REQUEST, 48 * 3600, 'fb_sig');
       $fb_post_params = $this->get_valid_fb_params($_POST, 48 * 3600, 'fb_post_sig');
-      
+
       // Since this is an iframe app we are using sessions to propagate the fb_sig params
-      // which are loaded upon the first page load.  Therefore we need to check the 
+      // which are loaded upon the first page load.  Therefore we need to check the
       // session var for the fb_sig params.  Only do this is if FB is not already passing
       // in fb_sig vars via $_REQUEST, since we want to give priority to their sig vars.
       $fb_session_params = (empty($fb_params)) ? $this->get_valid_fb_params($_SESSION, 48 * 3600, 'fb_sig') : array();
-      
+
       $this->fb_params = array_merge($fb_params, $fb_post_params, $fb_session_params);
     }
 
@@ -99,4 +99,4 @@ class FacebookIframe extends Facebook {
 
     return !empty($this->fb_params);
   }
-} 
+}
