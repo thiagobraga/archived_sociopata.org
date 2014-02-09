@@ -37,11 +37,11 @@
             <div class="panel-body">
                 <?php if (!empty($eventos)) { ?>
                     <div class="row event">
-                        <div class="col-lg-6 col-md-5 col-sm-6 col-xs-5 flyer">
+                        <div class="col-xs-5 col-sm-6 col-md-5 col-lg-6 flyer">
                             <img src="<?php echo base_url('assets/images/events/' . $eventos->codigo . '.jpg') ?>" class="img-responsive" />
                         </div>
 
-                        <div class="col-lg-6 col-md-7 col-sm-6 col-xs-7">
+                        <div class="col-xs-7 col-sm-6 col-md-7 col-lg-6">
                             <a href="<?php echo base_url('eventos') ?>">
                                 <h6><?php echo $eventos->nome ?></h6>
                                 <p><?php echo $eventos->local ?></p>
