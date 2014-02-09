@@ -1,5 +1,6 @@
 <?php
 
-`git pull origin master`;
+$output = `git pull origin master`;
+echo $output;
 
 ?>

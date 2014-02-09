@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS eventos;
 CREATE TABLE IF NOT EXISTS eventos (
     codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome       VARCHAR(255) NOT NULL,
-    info       VARCHAR(255) NOT NULL,
+    info       TEXT         NOT NULL,
     local      VARCHAR(255) NOT NULL,
     valor      DECIMAL(5,2) NOT NULL,
     data       TIMESTAMP    NOT NULL,
