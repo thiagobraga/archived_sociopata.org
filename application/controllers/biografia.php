@@ -16,11 +16,14 @@ class Biografia extends Model_Controller {
      */
     public function index() {
         $this->data->page = 'Biografia';
-        $this->data->content = 'biografia';
-        $this->data->css = array('css/modules/biografia');
-        $this->data->js = array('js/modules/biografia');
+        $this->data->content = 'biografia/biografia';
+
+        $this->setTitle('Sociopata | ' . $this->data->page);
+        $this->setDescription('Biografia e informações sobre a banda.');
+
+        $this->data->biografia = $this->biografia_model->select_biografia();
         $this->data->integrantes = $this->biografia_model->select_integrantes();
-        $this->load->view('base', $this->data);
+        $this->load->view('template', $this->data);
     }
 
 }

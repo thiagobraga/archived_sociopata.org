@@ -1,0 +1,12 @@
+.past-event {
+    color: #333;
+    opacity: .9;
+}
+
+.event {
+    margin-bottom: 30px;
+}
+
+.event:last-child {
+    margin-bottom: 0;
+}

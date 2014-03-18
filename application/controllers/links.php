@@ -18,10 +18,12 @@ class Links extends MY_Controller
     public function index()
     {
         $this->data->page = 'Links';
-        $this->data->content = 'links';
-        $this->data->css = array('css/modules/links');
-        $this->data->js = array('js/modules/links');
-        $this->load->view('base', $this->data);
+        $this->data->content = 'links/links';
+
+        $this->setTitle('Sociopata | ' . $this->data->page);
+        $this->setDescription('Links para redes sociais e álbuns online da Sociopata.');
+
+        $this->load->view('template', $this->data);
     }
 
 }

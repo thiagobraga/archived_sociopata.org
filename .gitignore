@@ -35,6 +35,7 @@ Icon
 ### SublimeText ###
 # SublimeText project files
 *.sublime-workspace
+*.sublime-project
 
 ### CodeIgniter ###
 */config/database.php
@@ -66,6 +67,7 @@ node_modules
 
 ### Bower ###
 bower_components
+assets/bower
 
 
 ### Jekyll ###

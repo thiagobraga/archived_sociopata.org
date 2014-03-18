@@ -1,36 +1,68 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
 
 /**
- * MY_Controller Class
- * Contém funções comuns para todos os controllers
- * @author Thiago Braga <thiago@sociopata.org>
- * @package Sociopata
- * @subpackage Controllers
- * @since Class available since Release 1.0
- * @license http://www.php.net/license/3_01.txt PHP License 3.01
- * @access private
+ * MY_Controller.php
+ *
+ * Classes, métodos e propriedades do controller home.
+ * A classe Home estende a classe MY_Controller.
+ *
+ * PHP version 5
+ *
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
+ * the PHP License and are unable to obtain it through the web, please
+ * send a note to license@php.net so we can mail you a copy immediately.
+ *
+ * @category  Thrash Metal
+ * @package   Sociopata
+ * @author    Thiago Braga <thiago@sociopata.org>
+ * @copyright 1997-2005 The PHP Group
+ * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version   GIT: $Id$
+ * @link      http://sociopata.org
+ * @since     File available since Release 0.0.0
  */
-class MY_Controller extends CI_Controller {
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * MY_Controller
+ * @author Thiago Braga <thiago@sociopata.org>
+ * @access public
+ * @version 1.0
+ */
+class MY_Controller extends CI_Controller
+{
 
     /**
-     * @var object Data parsed to views
+     * Variável que armazena dados no controller
+     * e envia para as views.
+     *
+     * @var stdClass
      */
-    var $data;
+    public $data;
 
     /**
-     * @var object Stores Ajax responses
+     * Variável response utilizada nas requisições ajax.
+     *
+     * @var stdClass
      */
-    var $response;
+    public $response;
 
     /**
-     * @var string Armazena o nome da classe atual
+     * Armazena o nome do controller
+     *
+     * @var string
      */
-    var $class;
+    public $class;
 
     /**
-     * @var string Armazena o nome do método atual
+     * Armazena o nome do método
+     *
+     * @var string
      */
-    var $method;
+    public $method;
 
     /**
      * Call the controller constructor
@@ -42,64 +74,118 @@ class MY_Controller extends CI_Controller {
      *
      * @since Method available since Release 1.0
      */
-    function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        $this->class = $this->router->fetch_class();
-        $this->method = $this->router->fetch_method();
-
-        if (strrpos($this->method, 'ajax_') === 0)
-            $this->ajax();
 
         $this->data = new stdClass();
         $this->response = new stdClass();
-        $this->data->class = $this->class;
-        //$this->load->model('configs_model', 'Configs');
-        //$this->modulos();
-        $this->metadata();
+
+        $this->data->class = $this->router->fetch_class();
+        $this->data->method = $this->router->fetch_method();
+
+        // Checa se é um requisição ajax para cada método
+        // com nome iniciado por 'ajax_', evitando que um
+        // usuário acesse o método pela URL.
+        if (strrpos($this->data->method, 'ajax_') === 0
+            && !$this->input->is_ajax_request()
+        ) {
+            redirect(base_url($this->data->controller));
+        }
+
+        $this->loadCss(array('css/styles.min'));
+        $this->loadJs(array('js/scripts.min'));
+        $this->setKeywords(array(
+            'bandas',
+            'bauru',
+            'metal',
+            'sao paulo',
+            'brasil',
+            'thrash',
+            'hardcore',
+            'progressivo'
+        ));
     }
 
     /**
-     * Verifica se é uma requisição POST. Se não for,
-     * redireciona para o controller que o solicitou
-     * utilizando o método $this->router->fetch_class().
+     * Set page title.
      *
-     * @see $this->router->fetch_class()
-     * http://stackoverflow.com/q/409351/1096219
+     * @access protected
+     * @param  string $page_title
      */
-    function ajax() {
-        ($_SERVER['REQUEST_METHOD'] == 'POST') OR redirect(base_url($this->class));
+    protected function setTitle($title)
+    {
+        $this->load->vars(array('title' => $title));
     }
 
     /**
+     * Set meta description.
      *
-     * Get the module of the system.
-     *
-     * Creates the menu element with li
-     * elements from the modules of the system.
-     *
+     * @access protected
+     * @param  string $meta_description
      */
-    function modulos() {
-        $this->data->menu = $this->Configs->select_menu();
-        $this->data->tabs = $this->Configs->select_tabs();
-        $page_info = $this->Configs->select_pageinfo($this->class);
-        $this->data->info = $page_info->info;
-        $this->data->info_edit = $page_info->info_edit;
-        $this->data->info_cadastro = $page_info->info_cadastro;
+    protected function setDescription($description)
+    {
+        $this->load->vars(array('description' => $description));
     }
 
     /**
-     * Get the meta tags of the system.
+     * Set meta keywords.
      *
-     * Creates the meta tag elements with
-     * description at the head of the document.
-     *
-     * @return
-     * @todo Get from database
+     * @access protected
+     * @param  string $keywords
      */
-    function metadata() {
-        $this->data->title = 'Sociopata :: Site Oficial';
-        $this->data->description = 'A Sociopata é uma banda autoral formada no interior de São Paulo e iniciada em 2008, atualmente composta por Kleber Cabrera (Voz), Thiago Braga (guitarra), Birão Spoldari (Baixo), Leo Sanches (guitarra) e Gustavo Panurge (bateria).';
-        $this->data->keywords = 'bandas, bauru, sao paulo, brazil, brasil, metal, thrash, hardcore';
+    protected function setKeywords($keywords)
+    {
+        $this->load->vars(array('keywords' => implode(',', $keywords)));
+    }
+
+    /**
+     * Load css styles.
+     *
+     * @access protected
+     * @param  array $css
+     */
+    protected function loadCss(array $css)
+    {
+        if ($og_css = $this->load->get_var('css')) {
+            $css = array_merge($og_css, $css);
+            $css = array_unique($css);
+        }
+
+        $this->load->vars('css', $css);
+    }
+
+    /**
+     * Load javascript files.
+     *
+     * @access protected
+     * @param  array $js
+     */
+    protected function loadJs(array $js)
+    {
+        if ($og_js = $this->load->get_var('js')) {
+            $js = array_merge($og_js, $js);
+            $js = array_unique($js);
+        }
+
+        $this->load->vars('js', $js);
+    }
+
+    /**
+     * Return json data.
+     *
+     * @access protected
+     * @param  array $data
+     * @link http://ellislab.com/codeigniter/user-guide/libraries/output.html
+     *
+     */
+    protected function returnJson($data)
+    {
+        // Set content type and output
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
     }
 
 }
@@ -113,7 +199,8 @@ class MY_Controller extends CI_Controller {
  * @author Thiago Braga <thiago@sitesg.com.br>
  * @access private
  */
-class Model_Controller extends MY_Controller {
+class Model_Controller extends MY_Controller
+{
 
     /**
      * Carrega o model da página solicitada
@@ -123,9 +210,10 @@ class Model_Controller extends MY_Controller {
      *
      * @see $this->router->fetch_class()
      */
-    function __construct() {
+    public function __construct() {
         parent::__construct();
-        $this->load->model($this->class.'_model');
+
+        $this->load->model($this->data->class . '_model');
     }
 
 }

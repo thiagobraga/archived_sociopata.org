@@ -11,7 +11,22 @@ class Biografia_model extends CI_Model
 {
 
     /**
-     * Seleciona os integrantes.
+     * Seleciona a biografia da banda
+     * @return object
+     */
+    public function select_biografia()
+    {
+        return $this->db->query(
+            "SELECT
+                biografia
+            FROM
+                informacoes
+            LIMIT
+                1")->row()->biografia;
+    }
+
+    /**
+     * Seleciona os integrantes
      * @return object
      */
     public function select_integrantes()

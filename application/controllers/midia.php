@@ -1,4 +1,6 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Midia
@@ -6,27 +8,33 @@
  * @access public
  * @version 1.0
  */
-class Midia extends Model_Controller {
+class Midia extends Model_Controller
+{
 
-  /**
-   * Carrega a página Midia
-   * @since 1.0
-   */
-  public function index() {
-    $this->data->page = 'Mídia';
-        $this->data->content = 'midia';
-        $this->data->css = array(
-            'js/plugins/mediaelement/mediaelementplayer.min',
+    /**
+     * Carrega a página inicial do site
+     * @since 1.0
+     */
+    public function index()
+    {
+        $this->data->page = 'Mídia';
+        $this->data->content = 'midia/midia';
+
+        $this->loadCss(array(
+            'js/plugins/mediaelement/mediaelementplayer',
             'css/modules/midia'
-        );
-        $this->data->js = array(
+        ));
+        $this->loadJs(array(
             'js/plugins/mediaelement/mediaelement-and-player.min',
             'js/modules/midia'
-        );
+        ));
+        $this->setTitle('Sociopata | ' . $this->data->page);
+        $this->setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
+
         $this->data->albuns = $this->midia_model->select_albuns();
         $this->data->musicas = $this->midia_model->select_musicas();
-        $this->load->view('base', $this->data);
-  }
+        $this->load->view('template', $this->data);
+    }
 
 }
 

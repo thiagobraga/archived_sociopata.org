@@ -51,7 +51,19 @@ VALUES
     (11, '1º International Tattoo Convention', 'SOCIOPATA + ROMERO + OS PATRÕES', 'Pavilhão de Exposições (Barra Bonita-SP)', 0.00, '2013-12-08 18:30:00', '2013-12-08 18:30:00', 1),
     (12, 'Rock In Christmas II', 'SOCIOPATA + ANIMALS + DINOHORSE + MAIDE IN MAIDEN + SIMBIOZE + MARIA DA SEGUNDA DISTRAÇÃO + TORMENTAURUS', 'Praça Frederico Ozanan (Lins-SP)', 0.00, '2013-12-14 15:00:00', '2013-12-14 15:00:00', 1),
     (13, 'Nonsense Nuclear Noise', 'SOCIOPATA + ROMERO + IMMORTUOS', 'Exilio Art Pub (Bauru-SP)', 7.00, '2014-01-25 23:45:00', '2014-02-02 15:00:00', 1),
-    (14, 'Bazar Cultural III', 'O bazar dará início as 11;00 hrs, com a seguinte programação:<br/>11:00 hrs - Bazar de roupas, acessórios e artesanatos, tudo acompanhado de boa música e barzinho no local.<br/>15:00 hrs- Show com a "Banda Acitsim"- Agudos<br/>16:30 hrs- Show com "Sociopata"- Bauru<br/>18:00 hrs - "Outro Núcleo de Espetacularidades<br/> Na entrada serão arrecadados alimentos e o que mais quiserem ajudar. Será destinado a casa abrigo Amorada!" - Bauru<br/>', 'Avenida João Paccola, 205 (Lençois Paulista-SP)', 0.00, '2014-02-09 16:30:00', '2014-02-02 15:00:00', 1);
+    (14, 'Bazar Cultural III', 'O bazar dará início as 11:00 hrs, com a seguinte programação:<br/>11:00 hrs - Bazar de roupas, acessórios e artesanatos, tudo acompanhado de boa música e barzinho no local.<br/>15:00 hrs- Show com a "Banda Acitsim"- Agudos<br/>16:30 hrs- Show com "Sociopata"- Bauru<br/>18:00 hrs - "Outro Núcleo de Espetacularidades<br/> Na entrada serão arrecadados alimentos e o que mais quiserem ajudar. Será destinado a casa abrigo Amorada!" - Bauru', 'Avenida João Paccola, 205 (Lençois Paulista-SP)', 0.00, '2014-02-09 16:30:00', '2014-02-02 15:00:00', 1);
+
+/**
+ * Remove e insere dados na tabela informacoes
+ */
+TRUNCATE informacoes;
+ALTER TABLE informacoes AUTO_INCREMENT = 1;
+
+INSERT INTO
+    informacoes (codigo, biografia, situacao)
+VALUES
+    (1, '<p>A banda Sociopata iniciou seus projetos no ano de 2008 em Agudos/Bauru (interior de São Paulo).</p><p>O nome do grupo suscita argumentação crítica das mazelas, muitas vezes inconscientes e sensíveis vividas num cotidiano de manipulações embutidas nas relações humanas. Temas sociais psíquicos e espirituais fundamentam o incômodo na vontade de se encontrar e se impor à realidade manifesta; como que em um pesadelo onde a escolha se faz subjugada aos fatos irreais da mente Sociopata na sua condição moral de desprezo egocêntrico, e no próprio cinismo e no falso arrependimento de suas emoções superficiais.</p><p>Nesta personalidade perturbada e doentia encontram-se incrustadas atitudes e condutas de total repulsa e revolta à ética materialista, sendo que por via de uma sonoridade diversa, onde sincrônico e distônico se fundem na própria carne, a banda Sociopata transmite em suas músicas sua oportuna identidade e intenção de si mesma.</p>', 1);
+
 
 /**
  * Remove e insere dados na tabela instrumentos

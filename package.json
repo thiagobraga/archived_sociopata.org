@@ -1,0 +1,29 @@
+{
+  "name": "sociopata",
+  "version": "0.0.0",
+  "description": "Sociopata",
+  "author": "Thiago Braga",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@institutosoma.dyndns.org:2222/var/www/beta.git"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "dependencies": {
+    "grunt-cli": "0.1.9",
+    "grunt": "~0.4.1",
+    "grunt-yui-compressor": "0.3.0",
+    "grunt-htmlcompressor": "~0.1.8",
+    "grunt-rsync": "~0.1.1",
+    "grunt-contrib-less": "~0.6.3"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.3",
+    "grunt-contrib-watch": "^0.5.3",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-concat": "^0.3.0",
+    "grunt-contrib-jshint": "~0.9.2"
+  }
+}

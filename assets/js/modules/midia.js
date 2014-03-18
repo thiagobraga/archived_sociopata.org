@@ -7,34 +7,42 @@
 
 (function () {
 
-	'use strict';
-	var
+    'use strict';
+    var
 
-		i,
-		content = '',
+        username = 'sociopataweb',
+        max_results = 5,
+        fields = 'entry(id,title,media:group(media:thumbnail(@url),media:description))',
 
-		videos = $('.videos'),
+        url_video = 'http://gdata.youtube.com/feeds/users/'
+            + username
+            + '/uploads?alt=json'
+            + '&max-results=' + max_results
+            + '&fields=' + fields,
 
-		// URL para receber JSON do Youtube.
-		url_video = 'http://gdata.youtube.com/feeds/users/sociopataweb/uploads?alt=json&max-results=5&fields=entry(id,title,media:group(media:thumbnail(@url),media:description))';
+        getVideos = (function () {
+            $.post(url_video, function (response) {
+                var i,
+                    content = '',
+                    youtube_id,
+                    videos = $('.videos'),
+                    entry = response.feed.entry;
 
-	$.post(url_video, function (response) {
-		var entry = response.feed.entry;
+                for (i = 0; i < entry.length; i++) {
+                    youtube_id = entry[i].id.$t.split('/');
+                    youtube_id = youtube_id[youtube_id.length - 1];
 
-		for (i = 0; i < entry.length; i++) {
-			var youtube_id = entry[i].id.$t.split('/');
-			youtube_id = youtube_id[youtube_id.length - 1];
+                    content += '<div class="col-md-6">'
+                        + '<video class="player img-responsive" preload="none">'
+                        + '<source src="http://www.youtube.com/watch?v=' + youtube_id + '" type="video/youtube" />'
+                        + '</video>'
+                        + '<p>' + entry[i].title.$t + '</p>'
+                        + '</div>';
+                }
 
-			content += '\n\
-				<div class="col-md-6">\n\
-					<video class="player img-responsive" preload="none">\n\
-						<source src="http://www.youtube.com/watch?v=' + youtube_id + '" type="video/youtube" />\n\
-					</video>\n\
-					<h6>' + entry[i].title.$t.replace('Sociopata - ', '') + '</h6>\n\
-				</div>';
-		}
+                videos.find('.row').html(content);
+                $('.player').mediaelementplayer();
+            }, 'jsonp');
+        }());
 
-		videos.find('.row').html(content);
-		$('.player').mediaelementplayer();
-	}, 'jsonp');
 })();

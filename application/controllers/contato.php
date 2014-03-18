@@ -18,10 +18,12 @@ class Contato extends MY_Controller
     public function index()
     {
         $this->data->page = 'Contato';
-        $this->data->content = 'contato';
-        $this->data->css = array('css/modules/contato');
-        $this->data->js = array('js/modules/contato');
-        $this->load->view('base', $this->data);
+        $this->data->content = 'contato/contato';
+
+        $this->setTitle('Sociopata | ' . $this->data->page);
+        $this->setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
+
+        $this->load->view('template', $this->data);
     }
 
 }

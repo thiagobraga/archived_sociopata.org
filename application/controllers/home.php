@@ -18,13 +18,15 @@ class Home extends Model_Controller
     public function index()
     {
         $this->data->page = 'Home';
-        $this->data->content = 'home';
-        $this->data->css = array('css/modules/home');
-        $this->data->js = array('js/modules/home');
+        $this->data->content = 'home/home';
         $now = date('Y-m-d H:m:s');
+
+        $this->setTitle('Sociopata | ' . $this->data->page);
+        $this->setDescription('Confira as principais notícias e eventos.');
+
         $this->data->eventos = $this->home_model->select_proximo_evento($now);
         $this->data->noticias = $this->home_model->select_noticias();
-        $this->load->view('base', $this->data);
+        $this->load->view('template', $this->data);
     }
 
 }

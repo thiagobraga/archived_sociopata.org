@@ -1,4 +1,6 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Styleguide
@@ -14,10 +16,12 @@ class Styleguide extends MY_Controller {
      */
     public function index() {
         $this->data->page = 'Style Guide';
-        $this->data->content = 'styleguide';
-        $this->data->css = array('css/modules/styleguide');
-        $this->data->js = array('js/modules/styleguide');
-        $this->load->view('base', $this->data);
+        $this->data->content = 'styleguide/styleguide';
+
+        $this->setTitle('Sociopata | ' . $this->data->page);
+        $this->setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
+
+        $this->load->view('template', $this->data);
     }
 
 }

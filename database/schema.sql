@@ -48,6 +48,20 @@ COLLATE utf8_unicode_ci
 COMMENT 'Agenda de eventos da Sociopata.';
 
 --
+-- Estrutura para tabela informacoes
+--
+DROP TABLE IF EXISTS informacoes;
+CREATE TABLE IF NOT EXISTS informacoes (
+    codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    biografia  TEXT         NOT NULL,
+    situacao   BIT(1)       NOT NULL
+)
+ENGINE InnoDB
+DEFAULT CHARACTER SET utf8
+COLLATE utf8_unicode_ci
+COMMENT 'Informações gerais da banda como release, influências, gênero, etc.';
+
+--
 -- Estrutura para tabela instrumentos
 --
 DROP TABLE IF EXISTS instrumentos;

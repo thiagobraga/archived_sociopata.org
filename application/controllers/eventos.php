@@ -18,12 +18,15 @@ class Eventos extends Model_Controller
     public function index()
     {
         $this->data->page = 'Eventos';
-        $this->data->content = 'eventos';
-        $this->data->css = array('css/modules/eventos');
-        $this->data->js = array('js/modules/eventos');
+        $this->data->content = 'eventos/eventos';
+
+        $this->setTitle('Sociopata | ' . $this->data->page);
+        $this->setDescription('Lista de todos os eventos da Sociopata.');
+        $this->loadCss(array('css/modules/eventos'));
+
         $this->data->now = date('Y-m-d H:m:s');
         $this->data->eventos = $this->eventos_model->select_eventos();
-        $this->load->view('base', $this->data);
+        $this->load->view('template', $this->data);
     }
 
 }
