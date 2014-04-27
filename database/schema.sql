@@ -2,11 +2,10 @@
 -- Banco de dados: sociopata
 --
 DROP DATABASE IF EXISTS sociopata;
-CREATE DATABASE sociopata
+
+CREATE DATABASE IF NOT EXISTS sociopata
     CHARACTER SET utf8
-    DEFAULT CHARACTER SET utf8
-    COLLATE utf8_unicode_ci
-    DEFAULT COLLATE utf8_unicode_ci;
+    COLLATE utf8_unicode_ci;
 
 USE sociopata;
 
@@ -146,6 +145,7 @@ CREATE TABLE IF NOT EXISTS noticias (
     nome       VARCHAR(255) NOT NULL,
     descricao  TEXT         NOT NULL,
     imagem     VARCHAR(64)  NOT NULL,
+    criado_em  TIMESTAMP    NOT NULL,
     situacao   BIT(1)       NOT NULL
 )
 ENGINE InnoDB

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Midia_model
- * @author Thiago Braga <thiago@sitesg.com.br>
+ * @author Thiago Braga <contato@thiagobraga.org>
  * @access protected
  */
 class Midia_model extends CI_Model
@@ -12,6 +12,7 @@ class Midia_model extends CI_Model
 
   /**
      * Seleciona todas as músicas
+     *
      * @return object
      */
     public function select_musicas()
@@ -28,6 +29,7 @@ class Midia_model extends CI_Model
 
     /**
      * Seleciona todas os álbuns
+     *
      * @return object
      */
     public function select_albuns()

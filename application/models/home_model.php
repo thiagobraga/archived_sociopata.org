@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Home_model
- * @author Thiago Braga <thiago@sitesg.com.br>
+ * @author Thiago Braga <contato@thiagobraga.org>
  * @access protected
  */
 class Home_model extends CI_Model
@@ -12,6 +12,7 @@ class Home_model extends CI_Model
 
     /**
      * Seleciona o mais próximo evento da data atual
+     *
      * @return object
      */
     public function select_proximo_evento($now)
@@ -20,7 +21,9 @@ class Home_model extends CI_Model
             "SELECT
                 SHA1(CONCAT('TB', codigo, 'SOCIOPATA')) AS codigo,
                 nome,
+                info,
                 local,
+                valor,
                 data
             FROM
                 eventos
@@ -32,6 +35,7 @@ class Home_model extends CI_Model
 
     /**
      * Seleciona as últimas notícias
+     *
      * @return object
      */
     public function select_noticias()
@@ -41,9 +45,12 @@ class Home_model extends CI_Model
                 SHA1(CONCAT('TB', codigo, 'SOCIOPATA')) AS codigo,
                 nome,
                 imagem,
-                descricao
+                descricao,
+                criado_em
             FROM
                 noticias
+            ORDER BY
+                criado_em DESC
             LIMIT
                 5;")->result();
     }

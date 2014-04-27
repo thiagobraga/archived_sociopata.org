@@ -196,7 +196,7 @@ class MY_Controller extends CI_Controller
  * Classe específica para páginas que utilizam models
  * Esta class extende a classe MY_Controller
  *
- * @author Thiago Braga <thiago@sitesg.com.br>
+ * @author Thiago Braga <contato@thiagobraga.org>
  * @access private
  */
 class Model_Controller extends MY_Controller

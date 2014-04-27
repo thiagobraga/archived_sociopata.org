@@ -51,7 +51,8 @@ VALUES
     (11, '1º International Tattoo Convention', 'SOCIOPATA + ROMERO + OS PATRÕES', 'Pavilhão de Exposições (Barra Bonita-SP)', 0.00, '2013-12-08 18:30:00', '2013-12-08 18:30:00', 1),
     (12, 'Rock In Christmas II', 'SOCIOPATA + ANIMALS + DINOHORSE + MAIDE IN MAIDEN + SIMBIOZE + MARIA DA SEGUNDA DISTRAÇÃO + TORMENTAURUS', 'Praça Frederico Ozanan (Lins-SP)', 0.00, '2013-12-14 15:00:00', '2013-12-14 15:00:00', 1),
     (13, 'Nonsense Nuclear Noise', 'SOCIOPATA + ROMERO + IMMORTUOS', 'Exilio Art Pub (Bauru-SP)', 7.00, '2014-01-25 23:45:00', '2014-02-02 15:00:00', 1),
-    (14, 'Bazar Cultural III', 'O bazar dará início as 11:00 hrs, com a seguinte programação:<br/>11:00 hrs - Bazar de roupas, acessórios e artesanatos, tudo acompanhado de boa música e barzinho no local.<br/>15:00 hrs- Show com a "Banda Acitsim"- Agudos<br/>16:30 hrs- Show com "Sociopata"- Bauru<br/>18:00 hrs - "Outro Núcleo de Espetacularidades<br/> Na entrada serão arrecadados alimentos e o que mais quiserem ajudar. Será destinado a casa abrigo Amorada!" - Bauru', 'Avenida João Paccola, 205 (Lençois Paulista-SP)', 0.00, '2014-02-09 16:30:00', '2014-02-02 15:00:00', 1);
+    (14, 'Bazar Cultural III', 'O bazar dará início as 11:00 hrs, com a seguinte programação:<br/>11:00 hrs - Bazar de roupas, acessórios e artesanatos, tudo acompanhado de boa música e barzinho no local.<br/>15:00 hrs- Show com a "Banda Acitsim"- Agudos<br/>16:30 hrs- Show com "Sociopata"- Bauru<br/>18:00 hrs - "Outro Núcleo de Espetacularidades<br/> Na entrada serão arrecadados alimentos e o que mais quiserem ajudar. Será destinado a casa abrigo Amorada!" - Bauru', 'Avenida João Paccola, 205 (Lençois Paulista-SP)', 0.00, '2014-02-09 16:30:00', '2014-02-02 15:00:00', 1),
+    (15, 'Lins Rock Festival', 'Somente Bandas Autorais!<br/><br/>Na Casa da Cultura de Lins<br/><br/>Com as bandas:<br/>FIT OF RAGE<br/>La Burca<br/>Maria da Segunda Distração<br/>Modo Turbo Band<br/>OxPxC Hardcore Marilia-SP<br/>Romero<br/>SimbioZe<br/>Sociopata', 'Casa de Cultura, Lins - SP', 0.00, '2014-05-03 16:00:00', '2014-04-23 22:16:00', 1);
 
 /**
  * Remove e insere dados na tabela informacoes
@@ -134,17 +135,13 @@ VALUES
     (5, 'Coma', '02:30:00', '', '2013-11-11 04:04:00', 1),
     (6, 'Desinformação', '02:30:00', '', '2013-11-11 04:04:00', 1),
     (7, 'Em Dobro', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (8, 'Espinhos', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (9, 'Fumaça', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (10, 'Indiferença', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (11, 'Máscaras', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (12, 'Pensamento', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (13, 'Preserve', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (14, 'Sociedade Pacífica', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (15, 'Soluciona', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (16, 'Última Hora', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (17, 'Utopia', '02:30:00', '', '2013-11-11 04:04:00', 1),
-    (18, 'Ventos da Liberdade', '02:30:00', '', '2013-11-11 04:04:00', 1);
+    (8, 'Indiferença', '02:30:00', '', '2013-11-11 04:04:00', 1),
+    (9, 'Máscaras', '02:30:00', '', '2013-11-11 04:04:00', 1),
+    (10, 'Pensamento', '02:30:00', '', '2013-11-11 04:04:00', 1),
+    (11, 'Sociedade Pacífica', '02:30:00', '', '2013-11-11 04:04:00', 1),
+    (12, 'Soluciona', '02:30:00', '', '2013-11-11 04:04:00', 1),
+    (13, 'Última Hora', '02:30:00', '', '2013-11-11 04:04:00', 1),
+    (14, 'Utopia', '02:30:00', '', '2013-11-11 04:04:00', 1);
 
 /**
  * Remove e insere dados na tabela musicas_albuns
@@ -166,9 +163,13 @@ TRUNCATE noticias;
 ALTER TABLE noticias AUTO_INCREMENT = 1;
 
 INSERT INTO
-    noticias (codigo, nome, descricao, imagem, situacao)
+    noticias (codigo, nome, descricao, imagem, criado_em, situacao)
 VALUES
-    (1, 'Lançamento do primeiro álbum', 'O debut autointitulado foi gravado e mixado entre novembro e dezembro de 2013 no RMS Studio em Agudos - SP e lançado oficialmente em 6 de dezembro de 2013. Para adquirir, acesse a página de <a href="/contato">Contato</a>.', 'albuns/44b8803095fdc5b06f3a46efee354cb74e93cbd8-small.jpg', 1);
+    (1, 'Lançamento do primeiro álbum', 'O debut autointitulado foi gravado e mixado entre novembro e dezembro de 2013 no RMS Studio em Agudos - SP e lançado oficialmente em 6 de dezembro de 2013. Para adquirir, acesse a página de <a href="/contato">Contato</a>.', 'albuns/44b8803095fdc5b06f3a46efee354cb74e93cbd8-small.jpg', '2013-12-06 20:00:00', 1),
+    (2, 'Adesivos da Sociopata', 'Adquira nossos adesivos<br/>Cole no seu carro<br/>Distribua para seus amigos<br/>Espalhe nosso nome.<br/><br/>Sociopata', 'photos/658a5dd0b214cf71c4c724aee93e05df.jpg', '2014-04-19 00:32:00', 1),
+    (3, 'Modelos das camisetas', 'Temos camisetas nas cores preta e branca. Também fazemos em tamanhos específicos. Faça a sua, vista nosso nome. Entre em <a href="/contato">Contato</a> e adquira a sua.', 'photos/4d544bd184947f126730cf93080d6584.jpg', '2014-04-20 00:32:00', 1),
+    (4, 'Em breve nova galeria de fotos', 'Estamos trabalhando na nova galeria de fotos do site, com fotos promo tiradas pelo Luis Germano. Acompanhe também nossos álbuns no <a href="//facebook.com/sociopatabr">Facebook</a>.', 'photos/32d1cce5c9ca392352edd4f1faa0c7cb.jpg', '2014-04-24 00:32:00', 1);
+
 
 /**
  * Remove e insere dados na tabela tipos_albuns

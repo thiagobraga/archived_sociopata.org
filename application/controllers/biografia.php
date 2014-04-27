@@ -8,13 +8,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access public
  * @version 1.0
  */
-class Biografia extends Model_Controller {
+class Biografia extends Model_Controller
+{
 
     /**
      * Carrega a página inicial do site
      * @since 1.0
      */
-    public function index() {
+    public function index()
+    {
         $this->data->page = 'Biografia';
         $this->data->content = 'biografia/biografia';
 

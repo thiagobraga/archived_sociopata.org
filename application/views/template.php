@@ -5,6 +5,9 @@
     <?php $this->load->view('_template/head') ?>
 
     <body>
+        <!-- NAVBAR -->
+        <?php $this->load->view('_template/navbar') ?>
+
         <!-- HEADER -->
         <?php $this->load->view('_template/header') ?>
 
