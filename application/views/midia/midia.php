@@ -6,7 +6,4 @@
 
     <!-- Videos -->
     <?php $this->load->view('midia/videos') ?>
-
-    <!-- Letras -->
-    <?php $this->load->view('midia/letras') ?>
 </div>

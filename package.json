@@ -1,32 +1,48 @@
 {
-  "name": "sociopata",
-  "version": "0.0.1",
-  "description": "Sociopata",
-  "author": "Thiago Braga",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:thiagobraga/sociopata.org.git"
-  },
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
-  },
-  "dependencies": {
-    "gulp": "*",
-    "gulp-jshint": "*",
-    "gulp-uglify": "*",
-    "gulp-concat": "*",
-    "gulp-rename": "*",
-    "gulp-less": "*",
-    "gulp-cssmin": "*"
-  },
-  "devDependencies": {
-    "gulp": "~3.6.2",
-    "gulp-jshint": "*",
-    "gulp-uglify": "*",
-    "gulp-concat": "*",
-    "gulp-rename": "*",
-    "gulp-less": "*",
-    "gulp-cssmin": "*"
-  }
+    "name": "sociopata",
+    "version": "0.0.1",
+    "description": "Sociopata",
+    "author": "Thiago Braga",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:thiagobraga/sociopata.org.git"
+    },
+    "engines": {
+        "node": "0.8.x",
+        "npm": "1.1.x"
+    },
+    "dependencies": {
+        "gulp": "*",
+        "gulp-jshint": "*",
+        "gulp-uglify": "*",
+        "gulp-concat": "*",
+        "gulp-rename": "*",
+        "gulp-less": "*",
+        "gulp-cssmin": "*",
+        "grunt": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-concat": "*",
+        "grunt-contrib-rename": "*",
+        "grunt-contrib-less": "*",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-watch": "*"
+    },
+    "devDependencies": {
+        "gulp": "~3.6.2",
+        "gulp-jshint": "*",
+        "gulp-uglify": "*",
+        "gulp-concat": "*",
+        "gulp-rename": "*",
+        "gulp-less": "*",
+        "gulp-cssmin": "*",
+        "grunt": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-concat": "*",
+        "grunt-contrib-rename": "*",
+        "grunt-contrib-less": "*",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-watch": "*"
+    }
 }
