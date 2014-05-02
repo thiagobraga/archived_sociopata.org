@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br" prefix="fb: http://www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns#">
+<html lang="pt-br">
 
     <!-- HEAD -->
     <?php $this->load->view('_template/head') ?>
