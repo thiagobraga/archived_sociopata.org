@@ -1,12 +1,12 @@
 <h3 class="page-header"><?php echo $page ?></h3>
 
 <?php foreach ($eventos as $evento) { ?>
-    <div class="event">
+    <div class="event <?php echo $now < $evento->data ?: 'past-event' ?>">
         <section class="panel panel-default">
             <div class="panel-body">
                 <article class="media row">
                     <div class="media-object col-xs-6 col-sm-3">
-                        <img src="assets/images/events/<?php echo $evento->codigo ?>.jpg" class="img-rounded img-responsive" />
+                        <img src="assets/images/events/<?php echo $evento->codigo ?>.jpg" class="img-rounded img-responsive <?php echo $now < $evento->data ?: 'img-grayscale' ?>" />
                     </div>
                     <div class="media-body col-xs-6 col-sm-9">
                         <h4 class="media-heading"><?php echo $evento->nome ?></h4>

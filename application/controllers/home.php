@@ -24,7 +24,7 @@ class Home extends Model_Controller
         $this->setTitle('Sociopata | ' . $this->data->page);
         $this->setDescription('Confira as principais notícias e eventos.');
 
-        $this->data->eventos = $this->home_model->select_proximo_evento($now);
+        $this->data->eventos = $this->home_model->select_proximos_eventos($now);
         $this->data->noticias = $this->home_model->select_noticias();
         $this->load->view('template', $this->data);
     }

@@ -15,7 +15,7 @@ class Home_model extends CI_Model
      *
      * @return object
      */
-    public function select_proximo_evento($now)
+    public function select_proximos_eventos($now)
     {
         return $this->db->query(
             "SELECT
@@ -29,8 +29,10 @@ class Home_model extends CI_Model
                 eventos
             WHERE
                 data > '$now'
+            ORDER BY
+                data ASC
             LIMIT
-                1;")->row();
+                2;")->result();
     }
 
     /**
