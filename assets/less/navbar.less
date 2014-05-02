@@ -1,31 +1,83 @@
 // Navbar
 .navbar-inverse {
-    background: rgba(20,20,20,.95);
-    text-shadow: 0 1px 0 #666;
-    -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.7);
-    -moz-box-shadow: 0 2px 10px rgba(0,0,0,.7);
-    box-shadow: 0 2px 10px rgba(0,0,0,.7);
+  background: rgba(20,20,20,.9);
+  text-shadow: 0 1px 0 #666;
+  .box-shadow(1px 5px 10px rgba(0,0,0,.6));
 }
 
 .navbar-brand {
-    background: url('../images/logo/logo-navbar.png') no-repeat;
-    background-position: 15px center;
-    width: 200px;
-    overflow: hidden;
-    text-indent: -9999px;
+  background: url(../images/logo/logo-navbar.png) no-repeat;
+  background-position: 15px center;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 200px;
 }
 
 .navbar .nav > li > a {
-    font-family: 'Denial';
-    font-size: 28px;
-    text-transform: uppercase;
+  font-family: Denial;
+  font-size: 28px;
+  text-transform: uppercase;
 }
 
 .navbar-nav {
-    margin-right: 0;
-    margin-left: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .navbar-collapse {
-    padding-right: 0;
+  padding-right: 0;
+}
+
+/* Media Queries
+----------------------------------------------------------------------------- */
+@media (max-width: 479px) {
+  .navbar-nav {
+    width: 100%;
+    & > li > a {
+      padding-left: 0;
+      text-align: center;
+    }
+  }
+
+  .navbar .nav > li:last-child > a {
+    padding-right: 15px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .navbar .nav {
+    & > li > a {
+      padding-left: 0;
+      text-align: center;
+    }
+
+    & > li:last-child > a {
+      padding-right: 15px;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-collapse {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .navbar .nav > li > a {
+    padding: 15px 0;
+    width: 102px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1023px) {
+
+}
+
+@media (min-width: 1024px) {
+
 }
