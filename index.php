@@ -2,17 +2,6 @@
 
 /**
  * -----------------------------------------------------------------------------
- * PROJECT
- * -----------------------------------------------------------------------------
- *
- * Define the project name to use in configuration files
- * and the base_url used for different environments
- *
- */
-define('PROJECT', 'sociopata.org');
-
-/**
- * -----------------------------------------------------------------------------
  * APPLICATION ENVIRONMENT
  * -----------------------------------------------------------------------------
  *
@@ -30,10 +19,10 @@ define('PROJECT', 'sociopata.org');
  *
  */
 switch ($_SERVER['HTTP_HOST']) {
-    case PROJECT:
+    case 'sociopata.org':
         define('ENVIRONMENT', 'production');
         break;
-    case 'test.' . PROJECT:
+    case 'test.sociopata.org':
         define('ENVIRONMENT', 'testing');
         break;
     default:

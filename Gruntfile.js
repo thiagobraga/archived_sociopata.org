@@ -31,11 +31,6 @@ module.exports = function (grunt) {
                     'assets/bower/jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
                     'assets/bower/handlebars/handlebars.min.js',
                     'assets/bower/jquery-cookie/jquery.cookie.js',
-                    'assets/bower/moment/moment.js',
-                    'assets/bower/livestampjs/livestamp.min.js',
-                    'assets/bower/typeahead.js/dist/typeahead.bundle.min.js',
-                    'assets/js/plugins/chosen/chosen.min.js',
-                    'assets/js/plugins/tabslideout/jquery.tabSlideOut.v1.3.js',
                     'assets/js/main.js'
                 ],
                 dest: 'assets/js/scripts.min.js'

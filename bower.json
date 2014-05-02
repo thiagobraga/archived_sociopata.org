@@ -1,23 +1,14 @@
 {
-  "name": "barpedia",
-  "version": "0.0.1",
-  "dependencies": {
-    "jquery": "1.11.0",
-    "bootstrap": "3.1.1",
-    "font-awesome": "latest",
-    "jasny-bootstrap": "3.1.1",
-    "handlebars": "latest",
-    "bootstrap-chosen-less-js": "latest",
-    "chosen": "latest",
-    "jquery-cookie": "latest",
-    "jquery-cycle2": "latest",
-    "html5shiv": "latest",
-    "moment": "latest",
-    "livestampjs": "latest",
-    "respond": "latest",
-    "typeahead.js": "latest",
-    "codemirror": "latest",
-    "codemirror-emmet": "latest",
-    "highlightjs": "latest"
-  }
+    "name": "barpedia",
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": "1.11.0",
+        "bootstrap": "3.1.1",
+        "font-awesome": "latest",
+        "jasny-bootstrap": "3.1.1",
+        "handlebars": "latest",
+        "jquery-cookie": "latest",
+        "html5shiv": "latest",
+        "respond": "latest"
+    }
 }

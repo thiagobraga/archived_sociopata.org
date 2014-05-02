@@ -17,15 +17,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 switch (ENVIRONMENT) {
     case 'production':
-        $config['base_url'] = 'http://' . PROJECT . '/';
+        $config['base_url'] = 'http://sociopata.org/';
         break;
     case 'testing':
-        $config['base_url'] = 'http://test.' . PROJECT . '/';
+        $config['base_url'] = 'http://test.sociopata.org/';
         break;
     case 'development':
         $config['base_url'] = preg_match('/www|127.0.0.1|localhost/', $_SERVER['HTTP_HOST'])
-            ? 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT . '/'
-            : 'http://local.' . PROJECT . '/';
+            ? 'http://' . $_SERVER['HTTP_HOST'] . '/sociopata/'
+            : 'http://local.sociopata.org/';
         break;
     default:
         exit('The application environment is not set correctly.');
