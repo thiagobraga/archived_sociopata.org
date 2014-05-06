@@ -20,14 +20,8 @@ class Midia extends Model_Controller
         $this->data->page = 'Mídia';
         $this->data->content = 'midia/midia';
 
-        $this->loadCss(array(
-            'js/plugins/mediaelement/mediaelementplayer',
-            'css/modules/midia'
-        ));
-        $this->loadJs(array(
-            'js/plugins/mediaelement/mediaelement-and-player.min',
-            'js/modules/midia'
-        ));
+        $this->loadCss(array('css/modules/midia'));
+        $this->loadJs(array('js/modules/midia'));
         $this->setTitle('Sociopata | ' . $this->data->page);
         $this->setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
 

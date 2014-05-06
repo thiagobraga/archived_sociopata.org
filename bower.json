@@ -6,6 +6,7 @@
         "bootstrap": "3.1.1",
         "font-awesome": "latest",
         "jasny-bootstrap": "3.1.1",
+        "videojs": "latest",
         "handlebars": "latest",
         "jquery-cookie": "latest",
         "html5shiv": "latest",

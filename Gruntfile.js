@@ -26,11 +26,9 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-                    'assets/bower/jquery/dist/jquery.min.js',
-                    'assets/bower/bootstrap/dist/js/bootstrap.min.js',
-                    'assets/bower/jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
-                    'assets/bower/handlebars/handlebars.min.js',
-                    'assets/bower/jquery-cookie/jquery.cookie.js',
+                    'assets/bower/jquery/dist/jquery.js',
+                    'assets/bower/bootstrap/dist/js/bootstrap.js',
+                    'assets/bower/videojs/dist/video-js/video.js',
                     'assets/js/main.js'
                 ],
                 dest: 'assets/js/scripts.min.js'
@@ -76,7 +74,7 @@ module.exports = function (grunt) {
             scripts: {
                 files: [
                     'Gruntfile.js',
-                    '<%= jshint.files %>'
+                    'assets/js/**/*.js'
                 ],
                 tasks: [
                     'concat',
@@ -102,9 +100,9 @@ module.exports = function (grunt) {
                 files: [
                     '.*',
                     'application/config/*',
-                    'application/controllers/*',
-                    'application/language/**/*',
-                    'application/models/*',
+                    'application/controllers/*.php',
+                    'application/language/**/*.php',
+                    'application/models/*.php',
                     'application/views/template.php',
                     'application/views/**/*.php',
                     'assets/images/*',

@@ -8,7 +8,7 @@
 var midia = (function () {
 
     'use strict';
-    var
+    var s,
 
         getVideos = (function () {
             var url_video = [
@@ -19,7 +19,11 @@ var midia = (function () {
                 'entry(id,title,media:group(media:thumbnail(@url),media:description))'
             ].join('');
 
-            $.post(url_video, function (response) {
+            $.ajax({
+                url: url_video,
+                type: 'post',
+                dataType: 'jsonp'
+            }).done(function (response) {
                 var i,
                     content = '',
                     youtube_id,
@@ -41,9 +45,8 @@ var midia = (function () {
                 }
 
                 videos.find('.row').html(content);
-                $('.player').mediaelementplayer();
-
-            }, 'jsonp');
+                //$('.player').mediaelementplayer();
+            });
         }());
 
 })();
