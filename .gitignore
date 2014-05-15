@@ -89,3 +89,6 @@ build.properties
 _notes
 *_notes/
 dwsync.xml
+
+
+database/deploy.sh

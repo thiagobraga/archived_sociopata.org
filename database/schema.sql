@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS eventos (
     facebook      BIGINT(16)    NOT NULL,
     valor         DECIMAL(5,2)  NULL,
     data          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    criado_em     TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    criado_em     TIMESTAMP     NOT NULL DEFAULT 0,
     situacao      BIT(1)        NOT NULL DEFAULT 0
 )
 ENGINE InnoDB
