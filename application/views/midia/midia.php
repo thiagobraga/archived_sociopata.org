@@ -1,9 +1,15 @@
-<h3 class="page-header"><?php echo $page ?></h3>
+<?php $this->load->view('home/header') ?>
 
-<div class="row">
-    <!-- Álbuns -->
-    <?php $this->load->view('midia/albuns') ?>
+<div class="container">
+    <section class="<?php echo $class ?>">
+        <h3 class="page-header"><?php echo $page ?></h3>
 
-    <!-- Videos -->
-    <?php $this->load->view('midia/videos') ?>
+        <div class="row">
+            <!-- Álbuns -->
+            <?php $this->load->view('midia/albuns') ?>
+
+            <!-- Videos -->
+            <?php $this->load->view('midia/videos') ?>
+        </div>
+    </section>
 </div>

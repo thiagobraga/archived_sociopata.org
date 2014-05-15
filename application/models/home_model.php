@@ -23,6 +23,8 @@ class Home_model extends CI_Model
                 nome,
                 info,
                 local,
+                url_amigavel,
+                facebook,
                 valor,
                 data
             FROM
@@ -32,7 +34,7 @@ class Home_model extends CI_Model
             ORDER BY
                 data ASC
             LIMIT
-                2;")->result();
+                5;")->result();
     }
 
     /**

@@ -1,31 +1,55 @@
-<?php if (!empty($eventos)) { ?>
+<?php if (!empty($eventos)) {
+    $count = count($eventos); ?>
     <section class="panel panel-default next-event">
         <header class="panel-heading">Eventos</header>
 
         <div class="panel-body">
-            <?php foreach ($eventos as $evento) { ?>
+            <?php foreach ($eventos as $i => $evento) {?>
                 <div class="row evento">
-                    <div class="col-xs-5 col-sm-6">
-                        <a href="/eventos">
-                            <img src="assets/images/events/<?php echo $evento->codigo ?>.jpg" class="img-rounded img-responsive" />
+                    <div class="col-xs-2 no-padding text-center evento-data">
+                        <a href="/eventos#<?php echo $evento->url_amigavel ?>">
+                            <h1><?php echo date('d', strtotime($evento->data)) ?></h1>
+                            <h4>
+                                <?php switch (date('m', strtotime($evento->data))) {
+                                    case 1: echo 'Janeiro'; break;
+                                    case 2: echo 'Fevereiro'; break;
+                                    case 3: echo 'Março'; break;
+                                    case 4: echo 'Abril'; break;
+                                    case 5: echo 'Maio'; break;
+                                    case 6: echo 'Junho'; break;
+                                    case 7: echo 'Julho'; break;
+                                    case 8: echo 'Agosto'; break;
+                                    case 9: echo 'Setembro'; break;
+                                    case 10: echo 'Outubro'; break;
+                                    case 11: echo 'Novembro'; break;
+                                    case 12: echo 'Dezembro'; break;
+                                } ?>
+                            </h4>
                         </a>
                     </div>
 
-                    <div class="col-xs-7 col-sm-6 col-md-7 col-lg-6 no-padding-left">
-                        <a href="/eventos">
-                            <h4 class="media-heading"><?php echo $evento->nome ?></h4>
+                    <div class="col-xs-10 evento-info">
+                        <a href="/eventos#<?php echo $evento->url_amigavel ?>">
+                            <h5 class="media-heading"><?php echo $evento->nome ?></h5>
                             <h6>
-                                <?php echo date('d/m/Y', strtotime($evento->data)) ?> -
-                                <?php echo ($evento->valor != 0.00) ? 'R$ ' . number_format($evento->valor, 2, ',', '.') : 'Grátis' ?>
+                                <?php if (!isset($evento->valor)) {
+                                    echo 'Não informado';
+                                } else {
+                                    if ($evento->valor != 0.00) {
+                                        echo 'R$ ' . number_format($evento->valor, 2, ',', '.');
+                                    } else {
+                                        echo 'Grátis';
+                                    }
+                                } ?>
                             </h6>
-                            <h6><small>Local: <?php echo $evento->local ?></small></h6>
-                            <p>
-                                <br/>
-                                <?php echo $evento->info ?>
-                            </p>
+                            <p><?php echo $evento->local ?></p>
                         </a>
                     </div>
                 </div>
+
+                <?php if ($i != $count - 1) { ?>
+                    <hr/>
+                <?php } ?>
             <?php } ?>
         </div>
     </section>

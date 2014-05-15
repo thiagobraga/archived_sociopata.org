@@ -1,48 +1,37 @@
 {
-    "name": "sociopata",
-    "version": "0.0.1",
-    "description": "Sociopata",
-    "author": "Thiago Braga",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:thiagobraga/sociopata.org.git"
-    },
-    "engines": {
-        "node": "0.8.x",
-        "npm": "1.1.x"
-    },
-    "dependencies": {
-        "gulp": "*",
-        "gulp-jshint": "*",
-        "gulp-uglify": "*",
-        "gulp-concat": "*",
-        "gulp-rename": "*",
-        "gulp-less": "*",
-        "gulp-cssmin": "*",
-        "grunt": "*",
-        "grunt-contrib-jshint": "*",
-        "grunt-contrib-uglify": "*",
-        "grunt-contrib-concat": "*",
-        "grunt-contrib-rename": "*",
-        "grunt-contrib-less": "*",
-        "grunt-contrib-cssmin": "*",
-        "grunt-contrib-watch": "*"
-    },
-    "devDependencies": {
-        "gulp": "~3.6.2",
-        "gulp-jshint": "*",
-        "gulp-uglify": "*",
-        "gulp-concat": "*",
-        "gulp-rename": "*",
-        "gulp-less": "*",
-        "gulp-cssmin": "*",
-        "grunt": "*",
-        "grunt-contrib-jshint": "*",
-        "grunt-contrib-uglify": "*",
-        "grunt-contrib-concat": "*",
-        "grunt-contrib-rename": "*",
-        "grunt-contrib-less": "*",
-        "grunt-contrib-cssmin": "*",
-        "grunt-contrib-watch": "*"
-    }
+  "name": "sociopata",
+  "version": "0.0.1",
+  "description": "Sociopata",
+  "author": "Thiago Braga",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:thiagobraga/sociopata.org.git"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "devDependencies": {
+    "gulp": "~3.6.2",
+    "gulp-jshint": "~1.5.5",
+    "gulp-concat": "~2.2.0",
+    "gulp-minify-css": "~0.3.4",
+    "gulp-autoprefixer": "0.0.7",
+    "gulp-less": "~1.2.3",
+    "gulp-livereload": "~1.5.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-clean": "~0.2.4",
+    "gulp-uglify": "~0.3.0",
+    "gulp-notify": "~1.2.5",
+    "gulp-cache": "~0.1.9",
+    "gulp-imagemin": "~0.5.0",
+    "grunt-contrib-concat": "~0.4.0",
+    "matchdep": "~0.3.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt": "~0.4.5",
+    "grunt-contrib-less": "~0.11.0"
+  }
 }

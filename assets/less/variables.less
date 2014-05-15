@@ -1,13 +1,7 @@
-//
-// Variables
-// --------------------------------------------------
-
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@dark:                   lighten(#000, 7.5%); // #090909
 @gray-darker:            lighten(#000, 13.5%); // #222
 @gray-dark:              lighten(#000, 20%);   // #333
 @gray:                   lighten(#000, 33%); // #555
@@ -16,12 +10,11 @@
 
 @transparent:            fade(#000, 45%);
 
-@brand-primary:         darken(#428bca, 25%);
-@brand-success:         darken(#5cb85c, 25%);
-@brand-warning:         darken(#f0ad4e, 25%);
-@brand-danger:          darken(#d9534f, 25%);
-@brand-info:            darken(#5bc0de, 25%);
-
+@brand-primary:          darken( #428bca, 40%);
+@brand-success:          darken( #5cb85c, 25%);
+@brand-warning:          darken( #f0ad4e, 25%);
+@brand-danger:           darken( #d9534f, 25%);
+@brand-info:             darken( #5bc0de, 25%);
 
 //== Scaffolding
 //
@@ -47,7 +40,7 @@
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          13px;
+@font-size-base:          14px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
@@ -137,13 +130,13 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
-@btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-color:              @gray-lighter;
+@btn-default-bg:                 @gray-darker;
+@btn-default-border:             @gray-darker;
 
-@btn-primary-color:              #fff;
-@btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-color:              @gray-lighter;
+@btn-primary-bg:                 darken(@gray-dark, 1%);
+@btn-primary-border:             @gray-dark;
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
@@ -669,7 +662,7 @@
 @panel-inner-border:          darken(@gray-darker, 50%);
 @panel-footer-bg:             @transparent;
 
-@panel-default-text:          @gray;
+@panel-default-text:          @gray-light;
 @panel-default-border:        @transparent;
 @panel-default-heading-bg:    transparent;
 
@@ -824,7 +817,7 @@
 //##
 
 //** Horizontal line color.
-@hr-border:                   @gray-lighter;
+@hr-border:                   @gray-darker;
 
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;

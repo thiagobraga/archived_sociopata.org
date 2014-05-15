@@ -8,7 +8,7 @@
 var main = (function () {
 
     'use strict';
-    var
+    var s,
 
         /**
          * Send mail via ajax
@@ -21,9 +21,10 @@ var main = (function () {
                 url: 'home/ajax_send',
                 type: 'post',
                 dataType: 'json',
-                data: $('#contact').serialize(),
-                success: function (response) {}
-            });
+                data: $('#contact').serialize()
+            }).done(function (response) {
+
+            })
         },
 
         /**
@@ -32,54 +33,38 @@ var main = (function () {
          * @return {[type]}
          */
         setGoogleAnalytics = function () {
-            var _gaq = [];
-            _gaq.push(
+            var _gaq = [
                 ['_setAccount', 'UA-36613651-1'],
                 ['_trackPageview']
-            );
+            ];
         },
 
         /**
          * Carrega arquivos JavaScript assincronamente.
          *
-         * @param  {Object} doc     Document passado por parâmetro
-         * @return {Object}
-         */
-        loadJS = (function (doc) {
-            return {
-                add: function (url, id, async) {
-                    if (doc.getElementById(id))
-                        return;
-
-                    var js,
-                        first_js = doc.getElementsByTagName('script')[0];
-
-                    js = doc.createElement('script');
-                    js.src = url;
-                    js.id = id || null;
-                    js.async = async || true;
-                    first_js.parentNode.insertBefore(js, first_js);
-                }
-            };
-        }(document)),
-
-        /**
-         * Target _blank for all external links
-         *
+         * @param  {String}  url   A URL do arquivo JavaScript
+         * @param  {String}  id    O ID do objeto <script> (opcional)
+         * @param  {Boolean} async Se a requisição será assíncrona (padrão: true)
          * @return {void}
          */
-        targetBlank = function () {
-            var external = $('a[href^="//"]');
-            external.prop('target', '_blank');
-        },
+        loadJS = function (url, id, async) {
+            var js,
+                doc = window.document,
+                first_js = doc.getElementsByTagName('script')[0];
 
-        /**
-         * Inicialização do módulo
-         *
-         * @return {void}
-         */
-        init = (function () {
+            if (doc.getElementById(id)) {
+                return;
+            }
 
-        }());
+            js = doc.createElement('script');
+            js.src = url;
+            js.async = (async === undefined);
+
+            if (id) {
+                js.id = id;
+            }
+
+            first_js.parentNode.insertBefore(js, first_js);
+        };
 
 }());

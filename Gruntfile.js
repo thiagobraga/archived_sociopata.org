@@ -1,5 +1,8 @@
 module.exports = function (grunt) {
 
+    'use strict';
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
@@ -29,6 +32,7 @@ module.exports = function (grunt) {
                     'assets/bower/jquery/dist/jquery.js',
                     'assets/bower/bootstrap/dist/js/bootstrap.js',
                     'assets/bower/videojs/dist/video-js/video.js',
+                    'assets/bower/lightbox/js/lightbox.js',
                     'assets/js/main.js'
                 ],
                 dest: 'assets/js/scripts.min.js'
@@ -63,6 +67,7 @@ module.exports = function (grunt) {
             compress: {
                 files: {
                     'assets/css/styles.min.css': [
+                        'assets/bower/lightbox/css/lightbox.css',
                         'assets/css/styles.min.css'
                     ]
                 }
@@ -114,13 +119,6 @@ module.exports = function (grunt) {
             }
         }
     });
-
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('default', [
         'concat',

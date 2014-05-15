@@ -9,6 +9,12 @@
         </button>
 
         <a href="/" class="navbar-brand">Sociopata</a>
+
+        <ul class="nav navbar-nav navbar-icons pull-right">
+            <li><a href="//facebook.com/sociopatabr" target="_blank"><span class="fa fa-facebook"></span></a></li>
+            <li><a href="//youtube.com/sociopataweb" target="_blank"><span class="fa fa-youtube-play"></span></a></li>
+            <li><a href="//twitter.com/sociopatabr" target="_blank"><span class="fa fa-twitter"></span></a></li>
+        </ul>
     </div>
 
     <nav class="collapse navbar-collapse" role="navigation">

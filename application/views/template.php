@@ -8,15 +8,8 @@
         <!-- NAVBAR -->
         <?php $this->load->view('_template/navbar') ?>
 
-        <!-- HEADER -->
-        <?php $this->load->view('_template/header') ?>
-
         <!-- CONTENT -->
-        <div class="container">
-            <section class="<?php echo $class ?>">
-                <?php $this->load->view($content) ?>
-            </section>
-        </div>
+        <?php $this->load->view($content) ?>
 
         <!-- FOOTER -->
         <?php $this->load->view('_template/footer') ?>

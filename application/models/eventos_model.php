@@ -23,6 +23,8 @@ class Eventos_model extends CI_Model
                 nome,
                 info,
                 local,
+                url_amigavel,
+                facebook,
                 valor,
                 data
             FROM

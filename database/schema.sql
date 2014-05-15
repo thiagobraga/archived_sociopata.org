@@ -2,7 +2,6 @@
 -- Banco de dados: sociopata
 --
 DROP DATABASE IF EXISTS sociopata;
-
 CREATE DATABASE IF NOT EXISTS sociopata
     CHARACTER SET utf8
     COLLATE utf8_unicode_ci;
@@ -15,7 +14,7 @@ USE sociopata;
 DROP TABLE IF EXISTS albuns;
 CREATE TABLE IF NOT EXISTS albuns (
     codigo      TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome        VARCHAR(255) NOT NULL,
+    nome        VARCHAR(80)  NOT NULL,
     info        TEXT         NOT NULL,
     ano         YEAR(4)      NOT NULL,
     tipo_album  TINYINT(3)   NOT NULL,
@@ -32,14 +31,16 @@ COMMENT 'Discografia incluindo EPs, CDs, demos e compilações da Sociopata.';
 --
 DROP TABLE IF EXISTS eventos;
 CREATE TABLE IF NOT EXISTS eventos (
-    codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome       VARCHAR(255) NOT NULL,
-    info       TEXT         NOT NULL,
-    local      VARCHAR(255) NOT NULL,
-    valor      DECIMAL(5,2) NOT NULL,
-    data       TIMESTAMP    NOT NULL,
-    criado_em  TIMESTAMP    NOT NULL,
-    situacao   BIT(1)       NOT NULL
+    codigo        TINYINT(3)    NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome          VARCHAR(80)   NOT NULL DEFAULT '',
+    info          TEXT          NOT NULL DEFAULT '',
+    local         VARCHAR(80)   NOT NULL DEFAULT '',
+    url_amigavel  VARCHAR(80)   NOT NULL DEFAULT '',
+    facebook      BIGINT(16)    NOT NULL,
+    valor         DECIMAL(5,2)  NULL,
+    data          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    criado_em     TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    situacao      BIT(1)        NOT NULL DEFAULT 0
 )
 ENGINE InnoDB
 DEFAULT CHARACTER SET utf8
@@ -51,9 +52,9 @@ COMMENT 'Agenda de eventos da Sociopata.';
 --
 DROP TABLE IF EXISTS informacoes;
 CREATE TABLE IF NOT EXISTS informacoes (
-    codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    biografia  TEXT         NOT NULL,
-    situacao   BIT(1)       NOT NULL
+    codigo     TINYINT(3)  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    biografia  TEXT        NOT NULL,
+    situacao   BIT(1)      NOT NULL
 )
 ENGINE InnoDB
 DEFAULT CHARACTER SET utf8
@@ -66,7 +67,7 @@ COMMENT 'Informações gerais da banda como release, influências, gênero, etc.
 DROP TABLE IF EXISTS instrumentos;
 CREATE TABLE IF NOT EXISTS instrumentos (
     codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome       VARCHAR(255) NOT NULL,
+    nome       VARCHAR(80)  NOT NULL,
     criado_em  TIMESTAMP    NOT NULL,
     situacao   BIT(1)       NOT NULL
 )
@@ -81,7 +82,7 @@ COMMENT 'Instrumentos utilizados pela banda.';
 DROP TABLE IF EXISTS integrantes;
 CREATE TABLE IF NOT EXISTS integrantes (
     codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome       VARCHAR(255) NOT NULL,
+    nome       VARCHAR(80)  NOT NULL,
     info       TEXT         NOT NULL,
     criado_em  TIMESTAMP    NOT NULL,
     situacao   BIT(1)       NOT NULL
@@ -96,9 +97,9 @@ COMMENT 'Integrantes da Sociopata.';
 --
 DROP TABLE IF EXISTS integrantes_instrumentos;
 CREATE TABLE IF NOT EXISTS integrantes_instrumentos (
-    integrante   TINYINT(3) NOT NULL,
-    instrumento  TINYINT(3) NOT NULL,
-    situacao     BIT(1)     NOT NULL
+    integrante   TINYINT(3)  NOT NULL,
+    instrumento  TINYINT(3)  NOT NULL,
+    situacao     BIT(1)      NOT NULL
 )
 ENGINE InnoDB
 DEFAULT CHARACTER SET utf8
@@ -111,7 +112,7 @@ COMMENT 'Instrumentos utilizados pela banda.';
 DROP TABLE IF EXISTS musicas;
 CREATE TABLE IF NOT EXISTS musicas (
     codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome       VARCHAR(255) NOT NULL,
+    nome       VARCHAR(80)  NOT NULL,
     tamanho    TIME         NOT NULL,
     letra      TEXT         NOT NULL,
     criado_em  TIMESTAMP    NOT NULL,
@@ -127,9 +128,9 @@ COMMENT 'Registro de todas as músicas e letras da Sociopata.';
 --
 DROP TABLE IF EXISTS musicas_albuns;
 CREATE TABLE IF NOT EXISTS musicas_albuns (
-    musica    TINYINT(3) NOT NULL,
-    album     TINYINT(3) NOT NULL,
-    situacao  BIT(1)     NOT NULL
+    musica    TINYINT(3)  NOT NULL,
+    album     TINYINT(3)  NOT NULL,
+    situacao  BIT(1)      NOT NULL
 )
 ENGINE InnoDB
 DEFAULT CHARACTER SET utf8
@@ -142,7 +143,7 @@ COMMENT 'Relacionamento entre músicas e álbuns. A ordem salva no banco para ca
 DROP TABLE IF EXISTS noticias;
 CREATE TABLE IF NOT EXISTS noticias (
     codigo     TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome       VARCHAR(255) NOT NULL,
+    nome       VARCHAR(80)  NOT NULL,
     descricao  TEXT         NOT NULL,
     imagem     VARCHAR(64)  NOT NULL,
     criado_em  TIMESTAMP    NOT NULL,
@@ -159,7 +160,7 @@ COMMENT 'Notícias e destaques.';
 DROP TABLE IF EXISTS tipos_albuns;
 CREATE TABLE IF NOT EXISTS tipos_albuns (
     codigo    TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome      VARCHAR(255) NOT NULL,
+    nome      VARCHAR(80)  NOT NULL,
     situacao  BIT(1)       NOT NULL
 )
 ENGINE InnoDB
@@ -173,7 +174,7 @@ COMMENT 'Tipos de álbuns lançados.';
 DROP TABLE IF EXISTS usuarios;
 CREATE TABLE IF NOT EXISTS usuarios (
     codigo      TINYINT(11)  NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome        VARCHAR(255) NOT NULL,
+    nome        VARCHAR(80)  NOT NULL,
     login       VARCHAR(50)  NOT NULL UNIQUE KEY,
     senha       VARCHAR(32)  NOT NULL,
     email       VARCHAR(50)  NOT NULL,
