@@ -8,6 +8,12 @@ body {
   }
 }
 
+.container {
+  & > section:not(.home) {
+    padding-top: 30px;
+  }
+}
+
 a {
   .transition(color ease .15s);
 }
@@ -38,30 +44,6 @@ hr {
   border: 0;
   border-top: 1px solid #000;
   border-bottom: 1px solid @gray-darker;
-}
-
-.no-padding {
-  padding: 0;
-
-  &-right {
-    padding-right: 0;
-  }
-
-  &-left {
-    padding-left: 0;
-  }
-}
-
-.no-margin {
-  margin: 0;
-}
-
-.no-border {
-  border: 0;
-}
-
-.no-box-shadow {
-  box-shadow: none;
 }
 
 .xdebug-var-dump {
