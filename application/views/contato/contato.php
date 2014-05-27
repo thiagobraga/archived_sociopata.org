@@ -1,4 +1,4 @@
-<?php $this->load->view('home/header') ?>
+<?php $this->load->view('contato/header') ?>
 
 <div class="container">
     <section class="<?php echo $class ?>">
