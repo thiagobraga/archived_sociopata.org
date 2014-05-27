@@ -11,12 +11,7 @@
     <meta name="keywords" content="<?php echo $keywords ?>" />
 
     <!-- ICONS -->
-    <link href="/assets/images/icons/favicon.ico" rel="shortcut icon" sizes="16x16" type="image/png" />
-    <link href="/assets/images/icons/windows.ico" rel="icon" sizes="48x48" type="image/vnd.microsoft.icon" />
-    <link href="/assets/images/icons/apple-57x57.png" rel="apple-touch-icon" sizes="57x57" type="image/png" />
-    <link href="/assets/images/icons/apple-72x72.png" rel="apple-touch-icon" sizes="72x72" type="image/png" />
-    <link href="/assets/images/icons/apple-114x114.png" rel="apple-touch-icon" sizes="114x114" type="image/png" />
-    <link href="/assets/images/icons/apple-144x144.png" rel="apple-touch-icon" sizes="144x144" type="image/png" />
+    <link href="favicon.ico" rel="shortcut icon" />
 
     <!-- FACEBOOK -->
     <meta property="og:title" content="<?php echo $title ?>" />

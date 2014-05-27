@@ -33,10 +33,10 @@ DROP TABLE IF EXISTS eventos;
 CREATE TABLE IF NOT EXISTS eventos (
     codigo        TINYINT(3)    NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome          VARCHAR(80)   NOT NULL DEFAULT '',
-    info          TEXT          NOT NULL DEFAULT '',
+    info          TEXT          NULL,
     local         VARCHAR(80)   NOT NULL DEFAULT '',
     url_amigavel  VARCHAR(80)   NOT NULL DEFAULT '',
-    facebook      BIGINT(16)    NOT NULL,
+    facebook      BIGINT(16)    NULL,
     valor         DECIMAL(5,2)  NULL,
     data          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     criado_em     TIMESTAMP     NOT NULL DEFAULT 0,

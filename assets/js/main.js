@@ -8,7 +8,7 @@
 var main = (function () {
 
     'use strict';
-    var s,
+    var
 
         /**
          * Send mail via ajax
@@ -24,7 +24,7 @@ var main = (function () {
                 data: $('#contact').serialize()
             }).done(function (response) {
 
-            })
+            });
         },
 
         /**
