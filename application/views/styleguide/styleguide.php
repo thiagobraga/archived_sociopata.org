@@ -1,5 +1,3 @@
-<?php $this->load->view('home/header') ?>
-
 <div class="container">
     <section class="<?php echo $class ?>">
         <div class="page-header" id="banner">

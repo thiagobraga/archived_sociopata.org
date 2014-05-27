@@ -1,13 +1,11 @@
-<?php $this->load->view('home/header') ?>
-
 <div class="container">
     <section class="<?php echo $class ?>">
-        <h3 class="page-header"><?php echo $page ?></h3>
+        <h2 class="page-header"><?php echo $page ?></h2>
 
         <?php foreach ($eventos as $evento) { ?>
             <a name="<?php echo $evento->url_amigavel ?>" class="anchor"></a>
 
-            <div class="event <?php echo $now < $evento->data ?: 'past-event' ?>">
+            <div <?php if ($now < $evento->data) { ?> class="event" <?php } else { ?> class="event past-event" <?php } ?>>
                 <section class="panel panel-default">
                     <div class="panel-body">
                         <article class="media row">

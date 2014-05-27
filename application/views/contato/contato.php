@@ -1,8 +1,6 @@
-<?php $this->load->view('contato/header') ?>
-
 <div class="container">
     <section class="<?php echo $class ?>">
-        <h3 class="page-header"><?php echo $page ?></h3>
+        <h2 class="page-header"><?php echo $page ?></h2>
 
         <p class="lead">Envie-nos um e-mail pelo formulário abaixo ou pelo e-mail <a href="mailto:contato@sociopata.org">contato@sociopata.org</a>.<br/>
         <br/>

@@ -1,8 +1,6 @@
-<?php $this->load->view('home/header') ?>
-
 <div class="container">
     <section class="<?php echo $class ?>">
-        <h3 class="page-header"><?php echo $page ?></h3>
+        <h2 class="page-header"><?php echo $page ?></h2>
 
         <b>Facebook</b>: <a href="//facebook.com/sociopatabr" target="_blank">facebook.com/sociopatabr</a><br/>
         <b>Bandcamp</b>: <a href="//sociopata.bandcamp.com" target="_blank">sociopata.bandcamp.com</a><br/>
