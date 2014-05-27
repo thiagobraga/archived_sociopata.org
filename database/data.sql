@@ -171,7 +171,7 @@ INSERT INTO
     noticias (codigo, nome, descricao, imagem, criado_em, situacao)
 VALUES
     (1, 'Lançamento do primeiro álbum', 'O debut autointitulado foi gravado e mixado entre novembro e dezembro de 2013 no RMS Studio em Agudos - SP e lançado oficialmente em 6 de dezembro de 2013. Para adquirir, acesse a página de <a href="/contato">Contato</a>.', 'albuns/44b8803095fdc5b06f3a46efee354cb74e93cbd8-small.jpg', '2013-12-06 20:00:00', 1),
-    (2, 'Em breve nova galeria de fotos', 'Estamos trabalhando na nova galeria de fotos do site, com fotos promo tiradas pelo Luis Germano. Acompanhe também nossos álbuns no <a href="//facebook.com/sociopatabr">Facebook</a>.', 'photos/32d1cce5c9ca392352edd4f1faa0c7cb.jpg', '2014-04-24 00:32:00', 1);
+    (2, 'Em breve nova galeria de fotos', 'Estamos trabalhando na nova galeria de fotos do site, com fotos promo tiradas pelo Luis Germano. Acompanhe também nossos álbuns no <a href="//facebook.com/sociopatabr">Facebook</a>.', 'photos/32d1cce5c9ca392352edd4f1faa0c7cb-small.jpg', '2014-04-24 00:32:00', 1);
 
 
 /**
