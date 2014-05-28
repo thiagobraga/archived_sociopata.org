@@ -31,6 +31,7 @@ class Home_model extends CI_Model
                 eventos
             WHERE
                 data > '$now'
+                AND situacao = 1
             ORDER BY
                 data ASC
             LIMIT

@@ -29,6 +29,8 @@ class Eventos_model extends CI_Model
                 data
             FROM
                 eventos
+            WHERE
+                situacao = 1
             ORDER BY
                 data DESC;")->result();
     }
