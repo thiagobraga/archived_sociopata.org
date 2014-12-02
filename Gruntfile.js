@@ -1,130 +1,119 @@
+/**
+ * Sociopata's Gruntfile
+ * http://sociopata.org
+ */
 module.exports = function (grunt) {
 
     'use strict';
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    var
+
+        /**
+         * JS files to concat and minify.
+         *
+         * @type {Array}
+         */
+        js_files = [
+            'assets/bower/jquery/dist/jquery.js',
+            'assets/bower/bootstrap/dist/js/bootstrap.js',
+            'assets/bower/owl.carousel/dist/owl.carousel.js',
+            'assets/bower/lightbox/js/lightbox.js',
+            'assets/js/src/core/facebook.js',
+            'assets/js/src/main.js'
+        ];
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-
-        // JSHint
-        jshint: {
-            files: [
-                'assets/js/main.js'
-            ],
-            options: {
-                force: true,
-                globals: {
-                    jQuery: true,
-                    console: true,
-                    module: true,
-                    document: true
-                }
-            }
-        },
-
-        // Concat
         concat: {
             options: {
                 separator: ';\n'
             },
             dist: {
-                src: [
-                    'assets/bower/jquery/dist/jquery.js',
-                    'assets/bower/bootstrap/dist/js/bootstrap.js',
-                    'assets/bower/videojs/dist/video-js/video.js',
-                    'assets/bower/lightbox/js/lightbox.js',
-                    'assets/js/main.js'
-                ],
-                dest: 'assets/js/scripts.min.js'
+                src: js_files,
+                dest: 'assets/js/dist/scripts.js'
             }
         },
 
-        // Uglify
         uglify: {
-            build: {
-                src: 'assets/js/scripts.min.js',
-                dest: 'assets/js/scripts.min.js'
+            dist: {
+                files: {
+                    'assets/js/dist/scripts.min.js': 'assets/js/dist/scripts.js'
+                }
             }
         },
 
-        // LESS
         less: {
             development: {
                 options: {
-                    paths: [
-                        'assets/less/**'
-                    ],
+                    paths: ['assets/less/**'],
                     yuicompress: false
                 },
                 files: {
-                    'assets/css/styles.min.css': 'assets/less/styles.less'
+                    'assets/css/dist/styles.css': 'assets/less/styles.less'
                 }
             }
         },
 
-        // CSSmin
         cssmin: {
             compress: {
+                options: {
+                    keepSpecialComments: 0
+                },
                 files: {
-                    'assets/css/styles.min.css': [
-                        'assets/bower/lightbox/css/lightbox.css',
-                        'assets/css/styles.min.css'
-                    ]
+                    'assets/css/dist/styles.min.css': 'assets/css/dist/styles.css'
                 }
             }
         },
 
-        // Watch
+        browserSync: {
+            bsFiles: {
+                src: [
+                    'assets/css/dist/**/*.css',
+                    'assets/js/dist/**/*.js',
+                    'assets/images/**/*',
+                    'application/**/*.php',
+                    'index.php'
+                ]
+            },
+            options: {
+                proxy: 'local.sociopata.org',
+                host: 'local.sociopata.org',
+                watchTask: true,
+                notify: false,
+                injectChanges: true,
+                port: 3060,
+                ghostMode: {
+                    scroll: true,
+                    links: false,
+                    forms: true
+                }
+            }
+        },
+
         watch: {
-            scripts: {
-                files: [
-                    'Gruntfile.js',
-                    'assets/js/**/*.js'
-                ],
-                tasks: [
-                    'concat',
-                    'uglify'
-                ],
-                options: {
-                    livereload: 9090
-                },
+            dist: {
+                files: ['assets/js/src/**/*.js'],
+                tasks: ['concat:dist']
             },
             less: {
-                files: [
-                    'assets/less/**/*.less'
-                ],
-                tasks: [
-                    'less',
-                    'cssmin'
-                ],
-                options: {
-                    livereload: 9090
-                },
-            },
-            php: {
-                files: [
-                    '.*',
-                    'application/config/*',
-                    'application/controllers/*.php',
-                    'application/language/**/*.php',
-                    'application/models/*.php',
-                    'application/views/template.php',
-                    'application/views/**/*.php',
-                    'assets/images/*',
-                    'assets/images/**/*'
-                ],
-                options: {
-                    livereload: 9090
-                }
+                files: 'assets/less/**/*.less',
+                tasks: ['less']
             }
         }
     });
 
+    require('load-grunt-tasks')(grunt);
     grunt.registerTask('default', [
-        'concat',
-        'uglify',
         'less',
         'cssmin',
+        'concat',
+        'uglify',
+        'browserSync',
+        'watch'
+    ]);
+    grunt.registerTask('production', [
+        'less',
+        'cssmin',
+        'concat',
+        'uglify',
         'watch'
     ]);
 
