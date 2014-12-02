@@ -166,7 +166,7 @@ TRUNCATE noticias;
 ALTER TABLE noticias AUTO_INCREMENT = 1;
 
 INSERT INTO noticias VALUES
-(1, 'Gravação do segundo material', 'Em breve novo material.<br/><br/>Ouçam nosso primeiro álbum:<br/>http://sociopata.bandcamp.com/', 'photos/10387701_877638932255664_2265658831701696860_n.jpg', '2014-12-02 03:20:00', 1);
+(1, 'Gravação do segundo material', 'Em breve novo material.<br/><br/>Ouçam nosso primeiro álbum:<br/><a href="http://sociopata.bandcamp.com" target="_blank">http://sociopata.bandcamp.com</a>', 'photos/10387701_877638932255664_2265658831701696860_n.jpg', '2014-12-02 03:20:00', 1);
 
 
 /**
