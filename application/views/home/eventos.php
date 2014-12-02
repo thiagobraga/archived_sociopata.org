@@ -11,18 +11,18 @@
                             <h1><?php echo date('d', strtotime($evento->data)) ?></h1>
                             <h4>
                                 <?php switch (date('m', strtotime($evento->data))) {
-                                    case 1: echo 'Janeiro'; break;
-                                    case 2: echo 'Fevereiro'; break;
-                                    case 3: echo 'Março'; break;
-                                    case 4: echo 'Abril'; break;
-                                    case 5: echo 'Maio'; break;
-                                    case 6: echo 'Junho'; break;
-                                    case 7: echo 'Julho'; break;
-                                    case 8: echo 'Agosto'; break;
-                                    case 9: echo 'Setembro'; break;
-                                    case 10: echo 'Outubro'; break;
-                                    case 11: echo 'Novembro'; break;
-                                    case 12: echo 'Dezembro'; break;
+                                    case 1: echo 'Jan'; break;
+                                    case 2: echo 'Fev'; break;
+                                    case 3: echo 'Mar'; break;
+                                    case 4: echo 'Abr'; break;
+                                    case 5: echo 'Mai'; break;
+                                    case 6: echo 'Jun'; break;
+                                    case 7: echo 'Jul'; break;
+                                    case 8: echo 'Ago'; break;
+                                    case 9: echo 'Set'; break;
+                                    case 10: echo 'Out'; break;
+                                    case 11: echo 'Nov'; break;
+                                    case 12: echo 'Dez'; break;
                                 } ?>
                             </h4>
                         </a>
