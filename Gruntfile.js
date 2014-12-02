@@ -44,7 +44,8 @@ module.exports = function (grunt) {
             development: {
                 options: {
                     paths: ['assets/less/**'],
-                    yuicompress: false
+                    yuicompress: false,
+                    relativeUrls: true
                 },
                 files: {
                     'assets/css/dist/styles.css': 'assets/less/styles.less'
@@ -113,8 +114,7 @@ module.exports = function (grunt) {
         'less',
         'cssmin',
         'concat',
-        'uglify',
-        'watch'
+        'uglify'
     ]);
 
 };
