@@ -93,8 +93,8 @@ class MY_Controller extends CI_Controller
             redirect(base_url($this->data->controller));
         }
 
-        $this->loadCss(array('css/styles.min'));
-        $this->loadJs(array('js/scripts.min'));
+        $this->loadCss(array('css/dist/styles.min'));
+        $this->loadJs(array('js/dist/scripts.min'));
         $this->setKeywords(array(
             'bandas',
             'bauru',
