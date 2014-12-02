@@ -1,0 +1,131 @@
+header {
+  background-color: #000;
+  margin-top: @navbar-height + 1;
+}
+
+.img-logo {
+  bottom: 15px;
+  height: auto;
+  position: absolute;
+  width: auto;
+  left: 50%;
+  z-index: 1010;
+}
+
+.featured {
+  position: relative;
+  background: url(../images/banner/main.jpg);
+  height: 350px;
+  margin-top: 60px;
+}
+
+.banner {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 1px -5px 10px rgba(0,0,0,.6);
+  position: relative;
+}
+
+.banner-home {
+  background-image: url(../images/banner/banner-home.jpg);
+}
+
+.banner-contato {
+  background-image: url(../images/banner/banner-contato.jpg);
+}
+
+/* Media Queries
+----------------------------------------------------------------------------- */
+@media (max-width: 479px) {
+  .banner {
+    height: 185px;
+  }
+
+  .img-logo {
+    bottom: 0;
+    width: 300px;
+    margin-left: -150px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 517px) {
+  .banner {
+    height: 200px;
+  }
+
+  .img-logo {
+    bottom: 0;
+    width: 320px;
+    margin-left: -160px;
+  }
+}
+
+@media (min-width: 518px) and (max-width: 583px) {
+  .banner {
+    height: 220px;
+  }
+
+  .img-logo {
+    bottom: 0;
+    width: 330px;
+    margin-left: -165px;
+  }
+}
+
+@media (min-width: 584px) and (max-width: 669px) {
+  .banner {
+    height: 250px;
+  }
+
+  .img-logo {
+    bottom: 0;
+    width: 340px;
+    margin-left: -170px;
+  }
+}
+
+@media (min-width: 670px) and (max-width: 767px) {
+  .banner {
+    height: 265px;
+  }
+
+  .img-logo {
+    bottom: 0;
+    width: 350px;
+    margin-left: -175px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .banner {
+    height: 320px;
+  }
+
+  .img-logo {
+    width: 450px;
+    margin-left: -225px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1023px) {
+  .banner {
+    height: 400px;
+  }
+
+  .img-logo {
+    width: 550px;
+    margin-left: -275px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner {
+    height: 550px;
+  }
+
+  .img-logo {
+    width: 650px;
+    margin-left: -325px;
+  }
+}
