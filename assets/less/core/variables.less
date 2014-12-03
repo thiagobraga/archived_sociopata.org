@@ -2,19 +2,17 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-darker:            lighten(#000, 13.5%); // #222
-@gray-dark:              lighten(#000, 20%);   // #333
-@gray:                   lighten(#000, 33%); // #555
-@gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-darker:    #333;
+@gray-dark:      #666;
+@gray:           #999;
+@gray-light:     #bbb;
+@gray-lighter:   #c1c1c1;
 
-@transparent:            fade(#000, 45%);
-
-@brand-primary:          darken( #428bca, 40%);
-@brand-success:          darken( #5cb85c, 25%);
-@brand-warning:          darken( #f0ad4e, 25%);
-@brand-danger:           darken( #d9534f, 25%);
-@brand-info:             darken( #5bc0de, 25%);
+@brand-primary:  darken(#428bca, 40%);
+@brand-success:  darken(#5cb85c, 25%);
+@brand-warning:  darken(#f0ad4e, 25%);
+@brand-danger:   darken(#d9534f, 25%);
+@brand-info:     darken(#5bc0de, 25%);
 
 //== Scaffolding
 //
@@ -64,11 +62,11 @@
 //
 //## Specify custom locations of the include Glyphicons icon font. Useful for those including Bootstrap via Bower.
 
-//@icon-font-path:          "../bower/bootstrap/fonts/";
+@icon-font-path:          "../bower/bootstrap/fonts/";
 @icon-font-name:          "glyphicons-halflings-regular";
 @icon-font-svg-id:        "glyphicons_halflingsregular";
 
-//@fa-font-path:   "../bower/font-awesome/fonts";
+@fa-font-path:   "../bower/font-awesome/fonts";
 
 //== Components
 //
@@ -200,7 +198,7 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    #fff;
+@dropdown-bg:                    @gray-light;
 //** Dropdown menu `border-color`.
 @dropdown-border:                rgba(0,0,0,.15);
 //** Dropdown menu `border-color` **for IE8**.
@@ -209,9 +207,9 @@
 @dropdown-divider-bg:            #e5e5e5;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @gray-dark;
+@dropdown-link-color:            @gray-darker;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+@dropdown-link-hover-color:      darken(@gray-darker, 5%);
 //** Hover background for dropdown links.
 @dropdown-link-hover-bg:         #f5f5f5;
 
@@ -413,20 +411,20 @@
 //##
 
 @pagination-color:                     @link-color;
-@pagination-bg:                        #fff;
-@pagination-border:                    #ddd;
+@pagination-bg:                        @gray-dark;
+@pagination-border:                    @gray-darker;
 
 @pagination-hover-color:               @link-hover-color;
 @pagination-hover-bg:                  @gray-lighter;
-@pagination-hover-border:              #ddd;
+@pagination-hover-border:              @gray-darker;
 
-@pagination-active-color:              #fff;
+@pagination-active-color:              @gray-dark;
 @pagination-active-bg:                 @brand-primary;
 @pagination-active-border:             @brand-primary;
 
 @pagination-disabled-color:            @gray-light;
-@pagination-disabled-bg:               #fff;
-@pagination-disabled-border:           #ddd;
+@pagination-disabled-bg:               @gray-dark;
+@pagination-disabled-border:           @gray-darker;
 
 
 //== Pager
@@ -655,37 +653,34 @@
 //
 //##
 
-@panel-bg:                    @transparent;
 @panel-body-padding:          15px;
 @panel-border-radius:         @border-radius-large;
 
 //** Border color for elements within panels
 @panel-inner-border:          darken(@gray-darker, 50%);
-@panel-footer-bg:             @transparent;
 
 @panel-default-text:          @gray-light;
-@panel-default-border:        @transparent;
 @panel-default-heading-bg:    transparent;
 
 @panel-primary-text:          #fff;
 @panel-primary-border:        @brand-primary;
-@panel-primary-heading-bg:    @brand-primary;
+@panel-primary-heading-bg:    transparent;
 
 @panel-success-text:          @state-success-text;
 @panel-success-border:        @state-success-border;
-@panel-success-heading-bg:    @state-success-bg;
+@panel-success-heading-bg:    transparent;
 
 @panel-info-text:             @state-info-text;
 @panel-info-border:           @state-info-border;
-@panel-info-heading-bg:       @state-info-bg;
+@panel-info-heading-bg:       transparent;
 
 @panel-warning-text:          @state-warning-text;
 @panel-warning-border:        @state-warning-border;
-@panel-warning-heading-bg:    @state-warning-bg;
+@panel-warning-heading-bg:    transparent;
 
 @panel-danger-text:           @state-danger-text;
 @panel-danger-border:         @state-danger-border;
-@panel-danger-heading-bg:     @state-danger-bg;
+@panel-danger-heading-bg:     transparent;
 
 
 

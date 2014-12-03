@@ -1,0 +1,41 @@
+//
+// Layout
+//
+body {
+  background: #000
+    url(../../images/header/header.jpg)
+    left top
+    no-repeat
+    fixed;
+  padding-top: 60px;
+}
+
+.main.container {
+  background-color: rgba(0,0,0,.6);
+  border-radius: 2px;
+  border: 1px solid @gray-darker;
+  box-shadow: -6px -6px 20px rgba(0,0,0,.5);
+  min-height: 80vh;
+  height: auto;
+}
+
+a {
+  .transition(color ease .15s);
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+::-moz-selection {
+  background: rgba(50,0,0,.25);
+  color: rgba(100,100,100,.75);
+}
+
+::selection {
+  background: rgba(50,0,0,.25);
+  color: rgba(100,100,100,.75);
+}
