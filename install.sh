@@ -1,3 +1,8 @@
+# Install node.js modules from package.json
 npm install --save-dev
+
+# Install bower components
 bower install --save-dev
-grunt
+
+# Run grunt verbose
+grunt -v

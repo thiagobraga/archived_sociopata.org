@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
  * Midia
@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access public
  * @version 1.0
  */
-class Midia extends Model_Controller
+class Midia extends Sociopata
 {
 
     /**

@@ -1,4 +1,5 @@
-<div class="container">
-    <section class="<?php echo $class ?>">
-    </section>
-</div>
+<?php if (!isset($session['logged_in'])) {
+    $this->load->view('admin/login');
+} else {
+    $this->load->view('admin/dashboard');
+}

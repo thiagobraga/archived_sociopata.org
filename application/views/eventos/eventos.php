@@ -10,8 +10,20 @@
                     <div class="panel-body">
                         <article class="media row">
                             <div class="media-object col-xs-6 col-sm-3">
-                                <a href="assets/images/events/<?php echo $evento->codigo ?>.jpg" data-lightbox="image-1" data-title="<h6><?php echo $evento->nome ?> - <small><?php echo date('d/m/Y', strtotime($evento->data)) ?></small></h6>">
-                                    <img src="assets/images/events/<?php echo $evento->codigo ?>.jpg" class="img-rounded img-responsive <?php echo $now < $evento->data ?: 'img-grayscale' ?>" />
+                                <?php
+
+                                if (file_exists(FCPATH . 'assets/images/events/' . $evento->codigo . '.jpg')) {
+                                    $file_exist = true;
+                                    $image = 'assets/images/events/' . $evento->codigo . '.jpg';
+                                } else {
+                                    $file_exist = false;
+                                    $image = 'assets/images/events/skull.png';
+                                }
+
+                                ?>
+
+                                <a href="<?php echo $image ?>" data-lightbox="image-1" data-title="<h6><?php echo $evento->nome ?> - <small><?php echo date('d/m/Y', strtotime($evento->data)) ?></small></h6>">
+                                    <img src="<?php echo $image ?>" class="img-rounded img-responsive <?php echo $now < $evento->data ?: 'img-grayscale' ?>" />
                                 </a>
                                 <br/>
                                 <?php if ($evento->facebook) { ?>
@@ -29,16 +41,16 @@
                             <div class="media-body col-xs-6 col-sm-9">
                                 <h4 class="media-heading"><?php echo $evento->nome ?></h4>
                                 <h6>
-                                    <?php echo date('d/m/Y', strtotime($evento->data)) ?> -
-                                    <?php if (!isset($evento->valor)) {
-                                        echo 'Não informado';
-                                    } else {
+                                    <?php echo date('d/m/Y', strtotime($evento->data)) ?>
+                                    <?php
+                                    if (isset($evento->valor)) {
                                         if ($evento->valor != 0.00) {
-                                            echo 'R$ ' . number_format($evento->valor, 2, ',', '.');
+                                            echo '- R$ ' . number_format($evento->valor, 2, ',', '.');
                                         } else {
-                                            echo 'Grátis';
+                                            echo '- Grátis';
                                         }
-                                    } ?>
+                                    }
+                                    ?>
                                 </h6>
                                 <h6><small><?php echo $evento->local ?></small></h6>
                                 <p>

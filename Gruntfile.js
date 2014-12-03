@@ -44,8 +44,7 @@ module.exports = function (grunt) {
             development: {
                 options: {
                     paths: ['assets/less/**'],
-                    yuicompress: false,
-                    relativeUrls: true
+                    yuicompress: false
                 },
                 files: {
                     'assets/css/dist/styles.css': 'assets/less/styles.less'

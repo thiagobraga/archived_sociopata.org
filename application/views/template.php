@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
     <!-- HEAD -->
@@ -9,10 +9,11 @@
         <?php $this->load->view('_template/navbar') ?>
 
         <!-- CONTENT -->
-        <?php $this->load->view($content) ?>
+        <section class="main container">
+            <?php $this->load->view($content) ?>
+        </section>
 
-        <!-- FOOTER -->
-        <?php $this->load->view('_template/footer') ?>
+        <div id="fb-root"></div>
 
         <!-- SCRIPTS -->
         <?php $this->load->view('_template/scripts') ?>

@@ -159,17 +159,17 @@ AddType text/x-component htc
     # Apache 1.3 uses mod_gzip while Apache 2.x uses mod_deflate (http://httpd.apache.org/docs/2.0/mod/mod_deflate.html)
     <IfModule mod_deflate.c>
         # Enable the compression (gzip) for any type of content
-        # SetOutputFilter DEFLATE
+         SetOutputFilter DEFLATE
         # Or (alternatively) define which filetypes should pass through the DEFLATE output filter (gzip compression)
-        AddOutputFilterByType DEFLATE text/plain
-        AddOutputFilterByType DEFLATE text/html
-        AddOutputFilterByType DEFLATE text/xml
-        AddOutputFilterByType DEFLATE text/css
-        AddOutputFilterByType DEFLATE application/xml
-        AddOutputFilterByType DEFLATE application/xhtml+xml
-        AddOutputFilterByType DEFLATE application/rss+xml
-        AddOutputFilterByType DEFLATE application/javascript
-        AddOutputFilterByType DEFLATE application/x-javascript
+        # AddOutputFilterByType DEFLATE text/plain
+        # AddOutputFilterByType DEFLATE text/html
+        # AddOutputFilterByType DEFLATE text/xml
+        # AddOutputFilterByType DEFLATE text/css
+        # AddOutputFilterByType DEFLATE application/xml
+        # AddOutputFilterByType DEFLATE application/xhtml+xml
+        # AddOutputFilterByType DEFLATE application/rss+xml
+        # AddOutputFilterByType DEFLATE application/javascript
+        # AddOutputFilterByType DEFLATE application/x-javascript
 
         # html, xml, css, and js above, webfonts and svg below
         <FilesMatch "\.(ttf|otf|woff|eot|svg|svgz)$" >
@@ -528,5 +528,5 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 
 # Increase cookie security
 <IfModule php5_module>
-    php_value session.cookie_httponly true
+  php_value session.cookie_httponly true
 </IfModule>

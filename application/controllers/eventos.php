@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
  * Eventos
@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access public
  * @version 1.0
  */
-class Eventos extends Model_Controller
+class Eventos extends Sociopata
 {
 
     /**

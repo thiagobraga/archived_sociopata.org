@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
  * Admin
@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @access public
  * @version 1.0
  */
-class Admin extends Model_Controller
+class Admin extends Sociopata
 {
 
     /**
@@ -23,20 +23,59 @@ class Admin extends Model_Controller
         $this->setTitle('Sociopata | ' . $this->data->page);
         $this->setDescription('Confira as principais notícias e eventos.');
 
-        $this->data->eventos = $this->admin_model->select_eventos();
-        $this->data->noticias = $this->admin_model->select_noticias();
-        $this->load->view('template', $this->data);
+        if ($this->session->userdata('logged_in')) {
+            $this->data->eventos = Eventos_model::select_eventos();
+        }
+
+        $this->load->view('admin/template', $this->data);
     }
 
     /**
-     * Realiza o login do usuário
-     * utilizando o Facebook.
+     * [login description]
      *
-     * @return {void}
+     * @return  [type]
      */
     public function login()
     {
+        $admins = $this->config->item('fb_admins');
+        $user   = $this->facebook->getUser();
 
+        if ($user) {
+            $is_admin = array_search($user, $admins) !== false;
+
+            if ($is_admin) {
+                // The fields to get from Facebook
+                $fields = array(
+                    'hometown',
+                    'id',
+                    'name',
+                    'first_name',
+                    'last_name',
+                    'username',
+                    'email',
+                    'gender',
+                    'birthday',
+                    'locale',
+                    'location',
+                    'work'
+                );
+
+                // Getting data
+                $profile = (object) $this->facebook->api(
+                    '/me',
+                    array('fields' => $fields)
+                );
+
+                $this->session->set_userdata(array(
+                    'id'        => $profile->id,
+                    'name'      => $profile->name,
+                    'email'     => $profile->email,
+                    'logged_in' => true
+                ));
+            }
+        }
+
+        redirect('admin');
     }
 
 }
