@@ -1,5 +1,5 @@
 <div class="container">
-    <section class="<?php echo $class ?>">
+    <section class="<?php echo $controller ?>">
         <h2 class="page-header"><?php echo $page ?></h2>
 
         <p class="lead">Envie-nos um e-mail pelo formulário abaixo ou pelo e-mail <a href="mailto:contato@sociopata.org">contato@sociopata.org</a>.<br/>

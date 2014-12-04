@@ -1,5 +1,5 @@
-<nav class="navbar container">
-    <h1 class="text-center">
+<nav class="navbar top container">
+    <h1 class="pull-left">
         <a href="<?php echo base_url() ?>">
             <img src="<?php echo base_url('assets/images/logo/header-logo.png') ?>"
                 class="logo img-responsive"
@@ -7,7 +7,7 @@
         </a>
     </h1>
 
-    <section>
+    <section class="pull-right">
         <a href="<?php echo base_url('midia') ?>" <?php if ($controller == 'midia') { ?>class="active"<?php } ?>>Mídia</a>
         <a href="<?php echo base_url('eventos') ?>" <?php if ($controller == 'eventos') { ?>class="active"<?php } ?>>Eventos</a>
         <a href="<?php echo base_url('biografia') ?>" <?php if ($controller == 'biografia') { ?>class="active"<?php } ?>>Biografia</a>

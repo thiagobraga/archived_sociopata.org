@@ -17,18 +17,30 @@ class Home extends Sociopata
      */
     public function index()
     {
+        $now = date('Y-m-d H:m:s');
+
+        $this->data->eventos = Home_model::select_proximos_eventos($now);
+
         $this->data->page = 'Home';
         $this->data->content = 'home/home';
-        $now = date('Y-m-d H:m:s');
 
         $this->setTitle('Sociopata | ' . $this->data->page);
         $this->setDescription('Confira as principais notícias e eventos.');
-
         $this->loadJs(array('js/src/home'));
 
-        $this->data->eventos = $this->home_model->select_proximos_eventos($now);
-        $this->data->noticias = $this->home_model->select_noticias();
         $this->load->view('template', $this->data);
+    }
+
+    /**
+     * API call
+     *
+     * @return  [type]
+     */
+    public function news()
+    {
+        // $news = $this->facebook->api('153762751309956/feed?limit=10&type=photo&fields=message', 'GET');
+        $news = $this->facebook->api('153762751309956/feed?limit=15', 'GET');
+        Sociopata::returnJson($news);
     }
 
 }

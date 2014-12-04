@@ -6,10 +6,10 @@
 
     <body class="admin">
         <!-- NAVBAR -->
-        <?php $this->load->view('admin/_template/navbar') ?>
+        <?php $this->load->view('_template/navbar-top') ?>
 
         <!-- CONTENT -->
-        <section class="admin-container container">
+        <section class="container">
             <?php $this->load->view($content) ?>
         </section>
 

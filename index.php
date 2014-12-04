@@ -43,7 +43,7 @@ switch (ENVIRONMENT) {
         error_reporting(E_ALL);
         break;
     case 'testing':
-        error_reporting(0);
+        error_reporting(E_ALL);
         break;
     case 'development':
         error_reporting(E_ALL);

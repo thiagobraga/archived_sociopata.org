@@ -55,7 +55,7 @@ class Sociopata extends CI_Controller
      *
      * @var string
      */
-    public $class;
+    public $controller;
 
     /**
      * Armazena o nome do método
@@ -81,8 +81,8 @@ class Sociopata extends CI_Controller
         $this->data     = new stdClass;
         $this->response = new stdClass;
 
-        $this->data->class  = $this->router->fetch_class();
-        $this->data->method = $this->router->fetch_method();
+        $this->data->controller = $this->router->fetch_class();
+        $this->data->method     = $this->router->fetch_method();
 
         // Checa se é um requisição ajax para cada método
         // com nome iniciado por 'ajax_', evitando que um

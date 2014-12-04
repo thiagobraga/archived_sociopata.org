@@ -245,4 +245,14 @@ class Facebook extends BaseFacebook
     return implode('_', $parts);
   }
 
+  /**
+   * [getAppSecret description]
+   *
+   * @return  [type]
+   */
+  public function getAppSecret()
+  {
+      return $this->appSecret;
+  }
+
 }

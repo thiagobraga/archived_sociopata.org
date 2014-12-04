@@ -1,5 +1,5 @@
 <div class="container">
-    <section class="<?php echo $class ?>">
+    <section class="<?php echo $controller ?>">
         <h2 class="page-header"><?php echo $page ?></h2>
 
         <?php foreach ($eventos as $evento) { ?>

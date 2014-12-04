@@ -6,7 +6,10 @@
 
     <body>
         <!-- NAVBAR -->
-        <?php $this->load->view('_template/navbar') ?>
+        <?php
+        $controller === 'home'
+            ? $this->load->view('_template/navbar')
+            : $this->load->view('_template/navbar-top') ?>
 
         <!-- CONTENT -->
         <section class="main container">
