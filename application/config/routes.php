@@ -38,8 +38,11 @@
  * in the URL cannot be matched to a valid route.
  *
  */
-$route['404_override'] = '';
-$route['default_controller'] = 'home';
+$route = array(
+    '404_override'       => '',
+    'default_controller' => 'home',
+    'logout'             => 'admin/logout'
+);
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
