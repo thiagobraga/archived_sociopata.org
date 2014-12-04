@@ -4,7 +4,7 @@
     <!-- HEAD -->
     <?php $this->load->view('admin/_template/head') ?>
 
-    <body class="admin">
+    <body>
         <!-- NAVBAR -->
         <?php $this->load->view('_template/navbar-top') ?>
 

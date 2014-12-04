@@ -1,5 +1,5 @@
 <div class="container">
-    <section class="<?php echo $class ?>">
+    <section class="<?php echo $controller ?>">
         <div class="page-header" id="banner">
           <div class="row">
             <div class="col-lg-12">

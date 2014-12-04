@@ -4,10 +4,9 @@
     <!-- HEAD -->
     <?php $this->load->view('_template/head') ?>
 
-    <body>
+    <body class="<?php if ($controller === 'home') echo 'home' ?>">
         <!-- NAVBAR -->
-        <?php
-        $controller === 'home'
+        <?php $controller === 'home'
             ? $this->load->view('_template/navbar')
             : $this->load->view('_template/navbar-top') ?>
 

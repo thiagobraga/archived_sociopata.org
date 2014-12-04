@@ -84,16 +84,6 @@ class Sociopata extends CI_Controller
         $this->data->controller = $this->router->fetch_class();
         $this->data->method     = $this->router->fetch_method();
 
-        // Checa se é um requisição ajax para cada método
-        // com nome iniciado por 'ajax_', evitando que um
-        // usuário acesse o método pela URL.
-        if (
-            strrpos($this->data->method, 'ajax_') === 0
-            && !$this->input->is_ajax_request()
-        ) {
-            redirect(base_url($this->data->controller));
-        }
-
         $this->data->session = $this->session->all_userdata();
 
         $this->loadCss(array('css/dist/styles'));

@@ -15,7 +15,6 @@ module.exports = function (grunt) {
         js_files = [
             'assets/bower/jquery/dist/jquery.js',
             'assets/bower/bootstrap/dist/js/bootstrap.js',
-            'assets/bower/owl.carousel/dist/owl.carousel.js',
             'assets/bower/lightbox/js/lightbox.js',
             'assets/js/src/core/facebook.js',
             'assets/js/src/main.js'

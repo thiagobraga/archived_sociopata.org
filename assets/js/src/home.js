@@ -48,13 +48,11 @@ Sociopata.Home = (function () {
 
                         if (message && from.name === 'Sociopata') {
                             content += [
-                                created_time,
-                                '<br/>',
-                                '<img src="' + picture + '" />',
-                                '<br/>',
-                                //'<a href="' + link + '" about="_blank">' + link + '</a>',
-                                '<br/>',
+                                '<section class="clearfix">',
+                                '<img class="pull-right" src="' + picture + '" />',
+                                '<small>' + created_time + '</small><br/>',
                                 message,
+                                '</section>',
                                 '<hr/>'
                             ].join('');
                         }
