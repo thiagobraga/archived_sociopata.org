@@ -39,8 +39,6 @@ class Admin extends Sociopata
     {
         $admins = $this->config->item('fb_admins');
         $user   = $this->facebook->getUser();
-        var_dump($user, $admins);
-        exit();
 
         if ($user) {
             $is_admin = array_search($user, $admins) !== false;
