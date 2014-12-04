@@ -3,7 +3,7 @@
     <section class="panel panel-warning next-event">
         <header class="panel-heading">
             Eventos
-            <small>Mais recentes</small>
+            <small>Eventos ocorrendo esse mês</small>
         </header>
 
         <div class="panel-body">
