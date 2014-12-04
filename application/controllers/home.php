@@ -38,8 +38,7 @@ class Home extends Sociopata
      */
     public function news()
     {
-        // $news = $this->facebook->api('153762751309956/feed?limit=10&type=photo&fields=message', 'GET');
-        $news = $this->facebook->api('153762751309956/feed?limit=15', 'GET');
+        $news = $this->facebook->api('153762751309956/feed?limit=14', 'GET');
         Sociopata::returnJson($news);
     }
 

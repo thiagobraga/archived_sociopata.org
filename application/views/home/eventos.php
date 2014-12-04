@@ -1,14 +1,17 @@
 <?php if (!empty($eventos)) {
     $count = count($eventos); ?>
-    <section class="panel panel-default next-event">
-        <header class="panel-heading">Eventos</header>
+    <section class="panel panel-warning next-event">
+        <header class="panel-heading">
+            Eventos
+            <small>Mais recentes</small>
+        </header>
 
         <div class="panel-body">
             <?php foreach ($eventos as $i => $evento) {?>
                 <div class="row evento">
-                    <div class="col-xs-2 no-padding text-center evento-data">
+                    <div class="col-xs-3 no-padding text-center">
                         <a href="/eventos#<?php echo $evento->url_amigavel ?>">
-                            <h1><?php echo date('d', strtotime($evento->data)) ?></h1>
+                            <h1 class="no-margin"><?php echo date('d', strtotime($evento->data)) ?></h1>
                             <h4>
                                 <?php switch (date('m', strtotime($evento->data))) {
                                     case 1: echo 'Jan'; break;
@@ -28,20 +31,18 @@
                         </a>
                     </div>
 
-                    <div class="col-xs-10 evento-info">
+                    <div class="col-xs-9 no-padding">
                         <a href="/eventos#<?php echo $evento->url_amigavel ?>">
-                            <h5 class="media-heading"><?php echo $evento->nome ?></h5>
-                            <h6>
-                                <?php if (!isset($evento->valor)) {
-                                    echo 'Não informado';
-                                } else {
-                                    if ($evento->valor != 0.00) {
-                                        echo 'R$ ' . number_format($evento->valor, 2, ',', '.');
-                                    } else {
-                                        echo 'Grátis';
-                                    }
+                            <p class="lead media-heading">
+                                <?php echo $evento->nome ?><br/>
+                                <?php if (isset($evento->valor)) {
+                                    if ($evento->valor != 0.00) { ?>
+                                        <small><?php echo 'R$ ' . number_format($evento->valor, 2, ',', '.') ?></small>
+                                    <?php } else { ?>
+                                        <small>Grátis</small>
+                                    <?php }
                                 } ?>
-                            </h6>
+                            </p>
                             <p><?php echo $evento->local ?></p>
                         </a>
                     </div>
