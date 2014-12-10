@@ -28,6 +28,6 @@ defined('BASEPATH') || exit('No direct script access allowed');
 $config['fb_admins'] = array(
     '799997746730203', // Thiago Braga
     '978892925459532', // Gustavo Panurge
-    '724741660912721' // Birão Spoldari
+    '724741660912721'  // Birão Spoldari
 );
 

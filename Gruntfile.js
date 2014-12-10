@@ -73,12 +73,13 @@ module.exports = function (grunt) {
                 ]
             },
             options: {
+                logPrefix: 'Sociopata',
                 proxy: 'local.sociopata.org',
                 host: 'local.sociopata.org',
-                watchTask: true,
-                notify: false,
-                injectChanges: true,
                 port: 3060,
+                watchTask: true,
+                open: false,
+                notify: false,
                 ghostMode: {
                     scroll: true,
                     links: false,

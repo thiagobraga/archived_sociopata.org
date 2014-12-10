@@ -4,5 +4,10 @@
         <small>Últimas atualizações do Facebook</small>
     </header>
 
-    <div id="news" class="panel-body"></div>
+    <div class="panel-body">
+        <?php foreach ($news as $notice) {
+            echo '<b>' . $notice['from']['name'] . '</b><br/>';
+            echo "{$notice['message']}<br/><br/>";
+        } ?>
+    </div>
 </section>
