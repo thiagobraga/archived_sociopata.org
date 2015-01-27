@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
  * Home_model
@@ -15,15 +15,16 @@ class Home_model extends CI_Model
      *
      * @return object
      */
-    public function select_proximos_eventos($now)
+    public function getNextEvents()
     {
-        return $this->db->query(
+        $now = date('Y-m-d H:m:s');
+        $query =
             "SELECT
                 SHA1(CONCAT('TB', codigo, 'SOCIOPATA')) AS codigo,
                 nome,
                 info,
                 local,
-                url_amigavel,
+                slug,
                 facebook,
                 valor,
                 data
@@ -35,29 +36,62 @@ class Home_model extends CI_Model
             ORDER BY
                 data ASC
             LIMIT
-                5;")->result();
+                5;";
+
+        $result = $this->db->query($query)->result();
+        return $result;
     }
 
     /**
-     * Seleciona as últimas notícias
+     * Seleciona o mais próximo evento da data atual
      *
      * @return object
      */
-    public function select_noticias()
+    public function getAlbuns()
     {
-        return $this->db->query(
+        $query =
             "SELECT
-                SHA1(CONCAT('TB', codigo, 'SOCIOPATA')) AS codigo,
                 nome,
-                imagem,
-                descricao,
-                criado_em
+                slug,
+                ano,
+                lancado_em,
+                info
             FROM
-                noticias
+                albuns
             ORDER BY
-                criado_em DESC
-            LIMIT
-                5;")->result();
+                ano DESC";
+
+        $result = $this->db->query($query)->result();
+        return $result;
+    }
+
+    public function getMusicas($album)
+    {
+        $query =
+            "SELECT
+                musicas.nome,
+                musicas.tamanho,
+                musicas.letra
+            FROM
+                musicas
+            INNER JOIN
+                musicas_albuns ON
+                musicas_albuns.musica = musicas.nome
+            WHERE
+                musicas_albuns.album = $album";
+
+        $result = $this->db->query($query)->result();
+        return $result;
+    }
+
+    public function getPhotos()
+    {
+        $query =
+            "SELECT arquivo, descricao
+            FROM    banners;";
+
+        $result = $this->db->query($query)->result();
+        return $result;
     }
 
 }

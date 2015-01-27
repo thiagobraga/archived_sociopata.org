@@ -17,13 +17,13 @@ class Eventos_model extends CI_Model
      */
     public function select_eventos()
     {
-        return $this->db->query(
+        $query =
             "SELECT
                 SHA1(CONCAT('TB', codigo, 'SOCIOPATA')) AS codigo,
                 nome,
                 info,
                 local,
-                url_amigavel,
+                slug,
                 facebook,
                 valor,
                 data
@@ -32,7 +32,10 @@ class Eventos_model extends CI_Model
             WHERE
                 situacao = 1
             ORDER BY
-                data DESC;")->result();
+                data DESC;";
+
+        $result = $this->db->query($query)->result();
+        return $result;
     }
 
 }
