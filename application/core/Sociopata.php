@@ -78,13 +78,12 @@ class Sociopata extends CI_Controller
     {
         parent::__construct();
 
-        $this->data     = new stdClass;
-        $this->response = new stdClass;
+        $this->data = $this->response = array();
 
-        $this->data->controller = $this->router->fetch_class();
-        $this->data->method     = $this->router->fetch_method();
+        $this->data['controller'] = $this->router->fetch_class();
+        $this->data['method']     = $this->router->fetch_method();
 
-        $this->data->session = $this->session->all_userdata();
+        $this->data['session']    = $this->session->all_userdata();
 
         $this->loadCss(array('css/dist/styles'));
         $this->loadJs(array('js/dist/scripts'));

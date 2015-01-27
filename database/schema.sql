@@ -14,10 +14,12 @@ USE sociopata;
 DROP TABLE IF EXISTS albuns;
 CREATE TABLE IF NOT EXISTS albuns (
     codigo      TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome        VARCHAR(80)  NOT NULL,
+    nome        VARCHAR(80)  NOT NULL DEFAULT '',
+    slug        VARCHAR(80)  NOT NULL DEFAULT '',
     info        TEXT         NOT NULL,
-    ano         YEAR(4)      NOT NULL,
     tipo_album  TINYINT(3)   NOT NULL,
+    ano         YEAR(4)      NOT NULL,
+    lancado_em  TIMESTAMP    NOT NULL,
     criado_em   TIMESTAMP    NOT NULL,
     situacao    BIT(1)       NOT NULL
 )
@@ -27,20 +29,39 @@ COLLATE utf8_unicode_ci
 COMMENT 'Discografia incluindo EPs, CDs, demos e compilações da Sociopata.';
 
 --
+-- Estrutura para tabela banners
+--
+DROP TABLE IF EXISTS banners;
+CREATE TABLE IF NOT EXISTS banners (
+    codigo      TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    arquivo     VARCHAR(80)  NOT NULL DEFAULT '',
+    descricao   TEXT         NOT NULL,
+    criado_em   TIMESTAMP    NOT NULL,
+    situacao    BIT(1)       NOT NULL
+)
+ENGINE InnoDB
+DEFAULT CHARACTER SET utf8
+COLLATE utf8_unicode_ci
+COMMENT 'Discografia incluindo EPs, CDs, demos e compilações da Sociopata.';
+
+
+--
 -- Estrutura para tabela eventos
+--
+-- slug: will be used in url and image filenames.
 --
 DROP TABLE IF EXISTS eventos;
 CREATE TABLE IF NOT EXISTS eventos (
-    codigo        TINYINT(3)    NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome          VARCHAR(80)   NOT NULL DEFAULT '',
-    info          TEXT          NULL,
-    local         VARCHAR(80)   NOT NULL DEFAULT '',
-    url_amigavel  VARCHAR(80)   NOT NULL DEFAULT '',
-    facebook      BIGINT(16)    NULL,
-    valor         DECIMAL(5,2)  NULL,
-    data          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    criado_em     TIMESTAMP     NOT NULL DEFAULT 0,
-    situacao      BIT(1)        NOT NULL DEFAULT 0
+    codigo     TINYINT(3)    NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome       VARCHAR(80)   NOT NULL DEFAULT '',
+    info       TEXT          NULL,
+    local      VARCHAR(80)   NOT NULL DEFAULT '',
+    slug       VARCHAR(80)   NOT NULL DEFAULT '',
+    facebook   BIGINT(16)    NULL,
+    valor      DECIMAL(5,2)  NULL,
+    data       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    criado_em  TIMESTAMP     NOT NULL DEFAULT 0,
+    situacao   BIT(1)        NOT NULL DEFAULT 0
 )
 ENGINE InnoDB
 DEFAULT CHARACTER SET utf8

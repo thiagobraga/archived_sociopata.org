@@ -17,11 +17,13 @@ class Styleguide extends Sociopata
      */
     public function index()
     {
-        $this->data->page = 'Style Guide';
-        $this->data->content = 'styleguide/styleguide';
+        $this->data = array_merge($this->data, array(
+            'page'    => 'Styleguide',
+            'content' => 'styleguide/styleguide'
+        ));
 
-        $this->setTitle('Sociopata | ' . $this->data->page);
-        $this->setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
+        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
+        Sociopata::setDescription('Estilo dos componentes utilizados no site');
 
         $this->load->view('template', $this->data);
     }

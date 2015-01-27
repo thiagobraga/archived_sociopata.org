@@ -17,6 +17,9 @@
 
         <div id="fb-root"></div>
 
+        <!-- FOOTER -->
+        <?php $this->load->view('_template/footer') ?>
+
         <!-- SCRIPTS -->
         <?php $this->load->view('_template/scripts') ?>
     </body>

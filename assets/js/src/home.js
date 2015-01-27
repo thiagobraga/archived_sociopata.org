@@ -19,7 +19,7 @@ Sociopata.Home = (function () {
          *
          * @return  {void}
          */
-        loadNews = (function () {
+        loadNews = function () {
             $.ajax({
                 url: '/home/news',
                 dataType: 'json',
@@ -63,6 +63,24 @@ Sociopata.Home = (function () {
             }).fail(function (jqXHR, textStatus, errorThrown) {
                 console.error(errorThrown);
             })
+        },
+
+        /**
+         * [description]
+         *
+         * @param   {[type]}
+         * @return  {[type]}
+         */
+        init = (function () {
+            $('.owl-carousel').owlCarousel({
+                singleItem: true,
+                loop: true,
+                autoPlay: 12000,
+                lazyLoad: true,
+                navigation: false,
+                pagination: false,
+                transitionStyle: 'fade'
+            });
         }());
 
 }());

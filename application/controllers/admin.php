@@ -17,15 +17,14 @@ class Admin extends Sociopata
      */
     public function index()
     {
-        $this->data->page = 'admin';
-        $this->data->content = 'admin/admin';
+        $this->data = array_merge($this->data, array(
+            'eventos' => Eventos_model::select_eventos(),
+            'page'    => 'admin',
+            'content' => 'admin/admin'
+        ));
 
-        $this->setTitle('Sociopata | ' . $this->data->page);
-        $this->setDescription('Confira as principais notícias e eventos.');
-
-        if ($this->session->userdata('logged_in')) {
-            $this->data->eventos = Eventos_model::select_eventos();
-        }
+        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
+        Sociopata::setDescription('Área restrita');
 
         $this->load->view('admin/template', $this->data);
     }
@@ -53,11 +52,8 @@ class Admin extends Sociopata
                     'last_name',
                     'username',
                     'email',
-                    'gender',
-                    'birthday',
                     'locale',
-                    'location',
-                    'work'
+                    'location'
                 );
 
                 // Getting data
