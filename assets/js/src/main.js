@@ -61,7 +61,26 @@ var main = (function () {
             }
 
             first_js.parentNode.insertBefore(js, first_js);
-        };
+        },
+
+        /**
+         * [description]
+         *
+         * @param
+         * @return
+         */
+        init = (function () {
+            $('#news').linkify();
+
+            var body = $('body');
+
+            $(window).scroll(function () {
+                var yPos  = -($(window).scrollTop() / 10),
+                    bgpos = yPos + 'px';
+
+                body.css('background-position-y', bgpos);
+            });
+        }());
 
 }());
 
