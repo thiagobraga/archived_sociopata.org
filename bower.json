@@ -5,13 +5,10 @@
     "jquery": "1.11.0",
     "bootstrap": "3.1.1",
     "font-awesome": "latest",
-    "jasny-bootstrap": "3.1.1",
-    "videojs": "latest",
-    "videojs-youtube": "latest",
-    "handlebars": "latest",
-    "jquery-cookie": "latest",
     "html5shiv": "latest",
-    "respond": "latest"
+    "respond": "latest",
+    "jQuery-linkify": "~1.1.7",
+    "OwlCarousel": "~1.3.2"
   },
   "devDependencies": {
     "lightbox": "~2.7.1"
