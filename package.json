@@ -12,13 +12,10 @@
     "npm": "1.1.x"
   },
   "devDependencies": {
-    "grunt": "*",
-    "grunt-browser-sync": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-contrib-cssmin": "*",
-    "grunt-contrib-less": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
-    "load-grunt-tasks": "*"
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-sass": "*"
   }
 }
