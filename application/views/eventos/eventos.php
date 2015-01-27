@@ -1,9 +1,8 @@
 <div class="container">
     <section class="<?php echo $controller ?>">
-        <h2 class="page-header"><?php echo $page ?></h2>
 
         <?php foreach ($eventos as $evento) { ?>
-            <a name="<?php echo $evento->url_amigavel ?>" class="anchor"></a>
+            <a name="<?php echo $evento->slug ?>" class="anchor"></a>
 
             <div <?php if ($now < $evento->data) { ?> class="event" <?php } else { ?> class="event past-event" <?php } ?>>
                 <section class="panel panel-default">

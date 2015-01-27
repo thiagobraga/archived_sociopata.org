@@ -1,11 +1,12 @@
 <div class="container">
     <section class="<?php echo $controller ?>">
-        <h2 class="page-header"><?php echo $page ?></h2>
-
-        <!-- Release -->
-        <?php $this->load->view('biografia/release') ?>
-
-        <!-- Integrantes -->
-        <?php $this->load->view('biografia/integrantes'); ?>
+        <div class="row">
+            <div class="col-xs-8">
+                <?php $this->load->view('biografia/release') ?>
+            </div>
+            <div class="col-xs-4">
+                <?php $this->load->view('biografia/integrantes') ?>
+            </div>
+        </div>
     </section>
 </div>
