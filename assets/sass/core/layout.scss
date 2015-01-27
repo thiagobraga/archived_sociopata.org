@@ -1,0 +1,45 @@
+//
+// Layout
+//
+body {
+  background: url(../../images/backgrounds/sociopata-2013.jpg)
+    #000
+    left top
+    no-repeat
+    fixed;
+  padding-top: 30px;
+}
+
+body.home {
+  padding-top: 40px;
+}
+
+.main.container {
+  min-height: 80vh;
+  height: auto;
+}
+
+.user-menu {
+  width: 200px;
+}
+
+a {
+  .transition(color ease .15s);
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+::-moz-selection {
+  background: rgba(50,0,0,.25);
+  color: rgba(100,100,100,.75);
+}
+
+::selection {
+  background: rgba(50,0,0,.25);
+  color: rgba(100,100,100,.75);
+}

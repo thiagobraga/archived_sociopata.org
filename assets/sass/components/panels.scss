@@ -1,0 +1,87 @@
+// Panel
+.panel {
+  border-radius: 4px;
+  border: 0;
+  box-shadow: -6px -6px 20px rgba(0,0,0,.5);
+  margin-bottom: @grid-gutter-width;
+  padding: 0;
+
+  & > .panel-heading {
+    border: 0;
+  }
+}
+
+.panel-heading {
+  background: transparent;
+  color: @gray-light;
+  font-family: Denial, Helvetica, Arial, sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 36px;
+  margin: 0;
+  padding: 20px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 2px rgba(0,0,0,.6);
+
+  small {
+    display: block;
+    font: 400 12px/1.5 'Droid Sans';
+  }
+}
+
+.panel-body {
+  padding: 0;
+  box-shadow: inset 0 3px 2px rgba(0, 0, 0, 0.75);
+
+  a {
+    color: @gray-light;
+  }
+
+  .media {
+    .transition(all ease .15s);
+    color: #666;
+    cursor: default;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 20px;
+    text-shadow: 0 -1px 1px #000;
+    white-space: pre-line;
+
+    &:first-child,
+    &:last-child {
+      border-radius: 0;
+    }
+  }
+}
+
+.panel-login {
+  margin-top: 200px;
+}
+
+.panel-footer {
+  border: 0;
+  background: transparent;
+}
+
+.panel-title {
+  font-family: Denial, Helvetica, Arial, sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.event-date {
+  .pull-left;
+  width: 70px;
+  padding-left: 0;
+
+  h5 {
+    margin-bottom: 0;
+  }
+}
+
+.date {
+  .text-warning;
+  display: block;
+  font-size: 10px;
+  font-style: italic;
+}

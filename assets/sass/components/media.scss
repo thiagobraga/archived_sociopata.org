@@ -1,0 +1,30 @@
+.media-body {
+  padding-left: 0;
+  p {
+    text-align: justify;
+  }
+}
+
+.media.row {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.media > .pull-left img {
+  border-radius: 3px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.5);
+  margin-right: 10px;
+  width: 220px;
+}
+
+.media, .media .media {
+  border-top: 1px solid #0d0d0d;
+  margin-top: 0;
+
+  &:first-child {
+    border: 0;
+  }
+}
