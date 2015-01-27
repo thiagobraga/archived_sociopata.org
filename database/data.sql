@@ -19,57 +19,84 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 
 /**
- * Remove e insere dados na tabela albuns
+ * albuns
  */
 TRUNCATE albuns;
 ALTER TABLE albuns AUTO_INCREMENT = 1;
 
 INSERT INTO
-albuns (codigo, nome, info, ano, tipo_album, criado_em, situacao)
+albuns (codigo, nome, slug, info, ano, tipo_album, lancado_em, criado_em, situacao)
 VALUES
-(1, 'Sociopata', 'EP com 3 músicas lançado em Dezembro de 2013, gravado e mixado no RMS Studio em Agudos - SP.', 2013, 2, '2013-11-11 04:04:00', 1);
+(1, 'Sociopata', 'sociopata', 'EP com 3 músicas lançado em Dezembro de 2013, gravado e mixado no RMS Studio em Agudos - SP.', 2013, 2, '2013-11-11 04:04:00', CURRENT_TIMESTAMP, 1),
+(2, 'Corrosão', 'corrosao', 'EP com 6 músicas lançado em Janeiro de 2015, gravado e mixado no RMS Studio em Agudos - SP.', 2015, 2, '2015-03-01 16:20:00', CURRENT_TIMESTAMP, 1);
 
 /**
- * Remove e insere dados na tabela musicas
+ * banners
+ */
+TRUNCATE banners;
+ALTER TABLE banners AUTO_INCREMENT = 1;
+
+INSERT INTO
+banners (codigo, arquivo, descricao, criado_em, situacao)
+VALUES
+(1, 'novo-album.jpg', '<p class="lead">Novo álbum em breve</p><p>Gravações finalizadas, em processo de masterização e prensagem.</p>', CURRENT_TIMESTAMP, 1),
+(2, 'primeiro-album.jpg', '<p class="lead">Conheça o primeiro álbum</p><p>Nosso primeiro material está disponível<br/> no <a href="http://sociopata.bandcamp.com" target="_blank">Bandcamp</a> e no <a href="http://soundcloud.com/sociopata" target="_blank">Soundcloud</a></p>', CURRENT_TIMESTAMP, 1),
+(3, 'siga-facebook.jpg', '<p class="lead">Acompanhe as notícias no Facebook</p><p>Receba informações e datas de shows na sua timeline<br/>seguindo a fanpage da <a href="http://facebook.com/sociopatabr" target="_blank">Sociopata</a></p>', CURRENT_TIMESTAMP, 1),
+(4, 'banner-05.jpg', '<p class="lead">Lorem ipsum dolor sit amet</p><p>Consectetur adipisicing elit<br/>Dolores quae quam consequuntur</p>', CURRENT_TIMESTAMP, 1);
+
+/**
+ * musicas
  */
 TRUNCATE musicas;
 ALTER TABLE musicas AUTO_INCREMENT = 1;
 
-INSERT INTO musicas VALUES
-(1, 'Corpos', '02:30:00', '<p>O corpo mesmo mutilado<br/>É instrumento de evolução<br/>O corpo mesmo mutilado<br/>É instrumento de evolução</p><p>Corpos, santuário<br/>Corpos, oficina<br/>Corpos, bençãos<br/>Corpos, esconderijos</p><p>Corpos flagelados<br/>Corpos, ambulâncias<br/>Corpos, cárceres<br/>Corpos, expiação</p><p>Corpos<br/>Evolução<br/>Evolução</p>', '2013-11-11 04:04:00', 1),
-(2, 'Crianças', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(3, 'Torre do Tempo', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(4, 'Celebrar', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(5, 'Coma', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(6, 'Desinformação', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(7, 'Em Dobro', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(8, 'Indiferença', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(9, 'Máscaras', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(10, 'Pensamento', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(11, 'Sociedade Pacífica', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(12, 'Soluciona', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(13, 'Última Hora', '02:30:00', '', '2013-11-11 04:04:00', 1),
-(14, 'Utopia', '02:30:00', '', '2013-11-11 04:04:00', 1);
+INSERT INTO
+musicas (codigo, nome, tamanho, letra, criado_em, situacao)
+VALUES
+(1, 'Corpos', '00:03:11', 'O corpo mesmo mutilado<br/>É instrumento de evolução<br/>O corpo mesmo mutilado<br/>É instrumento de evolução<br/><br/>Corpos, santuário<br/>Corpos, oficina<br/>Corpos, bençãos<br/>Corpos, esconderijos<br/><br/>Corpos flagelados<br/>Corpos, ambulâncias<br/>Corpos, cárceres<br/>Corpos, expiação<br/><br/>Corpos<br/>Evolução<br/>Evolução', '2013-11-11 04:04:00', 1),
+(2, 'Crianças', '00:02:43', 'Quantas crianças nascem por dia<br/>Quantas crianças pedem na esquina<br/>Quantas crianças morrem no fim do dia<br/>Ninguém liga, a noite vem, o frio, a solidão<br/><br/>Já não sabem o que são,<br/>Muitas vezes produto de exportação<br/>E não querem andar na contramão<br/><br/>Crianças não podem roubar, temos que ensinar<br/>Crianças não podem matar, temos que desarmar<br/>Crianças não podem se drogar, temos que educar<br/>Crianças, crianças', '2013-11-11 04:04:00', 1),
+(3, 'Torre do Tempo', '00:02:54', 'O povo revoltado com sua situação<br/>Julga, condena os líderes da nação<br/>Revolucionários exaltados por todos os lados<br/>Extravasam sua crueldade nos que julgam criminosos<br/>Sangue inocente banha as ruas da cidade<br/>Achando que um mundo novo surgiria dos assassinatos<br/><br/>Como em toda explosão da irracionalidade<br/>Os possíveis ideais desaparecem<br/>Interesses egoístas os substituem<br/>Vinganças, cobiça, inveja<br/><br/>São instrumentos usados para justificar<br/>A morte de inocentes e culpados<br/>O juiz de ontem poderá ser guilhotinado<br/>Por ter se tornado empecilho<br/>Aos interesses de outros mais ousados<br/>De outros mais ousados<br/><br/>Trevas nos dois mundos<br/>O inteligível e o sensível<br/>Se unem e o caos impera<br/>Suborno, dinheiro consegue salvar os menos importantes<br/><br/>Dor, injustiça, corrupção<br/>Povo racional vê seus filhos transformados em lobos selvagens<br/>Quando as armas substituem o diálogo, tudo pode acontecer<br/>A guerra nunca tem razão<br/>O sangue dos mortos nunca traz a solução', '2013-11-11 04:04:00', 1),
+(4, 'Indiferença', '00:04:21', 'O trato humano com a diferença da qual o outro é portador<br/>Tem sido motivo de conflitos e adversidades<br/>Há diferentes e diferenças<br/>A indiferença é a negação da diferença<br/>O outro não faz diferença nenhuma<br/><br/>Adota-se a exclusão afetiva como suposta solução<br/>Para os embates do relacionamento<br/>Conviver é um desafio<br/><br/>Morte da indiferença<br/>Morte da indiferença<br/>Morte da indiferença<br/>Morte da indiferença<br/><br/>Diferenças não são defeitos<br/>Os diferentes não são oponentes<br/>E a indiferença é o recolhimento egoísta<br/>Do afeto na escura masmorra do desamor', '2013-11-11 04:04:00', 1),
+(5, 'Coma', '00:02:54', 'Chega de vegetar, se liberta desse estado de coma<br/>Toda experiência pode te levar a enxergar<br/>Com outro olhar a sua realidade<br/><br/>Novas maneiras de se expressar<br/>Novas paisagens a conquistar<br/>Nenhum veneno vai te contaminar<br/>Nenhum veneno vai te contaminar<br/><br/>Coma induzido, coma<br/>Coma induzido, coma', '2013-11-11 04:04:00', 1),
+(6, 'Sociedade Pacífica', '00:02:56', 'Terceiro milênio, fanáticos suicidas<br/>Terroristas roubam nossas vidas<br/>Líderes mal intencionados<br/>Convencem seguidores que morrendo assim,<br/>Matando, estarão habilitados ao paraíso<br/>Setenta e duas virgens a serví-los<br/>Setenta e duas virgens a servi-los<br/><br/>Um harém no além<br/>Um harém no além<br/>Um harém no além<br/>Um harém no além<br/><br/>Fanatismo religioso<br/>Inspirado na ignorância<br/>Falta de bom senso<br/><br/>Tolerância, sociedade pacífica<br/>Tolerância, sociedade pacífica<br/>Tolerância, sociedade pacífica<br/>Sociedade pacífica, sociedade pacífica', '2013-11-11 04:04:00', 1),
+(7, 'Desinformação', '00:02:01', 'Desinformação, corrupção<br/>Caminham lado a lado pra sua alienação<br/>No brilho da televisão, vida boa e carnaval<br/>Não são a realidade em que vive o cidadão<br/><br/>Que precisa aprender a dizer não<br/>Dizer não!<br/>Dizer não!<br/>Dizer não!<br/>Dizer não!', '2013-11-11 04:04:00', 1),
+(8, 'Soluciona', '00:03:28', 'Sua cabeça da voltas<br/>Não consegue mais se controlar<br/>A todo momento busca uma fuga<br/>Fica sempre a pergunta<br/>Onde isso vai dar?<br/><br/>Murro em ponta de faca<br/>Uma hora vai se machucar<br/>Sangra<br/>Sangra<br/><br/>Não deixe seus problemas<br/>Dominarem sua cabeça<br/>Viaja, resolva, soluciona<br/>Mais uma pergunta<br/>Quem é que manda na sua vida?<br/>Levanta, decida, anda... anda!<br/>Ainda há estrelas, cachoeiras<br/>Resolva.<br/><br/>Murro em ponta de faca<br/>Uma hora vai se machucar<br/>Sangra<br/>Sangra<br/><br/>Agora é teu melhor tempo<br/>Momento pra refazer teu conceito<br/>Sobre amizade, felicidade<br/>Morte física, desilusão<br/>Resolve então', '2013-11-11 04:04:00', 1),
+(9, 'Utopia', '00:03:47', 'Não há liberdade, não há democracia<br/>A repressão está nas entrelinhas<br/>Nada mudou! Nada mudou!<br/>Retalhação daqueles que expressam sua verdadeira opinião<br/><br/>Nada mudou! Nada mudou!<br/>Querem nos impor o que sentir, o que pensar e falar,<br/>Como nos vestir, ouvir, se comportar, até em quem votar<br/>Essa é a democracia que querem nos fazer acreditar<br/><br/>E você vai continuar a aceitar<br/><br/>Eu quero a real liberdade, real democracia<br/>Nova era, sem miséria, pré-conceito e sim respeito<br/><br/>Ter certeza da dimensão que cada um deve ter<br/>Diante da vida, posição até política<br/>Mundo novo, novo mundo<br/>Direitos iguais pra todo mundo', '2013-11-11 04:04:00', 1),
+(10, 'Máscaras', '00:02:30', 'Tudo está nu e descoberto<br/>Aos olhos da nossa consciência<br/>Nossas ações não são efetivadas<br/>Sem razões anteriores<br/><br/>Toda atuação de hoje<br/>É influenciada por crenças<br/>Preconceitos, valores éticos,<br/>Convenções sociais<br/><br/>Ação, reação<br/>Jamais a censura, mortificação e castigo<br/><br/>Visto que é por detrás<br/>Da cortina do teatro da vida<br/>Que estão as verdadeiras razões<br/>Do nosso jeito de agir e de pensar<br/><br/>Ação, reação<br/>Jamais a censura, mortificação e castigo<br/>Ação, reação<br/>Jamais a censura, mortificação e castigo', '2013-11-11 04:04:00', 1),
+(11, 'Celebrar', '00:02:40', 'Fique sabendo, portanto, que hei de voltar<br/>Do silêncio maior, um pouco de tempo<br/>Um momento de repouso sobre o vento<br/>Toque que nos desperta<br/><br/>Existimos em um lugar<br/>Onde os séculos duram apenas segundos<br/><br/>E depois de mil vidas<br/>Nossos olhos começam a abrir-se<br/>Vem, vamos celebrar a vida mais uma noite<br/>Todas as oportunidades de mudança<br/><br/>Celebrar a liberdade<br/>Já que você é o arquiteto do seu destino<br/><br/>É quem escreve sua história<br/>Faça suas escolhas agora<br/>E continue a caminhar de cabeça erguida<br/>E continue a caminhar de cabeça erguida', '2013-11-11 04:04:00', 1),
+(12, 'Ações', '00:04:20', '', '2013-11-11 04:04:00', 1),
+(13, 'Pensamento', '00:04:20', 'Pensamento tem forma e movimento<br/>Pensamento tem a força do sentimento<br/>Com teus pensamentos você pode construir<br/>Destruir<br/><br/>Viver no drama ou na realidade,<br/>Na aflição ou na serenidade<br/>É postura que está relacionada<br/>Com teu modo de pensar<br/><br/>Agir, sentir<br/><br/>Pensamento tem forma e movimento<br/>Pensamento tem a força do sentimento<br/>Pense no que está pensando,<br/>Questione, não aja sem pensar<br/><br/>Sem medir o alcance de suas palavras<br/>Gestos, atitudes', '2013-11-11 04:04:00', 1),
+(14, 'Última Hora', '00:03:20', 'Somos cegos que enxergam, surdos que ouvem<br/>Olhamos e ouvimos apenas o que nos seja conveniente<br/>Escutamos e ouvimos apenas aquilo que nos seja agradável<br/>Não conseguimos ver longe nem escutar com sabedoria o soar<br/><br/>Do trovão que vem do horizonte<br/>Corremos para recolher a criação<br/>Apenas quando as primeiras gotas fortes de água<br/>Nos surpreendem no impacto com o telheiro<br/><br/>Cegos da última hora<br/>Surdos da última hora<br/>Cegos da última hora<br/>Surdos da última hora<br/><br/>O céu já está escuro, o vento já anuncia a chuva<br/>E nós, invigilantes nos deixamos ficar<br/>Na situação daquele que espera o inevitável<br/><br/>Para adotar as medidas que já poderiam ter evitado<br/>Toda a correria da ultima hora muitas vezes inútil e funesta<br/><br/>Cegos da última hora<br/>Surdos da última hora<br/>Cegos da última hora<br/>Surdos da última hora', '2013-11-11 04:04:00', 1),
+(15, 'Em Dobro', '00:03:30', 'Não se importa com ninguém<br/>Seu negócio e se dar bem<br/>Nem que pra isso<br/>Você tenha que matar alguém<br/>Vive numa constante<br/>Ausência de sentimentos<br/><br/>Seu pensamento é só tirar vantagens<br/>Mais um dia sem medir conseqüências<br/>Dos seus atos, mas se esquece que o universo é regido por leis<br/>E uma delas é a de ação e reação<br/>E uma delas é a de ação e reação<br/><br/>E tudo pode mudar<br/>Você vai ter que pagar<br/>Você vai ter que pagar<br/>Em dobro<br/>Em dobro<br/><br/>O orgulho e o egoísmo são o câncer da humanidade<br/>A semeadura é livre, mas a colheita é obrigatória<br/>Essa é a natureza das coisas, tudo pode mudar<br/>Você vai ter que pagar, você vai ter que pagar', '2013-11-11 04:04:00', 1),
+(16, 'Ventos da Liberdade', '00:03:30', 'Trabalhadores na madrugada em busca<br/>do salário desvalorizado proletário,<br/>discriminado, se sente acuado,<br/>o chamam de folgado<br/>ele revoltado arranca do peito toda dor...<br/><br/>e lança mão, não da violencia,<br/>mas sim de uma nova consciência,<br/>novas idéias, experiências,<br/>outra historia a ser contada...<br/><br/>sem exploração, massacre da liberdade,<br/>escravidão pro orgulho e egoismo de alguns<br/>riqueza capitalista, regras estabelecidas,<br/>desigualdade, uns passam fome,<br/>outros constroem castelos...<br/><br/>carnificina global, tudo cheira mal<br/>desde o imperialismo tudo igual,<br/>tudo isso não cabe mais<br/>houve e há evolução,<br/>na ciência na construção de uma<br/>sociedade digna...<br/><br/>faça sua parte, façamos nossa parte!<br/>ventos da liberdade!', '2013-11-11 04:04:00', 1);
 
 /**
- * Remove e insere dados na tabela musicas_albuns
+ * musicas_albuns
  */
 TRUNCATE musicas_albuns;
 ALTER TABLE musicas_albuns AUTO_INCREMENT = 1;
 
-INSERT INTO musicas_albuns VALUES
+INSERT INTO
+musicas_albuns (musica, album, situacao)
+VALUES
 (1, 1, 1),
 (2, 1, 1),
-(3, 1, 1);
+(3, 1, 1),
+(4, 2, 1),
+(5, 2, 1),
+(6, 2, 1),
+(7, 2, 1),
+(8, 2, 1),
+(9, 2, 1);
 
 /**
- * Remove e insere dados na tabela eventos
+ * eventos
  */
 TRUNCATE eventos;
 ALTER TABLE eventos AUTO_INCREMENT = 1;
 
 INSERT INTO
-eventos (codigo, nome, info, local, url_amigavel, facebook, valor, data, criado_em, situacao)
+eventos (codigo, nome, info, local, slug, facebook, valor, data, criado_em, situacao)
 VALUES
 (1, 'Dias de Um Futuro Passado', 'SOCIOPATA + ARTIGO DZ9? + AUTOBONECO', 'Casarão Petiscaria (Agudos-SP)', 'dias-de-um-futuro-passado', '', 8.00, '2013-02-02 22:30:00', '2013-02-01 22:30:00', 1),
 (2, 'Affliction Rock Fest 11', 'SOCIOPATA + PLAGUE REMAINS + FOME DO CÃO + METAL GEAR + HORROR SHOW', 'Jack Music Pub (Bauru-SP)', 'affliction-rock-fest-11', '', 0.00, '2013-03-10 16:00:00', '2013-03-10 16:00:00', 1),
@@ -98,11 +125,13 @@ VALUES
 (25, 'Solidary Rock 7', NULL, '', 'solidary-rock-7', NULL, NULL, '2014-08-23 14:00:00', '2014-07-20 17:48:10', 1),
 (26, 'Rapidão Rock Fest', NULL, 'Ferro Velho Pub - Rua Goiás, 1538, Avaré - SP', 'rapidao-rock-fest', NULL, 5.00, '2014-09-21 14:00:00', CURRENT_TIMESTAMP, 1),
 (27, 'Lançamento do EP da Romero', 'Dia 05/12, sexta-feira, a partir das 19:00, ocorrerá o lançamento do primeiro EP da <a href="https://www.facebook.com/romeropunkrock">Romero</a> no <a href="https://www.facebook.com/bukbar">Buk Bar</a>. Nós da <a href="https://www.facebook.com/sociopatabr">Sociopata</a> e o pessoal da <a href="https://www.facebook.com/artigo.dz9.hc">ARTIGO DZ9?</a> fomos convidados para essa festa. A portaria é R$ 6,00 e quem quiser adquirir o EP paga R$ 10,00 na portaria.<br><br>Haverá também venda de materiais independentes das distros <a href="https://www.facebook.com/distroneblina">Neblina Distro</a> e <a href="https://www.facebook.com/subvertadistrorecs">Subverta Distro &amp; Records</a>.<br><br>Compareçam. Incentivem a música autoral.<br><a href="http://sociopata.bandcamp.com/" target="_blank">http://sociopata.bandcamp.com/</a><br><a href="http://sociopata.org" target="_blank">http://sociopata.org/</a>', 'Buk Bar - Rua Herminio Pinto 13-39 Loja 02/03', 'lancamento-ep-romero', 1374337176193436, 10.00, '2014-12-05 19:00:00', CURRENT_TIMESTAMP, 1),
-(28, '4º Rock in Christmas', '4º Rock in Christmas dia 20 de Dezembro na praça Frederico Ozanam (ao lado da rodoviaria)<br/><br/>Alem da qualidade das bandas, o evento também se destaca pela arrecadação de brinquedos que é feita desde a sua primeira edição e são distribuídos no Natal a varias crianças, brinquedos novos e usados em bom estado.<br/><br/>AS DOAÇÕES JA PODEM SER FEITAS!!!<br/>Conto com a colaboração de todos', 'Praça Frederico Ozanan (ao lado da Rodoviária), Lins - SP', '4-rock-in-christmas', NULL, 0, '2014-12-20 16:00:00', CURRENT_TIMESTAMP, 1);
+(28, '4º Rock in Christmas', '4º Rock in Christmas dia 20 de Dezembro na praça Frederico Ozanam (ao lado da rodoviaria)<br/><br/>Alem da qualidade das bandas, o evento também se destaca pela arrecadação de brinquedos que é feita desde a sua primeira edição e são distribuídos no Natal a varias crianças, brinquedos novos e usados em bom estado.<br/><br/>AS DOAÇÕES JA PODEM SER FEITAS!!!<br/>Conto com a colaboração de todos', 'Praça Frederico Ozanan (ao lado da Rodoviária), Lins - SP', '4-rock-in-christmas', NULL, 0, '2014-12-20 16:00:00', CURRENT_TIMESTAMP, 1),
+(29, 'Caos Underground Fest II', '2º edição do Caos Underground, desta vez com mais bandas, na versão "Festival".<br/><br/>15 bandas e 12 horas seguidas de barulho.<br/><br/>LINEUP:<br/><a href="https://www.facebook.com/intotheendgrindviolence">Into the end</a>, grindcore/powerviolence/sludge (Centro Oeste Paulista)<br/><a href="https://www.facebook.com/pages/Headshot/735514963161875">Headshot</a>, rapcore/hardcore (Marília-SP)<br/><a href="https://www.facebook.com/xBalaclavax">Balaclava XVX</a>, anarcorap vegan straight edge (Periferia de São Paulo)<br/><a href="https://www.facebook.com/romeropunkrock">Romero</a>, punk rock (Bauru-SP)<br/>La Desgracione, noisecoredadaanarcoknupcore (Araçatuba-SP)<br/><a href="https://www.facebook.com/artigo.dz9.hc">ARTIGO DZ9?</a>, hardcore punk (Agudos-SP)<br/><a href="https://www.facebook.com/pages/Burning-Universe/154414604668042">Burning Universe</a>, hardcore/post-hc/screamo (Campo Grande-MS)<br/><a href="https://www.facebook.com/sociopatabr">Sociopata</a>, metal/hardcore/trash/progressive (Bauru-SP)<br/><a href="https://www.facebook.com/Porcria">Porcria</a>, hardcore punk (Ilha Solteira-SP)<br/><a href="https://www.facebook.com/fitofragehc">FIT OF RAGE</a>, hardcore (Bauru-SP)<br/><a href="https://www.facebook.com/desgraceria">Desgraceria</a>, grindcore (Maringá-PR)<br/><a href="https://www.facebook.com/weedgroove">Weedgroove</a>, sludge (Marília-SP)<br/><a href="https://www.facebook.com/pages/Bico-do-Corvo/1388603081371811">Bico do Corvo</a>, death metal/groove (Três Lagoas-MS)<br/><a href="https://www.facebook.com/Ortodoxospunk">Ortodoxospunk</a>, punk (Votuporanga-SP)<br/><a href="https://www.facebook.com/pages/Rigidez-Cadav%C3%A9rica/208900995943422">Rigidez Cadavérica</a>, goregrind (São José do Rio Preto - SP)<br/><br/><br/>Sorteio de box com materiais independentes.<br/><br/>Venda de Rango Vegan.<br/><br/>Venda de material independente.<br/><br/>Espaço para troca/doação de livros, leve o seu!<br/><br/>Este é um evento underground (DIY), sem financiamento de órgão governamental ou de capital privado. Portanto, o valor das entradas será destinado para cobrir os custos do evento.<br/><br/>Machistas, fascistas, racistas, homofóbicos e skinheads de qualquer espécie não serão bem vindos e caso apareçam, serão boicotados!<br/><br/>Único lote antecipado (Limitado): R$15,00<br/>Após acabar o lote antecipado e no dia: R$20,00', 'Ilha Solteira - SP', 'caos-underground-fest-ii', 1534763756768962, 20.00, '2015-01-17 16:00:00', CURRENT_TIMESTAMP, 1),
+(30, 'III Carnametal Rio Claro', 'BANDAS:<br> <br> HAVOK 666 - BRUTAL DEATH METAL - SALTO/SP<br> <a href="https://www.facebook.com/havok666brutaldeathmetal?fref=ts" rel="nofollow"><span>https://www.facebook.com/</span><wbr><span class="word_break"></span><span>havok666brutaldeathmetal?fr</span><wbr><span class="word_break"></span>ef=ts</a><br> CELLMYS - PIRACICABA<br> <a href="https://www.facebook.com/Cellmys?fref=ts" rel="nofollow"><span>https://www.facebook.com/</span><wbr><span class="word_break"></span>Cellmys?fref=ts</a><br> MACHINAGE - JUNDIAÍ<br> <a href="https://www.facebook.com/machinage.Official?fref=ts" rel="nofollow"><span>https://www.facebook.com/</span><wbr><span class="word_break"></span>machinage.Official?fref=ts</a><br> SOCIOPATA - BAURU<br> <a href="https://www.facebook.com/sociopatabr?fref=ts" rel="nofollow"><span>https://www.facebook.com/</span><wbr><span class="word_break"></span>sociopatabr?fref=ts</a><br> LAMB OF GOD COVER - AMERICANA<br> <a href="https://m.facebook.com/omertalambofgodcover?ref=bookmark" rel="nofollow"><span>https://m.facebook.com/</span><wbr><span class="word_break"></span><span>omertalambofgodcover?ref=bo</span><wbr><span class="word_break"></span>okmark</a><span class="text_exposed_hide">...</span><span class="text_exposed_show"><br> CHACINA - PIRACICABA<br> <a href="https://www.facebook.com/chacinametal?fref=ts" rel="nofollow"><span>https://www.facebook.com/</span><wbr><span class="word_break"></span>chacinametal?fref=ts</a><br> <br> <br> entrada: 10 reais para ajudar as bandas/organização/etc<br> <br> MAIS UMA EDIÇÃO AVASSALADORA PARA INFERNAR A GALERA DAS ESCOLAS DE SAMBA. QUEM PUDER DAR UMA FORÇA NA DIVULGAÇÃO DO EVENTO A GENTE AGRADECE, ESSE ANO PROMETE COMO TODOS OS OUTROS , METAL RIO CLARO E REGIÃO!!</span><span class="text_exposed_hide"> <span class="text_exposed_link"><a class="see_more_link" onclick="var func = function(e) { e.preventDefault(); }; var parent = Parent.byClass(this, &quot;text_exposed_root&quot;); if (parent &amp;&amp; parent.getAttribute(&quot;id&quot;) == &quot;id_54c7140abf6884610893796&quot;) { CSS.addClass(parent, &quot;text_exposed&quot;); Arbiter.inform(&quot;reflow&quot;); }; func(event); " href="#" data-ft="{&quot;tn&quot;:&quot;e&quot;}" role="button">Ver mais</a></span></span>', 'Pepper Bar - Rua Quatorze, 2161, 13500-270, Rio Claro - SP', 'carnametal-rio-claro-2015', 694967190622863, 10.00, '2015-02-15 17:00:00', CURRENT_TIMESTAMP, 1);
 
 
 /**
- * Remove e insere dados na tabela informacoes
+ * informacoes
  */
 TRUNCATE informacoes;
 ALTER TABLE informacoes AUTO_INCREMENT = 1;
@@ -112,7 +141,7 @@ INSERT INTO informacoes VALUES
 
 
 /**
- * Remove e insere dados na tabela instrumentos
+ * instrumentos
  */
 TRUNCATE instrumentos;
 ALTER TABLE instrumentos AUTO_INCREMENT = 1;
@@ -125,7 +154,7 @@ INSERT INTO instrumentos VALUES
 (5, 'Backing Vocal', '2013-11-11 04:04:00', 1);
 
 /**
- * Remove e insere dados na tabela integrantes
+ * integrantes
  */
 TRUNCATE integrantes;
 ALTER TABLE integrantes AUTO_INCREMENT = 1;
@@ -141,7 +170,7 @@ INSERT INTO integrantes VALUES
 (8, 'Gerson Sampaio', 'Baterista que integrou a Sociopata entre 2011 e 2012, realizando diversos shows pela região. Gerson já tocou em bandas como Stereo S/A e The Almighty Devildogs, entre outras bandas da região.', '2013-11-11 04:04:00', 0);
 
 /**
- * Remove e insere dados na tabela integrantes_instrumentos
+ * integrantes_instrumentos
  */
 TRUNCATE integrantes_instrumentos;
 ALTER TABLE integrantes_instrumentos AUTO_INCREMENT = 1;
@@ -160,7 +189,7 @@ INSERT INTO integrantes_instrumentos VALUES
 
 
 /**
- * Remove e insere dados na tabela noticias
+ * noticias
  */
 TRUNCATE noticias;
 ALTER TABLE noticias AUTO_INCREMENT = 1;
@@ -170,7 +199,7 @@ INSERT INTO noticias VALUES
 
 
 /**
- * Remove e insere dados na tabela tipos_albuns
+ * tipos_albuns
  */
 TRUNCATE tipos_albuns;
 ALTER TABLE tipos_albuns AUTO_INCREMENT = 1;
