@@ -17,16 +17,18 @@ class Eventos extends Sociopata
      */
     public function index()
     {
-        $this->data->page = 'Eventos';
-        $this->data->content = 'eventos/eventos';
+        $this->data = array_merge($this->data, array(
+            'now'     => date('Y-m-d H:m:s'),
+            'eventos' => Eventos_model::select_eventos(),
+            'page'    => 'Eventos',
+            'content' => 'eventos/eventos'
+        ));
 
-        $this->setTitle('Sociopata | ' . $this->data->page);
-        $this->setDescription('Lista de todos os eventos da Sociopata.');
-        $this->loadCss(array('css/modules/eventos'));
+        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
+        Sociopata::setDescription('Lista de todos os eventos da Sociopata.');
+        Sociopata::loadCss(array('css/modules/eventos'));
 
-        $this->data->now = date('Y-m-d H:m:s');
-        $this->data->eventos = $this->eventos_model->select_eventos();
-        $this->load->view('template', $this->data);
+        $this->load->view('admin/template', $this->data);
     }
 
 }

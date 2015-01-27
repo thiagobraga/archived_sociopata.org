@@ -17,19 +17,35 @@ class Home extends Sociopata
      */
     public function index()
     {
-        $now = date('Y-m-d H:m:s');
+        $this->data = array_merge($this->data, array(
+            'eventos' => Home_model::getNextEvents(),
+            'news'    => $this->getNews(),
+            'albuns'  => $this->getAlbuns(),
+            'musicas' => $this->getMusics(),
+            'photos'  => $this->getPhotos(),
+            'page'    => 'Home',
+            'content' => 'home/home'
+        ));
 
-        $this->data->eventos = Home_model::select_proximos_eventos($now);
-        $this->data->news    = $this->news();
-
-        $this->data->page    = 'Home';
-        $this->data->content = 'home/home';
-
-        Sociopata::setTitle('Sociopata | ' . $this->data->page);
+        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
         Sociopata::setDescription('Confira as principais notícias e eventos.');
-        Sociopata::loadJs(array('js/src/home'));
+        Sociopata::loadCss(array(
+            'bower/OwlCarousel/owl-carousel/owl.carousel',
+            'bower/OwlCarousel/owl-carousel/owl.theme',
+            'bower/OwlCarousel/owl-carousel/owl.transitions',
+        ));
+        Sociopata::loadJs(array(
+            'bower/OwlCarousel/owl-carousel/owl.carousel',
+            'js/src/home'
+        ));
 
         $this->load->view('template', $this->data);
+    }
+
+    public function getEvents()
+    {
+        $result = Home_model::getNextEvents();
+        return $result;
     }
 
     /**
@@ -37,11 +53,50 @@ class Home extends Sociopata
      *
      * @return  [type]
      */
-    public function news()
+    public function getNews()
     {
-        $query = 'sociopatabr/posts?limit=20&fields=from,message';
-        $news  = $this->facebook->api($query, 'GET');
+        $query = array(
+            'sociopatabr',
+            '/posts',
+            '?limit=5',
+            '&fields=picture,message,created_time,link'
+        );
+
+        $news = $this->facebook->api(implode('', $query), 'GET');
+        $news = $this->formatPosts($news);
+
         return $news['data'];
+    }
+
+    public function formatPosts($news)
+    {
+        foreach ($news['data'] as $i => $notice) {
+            if (isset($notice['message'])) {
+                $news['data'][$i]['message']      = str_replace("\n", '<br/>', $notice['message']);
+                $news['data'][$i]['created_time'] = date('d/m/Y', strtotime($notice['created_time']));
+            } else {
+                unset($news['data'][$i]);
+            }
+        }
+
+        return $news;
+    }
+
+    public function getAlbuns()
+    {
+        $result  = Home_model::getAlbuns();
+        return $result;
+    }
+
+    public function getMusics($value='')
+    {
+        # code...
+    }
+
+    public function getPhotos()
+    {
+        $result = Home_model::getPhotos();
+        return $result;
     }
 
 }

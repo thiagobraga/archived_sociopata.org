@@ -17,14 +17,16 @@ class Biografia extends Sociopata
      */
     public function index()
     {
-        $this->data->page = 'Biografia';
-        $this->data->content = 'biografia/biografia';
+        $this->data = array_merge($this->data, array(
+            'biografia'   => Biografia_model::select_biografia(),
+            'integrantes' => Biografia_model::select_integrantes(),
+            'page'        => 'Biografia',
+            'content'     => 'biografia/biografia'
+        ));
 
-        $this->setTitle('Sociopata | ' . $this->data->page);
-        $this->setDescription('Biografia e informações sobre a banda.');
+        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
+        Sociopata::setDescription('Biografia e informações sobre a banda.');
 
-        $this->data->biografia = $this->biografia_model->select_biografia();
-        $this->data->integrantes = $this->biografia_model->select_integrantes();
         $this->load->view('template', $this->data);
     }
 
