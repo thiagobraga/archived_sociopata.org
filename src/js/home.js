@@ -168,7 +168,6 @@ Sociopata.Home = (function () {
                 singleItem: true,
                 loop: true,
                 autoPlay: 12000,
-                lazyLoad: true,
                 navigation: false,
                 pagination: false,
                 transitionStyle: 'fade'
