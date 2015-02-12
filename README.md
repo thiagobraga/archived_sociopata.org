@@ -3,15 +3,15 @@ sociopata.org
 
 Site em português da banda Sociopata, desenvolvido com CodeIgniter, jQuery e Bootstrap. [sociopata.org](http://sociopata.org)
 
-####Screenshots
+#### Screenshots
 
-<img src="assets/images/readme/home_480.jpg" alt="Screenshot" style="height: 400px;"/>  
-<img src="assets/images/readme/home_720.jpg" alt="Screenshot" style="height: 400px;"/>  
-<img src="assets/images/readme/home_940.jpg" alt="Screenshot" style="height: 400px;"/>  
-<img src="assets/images/readme/home_1140.jpg" alt="Screenshot" style="height: 400px;"/>  
-<img src="assets/images/readme/home_1920.jpg" alt="Screenshot" style="height: 400px;"/>  
+<img src="public/images/readme/home_480.jpg" alt="Screenshot" style="height: 400px;"/>
+<img src="public/images/readme/home_720.jpg" alt="Screenshot" style="height: 400px;"/>
+<img src="public/images/readme/home_940.jpg" alt="Screenshot" style="height: 400px;"/>
+<img src="public/images/readme/home_1140.jpg" alt="Screenshot" style="height: 400px;"/>
+<img src="public/images/readme/home_1920.jpg" alt="Screenshot" style="height: 400px;"/>
 
-####Biografia
+#### Biografia
 
 A banda Sociopata iniciou seus projetos no ano de 2008 em Agudos/Bauru (interior de São Paulo).
 
@@ -21,21 +21,21 @@ Nesta personalidade perturbada e doentia encontram-se incrustadas atitudes e con
 
 ---
 
-####Integrantes
+#### Integrantes
 
-Birão Spoldari: Baixo, Backing Vocal  
-Gustavo Panurge: Bateria  
-Kleber Cabrera: Voz  
-Leopoldo Sanches: Guitarra  
-Thiago Braga: Guitarra, Backing Vocal  
+Birão Spoldari: Baixo, Backing Vocal
+Gustavo Panurge: Bateria
+Kleber Cabrera: Voz
+Leopoldo Sanches: Guitarra
+Thiago Braga: Guitarra, Backing Vocal
 
 ---
 
-####Links
+#### Links
 
-Facebook: [facebook.com/sociopatabr](http://facebook.com/sociopatabr)  
-Bandcamp: [sociopata.bandcamp.com](http://sociopata.bandcamp.com)  
-SoundCloud: [soundcloud.com/sociopata](http://soundcloud.com/sociopata)  
-MySpace: [myspace.com/sociopata](http://myspace.com/sociopata)  
-Twitter: [twitter.com/sociopatabr](http://twitter.com/sociopatabr)  
-YouTube: [youtube.com/sociopataweb](http://youtube.com/sociopataweb)  
+Facebook: [facebook.com/sociopatabr](http://facebook.com/sociopatabr)
+Bandcamp: [sociopata.bandcamp.com](http://sociopata.bandcamp.com)
+SoundCloud: [soundcloud.com/sociopata](http://soundcloud.com/sociopata)
+MySpace: [myspace.com/sociopata](http://myspace.com/sociopata)
+Twitter: [twitter.com/sociopatabr](http://twitter.com/sociopatabr)
+YouTube: [youtube.com/sociopataweb](http://youtube.com/sociopataweb)
