@@ -5,7 +5,7 @@
         <?php foreach ($albuns as $i => $album) { ?>
             <div class="media">
                 <div class="pull-left">
-                    <img src="assets/images/albuns/<?php echo $album->slug ?>.jpg"
+                    <img src="<?php echo base_url('public/images/albuns/' . $album->slug . '.jpg') ?>"
                         class="img-responsive"
                         alt="<?php echo $album->nome ?>" />
                 </div>

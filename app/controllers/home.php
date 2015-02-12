@@ -30,11 +30,9 @@ class Home extends Sociopata
         Sociopata::setTitle('Sociopata | ' . $this->data['page']);
         Sociopata::setDescription('Confira as principais notícias e eventos.');
         Sociopata::loadCss(array(
-            'bower_components/OwlCarousel2/dist/assets/owl.carousel.min',
-            'bower_components/OwlCarousel2/dist/assets/owl.theme.default.min'
-        ));
-        Sociopata::loadJs(array(
-            'bower_components/OwlCarousel2/dist/owl.carousel.min'
+            'bower_components/OwlCarousel/owl-carousel/owl.carousel',
+            'bower_components/OwlCarousel/owl-carousel/owl.transitions',
+            'bower_components/OwlCarousel/owl-carousel/owl.theme'
         ));
 
         $this->load->view('template', $this->data);
