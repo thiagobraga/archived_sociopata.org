@@ -7,10 +7,10 @@
   font-family: Denial;
   font-style: normal;
   font-weight: normal;
-  src: url(../../fonts/denial.woff) format('woff'),
-  url(../../fonts/denial.eot?#iefix) format('embedded-opentype'),
-  url(../../fonts/denial.ttf) format('truetype'),
-  url(../../fonts/denial.svg#denialregular) format('svg');
+  src: url(/public/fonts/denial.woff) format('woff'),
+  url(/public/fonts/denial.eot?#iefix) format('embedded-opentype'),
+  url(/public/fonts/denial.ttf) format('truetype'),
+  url(/public/fonts/denial.svg#denialregular) format('svg');
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-weight: normal;
   src: local('Droid Sans'),
   local('DroidSans'),
-  url(../../fonts/droidsans.woff) format('woff');
+  url(/public/fonts/droidsans.woff) format('woff');
 }
 
 @font-face {
@@ -28,7 +28,7 @@
   font-weight: bold;
   src: local('Droid Sans Bold'),
   local('DroidSans-Bold'),
-  url(../../fonts/droidsans.woff) format('woff');
+  url(/public/fonts/droidsans.woff) format('woff');
 }
 
 /* Typography
