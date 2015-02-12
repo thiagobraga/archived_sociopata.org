@@ -14,17 +14,29 @@ var gulp       = require('gulp'),
   imagemin     = require('gulp-imagemin'),
   pngquant     = require('imagemin-pngquant'),
   browserSync  = require('browser-sync'),
-  bsFiles      = [
+
+  bsFiles = [
     'public/css/**.min.css',
     'public/js/**.min.js',
     'app/**/*.php',
     'index.php',
     '.htaccess'
   ],
-  fonts_path   = [
+
+  fonts = [
     './bower_components/font-awesome/fonts/**.*',
     './bower_components/bootstrap-sass/assets/fonts/bootstrap/**.*',
     './src/fonts/**.*'
+  ],
+
+  js_files = [
+    './bower_components/jquery/dist/jquery.js',
+    './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+    './bower_components/lightbox/js/lightbox.js',
+    './bower_components/OwlCarousel/owl-carousel/owl.carousel.js',
+    './bower_components/jQuery-linkify/dist/jquery.linkify.js',
+    './bower_components/soundmanager/script/soundmanager2-nodebug.js',
+    './src/js/**/*.js'
   ];
 
 // Styles
@@ -42,7 +54,7 @@ gulp.task('styles', function () {
 
 // Scripts
 gulp.task('scripts', function () {
-  return gulp.src('./src/js/**/*.js')
+  return gulp.src(js_files)
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest('./public/js'))
     .pipe(rename({ suffix: '.min' }))
@@ -63,7 +75,7 @@ gulp.task('images', function () {
 
 // Fonts
 gulp.task('fonts', function () {
-  return gulp.src(fonts_path)
+  return gulp.src(fonts)
     .pipe(gulp.dest('./public/fonts'));
 });
 
