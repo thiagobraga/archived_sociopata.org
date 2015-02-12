@@ -14,7 +14,7 @@
     "jquery": "*",
     "jQuery-linkify": "*",
     "lightbox": "*",
-    "OwlCarousel2": "ssh://github:/smashingboxes/OwlCarousel2.git",
+    "OwlCarousel": "*",
     "soundmanager": "*"
   }
 }
