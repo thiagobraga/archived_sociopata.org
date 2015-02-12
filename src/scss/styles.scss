@@ -1,0 +1,20 @@
+/**
+ * @file   styles.scss
+ * @author Thiago Braga <thiago@institutosoma.org.br>
+ */
+
+@import
+  '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap',
+  '../../bower_components/font-awesome/scss/font-awesome',
+  'core/variables',
+  'core/helpers',
+  'core/layout',
+  'core/type',
+  'core/grid',
+  'components/buttons',
+  'components/images',
+  'components/lightbox',
+  'components/media',
+  'components/navbar',
+  'components/panels',
+  'components/owlcarousel';
