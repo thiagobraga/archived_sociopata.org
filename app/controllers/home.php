@@ -18,7 +18,7 @@ class Home extends Sociopata
     public function index()
     {
         $this->data = array_merge($this->data, array(
-            'eventos' => Home_model::getNextEvents(),
+            'events'  => $this->getEvents(),
             'news'    => $this->getNews(),
             'albuns'  => $this->getAlbuns(),
             'musicas' => $this->getMusics(),
@@ -38,16 +38,44 @@ class Home extends Sociopata
         $this->load->view('template', $this->data);
     }
 
+    /**
+     * [getEvents description]
+     *
+     * @return  [type]
+     */
     public function getEvents()
     {
-        $result = Home_model::getNextEvents();
+        $result = Eventos_model::getNextEvents();
+        $result = $this->formatEvents($result);
         return $result;
     }
 
     /**
-     * API call news
+     * Format the display of events.
      *
-     * @return  [type]
+     * @param   {Array}  $events  The events.
+     * @return  {Array}
+     */
+    public function formatEvents($events)
+    {
+        foreach ($events as $i => $event) {
+            $strtotime = strtotime($event->data);
+            $month     = date('m', $strtotime);
+            $day       = date('d', $strtotime);
+
+            $events[$i]->month = monthName($month, true);
+            $events[$i]->day   = $day;
+
+            $events[$i]->url   = base_url('eventos#' . $event->slug);
+        }
+
+        return $events;
+    }
+
+    /**
+     * API call news.
+     *
+     * @return  {Object}
      */
     public function getNews()
     {
@@ -64,6 +92,12 @@ class Home extends Sociopata
         return $news['data'];
     }
 
+    /**
+     * [formatPosts description]
+     *
+     * @param   [type]  $news  [description]
+     * @return  [type]
+     */
     public function formatPosts($news)
     {
         foreach ($news['data'] as $i => $notice) {
@@ -78,17 +112,33 @@ class Home extends Sociopata
         return $news;
     }
 
+    /**
+     * [getAlbuns description]
+     *
+     * @return  [type]
+     */
     public function getAlbuns()
     {
         $result  = Home_model::getAlbuns();
         return $result;
     }
 
+    /**
+     * [getMusics description]
+     *
+     * @param   string  $value  [description]
+     * @return  [type]
+     */
     public function getMusics($value='')
     {
         # code...
     }
 
+    /**
+     * [getPhotos description]
+     *
+     * @return  [type]
+     */
     public function getPhotos()
     {
         $result = Home_model::getPhotos();
