@@ -35,7 +35,6 @@ COMMENT 'Discografia incluindo EPs, CDs, demos e compilações da Sociopata.';
 DROP TABLE IF EXISTS banners;
 CREATE TABLE IF NOT EXISTS banners (
     codigo      TINYINT(3)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    arquivo     VARCHAR(80)  NOT NULL DEFAULT '',
     descricao   TEXT         NOT NULL,
     criado_em   TIMESTAMP    NOT NULL,
     situacao    BIT(1)       NOT NULL
