@@ -1,33 +1,29 @@
-<?php if (!empty($eventos)) { ?>
+<?php if (!empty($events)) { ?>
     <section class="panel panel-warning">
         <header class="panel-heading">Eventos</header>
 
-        <div class="panel-body">
-            <?php foreach ($eventos as $i => $evento) { ?>
-                <div class="media">
-                    <a href="/eventos#<?php echo $evento->slug ?>" class="event-date">
-                        <?php echo date('d', strtotime($evento->data)) ?>
-                        <span><?php echo date('M', strtotime($evento->data)) ?></span>
-                    </a>
+        <table class="table eventos">
+            <tbody>
+                <?php foreach ($events as $event) {
+                    extract((array) $event); ?>
 
-                    <div class="media-body">
-                        <a href="/eventos#<?php echo $evento->slug ?>">
-                            <p class="lead media-heading">
-                                <?php echo $evento->nome ?><br/>
-                                <?php if (isset($evento->valor)) {
-                                    if ($evento->valor != 0.00) { ?>
-                                        <small><?php echo 'R$ ' . number_format($evento->valor, 2, ',', '.') ?></small>
-                                    <?php } else { ?>
-                                        <small>Grátis</small>
-                                    <?php }
-                                } ?>
-                            </p>
-                            <p><?php echo $evento->local ?></p>
-                        </a>
-                    </div>
+                    <tr>
+                        <td class="col-xs-1">
+                            <a href="<?php echo $url ?>" class="event-date">
+                                <?php echo $day ?>
+                                <span><?php echo $month ?></span>
+                            </a>
+                        </td>
 
-                </div>
-            <?php } ?>
-        </div>
+                        <td class="col-xs-11">
+                            <a href="<?php echo $url ?>" class="no-padding-left">
+                                <h6><?php echo $nome ?></h6>
+                                <small><?php echo $local ?></small>
+                            </a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </section>
 <?php } ?>

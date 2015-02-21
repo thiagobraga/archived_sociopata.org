@@ -1,30 +1,25 @@
 <section class="panel panel-warning">
     <header class="panel-heading">Discografia</header>
 
-    <div class="panel-body">
-        <?php foreach ($albuns as $i => $album) { ?>
-            <div class="media">
-                <div class="pull-left">
-                    <img src="<?php echo base_url('public/images/albuns/' . $album->slug . '.jpg') ?>"
-                        class="img-responsive"
-                        alt="<?php echo $album->nome ?>" />
-                </div>
-                <div class="media-body">
-                    <p class="album-title"><?php echo $album->nome ?></p>
-                    <b>Ano:</b> <?php echo $album->ano ?><br/>
-                    <b>Lançamento:</b> <?php echo date('d/m/Y', strtotime($album->lancado_em)) ?><br/>
+    <table class="table discografia">
+        <tbody>
+            <?php foreach ($albuns as $album) {
+                extract((array) $album) ?>
 
-                    <p><?php echo $album->info ?></p>
+                <tr>
+                    <td class="col-md-5">
+                        <img src="<?php echo base_url('public/images/albuns/' . $slug . '.jpg') ?>"
+                            class="img-responsive"
+                            alt="<?php echo $nome ?>" />
+                    </td>
 
-                    <ol class="tracks"></ol>
-
-                    <i>Total: 8:00</i>
-                </div>
-            </div>
-        <?php } ?>
-    </div>
-
-    <div class="discografia">
-
-    </div>
+                    <td class="col-md-7">
+                        <h6><?php echo $nome ?></h6>
+                        <small><?php echo $ano ?></small><br/>
+                        <ol class="tracks list-unstyled"></ol>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </section>
