@@ -1,0 +1,13 @@
+.eventos {
+  > tbody > tr {
+    > td:first-child > a {
+      padding: 15px 20px;
+      padding-right: 25px;
+    }
+
+    &:hover > td {
+      a    { color: $gray-dark; }
+      span { color: fade-out($state-warning-text, 0.5); }
+    }
+  }
+}

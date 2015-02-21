@@ -16,11 +16,10 @@
       color: #fff;
       text-shadow: 2px 2px 1px #000;
       box-shadow: 4px 4px 4px rgba(0,0,0,.5);
+      max-width: 450px;
 
-      .lead {
-        font-size: 28px;
-        font-weight: 200;
-        margin-bottom: 0;
+      h5 {
+        margin: 10px 20px 5px;
       }
 
       a {

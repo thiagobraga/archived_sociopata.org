@@ -17,9 +17,9 @@ $gray-lighter:           #c1c1c1 !default;
 
 $brand-primary:          darken(#428bca, 40%) !default;
 $brand-success:          darken(#5cb85c, 25%) !default;
-$brand-info:             darken(#f0ad4e, 25%) !default;
-$brand-warning:          darken(#d9534f, 25%) !default;
-$brand-danger:           darken(#5bc0de, 25%) !default;
+$brand-info:             darken(#5bc0de, 25%) !default;
+$brand-warning:          darken(#f0ad4e, 25%) !default;
+$brand-danger:           darken(#d9534f, 25%) !default;
 
 
 //== Scaffolding
@@ -42,11 +42,10 @@ $link-hover-decoration: none !default;
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
-
-$font-family-sans-serif:  "Droid Sans", Helvetica, Arial, sans-serif;
-$font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
+$font-family-sans-serif:  'Droid Sans', Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, 'Times New Roman', Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
-$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-monospace:   Menlo, Monaco, Consolas, 'Courier New', monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
 
 $font-size-base:          14px !default;
@@ -62,7 +61,7 @@ $font-size-h6:            ceil(($font-size-base * 1.8)) !default; // ~24px
 
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base:        1.428571429 !default; // 20/14
-//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+//** Computed 'line-height' (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 //** By default, this inherits from the `<body>`.
@@ -80,14 +79,12 @@ $headings-color:          inherit !default;
 
 // [converter] If $bootstrap-sass-asset-helper if used, provide path relative to the assets load path.
 // [converter] This is because some asset helpers, such as Sprockets, do not work with file-relative paths.
-$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/") !default;
+$icon-font-path: if($bootstrap-sass-asset-helper, 'bootstrap/', '../fonts/bootstrap/') !default;
 
 //** File name for all font files.
-$icon-font-name:          "glyphicons-halflings-regular" !default;
+$icon-font-name:          'glyphicons-halflings-regular' !default;
 //** Element ID within SVG icon file.
-$icon-font-svg-id:        "glyphicons_halflingsregular" !default;
-
-$fa-font-path:            "../bower/font-awesome/fonts";
+$icon-font-svg-id:        'glyphicons_halflingsregular' !default;
 
 
 //== Components
@@ -666,9 +663,9 @@ $progress-bar-info-bg:        $brand-info !default;
 //##
 
 //** Background color on `.list-group-item`
-$list-group-bg:                 #fff !default;
+$list-group-bg:                 rgba(12,12,12,.8) !default;
 //** `.list-group-item` border color
-$list-group-border:             #ddd !default;
+$list-group-border:             darken($gray-darker, 12%) !default;
 //** List group border radius
 $list-group-border-radius:      $border-radius-base !default;
 
@@ -699,39 +696,39 @@ $list-group-link-heading-color: #333 !default;
 //
 //##
 
-$panel-bg:                    #fff !default;
+$panel-bg:                    rgba(12,12,12,.8) !default;
 $panel-body-padding:          15px !default;
 $panel-heading-padding:       10px 15px !default;
 $panel-footer-padding:        $panel-heading-padding !default;
 $panel-border-radius:         $border-radius-base !default;
 
 //** Border color for elements within panels
-$panel-inner-border:          #ddd !default;
-$panel-footer-bg:             #f5f5f5 !default;
+$panel-inner-border:          darken($gray-darker, 50%) !default;
+$panel-footer-bg:             lighten($panel-bg, 5%) !default;
 
-$panel-default-text:          $gray-dark !default;
+$panel-default-text:          $gray-light !default;
 $panel-default-border:        #ddd !default;
-$panel-default-heading-bg:    #f5f5f5 !default;
+$panel-default-heading-bg:    $panel-footer-bg !default;
 
 $panel-primary-text:          #fff !default;
 $panel-primary-border:        $brand-primary !default;
-$panel-primary-heading-bg:    $brand-primary !default;
+$panel-primary-heading-bg:    $panel-footer-bg !default;
 
 $panel-success-text:          $state-success-text !default;
 $panel-success-border:        $state-success-border !default;
-$panel-success-heading-bg:    $state-success-bg !default;
+$panel-success-heading-bg:    $panel-footer-bg !default;
 
 $panel-info-text:             $state-info-text !default;
 $panel-info-border:           $state-info-border !default;
-$panel-info-heading-bg:       $state-info-bg !default;
+$panel-info-heading-bg:       $panel-footer-bg !default;
 
 $panel-warning-text:          $state-warning-text !default;
 $panel-warning-border:        $state-warning-border !default;
-$panel-warning-heading-bg:    $state-warning-bg !default;
+$panel-warning-heading-bg:    $panel-footer-bg !default;
 
 $panel-danger-text:           $state-danger-text !default;
 $panel-danger-border:         $state-danger-border !default;
-$panel-danger-heading-bg:     $state-danger-bg !default;
+$panel-danger-heading-bg:     $panel-footer-bg !default;
 
 
 //== Thumbnails
@@ -793,7 +790,7 @@ $breadcrumb-color:              #ccc !default;
 //** Text color of current page in the breadcrumb
 $breadcrumb-active-color:       $gray-light !default;
 //** Textual separator for between breadcrumb elements
-$breadcrumb-separator:          "/" !default;
+$breadcrumb-separator:          '/' !default;
 
 
 //== Carousel

@@ -3,50 +3,75 @@
  * @description Fonts used, size of text, headings
  * -----------------------------------------------------------------------------
  */
+
+
+// Configuring fonts
+// ==========================================
+
+// Droid Sans
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
+// Denial
 @font-face {
   font-family: Denial;
-  font-style: normal;
+  font-style:  normal;
   font-weight: normal;
   src: url(/public/fonts/denial.woff) format('woff'),
-  url(/public/fonts/denial.eot?#iefix) format('embedded-opentype'),
-  url(/public/fonts/denial.ttf) format('truetype'),
-  url(/public/fonts/denial.svg#denialregular) format('svg');
+    url(/public/fonts/denial.eot?#iefix) format('embedded-opentype'),
+    url(/public/fonts/denial.ttf) format('truetype'),
+    url(/public/fonts/denial.svg#denialregular) format('svg');
 }
 
-@font-face {
-  font-family: 'Droid Sans';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Droid Sans'),
-  local('DroidSans'),
-  url(/public/fonts/droidsans.woff) format('woff');
-}
 
-@font-face {
-  font-family: 'Droid Sans';
-  font-style: normal;
-  font-weight: bold;
-  src: local('Droid Sans Bold'),
-  local('DroidSans-Bold'),
-  url(/public/fonts/droidsans.woff) format('woff');
-}
+// Sizing
+// ==========================================
+$font-size-xsmall: 11px !default;
+$font-size-small:  12px !default;
+$font-size-base:   14px !default;
+$font-size-large:  18px !default;
+$font-size-xlarge: 22px !default;
 
-/* Typography
------------------------------------------------------------------------------ */
+
+// Font icons paths
+// ==========================================
+$fa-font-path: '/public/fonts/';
+
+
+// Headings
+// ==========================================
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: Denial, Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+  @extend .text-uppercase;
 }
 
 .page-header {
-  border-bottom: 0;
-  line-height: 1.2;
-  margin: 40px 0;
+  @extend .text-center;
+  border-bottom:  0;
+  line-height:    1.2;
+  margin:         40px 0;
   padding-bottom: 0;
-  text-align: center;
 }
+
+
+// Titles
+// ==========================================
+.title,
+.subtitle {
+  margin: 0;
+}
+
+.title {
+  font: 400 42px/1 $headings-font-family;
+}
+
+.subtitle {
+  color: $gray-dark;
+  font:  400 14px/1 $font-family-base;
+}
+
+h6         { @extend .title;    }
+h6 + small { @extend .subtitle; }

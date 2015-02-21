@@ -1,0 +1,44 @@
+.discografia {
+  li {
+    > .fa {
+      font-size:      24px;
+      line-height:    36px;
+      vertical-align: top;
+      padding:        0 10px;
+    }
+  }
+
+  > tbody > tr > td {
+    &,
+    > a {
+      padding: 25px;
+    }
+
+    // No padding left for second col
+    &.col-md-7 {
+      @extend .no-padding-left;
+    }
+  }
+
+  .tracks {
+    border:           1px solid darken($gray, 53);
+    border-radius:    2px;
+    box-shadow:       2px 2px 1px #000;
+    margin: 20px 0;
+
+    li {
+      background-color: darken($gray, 55);
+      border-bottom:    1px solid darken($gray, 53);
+      cursor:           pointer;
+      line-height:      36px;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    .active {
+      background-color: darken($gray-darker, 8);
+    }
+  }
+}
