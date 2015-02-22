@@ -39,7 +39,11 @@ Icon
 
 ### CodeIgniter ###
 */config/database.php
+*/config/development/database.php
+*/config/production/database.php
+*/config/testing/database.php
 */config/email.php
+*/config/facebook.php
 */logs/log-*.php
 !*/logs/.htaccess
 !*/logs/index.html
@@ -84,6 +88,12 @@ nb-configuration.xml
 build.xml
 build.properties
 
+
+### EditorConfig ###
+!.editorconfig
+
+### Apache ###
+!.htaccess
 
 ### Dreamweaver ###
 _notes
