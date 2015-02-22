@@ -108,3 +108,8 @@ gulp.task('watch', function () {
 gulp.task('default', function () {
   gulp.start('fonts', 'styles', 'scripts', 'images', 'browser-sync', 'watch');
 });
+
+// Production
+gulp.task('production', function () {
+  gulp.start('fonts', 'styles', 'scripts', 'images');
+});
