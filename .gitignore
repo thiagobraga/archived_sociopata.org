@@ -90,7 +90,5 @@ _notes
 *_notes/
 dwsync.xml
 
-
-database/deploy.sh
-
+install.sh
 public/
