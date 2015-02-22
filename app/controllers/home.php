@@ -27,7 +27,7 @@ class Home extends Sociopata
             'content' => 'home/home'
         ));
 
-        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
+        Sociopata::setTitle('Sociopata | ' . $this->data['page'] . '| Bauru, SP - Som autoral desde 2008');
         Sociopata::setDescription('Confira as principais notícias e eventos.');
         Sociopata::loadCss(array(
             'bower_components/OwlCarousel/owl-carousel/owl.carousel',
