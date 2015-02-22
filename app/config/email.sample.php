@@ -13,4 +13,4 @@ $config['charset'] = 'utf-8';
 $config['newline'] = '\r';
 
 /* End of file email.php */
-/* Location: ./application/config/email.php */
+/* Location: ./app/config/email.php */

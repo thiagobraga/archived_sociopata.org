@@ -7,3 +7,6 @@ $config['appID']  = 'your_app_id';
 $config['secret'] = 'your_secret_key';
 $config['cookie'] = true;
 $config['oauth']  = true;
+
+/* End of file facebook.sample.php */
+/* Location: ./app/config/facebook.sample.php */
