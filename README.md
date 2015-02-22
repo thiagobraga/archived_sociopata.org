@@ -5,11 +5,11 @@ Site em português da banda Sociopata, desenvolvido com CodeIgniter, jQuery e Bo
 
 #### Screenshots
 
-<img src="/public/images/readme/home_480.jpg" alt="Screenshot" style="height: 400px;"/>
-<img src="/public/images/readme/home_720.jpg" alt="Screenshot" style="height: 400px;"/>
-<img src="/public/images/readme/home_940.jpg" alt="Screenshot" style="height: 400px;"/>
-<img src="/public/images/readme/home_1140.jpg" alt="Screenshot" style="height: 400px;"/>
-<img src="/public/images/readme/home_1920.jpg" alt="Screenshot" style="height: 400px;"/>
+![Screenshot](src/images/readme/home_480.jpg)
+![Screenshot](src/images/readme/home_720.jpg)
+![Screenshot](src/images/readme/home_940.jpg)
+![Screenshot](src/images/readme/home_1140.jpg)
+![Screenshot](src/images/readme/home_1920.jpg)
 
 #### Biografia
 
