@@ -15,40 +15,9 @@ class Home_model extends CI_Model
      *
      * @return object
      */
-    public function getNextEvents()
-    {
-        $now = date('Y-m-d H:m:s');
-        $query =
-            "SELECT
-                SHA1(CONCAT('TB', codigo, 'SOCIOPATA')) AS codigo,
-                nome,
-                info,
-                local,
-                slug,
-                facebook,
-                valor,
-                data
-            FROM
-                eventos
-            WHERE
-                data > '$now'
-                AND situacao = 1
-            ORDER BY
-                data ASC
-            LIMIT
-                5;";
-
-        $result = $this->db->query($query)->result();
-        return $result;
-    }
-
-    /**
-     * Seleciona o mais próximo evento da data atual
-     *
-     * @return object
-     */
     public function getAlbuns()
     {
+        $now = date('Y-m-d H:i:s');
         $query =
             "SELECT
                 nome,
@@ -58,13 +27,24 @@ class Home_model extends CI_Model
                 info
             FROM
                 albuns
+            WHERE
+                lancado_em < '$now'
             ORDER BY
                 ano DESC";
 
-        $result = $this->db->query($query)->result();
+        $result = $this->db
+            ->query($query)
+            ->result();
+
         return $result;
     }
 
+    /**
+     * [getMusicas description]
+     *
+     * @param   [type]  $album  [description]
+     * @return  [type]
+     */
     public function getMusicas($album)
     {
         $query =
@@ -80,17 +60,28 @@ class Home_model extends CI_Model
             WHERE
                 musicas_albuns.album = $album";
 
-        $result = $this->db->query($query)->result();
+        $result = $this->db
+            ->query($query)
+            ->result();
+
         return $result;
     }
 
+    /**
+     * [getPhotos description]
+     *
+     * @return  [type]
+     */
     public function getPhotos()
     {
         $query =
-            "SELECT arquivo, descricao
+            "SELECT codigo, descricao
             FROM    banners;";
 
-        $result = $this->db->query($query)->result();
+        $result = $this->db
+            ->query($query)
+            ->result();
+
         return $result;
     }
 

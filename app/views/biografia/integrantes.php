@@ -4,7 +4,7 @@
     <div class="panel-body">
         <?php foreach ($integrantes as $integrante) { ?>
             <div class="img-container">
-                <img src="<?php echo base_url('assets/images/integrantes/' . $integrante->codigo . '.jpg') ?>"
+                <img src="<?php echo base_url('public/images/integrantes/' . $integrante->codigo . '.jpg') ?>"
                     class="img-responsive" />
 
                 <div class="caption">

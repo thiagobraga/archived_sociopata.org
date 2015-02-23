@@ -1,5 +1,3 @@
-# Rewrites all requests so that "index.php" is
-# removed from the URL.
 RewriteEngine on
 RewriteCond $1 !^(index\.php|public|bower_components|robots\.txt)
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^(.*)$ /index.php/$1 [L]

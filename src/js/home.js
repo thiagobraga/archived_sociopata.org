@@ -66,14 +66,12 @@ Sociopata.Home = (function () {
         },
 
         /**
-         * [description]
+         * Load the Sound Manager plugin and
+         * stream songs from Soundcloud.
          *
-         * @param   {[type]}
-         * @return  {[type]}
+         * @return  {void}
          */
-        init = (function () {
-
-            // Sound Manager
+        loadSongs = function () {
             soundManager.url                = '/swfs/';
             soundManager.flashVersion       = 9;
             soundManager.useFlashBlock      = false;
@@ -93,7 +91,10 @@ Sociopata.Home = (function () {
 
                 $.getJSON(url, function (playlist) {
                     $.each(playlist.tracks, function (index, track) {
-                        $('<li>' + track.title + '</li>').data('track', track).appendTo('.tracks');
+                        $('<li><span class="fa fa-play-circle"></span>' + track.title + '</li>')
+                            .data('track', track)
+                            .appendTo('.tracks');
+
                         url = track.stream_url;
                         (url.indexOf('secret_token') == -1) ? url = url + '?' : url = url + '&';
                         url = url + 'consumer_key=' + consumer_key;
@@ -118,21 +119,23 @@ Sociopata.Home = (function () {
                     });
 
                     $('.tracks li').on('click', function () {
-                        var $track = $(this),
-                            data = $track.data('track'),
+                        var $track  = $(this),
+                            data    = $track.data('track'),
                             playing = $track.is('.active');
 
                         if (playing) {
                             soundManager.pause('track_' + data.id);
                         } else {
-                            if ($track.siblings('li').hasClass('active')) { soundManager.stopAll(); }
+                            if ($track.siblings('li').hasClass('active')) {
+                                soundManager.stopAll();
+                            }
                             soundManager.play('track_' + data.id);
                         }
                         $track.toggleClass('active').siblings('li').removeClass('active');
                     });
 
                     $('.play, .pause').on('click', function(){
-                        if ( $('li').hasClass('active') == true ) {
+                        if ($('li').hasClass('active') == true) {
                             soundManager.togglePause( 'track_' + $('li.active').data('track').id );
                         } else {
                             $('li:first').click();
@@ -149,7 +152,7 @@ Sociopata.Home = (function () {
 
                     var nextTrack = function(){
                         soundManager.stopAll();
-                        if ( $('li.active').next().click().length == 0 ) {
+                        if ($('li.active').next().click().length == 0) {
                             $('.tracks li:first').click();
                         }
                     };
@@ -162,17 +165,33 @@ Sociopata.Home = (function () {
                     };
                 });
             });
+        },
 
-            // owlCarousel
+        /**
+         * Load the owlCarousel plugin.
+         *
+         * @return  {void}
+         */
+        loadCarousel = function () {
             $('.owl-carousel').owlCarousel({
                 singleItem: true,
                 loop: true,
                 autoPlay: 12000,
-                lazyLoad: true,
                 navigation: false,
                 pagination: false,
                 transitionStyle: 'fade'
             });
+        },
+
+        /**
+         * [description]
+         *
+         * @param   {[type]}
+         * @return  {[type]}
+         */
+        init = (function () {
+            loadSongs();
+            loadCarousel();
         }());
 
 }());

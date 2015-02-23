@@ -17,16 +17,16 @@ class Midia extends Sociopata
      */
     public function index()
     {
-        $this->data->page = 'Mídia';
-        $this->data->content = 'midia/midia';
+        $this->data = array_merge($this->data, array(
+            'albuns'  => $this->midia_model->select_albuns(),
+            'musicas' => $this->midia_model->select_musicas(),
+            'page'    => 'Mídia',
+            'content' => 'midia/midia'
+        ));
 
-        $this->loadCss(array('css/modules/midia'));
-        $this->loadJs(array('js/modules/midia'));
-        $this->setTitle('Sociopata | ' . $this->data->page);
-        $this->setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
+        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
+        Sociopata::setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
 
-        $this->data->albuns = $this->midia_model->select_albuns();
-        $this->data->musicas = $this->midia_model->select_musicas();
         $this->load->view('template', $this->data);
     }
 

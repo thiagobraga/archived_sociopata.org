@@ -17,11 +17,13 @@ class Contato extends Sociopata
     */
     public function index()
     {
-        $this->data->page = 'Contato';
-        $this->data->content = 'contato/contato';
+        $this->data = array_merge($this->data, array(
+            'page'    => 'Contato',
+            'content' => 'contato/contato'
+        ));
 
-        $this->setTitle('Sociopata | ' . $this->data->page);
-        $this->setDescription('Álbuns, vídeos e letras das músicas da Sociopata.');
+        Sociopata::setTitle('Sociopata | ' . $this->data['page']);
+        Sociopata::setDescription('Contato para shows e eventos');
 
         $this->load->view('template', $this->data);
     }

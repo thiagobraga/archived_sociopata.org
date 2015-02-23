@@ -28,7 +28,7 @@ INSERT INTO
 albuns (codigo, nome, slug, info, tipo_album, ano, soundcloud, lancado_em, criado_em, situacao)
 VALUES
 (1, 'Sociopata', 'sociopata', 'EP com 3 músicas lançado em Dezembro de 2013, gravado e mixado no RMS Studio em Agudos - SP.', 2, 2013, 'https://soundcloud.com/sociopata/sets/2013-sociopata', '2013-11-11 04:04:00', CURRENT_TIMESTAMP, 1),
-(2, 'Corrosão', 'corrosao', 'EP com 6 músicas lançado em Janeiro de 2015, gravado e mixado no RMS Studio em Agudos - SP.', 2, 2015, '', '2015-03-01 16:20:00', CURRENT_TIMESTAMP, 1);
+(2, 'Corrosão', 'corrosao', 'EP com 6 músicas lançado em Janeiro de 2015, gravado e mixado no RMS Studio em Agudos - SP.', 2, 2015, '', '2015-04-10 16:20:00', CURRENT_TIMESTAMP, 1);
 
 /**
  * banners
@@ -37,12 +37,14 @@ TRUNCATE banners;
 ALTER TABLE banners AUTO_INCREMENT = 1;
 
 INSERT INTO
-banners (codigo, arquivo, descricao, criado_em, situacao)
+banners (codigo, descricao, criado_em, situacao)
 VALUES
-(1, 'novo-album.jpg', '<p class="lead">Novo álbum em breve</p><p>Gravações finalizadas, em processo de masterização e prensagem.</p>', CURRENT_TIMESTAMP, 1),
-(2, 'primeiro-album.jpg', '<p class="lead">Conheça o primeiro álbum</p><p>Nosso primeiro material está disponível<br/> no <a href="http://sociopata.bandcamp.com" target="_blank">Bandcamp</a> e no <a href="http://soundcloud.com/sociopata" target="_blank">Soundcloud</a></p>', CURRENT_TIMESTAMP, 1),
-(3, 'siga-facebook.jpg', '<p class="lead">Acompanhe as notícias no Facebook</p><p>Receba informações e datas de shows na sua timeline<br/>seguindo a fanpage da <a href="http://facebook.com/sociopatabr" target="_blank">Sociopata</a></p>', CURRENT_TIMESTAMP, 1),
-(4, 'banner-05.jpg', '<p class="lead">Lorem ipsum dolor sit amet</p><p>Consectetur adipisicing elit<br/>Dolores quae quam consequuntur</p>', CURRENT_TIMESTAMP, 1);
+(1, '<h5>Sociopata - Bauru/SP</h5><p>Som autoral desde 2008</p>', CURRENT_TIMESTAMP, 1),
+(2, '<h5>Segundo álbum em breve</h5><p>Previsão de lançamento para <b class="text-danger">Abril/2015</b></p>', CURRENT_TIMESTAMP, 1),
+(3, '<h5>Contato para eventos</h5><p>E-mail para <a href="mailto:contato@sociopata.org" target="_blank">contato@sociopata.org</a></p>', CURRENT_TIMESTAMP, 1),
+(4, '<h5>Sociopata no Facebook</h5><p>Siga a fanpage em <a href="https://www.facebook.com/sociopatabr" target="_blank">fb.com/sociopatabr</a></p>', CURRENT_TIMESTAMP, 1),
+(5, '<h5>Conheça o primeiro álbum</h5><p>Ouça e baixe o álbum<br/>no <a href="//sociopata.bandcamp.com" target="_blank">Bandcamp</a> ou no <a href="//soundcloud.com/sociopata" target="_blank">Soundcloud</a></p>', CURRENT_TIMESTAMP, 1),
+(6, '<h5>Canal no Youtube</h5><p>Veja nossos vídeos em <a href="//youtube.com/sociopataweb" target="_blank">youtube.com/sociopataweb</a></p>', CURRENT_TIMESTAMP, 1);
 
 /**
  * musicas
@@ -138,7 +140,7 @@ TRUNCATE informacoes;
 ALTER TABLE informacoes AUTO_INCREMENT = 1;
 
 INSERT INTO informacoes VALUES
-(1, '<p>A banda Sociopata iniciou seus projetos no ano de 2008 em Agudos/Bauru (interior de São Paulo).</p><p>O nome do grupo suscita argumentação crítica das mazelas, muitas vezes inconscientes e sensíveis vividas num cotidiano de manipulações embutidas nas relações humanas. Temas sociais psíquicos e espirituais fundamentam o incômodo na vontade de se encontrar e se impor à realidade manifesta; como que em um pesadelo onde a escolha se faz subjugada aos fatos irreais da mente Sociopata na sua condição moral de desprezo egocêntrico, e no próprio cinismo e no falso arrependimento de suas emoções superficiais.</p><p>Nesta personalidade perturbada e doentia encontram-se incrustadas atitudes e condutas de total repulsa e revolta à ética materialista, sendo que por via de uma sonoridade diversa, onde sincrônico e distônico se fundem na própria carne, a banda Sociopata transmite em suas músicas sua oportuna identidade e intenção de si mesma.</p>', 1);
+(1, 'A banda Sociopata iniciou seus projetos no ano de 2008 em Agudos/Bauru (interior de São Paulo).<br/><br/>O nome do grupo suscita argumentação crítica das mazelas, muitas vezes inconscientes e sensíveis vividas num cotidiano de manipulações embutidas nas relações humanas. Temas sociais psíquicos e espirituais fundamentam o incômodo na vontade de se encontrar e se impor à realidade manifesta; como que em um pesadelo onde a escolha se faz subjugada aos fatos irreais da mente Sociopata na sua condição moral de desprezo egocêntrico, e no próprio cinismo e no falso arrependimento de suas emoções superficiais.<br/><br/>Nesta personalidade perturbada e doentia encontram-se incrustadas atitudes e condutas de total repulsa e revolta à ética materialista, sendo que por via de uma sonoridade diversa, onde sincrônico e distônico se fundem na própria carne, a banda Sociopata transmite em suas músicas sua oportuna identidade e intenção de si mesma.', 1);
 
 
 /**

@@ -37,30 +37,3 @@ body.home {
 .user-menu {
   width: 200px;
 }
-
-
-// Links
-// ==========================================
-a {
-  @include transition(color ease .15s);
-
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    text-decoration: none;
-  }
-}
-
-
-// Selection
-// ==========================================
-::-moz-selection {
-  background: rgba(50,0,0,.25);
-  color:      rgba(100,100,100,.75);
-}
-
-::selection {
-  background: rgba(50,0,0,.25);
-  color:      rgba(100,100,100,.75);
-}

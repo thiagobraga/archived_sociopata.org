@@ -38,6 +38,38 @@ class Eventos_model extends CI_Model
         return $result;
     }
 
+    /**
+     * Seleciona o mais próximo evento da data atual
+     *
+     * @return object
+     */
+    public function getNextEvents()
+    {
+        $now = date('Y-m-d H:m:s');
+        $query =
+            "SELECT
+                nome,
+                local,
+                slug,
+                facebook,
+                data
+            FROM
+                eventos
+            WHERE
+                data > '$now'
+                AND situacao = 1
+            ORDER BY
+                data ASC
+            LIMIT
+                5;";
+
+        $result = $this->db
+            ->query($query)
+            ->result();
+
+        return $result;
+    }
+
 }
 
 /* End of file eventos_model.php */

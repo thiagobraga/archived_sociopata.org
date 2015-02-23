@@ -70,9 +70,12 @@ var main = (function () {
          * @return
          */
         init = (function () {
-            $('#news').linkify();
-
             var body = $('body');
+
+            $('#news').linkify();
+            $('a[href="#"]').on('click', function (event) {
+                event.preventDefault();
+            });
 
             $(window).scroll(function () {
                 var yPos  = -($(window).scrollTop() / 10),
@@ -83,6 +86,7 @@ var main = (function () {
         }());
 
 }());
+
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
