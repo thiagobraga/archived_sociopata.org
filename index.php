@@ -16,17 +16,16 @@
  * - production
  *
  * NOTE: If you change these, also change the error_reporting() code below
- *
  */
 switch ($_SERVER['HTTP_HOST']) {
-    case 'sociopata.org':
-        define('ENVIRONMENT', 'production');
-        break;
-    case 'test.sociopata.org':
-        define('ENVIRONMENT', 'testing');
-        break;
-    default:
-        define('ENVIRONMENT', 'development');
+case 'sociopata.org':
+    define('ENVIRONMENT', 'production');
+    break;
+case 'test.sociopata.org':
+    define('ENVIRONMENT', 'testing');
+    break;
+default:
+    define('ENVIRONMENT', 'development');
 }
 
 
@@ -39,17 +38,17 @@ switch ($_SERVER['HTTP_HOST']) {
  * By default development will show errors but testing and live will hide them.
  */
 switch (ENVIRONMENT) {
-    case 'production':
-        error_reporting(E_ALL);
-        break;
-    case 'testing':
-        error_reporting(E_ALL);
-        break;
-    case 'development':
-        error_reporting(E_ALL);
-        break;
-    default:
-        exit('The application environment is not set correctly.');
+case 'production':
+    error_reporting(E_ALL);
+    break;
+case 'testing':
+    error_reporting(E_ALL);
+    break;
+case 'development':
+    error_reporting(E_ALL);
+    break;
+default:
+    exit('The application environment is not set correctly.');
 }
 
 /*
@@ -78,7 +77,7 @@ $system_path = 'system';
  * NO TRAILING SLASH!
  *
  */
-$application_folder = 'application';
+$application_folder = 'app';
 
 /*
  * --------------------------------------------------------------------
@@ -140,7 +139,7 @@ if (defined('STDIN')) {
     chdir(dirname(__FILE__));
 }
 
-if (realpath($system_path) !== FALSE) {
+if (realpath($system_path) !== false) {
     $system_path = realpath($system_path) . '/';
 }
 

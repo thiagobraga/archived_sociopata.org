@@ -1,0 +1,29 @@
+/**
+ * @file   styles.scss
+ * @author Thiago Braga <thiago@institutosoma.org.br>
+ */
+
+@import 'core/variables';
+
+@import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../bower_components/font-awesome/scss/font-awesome';
+
+@import 'core/helpers';
+@import 'core/layout';
+@import 'core/type';
+@import 'core/grid';
+@import 'core/tables';
+@import 'core/forms';
+
+@import 'components/buttons';
+@import 'components/images';
+@import 'components/lightbox';
+@import 'components/media';
+@import 'components/navbar';
+@import 'components/panels';
+@import 'components/owlcarousel';
+
+@import 'modules/discografia';
+@import 'modules/eventos';
+@import 'modules/news';
+@import 'modules/landing';

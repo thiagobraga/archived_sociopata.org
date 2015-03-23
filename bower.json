@@ -1,19 +1,21 @@
 {
   "name": "sociopata",
   "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "jquery": "1.11.0",
-    "bootstrap": "3.1.1",
-    "font-awesome": "latest",
-    "jasny-bootstrap": "3.1.1",
-    "videojs": "latest",
-    "videojs-youtube": "latest",
-    "handlebars": "latest",
-    "jquery-cookie": "latest",
-    "html5shiv": "latest",
-    "respond": "latest"
-  },
-  "devDependencies": {
-    "lightbox": "~2.7.1"
+    "bootstrap-sass": "*",
+    "font-awesome": "*",
+    "jquery": "*",
+    "jQuery-linkify": "*",
+    "lightbox": "*",
+    "OwlCarousel": "*",
+    "soundmanager": "*",
+    "noty": "~2.3.4"
   }
 }

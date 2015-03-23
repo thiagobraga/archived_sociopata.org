@@ -1,0 +1,31 @@
+.form-control {
+  background:    rgba(0,0,0,.75);
+  border:        1px solid darken($gray-darker, 15%);
+  border-radius: 3px;
+  box-shadow:    inset 2px 1px 4px #000;
+  color:         $gray;
+  font:          400 16px/1.4 $font-family-sans-serif;
+  height:        46px;
+  padding:       12px 15px;
+
+  &::-webkit-input-placeholder {
+    color: $gray-dark;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+.btn {
+  border-radius: 3px;
+}
+
+.btn-lg {
+  @extend  .text-uppercase;
+  padding: 15px 20px;
+}
+
+iframe {
+  background: #000;
+}

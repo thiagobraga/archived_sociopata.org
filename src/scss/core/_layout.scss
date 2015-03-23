@@ -1,0 +1,39 @@
+//
+// Layout
+// @author  Thiago Braga <contato@thiagobraga.org>
+// @file    core/_layout.scss
+//
+
+
+// Body
+// ==========================================
+body {
+  padding-top: 30px;
+  background:
+    #000
+    left top
+    no-repeat
+    fixed;
+
+  // @todo: Move to theme Sociopata
+  background-image: url(/public/images/backgrounds/sociopata-2013.jpg);
+}
+
+body.home {
+  padding-top: 40px;
+}
+
+
+// Container
+// ==========================================
+.main.container {
+  min-height: 80vh;
+  height: auto;
+}
+
+
+// User menu
+// ==========================================
+.user-menu {
+  width: 200px;
+}
