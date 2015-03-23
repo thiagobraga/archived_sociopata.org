@@ -148,7 +148,7 @@ class Contato extends Sociopata
                 $sent = false;
             }
         } else {
-            $errors['form'] = 'Xi. Ocorreu um erro no envio do e-mail';
+            $errors['form'] = 'Ocorreu um erro no envio do e-mail';
             $sent = false;
         }
 
