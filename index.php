@@ -19,6 +19,7 @@
  */
 switch ($_SERVER['HTTP_HOST']) {
 case 'sociopata.org':
+case 'www.sociopata.org':
     define('ENVIRONMENT', 'production');
     break;
 case 'test.sociopata.org':
