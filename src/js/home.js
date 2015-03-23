@@ -72,99 +72,99 @@ Sociopata.Home = (function () {
          * @return  {void}
          */
         loadSongs = function () {
-            soundManager.url                = '/swfs/';
-            soundManager.flashVersion       = 9;
-            soundManager.useFlashBlock      = false;
-            soundManager.useHighPerformance = true;
-            soundManager.wmode              = 'transparent';
-            soundManager.useFastPolling     = true;
+            // soundManager.url                = '/swfs/';
+            // soundManager.flashVersion       = 9;
+            // soundManager.useFlashBlock      = false;
+            // soundManager.useHighPerformance = true;
+            // soundManager.wmode              = 'transparent';
+            // soundManager.useFastPolling     = true;
 
-            soundManager.onready(function () {
-                var html = '',
-                    consumer_key = '33f605127db5be11440cc0ecb3106cbe',
-                    url = [
-                        'http://api.soundcloud.com/resolve?url=',
-                        'http://soundcloud.com/sociopata/sets/2013-sociopata',
-                        '&format=json&consumer_key=' + consumer_key,
-                        '&callback=?'
-                    ].join('');
+            // soundManager.onready(function () {
+            //     var html = '',
+            //         consumer_key = '33f605127db5be11440cc0ecb3106cbe',
+            //         url = [
+            //             'http://api.soundcloud.com/resolve?url=',
+            //             'http://soundcloud.com/sociopata/sets/2013-sociopata',
+            //             '&format=json&consumer_key=' + consumer_key,
+            //             '&callback=?'
+            //         ].join('');
 
-                $.getJSON(url, function (playlist) {
-                    $.each(playlist.tracks, function (index, track) {
-                        $('<li><span class="fa fa-play-circle"></span>' + track.title + '</li>')
-                            .data('track', track)
-                            .appendTo('.tracks');
+            //     $.getJSON(url, function (playlist) {
+            //         $.each(playlist.tracks, function (index, track) {
+            //             $('<li><span class="fa fa-play-circle"></span>' + track.title + '</li>')
+            //                 .data('track', track)
+            //                 .appendTo('.tracks');
 
-                        url = track.stream_url;
-                        (url.indexOf('secret_token') == -1) ? url = url + '?' : url = url + '&';
-                        url = url + 'consumer_key=' + consumer_key;
+            //             url = track.stream_url;
+            //             (url.indexOf('secret_token') == -1) ? url = url + '?' : url = url + '&';
+            //             url = url + 'consumer_key=' + consumer_key;
 
-                        soundManager.createSound({
-                            id: 'track_' + track.id,
-                            url: url,
-                            onplay: function () {
-                                $('.player').addClass('playing');
-                                $('.title').text(track.title);
-                            },
-                            onresume: function () {
-                                $('.player').addClass('playing');
-                            },
-                            onpause: function () {
-                                $('.player').removeClass('playing');
-                            },
-                            onfinish: function() {
-                                nextTrack();
-                            }
-                        });
-                    });
+            //             soundManager.createSound({
+            //                 id: 'track_' + track.id,
+            //                 url: url,
+            //                 onplay: function () {
+            //                     $('.player').addClass('playing');
+            //                     $('.title').text(track.title);
+            //                 },
+            //                 onresume: function () {
+            //                     $('.player').addClass('playing');
+            //                 },
+            //                 onpause: function () {
+            //                     $('.player').removeClass('playing');
+            //                 },
+            //                 onfinish: function() {
+            //                     nextTrack();
+            //                 }
+            //             });
+            //         });
 
-                    $('.tracks li').on('click', function () {
-                        var $track  = $(this),
-                            data    = $track.data('track'),
-                            playing = $track.is('.active');
+            //         $('.tracks li').on('click', function () {
+            //             var $track  = $(this),
+            //                 data    = $track.data('track'),
+            //                 playing = $track.is('.active');
 
-                        if (playing) {
-                            soundManager.pause('track_' + data.id);
-                        } else {
-                            if ($track.siblings('li').hasClass('active')) {
-                                soundManager.stopAll();
-                            }
-                            soundManager.play('track_' + data.id);
-                        }
-                        $track.toggleClass('active').siblings('li').removeClass('active');
-                    });
+            //             if (playing) {
+            //                 soundManager.pause('track_' + data.id);
+            //             } else {
+            //                 if ($track.siblings('li').hasClass('active')) {
+            //                     soundManager.stopAll();
+            //                 }
+            //                 soundManager.play('track_' + data.id);
+            //             }
+            //             $track.toggleClass('active').siblings('li').removeClass('active');
+            //         });
 
-                    $('.play, .pause').on('click', function(){
-                        if ($('li').hasClass('active') == true) {
-                            soundManager.togglePause( 'track_' + $('li.active').data('track').id );
-                        } else {
-                            $('li:first').click();
-                        }
-                    });
+            //         $('.play, .pause').on('click', function(){
+            //             if ($('li').hasClass('active') == true) {
+            //                 soundManager.togglePause( 'track_' + $('li.active').data('track').id );
+            //             } else {
+            //                 $('li:first').click();
+            //             }
+            //         });
 
-                    $('.next').on('click', function(){
-                        nextTrack();
-                    });
+            //         $('.next').on('click', function(){
+            //             nextTrack();
+            //         });
 
-                    $('.prev').on('click', function(){
-                        prevTrack();
-                    });
+            //         $('.prev').on('click', function(){
+            //             prevTrack();
+            //         });
 
-                    var nextTrack = function(){
-                        soundManager.stopAll();
-                        if ($('li.active').next().click().length == 0) {
-                            $('.tracks li:first').click();
-                        }
-                    };
+            //         var nextTrack = function(){
+            //             soundManager.stopAll();
+            //             if ($('li.active').next().click().length == 0) {
+            //                 $('.tracks li:first').click();
+            //             }
+            //         };
 
-                    var prevTrack = function(){
-                        soundManager.stopAll();
-                        if ( $('li.active').prev().click().length == 0 ) {
-                            $('.tracks li:last').click();
-                        }
-                    };
-                });
-            });
+            //         var prevTrack = function(){
+            //             soundManager.stopAll();
+            //             if ( $('li.active').prev().click().length == 0 ) {
+            //                 $('.tracks li:last').click();
+            //             }
+            //         };
+            //     });
+            // });
         },
 
         /**

@@ -41,7 +41,7 @@
 $route = array(
     '404_override'       => '',
     'bower_components'   => 'bower_components',
-    'default_controller' => 'home',
+    'default_controller' => 'landing',
     'logout'             => 'admin/logout'
 );
 

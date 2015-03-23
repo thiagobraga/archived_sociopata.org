@@ -12,12 +12,12 @@
 
   > .list-group {
     > .list-group-item {
-      color:   $gray-dark;
-      font:    400 #{$font-size-small}/1.3 $font-family-base;
+      color:   $gray;
+      font:    400 #{$font-size-base}/1.5 $font-family-base;
       padding: 20px;
 
       > a {
-        color: $gray-lighter;
+        color: lighten($gray-lighter, 10);
       }
     }
   }
@@ -45,6 +45,14 @@
   a { color: $gray-light; }
 }
 
+.panel-footer {
+  @extend           .text-center;
+  background-color: darken($gray-darker, 17);
+  color:            $gray-dark;
+  padding:          20px;
+  text-shadow:      0 -2px 0 #000;
+}
+
 .event-date {
   @extend .text-center;
   display:      block;
@@ -58,11 +66,4 @@
     display:   block;
     font-size: 32px;
   }
-}
-
-.date {
-  @extend .text-warning;
-  display:    block;
-  font-size:  10px;
-  font-style: italic;
 }

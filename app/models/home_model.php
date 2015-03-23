@@ -20,6 +20,7 @@ class Home_model extends CI_Model
         $now = date('Y-m-d H:i:s');
         $query =
             "SELECT
+                codigo,
                 nome,
                 slug,
                 ano,
@@ -27,8 +28,6 @@ class Home_model extends CI_Model
                 info
             FROM
                 albuns
-            WHERE
-                lancado_em < '$now'
             ORDER BY
                 ano DESC";
 
@@ -45,10 +44,11 @@ class Home_model extends CI_Model
      * @param   [type]  $album  [description]
      * @return  [type]
      */
-    public function getMusicas($album)
+    public function getMusics()
     {
         $query =
             "SELECT
+                musicas_albuns.album,
                 musicas.nome,
                 musicas.tamanho,
                 musicas.letra
@@ -56,9 +56,7 @@ class Home_model extends CI_Model
                 musicas
             INNER JOIN
                 musicas_albuns ON
-                musicas_albuns.musica = musicas.nome
-            WHERE
-                musicas_albuns.album = $album";
+                musicas_albuns.musica = musicas.codigo;";
 
         $result = $this->db
             ->query($query)

@@ -1,10 +1,10 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <br/>
-                <img src="http://placehold.it/1140x400/121212/666666&text=Footer">
-            </div>
+            <div class="col-md-3">Sitemap</div>
+            <div class="col-md-3">Últimos eventos e outra coisa</div>
+            <div class="col-md-3">Últimas coisas e outras fitas</div>
+            <div class="col-md-3">Contato</div>
         </div>
     </div>
 </footer>

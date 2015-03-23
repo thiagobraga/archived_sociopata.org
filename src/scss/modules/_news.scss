@@ -1,0 +1,8 @@
+.news {
+  .date {
+    @extend        .text-warning;
+    display:       block;
+    font-size:     10px;
+    margin-bottom: 5px;
+  }
+}

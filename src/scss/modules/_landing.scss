@@ -1,0 +1,25 @@
+.landing {
+  .embed-responsive {
+    box-shadow: -4px -4px 10px rgba(0,0,0,.4);
+  }
+
+  section {
+    margin-top: 40px;
+
+    h5 {
+      margin-bottom: 20px;
+    }
+  }
+
+  footer {
+    margin-bottom: 20px;
+
+    a {
+      color: $gray-dark;
+    }
+
+    small {
+      display: block;
+    }
+  }
+}

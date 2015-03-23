@@ -11,6 +11,6 @@
         <?php $this->load->view('home/discografia') ?>
     </div>
     <div class="col-md-12">
-        <img src="http://placehold.it/1140x400/121212/666666&text=Galeria+de+imagens">
+        <!-- <img src="http://placehold.it/1140x400/121212/666666&text=Galeria+de+imagens"> -->
     </div>
 </div>

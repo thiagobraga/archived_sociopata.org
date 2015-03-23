@@ -36,6 +36,7 @@ var gulp       = require('gulp'),
     'bower_components/lightbox/js/lightbox.js',
     'bower_components/OwlCarousel/owl-carousel/owl.carousel.js',
     'bower_components/jQuery-linkify/dist/jquery.linkify.js',
+    'bower_components/noty/js/noty/packaged/jquery.noty.packaged.js',
     'bower_components/soundmanager/script/soundmanager2-nodebug.js',
     'src/js/**/*.js'
   ];

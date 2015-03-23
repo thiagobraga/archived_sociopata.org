@@ -33,6 +33,14 @@ var main = (function () {
          * @return {[type]}
          */
         setGoogleAnalytics = function () {
+            // Google Analytics
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-36613651-1', 'auto');
+            ga('send', 'pageview');
         },
 
         /**
@@ -70,9 +78,20 @@ var main = (function () {
          * @return
          */
         init = (function () {
-            var body = $('body');
+            var body = $('body'),
+                news = $('#news');
 
-            $('#news').linkify();
+            news.linkify();
+            setGoogleAnalytics();
+
+            // Noty Defaults
+            $.noty.defaults.layout  = 'topRight';
+            $.noty.defaults.theme   = 'bootstrapTheme';
+            $.noty.defaults.timeout = 7000;
+
+            // Make a embed youtube dinamically
+            // news.find('a[href*="youtu.be"], a[href*="youtube.com"]');
+
             $('a[href="#"]').on('click', function (event) {
                 event.preventDefault();
             });
@@ -86,12 +105,3 @@ var main = (function () {
         }());
 
 }());
-
-
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-36613651-1', 'auto');
-ga('send', 'pageview');

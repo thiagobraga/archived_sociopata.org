@@ -85,6 +85,10 @@ class Sociopata extends CI_Controller
             'session'    => $this->session->all_userdata()
         );
 
+        if (!preg_match('/landing|contato/', $this->data['controller'])) {
+            redirect(base_url());
+        }
+
         $this->loadCss(array('public/css/styles.min'));
         $this->loadJs(array('public/js/scripts.min'));
         $this->setKeywords(array(

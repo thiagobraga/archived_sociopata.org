@@ -15,6 +15,7 @@
     "jQuery-linkify": "*",
     "lightbox": "*",
     "OwlCarousel": "*",
-    "soundmanager": "*"
+    "soundmanager": "*",
+    "noty": "~2.3.4"
   }
 }

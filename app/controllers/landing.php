@@ -3,12 +3,12 @@
 defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * Home
+ * Landing
  * @author Thiago Braga <thiago@sociopata.org>
  * @access public
  * @version 1.0
  */
-class Home extends Sociopata
+class Landing extends Sociopata
 {
 
     /**
@@ -18,23 +18,14 @@ class Home extends Sociopata
     public function index()
     {
         $this->data = array_merge($this->data, array(
-            'events'  => $this->getEvents(),
-            'news'    => $this->getNews(),
-            'albuns'  => $this->getAlbuns(),
-            'photos'  => $this->getPhotos(),
-            'page'    => 'Home',
-            'content' => 'home/home'
+            'page'    => 'Em breve novo EP, Corrosão',
+            'content' => 'landing/landing'
         ));
 
         Sociopata::setTitle('Sociopata | ' . $this->data['page'] . ' | Bauru, SP - Som autoral desde 2008');
         Sociopata::setDescription('Confira as principais notícias e eventos.');
-        Sociopata::loadCss(array(
-            'bower_components/OwlCarousel/owl-carousel/owl.carousel',
-            'bower_components/OwlCarousel/owl-carousel/owl.transitions',
-            'bower_components/OwlCarousel/owl-carousel/owl.theme'
-        ));
 
-        $this->load->view('template', $this->data);
+        $this->load->view('landing/template', $this->data);
     }
 
     /**
@@ -118,8 +109,8 @@ class Home extends Sociopata
      */
     public function getAlbuns()
     {
-        $albuns = Home_model::getAlbuns();
-        $musics = Home_model::getMusics();
+        $albuns = Landing_model::getAlbuns();
+        $musics = Landing_model::getMusics();
 
         foreach ($albuns as $i => $album) {
             foreach ($musics as $j => $music) {
@@ -150,11 +141,11 @@ class Home extends Sociopata
      */
     public function getPhotos()
     {
-        $result = Home_model::getPhotos();
+        $result = Landing_model::getPhotos();
         return $result;
     }
 
 }
 
-/* End of file home.php */
-/* Location: ./application/controllers/home.php */
+/* End of file Landing.php */
+/* Location: ./application/controllers/Landing.php */
