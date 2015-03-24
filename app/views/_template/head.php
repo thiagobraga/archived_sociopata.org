@@ -18,7 +18,8 @@
     <meta property="og:site_name" content="<?php echo $title ?>" />
     <meta property="og:description" content="<?php echo $description ?>" />
     <meta property="og:url" content="<?php echo base_url() ?>" />
-    <meta property="og:image" content="<?php echo base_url('public/images/icons/facebook.jpg') ?>" />
+    <meta property="og:image" content="<?php echo base_url('public/images/icons/facebook_300x300.jpg') ?>" />
+    <meta property="og:image" content="<?php echo base_url('public/images/icons/facebook_1200x630.jpg') ?>" />
     <meta property="og:type" content="website" />
     <meta property="fb:admins" content="100001599541810" />
 
