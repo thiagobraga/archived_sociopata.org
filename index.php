@@ -1,6 +1,14 @@
 <?php
 
 /**
+ *---------------------------------------------------------------
+ * PHP Configuration settings
+ *---------------------------------------------------------------
+ */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
+/**
  * -----------------------------------------------------------------------------
  * APPLICATION ENVIRONMENT
  * -----------------------------------------------------------------------------
@@ -38,19 +46,19 @@ default:
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-switch (ENVIRONMENT) {
-case 'production':
-    error_reporting(E_ALL);
-    break;
-case 'testing':
-    error_reporting(E_ALL);
-    break;
-case 'development':
-    error_reporting(E_ALL);
-    break;
-default:
-    exit('The application environment is not set correctly.');
-}
+// switch (ENVIRONMENT) {
+// case 'production':
+//     error_reporting(E_ALL);
+//     break;
+// case 'testing':
+//     error_reporting(E_ALL);
+//     break;
+// case 'development':
+//     error_reporting(E_ALL);
+//     break;
+// default:
+//     exit('The application environment is not set correctly.');
+// }
 
 /*
  * ---------------------------------------------------------------

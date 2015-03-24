@@ -109,13 +109,10 @@ class Contato extends Sociopata
         $this->email->subject($this->data['subject']);
         $this->email->message($html);
 
-        try {
-            $result = $this->email->send();
-            if ($result) {
-                $sent = true;
-            }
-        } catch (Exception $err) {
-            $errors['form'] = $err->getMessage();
+        if ($this->email->send()) {
+            $sent = true;
+        } else {
+            show_error($this->email->print_debugger());
         }
 
         if ($sent) {
@@ -138,13 +135,10 @@ class Contato extends Sociopata
             $this->email->subject($this->data['subject']);
             $this->email->message($html);
 
-            try {
-                $result = $this->email->send();
-                if ($result) {
-                    $sent = true;
-                }
-            } catch (Exception $err) {
-                $errors['form'] = $err->getMessage();
+            if ($this->email->send()) {
+                $sent = true;
+            } else {
+                show_error($this->email->print_debugger());
                 $sent = false;
             }
         } else {
