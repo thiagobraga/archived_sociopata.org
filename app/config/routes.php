@@ -41,9 +41,13 @@
 $route = array(
     '404_override'       => '',
     'bower_components'   => 'bower_components',
-    'default_controller' => 'landing',
+    'default_controller' => 'home',
     'logout'             => 'admin/logout'
 );
+
+if (ENVIRONMENT === 'production') {
+    $route['default_controller'] = 'landing';
+}
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
