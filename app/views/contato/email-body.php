@@ -14,6 +14,7 @@
         <br/>
         <b>Informações adicionais</b><br/>
         <ul>
+            <li>E-mail: <?php echo $email ?></li>
             <li>Navegador: <?php echo $browser ?></li>
             <li>Versão: <?php echo $version ?></li>
             <li>Mobile: <?php echo $mobile == null ? 'Não' : $mobile ?></li>
