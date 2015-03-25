@@ -1,4 +1,4 @@
-<div class="col-xs-offset-2 col-xs-8 text-center">
+<div class="col-xs-12 text-center">
     <a href="<?php echo base_url() ?>">
         <img src="<?php echo base_url('public/images/logo/header-logo.png') ?>"
             class="logo"
