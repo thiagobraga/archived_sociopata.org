@@ -147,7 +147,7 @@ class Contato extends Sociopata
         }
 
         // Return
-        echo $sent ? json_encode($result) : json_encode($errors);
+        echo $sent;
         exit();
     }
 
