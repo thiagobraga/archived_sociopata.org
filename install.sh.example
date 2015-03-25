@@ -19,7 +19,7 @@ mysql -uroot -p"$password" -e "source ./db/data.sql" -v -t --default-character-s
 npm install --save-dev
 
 # Install bower components
-bower install --save
+bower install --save --allow-root
 
 # Run gulp
 gulp
