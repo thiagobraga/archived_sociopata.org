@@ -50,7 +50,6 @@ class Admin extends Sociopata
                     'name',
                     'first_name',
                     'last_name',
-                    'username',
                     'email',
                     'locale',
                     'location'

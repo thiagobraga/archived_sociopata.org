@@ -13,8 +13,5 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{scss,css,yaml,coffee}]
-indent_size = 2
-
-[gulpfile.js]
+[*.{scss,css,yaml}]
 indent_size = 2
