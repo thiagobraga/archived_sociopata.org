@@ -99,6 +99,7 @@ class Contato extends Sociopata
         $this->email->clear();
 
         $this->email->from($this->data['email'], $this->data['name']);
+        $this->email->reply_to($this->data['email'], $this->data['name']);
         $this->email->to(implode(',', $to));
         $this->email->subject($this->data['subject']);
         $this->email->message($html);
