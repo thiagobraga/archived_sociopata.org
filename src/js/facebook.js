@@ -24,22 +24,7 @@ Sociopata.Core = Sociopata.Core || {};
 Sociopata.Core.Facebook = (function () {
 
     'use strict';
-
     var
-
-        /**
-         * [description]
-         *
-         * @return  {void}
-         */
-        buttonListener = (function () {
-            var facebook_login = $('#facebook-login');
-
-            facebook_login.on('click', function (event) {
-                event.preventDefault();
-                facebookLogin();
-            });
-        }()),
 
         /**
          * Realiza o login com Facebook.
@@ -54,9 +39,9 @@ Sociopata.Core.Facebook = (function () {
             ].join(', ');
 
             FB.init({
-                appId   : '475565802516661',
-                cookie  : true,
-                version : 'v2.1'
+                appId:   '475565802516661',
+                cookie:  true,
+                version: 'v2.1'
             });
 
             FB.login(function (response) {
@@ -64,6 +49,20 @@ Sociopata.Core.Facebook = (function () {
                     parent.location = '/admin/login';
                 }
             }, { scope: scope });
-        };
+        },
+
+        /**
+         * [description]
+         *
+         * @return  {void}
+         */
+        buttonListener = (function () {
+            var facebook_login = $('#facebook-login');
+
+            facebook_login.on('click', function (event) {
+                event.preventDefault();
+                facebookLogin();
+            });
+        }());
 
 }());

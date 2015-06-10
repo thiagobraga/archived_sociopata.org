@@ -69,18 +69,12 @@ class Contato extends Sociopata
             $errors['name'] = 'O campo nome não pode estar vazio';
         }
 
-        // Email is invalid
-        if (!valid_email($this->data['email'])) {
-            $errors['email'] = 'O email digitado não é válido';
-        }
-
         // Email is empty
         if (strlen($this->data['email']) == 0) {
             $errors['email'] = 'O campo email não pode estar vazio';
         }
 
         // Message is empty
-        // Don't check this if is a premiere invite
         if (strlen($this->data['message']) == 0) {
             $errors['message'] = 'O campo mensagem não pode estar vazio';
         }
@@ -88,7 +82,7 @@ class Contato extends Sociopata
         // If there are errors, send back
         if (count($errors)) {
             echo json_encode($errors);
-            exit();
+            exit;
         }
 
         //
