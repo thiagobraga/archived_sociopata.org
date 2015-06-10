@@ -7,7 +7,8 @@
             <input id="input-name"
                 type="text"
                 class="form-control"
-                placeholder="Insira seu nome" />
+                placeholder="Insira seu nome"
+                required />
         </div>
 
         <div class="form-group">
@@ -15,7 +16,8 @@
             <input id="input-email"
                 type="email"
                 class="form-control"
-                placeholder="Insira seu e-mail" />
+                placeholder="Insira seu e-mail"
+                required />
         </div>
 
         <div class="form-group">
@@ -23,7 +25,8 @@
             <textarea id="input-message"
                 class="form-control"
                 rows="5"
-                placeholder="Escreva sua mensagem. Responderemos em breve."></textarea>
+                placeholder="Escreva sua mensagem. Responderemos em breve."
+                required></textarea>
         </div>
 
         <div class="form-group">
